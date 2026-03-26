@@ -9,6 +9,12 @@ public class LineData
     private Vector2 pointA;
     private Vector2 pointB;
     
+    public LineData(int id, Vector2 pointA, Vector2 pointB)
+    {
+        this.id = id;
+        this.pointA = pointA;
+        this.pointB = pointB;
+    }
 }
 
 public class GraphRender : MonoBehaviour
@@ -56,7 +62,7 @@ public class GraphRender : MonoBehaviour
 
 #region private methods
 
-    private void DrawLine(Vector2 pointA, Vector2 pointB, float lineThickness, Color color)
+    public void DrawLine(Vector2 pointA, Vector2 pointB, float lineThickness, Color color)
     {
         if (targetCanvas == null) return;
         if (Anchor == null) return;
@@ -75,8 +81,11 @@ public class GraphRender : MonoBehaviour
         lineRectTransform.anchorMin = Vector2.zero;
         lineRectTransform.anchorMax = Vector2.zero;
         lineRectTransform.anchoredPosition = pointA + direction * distance * 0.5f;
-        lineRectTransform.localEulerAngles = new Vector3(0,0, Mathf.Atan2(direction.y,direction.x));
+        lineRectTransform.localEulerAngles = new Vector3(0,0, Mathf.Atan2(direction.y,direction.x)*180/Mathf.PI);
         lineRectTransform.sizeDelta = new Vector2(distance, lineThickness);
+        lineRectTransform.localScale = Vector3.one;
+
+        lineDataList.Add(new LineData(number, pointA, pointB));
     }
 
 

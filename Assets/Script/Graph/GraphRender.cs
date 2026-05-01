@@ -204,7 +204,6 @@ public class GraphRender : MonoBehaviour
             positionPrev = waterSpline.GetPosition(index-1);
         }
         if (index + 1< WavesCount) {
-            print("index: " + index + " WavesCount: " + WavesCount);
             positionNext = waterSpline.GetPosition(index+1);
         }
         else if (index + 1 == WavesCount) {

@@ -195,157 +195,34 @@ public class GraphRender : MonoBehaviour
 
 
 #region private methods
+    private void Smoothen(Spline waterSpline, int index, int WavesCount)
+    {
+        Vector3 position = waterSpline.GetPosition(index);
+        Vector3 positionPrev = position;
+        Vector3 positionNext = position;
+        if (index > 1) {
+            positionPrev = waterSpline.GetPosition(index-1);
+        }
+        if (index + 1< WavesCount) {
+            print("index: " + index + " WavesCount: " + WavesCount);
+            positionNext = waterSpline.GetPosition(index+1);
+        }
+        else if (index + 1 == WavesCount) {
+            positionNext = waterSpline.GetPosition(0);
+        }
 
-    // public void DrawLine(Vector2 pointA, Vector2 pointB, float lineThickness, Color color)
-    // {
-    //     if (targetCanvas == null) return;
-    //     if (Anchor == null) return;
-    //     int number = lineDataList.Count;
+        Vector3 forward = gameObject.transform.forward;
 
-    //     GameObject line = new GameObject("Line" + number, typeof(Image));
-    //     line.transform.SetParent(targetCanvas.transform);
+        float scale = Mathf.Min((positionNext - position).magnitude, (positionPrev - position).magnitude) * 0.33f;
+
+        Vector3 leftTangent = (positionPrev - position).normalized * scale;
+        Vector3 rightTangent = (positionNext - position).normalized * scale;
+
+        SplineUtility.CalculateTangents(position, positionPrev, positionNext, forward, scale, out rightTangent, out leftTangent);
         
-    //     Image lineImg = line.GetComponent<Image>();
-    //     lineImg.color = color;
-
-    //     Vector2 direction = (pointB - pointA).normalized;
-    //     float distance = Vector2.Distance(pointA, pointB);
-
-    //     RectTransform lineRectTransform = line.GetComponent<RectTransform>();
-    //     lineRectTransform.anchorMin = Vector2.zero;
-    //     lineRectTransform.anchorMax = Vector2.zero;
-    //     lineRectTransform.anchoredPosition = pointA + direction * distance * 0.5f;
-    //     lineRectTransform.localEulerAngles = new Vector3(0,0, Mathf.Atan2(direction.y,direction.x)*180/Mathf.PI);
-    //     lineRectTransform.sizeDelta = new Vector2(distance, lineThickness);
-    //     lineRectTransform.localScale = Vector3.one;
-
-    //     lineDataList.Add(new LineData(number, pointA, pointB));
-    // }
-//     private void Draw(SpriteShapeController spriteShape, Vector3[] points, Vector3 anchor, Vector2 size)
-// {
-//     if (spriteShape == null)
-//     {
-//         Debug.LogError("SpriteShapeController is null");
-//         return;
-//     }
-//     if (points == null || points.Length == 0)
-//     {
-//         Debug.LogError("Points array is null or empty");
-//         return;
-//     }
-
-//     int pointCount = points.Length;
-
-//     // Ensure springs array exists / matches size
-//     if (springs == null || springs.Length != pointCount)
-//     {
-//         springs = new Spring[pointCount];
-//         for (int a = 0; a < pointCount; a++)
-//         {
-//             springs[a] = new Spring();
-//             springs[a].Height = points[a].y;
-//         }
-//     }
-
-//     // ---------------------------
-//     // 1. Spring update
-//     // ---------------------------
-//     for (int a = 0; a < springs.Length; a++)
-//     {
-//         springs[a].Update(dampening, springIndex);
-//     }
-
-//     float[] leftDeltas = new float[springs.Length];
-//     float[] rightDeltas = new float[springs.Length];
-
-//     // ---------------------------
-//     // 2. Spread passes (neighbor relaxation)
-//     // ---------------------------
-//     for (int j = 0; j < 8; j++)
-//     {
-//         for (int c = 0; c < springs.Length; c++)
-//         {
-//             if (c > 0)
-//             {
-//                 leftDeltas[c] = spread * (springs[c].Height - springs[c - 1].Height);
-//                 springs[c - 1].Speed += leftDeltas[c];
-//             }
-
-//             if (c < springs.Length - 1)
-//             {
-//                 rightDeltas[c] = spread * (springs[c].Height - springs[c + 1].Height);
-//                 springs[c + 1].Speed += rightDeltas[c];
-//             }
-//         }
-
-//         for (int c = 0; c < springs.Length; c++)
-//         {
-//             if (c > 0)
-//                 springs[c - 1].Height += leftDeltas[c];
-
-//             if (c < springs.Length - 1)
-//                 springs[c + 1].Height += rightDeltas[c];
-//         }
-//     }
-
-//     // ---------------------------
-//     // 3. SpriteShape update
-//     // ---------------------------
-//     int splinePointCount = spriteShape.spline.GetPointCount();
-
-//     float graphWidth = points[points.Length - 1].x - points[0].x;
-//     float ratioX = size.x / graphWidth;
-//     float ratioY = size.y / graphWidth;
-
-//     // anchor
-//     if (splinePointCount > 0)
-//     {
-//         spriteShape.spline.SetPosition(0, anchor);
-//     }
-//     else
-//     {
-//         spriteShape.spline.InsertPointAt(0, anchor);
-//     }
-//     spriteShape.spline.SetTangentMode(0, ShapeTangentMode.Continuous);
-
-//     int i = 1;
-
-//     for (; i < pointCount; i++)
-//     {
-//         Vector3 targetPos = new Vector3(
-//             anchor.x + points[i].x * ratioX,
-//             anchor.y + springs[i - 1].Height * ratioY + size.y,
-//             anchor.z
-//         );
-
-//         if (i < splinePointCount)
-//         {
-//             spriteShape.spline.SetPosition(i, targetPos);
-//         }
-//         else
-//         {
-//             spriteShape.spline.InsertPointAt(i, targetPos);
-//         }
-
-//         spriteShape.spline.SetTangentMode(i, ShapeTangentMode.Continuous);
-//     }
-
-//     // closing point
-//     Vector3 endPos = new Vector3(anchor.x + size.x, anchor.y, anchor.z);
-
-//     if (i < splinePointCount)
-//     {
-//         spriteShape.spline.SetPosition(i, endPos);
-//     }
-//     else
-//     {
-//         spriteShape.spline.InsertPointAt(i, endPos);
-//     }
-
-//     spriteShape.spline.SetTangentMode(i, ShapeTangentMode.Continuous);
-
-//     spriteShape.spline.isOpenEnded = false;
-// }
+        waterSpline.SetLeftTangent(index, leftTangent);
+        waterSpline.SetRightTangent(index, rightTangent);
+    }
     private void Draw(SpriteShapeController spriteShape, Vector3[] points, Vector3 anchor, Vector2 size)
     {
         //null handler
@@ -428,7 +305,7 @@ public class GraphRender : MonoBehaviour
 
         //set bottom left anchor
         spriteShape.spline.SetPosition(0, anchor);
-        spriteShape.spline.SetTangentMode(0, ShapeTangentMode.Continuous);
+        spriteShape.spline.SetTangentMode(0, ShapeTangentMode.Linear);
 
         //set ratios
         int x = 1;
@@ -436,14 +313,26 @@ public class GraphRender : MonoBehaviour
         foreach (Vector3 point in points)
         {            
             spriteShape.spline.SetPosition(x, new Vector3(anchor.x + points[x-1].x * ratioX, anchor.y + newHeight[x - 1] + size.y, anchor.z));
-            spriteShape.spline.SetTangentMode(x, ShapeTangentMode.Continuous);
+            if (x == 1 || x == points.Length)
+            {
+                spriteShape.spline.SetTangentMode(x, ShapeTangentMode.Linear);
+            }
+            else
+            {
+                spriteShape.spline.SetTangentMode(x, ShapeTangentMode.Continuous);
+            }
             x++;
         }
         //set bottom right anchor
         spriteShape.spline.SetPosition(x, new Vector3(anchor.x + size.x, anchor.y, anchor.z));
-        spriteShape.spline.SetTangentMode(x, ShapeTangentMode.Continuous);
+        spriteShape.spline.SetTangentMode(x, ShapeTangentMode.Linear);
 
         spriteShape.spline.isOpenEnded = false;
+
+        for (int i = 0; i < spriteShape.spline.GetPointCount(); i++)
+        {
+            Smoothen(spriteShape.spline, i, spriteShape.spline.GetPointCount());
+        }
         
     }
 

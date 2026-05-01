@@ -520,9 +520,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653efa26ddd593349b8bb3f47b5c5656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  springIndex: 100
+  springIndex: 50
   dampening: 10
-  spread: 0.25
+  spread: 0.5
   tension: 0
 --- !u!114 &1894163291
 MonoBehaviour:
@@ -537,8 +537,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteShapeController: {fileID: 2073291643}
-  pointsLength: 25
-  graphSize: {x: 10, y: 10}
+  pointsLength: 7
+  graphSize: {x: 30, y: 1}
   graphOrigin: {fileID: 0}
   potionCurves:
   - serializedVersion: 2

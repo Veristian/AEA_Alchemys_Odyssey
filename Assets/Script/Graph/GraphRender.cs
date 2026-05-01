@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 using UnityEngine.UI;
-
+using System;
 public class LineData
 {
     private readonly int id;
@@ -57,6 +58,33 @@ public class GraphRender : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Convert curve points to graph coordinates with specified size using length of points as x range
+    /// </summary>
+    /// <param name="curve"></param>
+    /// <param name="points"></param>
+    public void ConvertCurveToSpecifiedPointsLength(AnimationCurve curve, Vector2[] points)
+    {
+        for (int i = 0; i < points.Length; i++)
+        {
+            float x = i / (float)(points.Length - 1); // Scale x to range [0, 1]
+            float y = curve.Evaluate(x);
+            points[i] = new Vector2(x, y);
+        }
+    }
+    public void ConvertCurvesToSpecifiedPointsLength(List<AnimationCurve> curves, Vector2[] points)
+    {
+        for (int i = 0; i < points.Length; i++)
+        {
+            float x = i / (float)(points.Length - 1); // Scale x to range [0, 1]
+            float y = 0;
+            foreach (var curve in curves)
+            {
+                y += curve.Evaluate(x);
+            }
+            points[i] = new Vector2(x, y);
+        }
+    }
 #endregion
 
 
@@ -88,10 +116,62 @@ public class GraphRender : MonoBehaviour
         lineDataList.Add(new LineData(number, pointA, pointB));
     }
 
+    public void DrawShape(SpriteShapeController spriteShape, Vector2[] points, Vector3 anchor, Vector2 size)
+    {
+        int splinePointCount = spriteShape.spline.GetPointCount();
+        int pointsCount = points.Length;
+        if (splinePointCount > pointsCount + 2)
+        {
+            for (int x = splinePointCount - 1; x >= pointsCount + 2; x--)
+            {
+                spriteShape.spline.RemovePointAt(x);
+            }
+        }
+        if (splinePointCount > 0)
+        {
+            spriteShape.spline.SetPosition(0, anchor);
+            spriteShape.spline.SetTangentMode(0, ShapeTangentMode.Continuous);
+        }
+        else
+        {
+            spriteShape.spline.InsertPointAt(0, anchor);
+            spriteShape.spline.SetTangentMode(0, ShapeTangentMode.Continuous);
+        }
 
+        int i = 1;
+        float graphWidth = points[points.Length - 1].x - points[0].x;
+        float ratioX = size.x / graphWidth;
+        float ratioY = size.y / graphWidth;
+        foreach (Vector2 point in points)
+        {
+            if (i < splinePointCount)
+            {
+                spriteShape.spline.SetPosition(i, new Vector3(anchor.x + point.x * ratioX, anchor.y + point.y * ratioY + size.y, anchor.z));
+                spriteShape.spline.SetTangentMode(i, ShapeTangentMode.Continuous);
+            }
+            else
+            {
+                spriteShape.spline.InsertPointAt(i, new Vector3(anchor.x + point.x * ratioX, anchor.y + point.y * ratioY + size.y, anchor.z));
+                spriteShape.spline.SetTangentMode(i, ShapeTangentMode.Continuous);
+            }
+            // spriteShape.spline.InsertPointAt(i, new Vector3(anchor.x + point.x * ratioX, anchor.y + point.y * ratioY + size.y, anchor.z));
+            // spriteShape.spline.SetTangentMode(i, ShapeTangentMode.Continuous);
+            i++;
+        }
+        if (i < splinePointCount)
+        {
+            spriteShape.spline.SetPosition(i, new Vector3(anchor.x + size.x, anchor.y, anchor.z));
+            spriteShape.spline.SetTangentMode(i, ShapeTangentMode.Continuous);
+        }
+        else
+        {
+            spriteShape.spline.InsertPointAt(i, new Vector3(anchor.x + size.x, anchor.y, anchor.z));
+            spriteShape.spline.SetTangentMode(i, ShapeTangentMode.Continuous);
+        }
 
-
-
+        spriteShape.spline.isOpenEnded = false;
+        
+    }
 
 #endregion
 

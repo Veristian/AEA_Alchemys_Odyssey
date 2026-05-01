@@ -2,30 +2,31 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.U2D; 
 [RequireComponent(typeof(GraphRender))]
 public class GraphControlTest : MonoBehaviour
 {
     public Canvas canvas;
+    public SpriteShapeController spriteShapeController;
     // Start is called before the first frame update
+    GraphRender graphRender;
+    public AnimationCurve curve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+    Vector2[] points;
     void Start()
     {
-        GraphRender graphRender = GetComponent<GraphRender>();
+        graphRender = GetComponent<GraphRender>();
         graphRender.SetTargetCanvas(canvas);
+        points = new Vector2[25];
 
-        for (float i = 0; i < 100; i++)
-        {
-            float x1 = Mathf.Pow( i - 50, 2);
-            float y1 = i*10;
-            float x2 = Mathf.Pow( i - 49, 2);
-            float y2 = (i+1)*10;
-            graphRender.DrawLine(new Vector2(y1, x1), new Vector2(y2, x2),3,Color.black);
-        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        graphRender.ConvertCurveToSpecifiedPointsLength(curve, points);
+        graphRender.DrawShape(spriteShapeController, points, Vector3.zero, new Vector2(100, 100));
     }
 }
+
+

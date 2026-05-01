@@ -18,7 +18,6 @@ public class PotionGraph : MonoBehaviour
     [SerializeField] private List<AnimationCurve> potionCurves = new List<AnimationCurve>();
 
     [Header("Debug")]
-    [SerializeField] private Vector2[] targetPoints;
     [SerializeField] private Vector3[] currentPoints; //vector 2 for position and z for velocity
     private void Awake()
     {
@@ -33,11 +32,9 @@ public class PotionGraph : MonoBehaviour
             Debug.LogWarning("Graph Origin is not assigned. Please assign a Transform to graphOrigin.");
             graphOrigin = this.transform;
         }
-        targetPoints = new Vector2[pointsLength];
         currentPoints = new Vector3[pointsLength];
         for (int i = 0; i < pointsLength; i++)
         {
-            targetPoints[i] = Vector2.zero;
             currentPoints[i] = Vector3.zero;
         }
     }
@@ -45,9 +42,9 @@ public class PotionGraph : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        graphRender.ConvertCurvesToSpecifiedPointsLength(potionCurves, targetPoints);
-        graphRender.LerpMixVectorList(currentPoints, targetPoints, 100000f);
+        graphRender.ConvertCurvesToSpecifiedPointsLength(potionCurves, currentPoints);
         graphRender.DrawShape(spriteShapeController, currentPoints, graphOrigin.position, graphSize);
+
     }
 
 

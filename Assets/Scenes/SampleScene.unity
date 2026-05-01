@@ -520,10 +520,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653efa26ddd593349b8bb3f47b5c5656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  springIndex: 0.025
-  dampening: 0.98
-  spread: 0.5
-  tension: 0.025
+  springIndex: 100
+  dampening: 10
+  spread: 0.25
+  tension: 0
 --- !u!114 &1894163291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,8 +537,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteShapeController: {fileID: 2073291643}
-  pointsLength: 10
-  graphSize: {x: 100, y: 100}
+  pointsLength: 25
+  graphSize: {x: 10, y: 10}
   graphOrigin: {fileID: 0}
   potionCurves:
   - serializedVersion: 2
@@ -564,7 +564,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  targetPoints: []
   currentPoints: []
 --- !u!1 &2073291642
 GameObject:

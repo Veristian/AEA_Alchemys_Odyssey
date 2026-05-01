@@ -43,7 +43,7 @@ public class GraphRender : MonoBehaviour
 
     private Vector3 anchor;
     private Vector2 size;
-    private Spring[] springs;
+    // private Spring[] springs;
 
     // private Canvas targetCanvas;
 
@@ -99,6 +99,15 @@ public class GraphRender : MonoBehaviour
             points[i] = new Vector2(x, y);
         }
     }
+    public void ConvertCurveToSpecifiedPointsLength(AnimationCurve curve, Vector3[] points)
+    {
+        for (int i = 0; i < points.Length; i++)
+        {
+            float x = i / (float)(points.Length - 1); // Scale x to range [0, 1]
+            float y = curve.Evaluate(x);
+            points[i] = new Vector3(x, y, points[i].z);
+        }
+    }
     public void ConvertCurvesToSpecifiedPointsLength(List<AnimationCurve> curves, Vector2[] points)
     {
         for (int i = 0; i < points.Length; i++)
@@ -110,6 +119,19 @@ public class GraphRender : MonoBehaviour
                 y += curve.Evaluate(x);
             }
             points[i] = new Vector2(x, y);
+        }
+    }
+    public void ConvertCurvesToSpecifiedPointsLength(List<AnimationCurve> curves, Vector3[] points)
+    {
+        for (int i = 0; i < points.Length; i++)
+        {
+            float x = i / (float)(points.Length - 1); // Scale x to range [0, 1]
+            float y = 0;
+            foreach (var curve in curves)
+            {
+                y += curve.Evaluate(x);
+            }
+            points[i] = new Vector3(x, y, points[i].z);
         }
     }
     public void LerpVector2List(Vector2[] currentPoints, Vector2[] targetPoints, float speed = 10f)
@@ -338,74 +360,88 @@ public class GraphRender : MonoBehaviour
             return;
         }
 
-
-        int splinePointCount = spriteShape.spline.GetPointCount();
-        int pointsCount = points.Length;
-        if (splinePointCount > pointsCount + 2)
+        // mathes points and wave size
+        if (points.Length + 2 != spriteShape.spline.GetPointCount())
         {
-            for (int x = splinePointCount - 1; x >= pointsCount + 2; x--)
+            if (points.Length + 2 < spriteShape.spline.GetPointCount())
             {
-                spriteShape.spline.RemovePointAt(x);
-            }
-        }
-        if (splinePointCount > 0)
-        {
-            spriteShape.spline.SetPosition(0, anchor);
-            spriteShape.spline.SetTangentMode(0, ShapeTangentMode.Continuous);
-        }
-        else
-        {
-            spriteShape.spline.InsertPointAt(0, anchor);
-            spriteShape.spline.SetTangentMode(0, ShapeTangentMode.Continuous);
-        }
-
-        int i = 1;
-        float graphWidth = points[points.Length - 1].x - points[0].x;
-        float ratioX = size.x / graphWidth;
-        float ratioY = size.y / graphWidth;
-        foreach (Vector3 point in points)
-        {
-            float xValue = 0;
-            if (i < splinePointCount)
-            {
-                xValue = spriteShape.spline.GetPosition(i).y - (anchor.y + points[i-1].y * ratioY + size.y);
-            }
-            // float acceleration = -springIndex * xValue;
-            // //y is the position and z is the velocity
-            // points[i-1].y += points[i-1].z * Time.deltaTime;
-            // points[i-1].z += acceleration * Time.deltaTime ;
-            float dt = Time.deltaTime;
-
-            float acceleration = -springIndex * xValue;
-
-            points[i - 1].z += acceleration * dt;   // velocity
-            points[i - 1].z *= dampening;               // damping
-
-            points[i - 1].y += points[i - 1].z * dt; // position
-            
-            if (i < splinePointCount)
-            {
-                spriteShape.spline.SetPosition(i, new Vector3(anchor.x + point.x * ratioX, anchor.y + points[i-1].y * ratioY + size.y, anchor.z));
-                spriteShape.spline.SetTangentMode(i, ShapeTangentMode.Continuous);
+                for (int i = spriteShape.spline.GetPointCount() - 1; i >= points.Length + 2; i--)
+                {
+                    spriteShape.spline.RemovePointAt(i);
+                }
             }
             else
             {
-                spriteShape.spline.InsertPointAt(i, new Vector3(anchor.x + point.x * ratioX, anchor.y + points[i-1].y * ratioY + size.y, anchor.z));
-                spriteShape.spline.SetTangentMode(i, ShapeTangentMode.Continuous);
+                for (int i = spriteShape.spline.GetPointCount(); i < points.Length + 2; i++)
+                {
+                    spriteShape.spline.InsertPointAt(i, anchor);
+                }
             }
+        }
 
-            i++;
-        }
-        if (i < splinePointCount)
+        float referenceSize = points[points.Length - 1].x - points[0].x;
+        
+        float ratioX = size.x / referenceSize;
+        float ratioY = size.y / referenceSize;
+
+        float[] newHeight = new float[points.Length];
+        //calculate springs
+        for (int i = 0; i < points.Length; i++)
         {
-            spriteShape.spline.SetPosition(i, new Vector3(anchor.x + size.x, anchor.y, anchor.z));
-            spriteShape.spline.SetTangentMode(i, ShapeTangentMode.Continuous);
+            newHeight[i] = spriteShape.spline.GetPosition(i + 1).y;
+            float xValue = newHeight[i] - (anchor.y + points[i].y * ratioY + size.y);
+            float acceleration = (-springIndex * xValue) - (dampening * points[i].z);
+
+            newHeight[i] += points[i].z * Time.deltaTime; // position
+            points[i].z += acceleration * Time.deltaTime;   // velocity
         }
-        else
+        //calculate spread
+        float[] leftDeltas = new float[newHeight.Length];
+        float[] rightDeltas = new float[newHeight.Length];
+                    
+        // do some passes where springs pull on their neighbours 
+        for (int j = 0; j < 8; j++)
         {
-            spriteShape.spline.InsertPointAt(i, new Vector3(anchor.x + size.x, anchor.y, anchor.z));
-            spriteShape.spline.SetTangentMode(i, ShapeTangentMode.Continuous);
+            for (int i = 0; i < newHeight.Length; i++)
+            {
+                if (i > 0)
+                {
+                    leftDeltas[i] = spread * (newHeight[i] - newHeight[i - 1]);
+                    points[i - 1].z += leftDeltas[i];
+                }
+                if (i < newHeight.Length - 1)
+                {
+                    rightDeltas[i] = spread * (newHeight[i] - newHeight[i + 1]);
+                    points[i + 1].z += rightDeltas[i];
+                }
+            }
+            for (int i = 0; i < newHeight.Length; i++)
+            {
+                if (i > 0)
+                    points[i - 1].y += leftDeltas[i];
+                if (i < newHeight.Length - 1)
+                    points[i + 1].y += rightDeltas[i];
+            }
         }
+
+        //set positions of each points
+
+        //set bottom left anchor
+        spriteShape.spline.SetPosition(0, anchor);
+        spriteShape.spline.SetTangentMode(0, ShapeTangentMode.Continuous);
+
+        //set ratios
+        int x = 1;
+        //set pointts
+        foreach (Vector3 point in points)
+        {            
+            spriteShape.spline.SetPosition(x, new Vector3(anchor.x + points[x-1].x * ratioX, anchor.y + newHeight[x - 1] + size.y, anchor.z));
+            spriteShape.spline.SetTangentMode(x, ShapeTangentMode.Continuous);
+            x++;
+        }
+        //set bottom right anchor
+        spriteShape.spline.SetPosition(x, new Vector3(anchor.x + size.x, anchor.y, anchor.z));
+        spriteShape.spline.SetTangentMode(x, ShapeTangentMode.Continuous);
 
         spriteShape.spline.isOpenEnded = false;
         

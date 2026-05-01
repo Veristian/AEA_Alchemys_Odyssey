@@ -532,8 +532,98 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae1e0b4f748fe649a7eda06864f6c24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteShapeController: {fileID: 0}
-  potionCurves: []
+  spriteShapeController: {fileID: 2073291643}
+  pointsLength: 25
+  graphSize: {x: 100, y: 100}
+  graphOrigin: {fileID: 0}
+  potionCurves:
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.08267522
+      value: 0.00565511
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9173248
+      value: 0.00565511
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.07773942
+      value: 0.14467494
+      inSlope: 1.494406
+      outSlope: 1.494406
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.17769001
+      value: 0.52639025
+      inSlope: 0.49087048
+      outSlope: 0.49087048
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9222606
+      value: 0.14467494
+      inSlope: -0.51266503
+      outSlope: -0.51266503
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.07773942
+      value: 0.14467494
+      inSlope: 0.39535615
+      outSlope: 0.39535615
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7983718
+      value: 0.4910509
+      inSlope: -1.2002529
+      outSlope: -1.2002529
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9222606
+      value: 0.14467494
+      inSlope: -2.795862
+      outSlope: -2.795862
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2073291642
 GameObject:
   m_ObjectHideFlags: 0

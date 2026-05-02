@@ -3,17 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D; 
-[RequireComponent(typeof(GraphRender))]
 public class PotionGraph : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private SpriteShapeController spriteShapeController;
-    private GraphRender graphRender;
+    [SerializeField] private SpriteShapeController[] spriteShapeController;
 
     [Header("Graph Settings")]
     [SerializeField] private int pointsLength = 25;
     [SerializeField] private Vector2 graphSize = new Vector2(100, 100);
+    [SerializeField, Range(0.25f, 0.75f)] private float graphDefaultRest = 0.5f;
     [SerializeField] private Transform graphOrigin;
+    [SerializeField] private bool topAnchor = false;
+
     [Header("Curves")]
     [SerializeField] private List<AnimationCurve> potionCurves = new List<AnimationCurve>();
 
@@ -21,7 +22,6 @@ public class PotionGraph : MonoBehaviour
     [SerializeField] private Vector3[] currentPoints; //vector 2 for position and z for velocity
     private void Awake()
     {
-        graphRender = GetComponent<GraphRender>();
         Initialize();
     }
 
@@ -42,22 +42,100 @@ public class PotionGraph : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        graphRender.ConvertCurvesToSpecifiedPointsLength(potionCurves, currentPoints);
-        graphRender.DrawShape(spriteShapeController, currentPoints, graphOrigin.position, graphSize);
-
+        if (potionCurves.Count == 0) return;
+        if (spriteShapeController.Length == 0)
+        {
+            Debug.LogWarning("No SpriteShapeController assigned. Please assign at least one SpriteShapeController to draw the graph.");
+            return;
+        }
+        if (currentPoints.Length != pointsLength)
+        {
+            currentPoints = new Vector3[pointsLength];
+        }
+        if (graphSize.x <= 0 || graphSize.y <= 0)
+        {
+            Debug.LogWarning("Graph size must be greater than zero. Please set a valid graph size.");
+            return;
+        }
+        if (GraphRender.Instance == null)
+        {
+            Debug.LogError("GraphRender instance not found. Please ensure GraphRender is properly initialized in the scene.");
+            return;
+        }
+        GraphRender.Instance.ConvertCurvesToSpecifiedPointsLength(potionCurves, currentPoints);
+        GraphRender.Instance.DrawShape(spriteShapeController, currentPoints, graphOrigin.position, graphSize, graphDefaultRest, topAnchor);  
     }
 
 
 #region Public Methods
-    public void AddCurve(AnimationCurve curve)
-    {
-        potionCurves.Add(curve);
-    }
 
     public void RemoveLastCurve()
     {
         if (potionCurves.Count > 0)
             potionCurves.RemoveAt(potionCurves.Count - 1);
+    }
+
+    public void ClearCurves()
+    {
+        potionCurves.Clear();
+    }
+
+    public void SetPotionCurves(List<AnimationCurve> newCurves, float accuracyRequired = 0)
+    {
+        potionCurves = new List<AnimationCurve>();
+
+        foreach (var curve in newCurves)
+        {
+            AnimationCurve newCurve = new AnimationCurve();
+
+            foreach (var key in curve.keys)
+            {
+                Keyframe newKey = key;
+                newKey.value += accuracyRequired;
+                newCurve.AddKey(newKey);
+            }
+            potionCurves.Add(newCurve);
+        }
+    }
+
+    public void AddPotionCurve(AnimationCurve newCurve, float accuracyRequired = 0)
+    {
+        AnimationCurve curve = new AnimationCurve();
+        foreach (var key in newCurve.keys)
+        {
+            Keyframe newKey = key;
+            newKey.value += accuracyRequired;
+            curve.AddKey(newKey);
+        }
+        potionCurves.Add(curve);
+    }
+
+    public void AddPotionCurve(List<AnimationCurve> newCurves, float accuracyRequired = 0)
+    {
+        foreach (var curve in newCurves)
+        {
+            AnimationCurve newCurve = new AnimationCurve();
+
+            foreach (var key in curve.keys)
+            {
+                Keyframe newKey = key;
+                newKey.value += accuracyRequired;
+                newCurve.AddKey(newKey);
+            }
+
+            potionCurves.Add(newCurve);
+        }
+    }
+
+    public void SetAnchorTop(bool top)
+    {
+        topAnchor = top;
+    }
+    
+
+    public Vector3[] GetPotionPoints()
+    {
+        return currentPoints;
     }
 #endregion
 

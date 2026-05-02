@@ -2,52 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
-using UnityEngine.UI;
-using System;
-using Unity.VisualScripting;
-public class LineData
-{
-    private readonly int id;
-    private Vector2 pointA;
-    private Vector2 pointB;
-    
-    public LineData(int id, Vector2 pointA, Vector2 pointB)
-    {
-        this.id = id;
-        this.pointA = pointA;
-        this.pointB = pointB;
-    }
-}
-[System.Serializable]
-public class Spring
-{
-    public float Height;
-    public float Speed;
 
-    public void Update(float dampening, float tension)
-    {
-        float acceleration = -tension * Height;
-        Speed += acceleration * Time.deltaTime;
-        Speed *= dampening;
-        Height += Speed * Time.deltaTime;
-    }
-}
-public class GraphRender : MonoBehaviour
+public class GraphRender : Singleton<GraphRender>
 {
 #region Fields
     [Header("Wave Settings")]
     [SerializeField] private float springIndex = 0.025f;
     [SerializeField] private float dampening = 0.025f;
     [SerializeField] private float spread = 0.025f;
-    [SerializeField] private float tension = 0.025f;
 
     private Vector3 anchor;
     private Vector2 size;
-    // private Spring[] springs;
 
-    // private Canvas targetCanvas;
-
-    private List<LineData> lineDataList;
 
     public void SetAnchor(Vector2 newAnchor)
     {
@@ -59,32 +25,15 @@ public class GraphRender : MonoBehaviour
         size = newSize;
     }
 
-    // public void SetTargetCanvas(Canvas canvas)
-    // {
-    //     targetCanvas = canvas;
-    // }
+
 
 #endregion
 
 #region Init
 
-    private void Start()
-    {
-        
-    }
-
-    private void Awake()
-    {
-        if (lineDataList == null) lineDataList = new List<LineData>();
-    }
 
 #endregion
 #region public methods
-    public void RefreshGraph()
-    {
-
-    }
-
     /// <summary>
     /// Convert curve points to graph coordinates with specified size using length of points as x range
     /// </summary>
@@ -134,6 +83,24 @@ public class GraphRender : MonoBehaviour
             points[i] = new Vector3(x, y, points[i].z);
         }
     }
+    public void ConvertSpecifiedPointsToCurve(AnimationCurve curve, Vector3[] points)
+    {
+        Keyframe[] keyframes = new Keyframe[points.Length];
+        for (int i = 0; i < points.Length; i++)
+        {
+            keyframes[i] = new Keyframe(points[i].x, points[i].y);
+        }
+        curve.keys = keyframes;
+    }
+    public void ConvertSpecifiedPointsToCurve(AnimationCurve curve, Vector2[] points)
+    {
+        Keyframe[] keyframes = new Keyframe[points.Length];
+        for (int i = 0; i < points.Length; i++)
+        {
+            keyframes[i] = new Keyframe(points[i].x, points[i].y);
+        }
+        curve.keys = keyframes;
+    }
     public void LerpVector2List(Vector2[] currentPoints, Vector2[] targetPoints, float speed = 10f)
     {
         if (currentPoints.Length != targetPoints.Length)
@@ -175,21 +142,21 @@ public class GraphRender : MonoBehaviour
         }
     }
 
-    public void DrawShape(SpriteShapeController spriteShape, Vector3[] points, Vector3 anchor, Vector2 size)
+    public void DrawShape(SpriteShapeController[] spriteShape, Vector3[] points, Vector3 anchor, Vector2 size, float graphDefaultRest, bool topAnchor = false)
     {
-        Draw(spriteShape, points, anchor, size);
+        Draw(spriteShape, points, anchor, size, graphDefaultRest, topAnchor);
     }
-    public void DrawShape(SpriteShapeController spriteShape, Vector3[] points, Vector3 anchor)
+    public void DrawShape(SpriteShapeController[] spriteShape, Vector3[] points, Vector3 anchor)
     {
-        Draw(spriteShape, points, anchor, size);
+        Draw(spriteShape, points, anchor, size, 0.5f);
     }
-    public void DrawShape(SpriteShapeController spriteShape, Vector3[] points, Vector2 size)
+    public void DrawShape(SpriteShapeController[] spriteShape, Vector3[] points, Vector2 size)
     {
-        Draw(spriteShape, points, anchor, size);
+        Draw(spriteShape, points, anchor, size, 0.5f);
     }
-    public void DrawShape(SpriteShapeController spriteShape, Vector3[] points)
+    public void DrawShape(SpriteShapeController[] spriteShape, Vector3[] points)
     {
-        Draw(spriteShape, points, anchor, size);
+        Draw(spriteShape, points, anchor, size, 0.5f);
     }
 #endregion
 
@@ -222,7 +189,7 @@ public class GraphRender : MonoBehaviour
         waterSpline.SetLeftTangent(index, leftTangent);
         waterSpline.SetRightTangent(index, rightTangent);
     }
-    private void Draw(SpriteShapeController spriteShape, Vector3[] points, Vector3 anchor, Vector2 size)
+    private void Draw(SpriteShapeController[] spriteShape, Vector3[] points, Vector3 anchor, Vector2 size, float graphDefaultRest, bool topAnchor = false)
     {
         //null handler
         if (spriteShape == null)
@@ -235,41 +202,54 @@ public class GraphRender : MonoBehaviour
             Debug.LogError("Points array is null or empty");
             return;
         }
-
-        // mathes points and wave size
-        if (points.Length + 2 != spriteShape.spline.GetPointCount())
+        foreach (SpriteShapeController controller in spriteShape)
         {
-            if (points.Length + 2 < spriteShape.spline.GetPointCount())
+            // mathes points and wave size
+            if (points.Length + 2 != controller.spline.GetPointCount())
             {
-                for (int i = spriteShape.spline.GetPointCount() - 1; i >= points.Length + 2; i--)
+                if (points.Length + 2 < controller.spline.GetPointCount())
                 {
-                    spriteShape.spline.RemovePointAt(i);
+                    for (int i = controller.spline.GetPointCount() - 1; i >= points.Length + 2; i--)
+                    {
+                        controller.spline.RemovePointAt(i);
+                    }
+                }
+                else
+                {
+                    for (int i = controller.spline.GetPointCount(); i < points.Length + 2; i++)
+                    {
+                        controller.spline.InsertPointAt(i, anchor);
+                    }
                 }
             }
-            else
-            {
-                for (int i = spriteShape.spline.GetPointCount(); i < points.Length + 2; i++)
-                {
-                    spriteShape.spline.InsertPointAt(i, anchor);
-                }
-            }
-        }
 
+        }
+        
         float referenceSize = points[points.Length - 1].x - points[0].x;
         
         float ratioX = size.x / referenceSize;
-        float ratioY = size.y / referenceSize;
+        // float ratioY = size.y / referenceSize;
 
         float[] newHeight = new float[points.Length];
         //calculate springs
         for (int i = 0; i < points.Length; i++)
         {
-            newHeight[i] = spriteShape.spline.GetPosition(i + 1).y;
-            float xValue = newHeight[i] - (anchor.y + points[i].y * ratioY + size.y);
+            newHeight[i] = spriteShape[0].spline.GetPosition(i + 1).y;
+
+            float xValue = newHeight[i] - (anchor.y + points[i].y + size.y * graphDefaultRest);
+            //debug log to show X Value
+            // Debug.DrawLine(new Vector3(anchor.x + points[i].x * ratioX + 1, anchor.y + newHeight[i] + size.y * graphDefaultRest, anchor.z), new Vector3(anchor.x + points[i].x * ratioX + 1, anchor.y + newHeight[i] + size.y * graphDefaultRest - xValue, anchor.z), Color.yellow);
             float acceleration = (-springIndex * xValue) - (dampening * points[i].z);
+            //debug line to show the spring force
+            // Debug.DrawLine(new Vector3(anchor.x + points[i].x * ratioX + 2, anchor.y + newHeight[i] + size.y * graphDefaultRest, anchor.z), new Vector3(anchor.x + points[i].x * ratioX + 2, anchor.y + points[i].y + size.y * graphDefaultRest, anchor.z), Color.red);
 
             newHeight[i] += points[i].z * Time.deltaTime; // position
             points[i].z += acceleration * Time.deltaTime;   // velocity
+
+            //debug line to show the current height and the target height
+            // Debug.DrawLine(new Vector3(anchor.x + points[i].x * ratioX + 3, anchor.y + newHeight[i] + size.y * graphDefaultRest, anchor.z), new Vector3(anchor.x + points[i].x * ratioX + 3, anchor.y + points[i].y + size.y * graphDefaultRest, anchor.z), Color.green);
+            
+            // Debug.DrawLine(new Vector3(anchor.x + points[i].x * ratioX + 4, anchor.y + points[i].y + size.y * graphDefaultRest, anchor.z), new Vector3(anchor.x + points[i].x * ratioX + 4, anchor.y + size.y * graphDefaultRest, anchor.z), Color.blue);
         }
         //calculate spread
         float[] leftDeltas = new float[newHeight.Length];
@@ -303,34 +283,60 @@ public class GraphRender : MonoBehaviour
         //set positions of each points
 
         //set bottom left anchor
-        spriteShape.spline.SetPosition(0, anchor);
-        spriteShape.spline.SetTangentMode(0, ShapeTangentMode.Linear);
-
-        //set ratios
-        int x = 1;
-        //set pointts
-        foreach (Vector3 point in points)
-        {            
-            spriteShape.spline.SetPosition(x, new Vector3(anchor.x + points[x-1].x * ratioX, anchor.y + newHeight[x - 1] + size.y, anchor.z));
-            if (x == 1 || x == points.Length)
+        foreach (SpriteShapeController controller in spriteShape)
+        {  
+            if (topAnchor)
             {
-                spriteShape.spline.SetTangentMode(x, ShapeTangentMode.Linear);
+                controller.spline.SetPosition(0, new Vector3(anchor.x, anchor.y + size.y, anchor.z));
             }
             else
             {
-                spriteShape.spline.SetTangentMode(x, ShapeTangentMode.Continuous);
+                controller.spline.SetPosition(0, anchor);
             }
-            x++;
-        }
-        //set bottom right anchor
-        spriteShape.spline.SetPosition(x, new Vector3(anchor.x + size.x, anchor.y, anchor.z));
-        spriteShape.spline.SetTangentMode(x, ShapeTangentMode.Linear);
+            controller.spline.SetTangentMode(0, ShapeTangentMode.Linear);
 
-        spriteShape.spline.isOpenEnded = false;
+            //set ratios
+            int x = 1;
+            //set pointts
+            foreach (Vector3 point in points)
+            {            
+                                
+                if (anchor.y + newHeight[x - 1] == anchor.y)
+                {
+                    controller.spline.SetPosition(x, new Vector3(anchor.x + points[x-1].x * ratioX, anchor.y + size.y * graphDefaultRest, anchor.z));
+                }
+                else
+                {
+                    controller.spline.SetPosition(x, new Vector3(anchor.x + points[x-1].x * ratioX, anchor.y + newHeight[x - 1], anchor.z));
+                }
+                if (x == 1 || x == points.Length)
+                {
+                    controller.spline.SetTangentMode(x, ShapeTangentMode.Linear);
+                }
+                else
+                {
+                    controller.spline.SetTangentMode(x, ShapeTangentMode.Continuous);
+                }
+                x++;
+            }
+            //set bottom right anchor
+            if (topAnchor)
+            {
+                controller.spline.SetPosition(x, new Vector3(anchor.x + size.x, anchor.y + size.y, anchor.z));
+            }
+            else
+            {
+                controller.spline.SetPosition(x, new Vector3(anchor.x + size.x, anchor.y, anchor.z));
+            }
+            controller.spline.SetTangentMode(x, ShapeTangentMode.Linear);
 
-        for (int i = 0; i < spriteShape.spline.GetPointCount(); i++)
-        {
-            Smoothen(spriteShape.spline, i, spriteShape.spline.GetPointCount());
+            controller.spline.isOpenEnded = false;
+
+            for (int i = 0; i < controller.spline.GetPointCount(); i++)
+            {
+                Smoothen(controller.spline, i, controller.spline.GetPointCount());
+            }
+
         }
         
     }

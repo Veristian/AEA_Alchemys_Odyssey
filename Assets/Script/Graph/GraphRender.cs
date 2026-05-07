@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.U2D;
 
 public class GraphRender : Singleton<GraphRender>
@@ -94,13 +95,81 @@ public class GraphRender : Singleton<GraphRender>
     }
     public void ConvertSpecifiedPointsToCurve(AnimationCurve curve, Vector2[] points)
     {
+        if (points == null || points.Length == 0) return;
+
         Keyframe[] keyframes = new Keyframe[points.Length];
+
+        // Create keyframes
         for (int i = 0; i < points.Length; i++)
         {
             keyframes[i] = new Keyframe(points[i].x, points[i].y);
         }
+
+        // Assign first so we can modify via MoveKey later
         curve.keys = keyframes;
+
+        for (int i = 0; i < keyframes.Length; i++)
+        {
+            Keyframe key = keyframes[i];
+
+            float tangent;
+
+            if (i == 0)
+            {
+                // First point: slope to next point
+                tangent = GetSlope(points[i], points[i + 1]);
+                key.inTangent = tangent;
+                key.outTangent = tangent;
+            }
+            else if (i == keyframes.Length - 1)
+            {
+                // Last point: slope from previous point
+                tangent = GetSlope(points[i - 1], points[i]);
+                key.inTangent = tangent;
+                key.outTangent = tangent;
+            }
+            else
+            {
+                // Middle points: average slope (Catmull-Rom style)
+                float slopePrev = GetSlope(points[i - 1], points[i]);
+                float slopeNext = GetSlope(points[i], points[i + 1]);
+                tangent = (slopePrev + slopeNext) * 0.5f;
+
+                key.inTangent = tangent;
+                key.outTangent = tangent;
+            }
+
+            curve.MoveKey(i, key);
+        }
     }
+
+    private float GetSlope(Vector2 a, Vector2 b)
+    {
+        float dx = b.x - a.x;
+
+        if (Mathf.Approximately(dx, 0f))
+            return 0f;
+
+        return (b.y - a.y) / dx;
+    }
+
+    // public AnimationCurve ScaleCurve(AnimationCurve curve, float maxX, float maxY)
+    // {
+    //     AnimationCurve scaledCurve = new AnimationCurve();
+    //     for (int i = 0; i < curve.keys.Length; i++)
+    //     {
+    //         Keyframe keyframe = curve.keys[i];
+    //         keyframe.value = curve.keys[i].value * maxY;
+    //         keyframe.time = curve.keys[i].time * maxX;
+    //         keyframe.inTangent = curve.keys[i].inTangent * maxY / maxX;
+    //         keyframe.outTangent = curve.keys[i].outTangent * maxY / maxX;
+            
+    //         scaledCurve.AddKey(keyframe);
+    //     }
+    //     return scaledCurve;
+    // }
+
+    
     public void LerpVector2List(Vector2[] currentPoints, Vector2[] targetPoints, float speed = 10f)
     {
         if (currentPoints.Length != targetPoints.Length)
@@ -256,7 +325,8 @@ public class GraphRender : Singleton<GraphRender>
         float[] rightDeltas = new float[newHeight.Length];
                     
         // do some passes where springs pull on their neighbours 
-        for (int j = 0; j < 8; j++)
+        //note to self: convert this to use points as baseline and not 0 0
+        for (int j = 0; j < 1; j++)
         {
             for (int i = 0; i < newHeight.Length; i++)
             {

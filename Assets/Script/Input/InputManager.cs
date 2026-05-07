@@ -7,12 +7,14 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class InputManager : MonoBehaviour
 {    
+    [Header("Input Settings")]
     //bool
     public bool canTakeInputs = true;
     public bool canPause = true;
+    [Header("References")]
     //ref
     public PlayerInput playerInput;
-
+    [Header("Input Values")]
     //inputs
     [ReadOnly] public Vector2 Movement;
     [ReadOnly] public Vector2 Look;
@@ -40,6 +42,11 @@ public class InputManager : MonoBehaviour
     private InputAction _mousePositionAction;
 
     private InputAction _mouseLeftAction;
+    [Header("Grab")]
+    public LayerMask grabLayer;
+    [ReadOnly] public bool hoveringGrabbable; //updates every frame based on raycast
+    [ReadOnly] public bool isGrabbing; //updates on mouse up or down
+    [ReadOnly] public PhysicsObject2D assignedGrabbedObject; //updates on mouse up or down
 
 
     private void Awake()
@@ -107,8 +114,8 @@ public class InputManager : MonoBehaviour
         if (canPause)
         {
             PauseWasPressed = _pauseAction.WasPressedThisFrame();
-
         }
+        HandleGrab();
 
     }
 
@@ -120,4 +127,46 @@ public class InputManager : MonoBehaviour
     {
         canTakeInputs = true;
     }
+
+    private void HandleGrab()
+    {
+        //raycast to find grabbable
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(MousePosition);
+        Physics.Raycast(ray, out hit, Mathf.Infinity, grabLayer);
+        if (hit.collider != null)
+        {
+            hoveringGrabbable = true;
+        }
+        else
+        {
+            hoveringGrabbable = false;
+        }
+
+        //on mouse left press, if hovering grabbable, assign it as grabbed
+        if (MouseLeftWasPressed && hoveringGrabbable)
+        {
+            assignedGrabbedObject = hit.collider.GetComponent<PhysicsObject2D>();
+            assignedGrabbedObject.Grab();
+            if (assignedGrabbedObject != null)
+            {
+                isGrabbing = true;
+            }
+        }
+        //on mouse left release, if currently grabbing, release it
+        if (MouseLeftWasReleased && isGrabbing)
+        {
+            isGrabbing = false;
+            if (assignedGrabbedObject != null)
+            {
+                assignedGrabbedObject.Release();
+                assignedGrabbedObject = null;
+            }
+        }
+
+        //draw raycast for debugging
+        Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red);
+    }
+
+
 }

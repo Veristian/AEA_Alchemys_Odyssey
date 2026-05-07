@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PotionIngredientObject : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private IngredientData ingredientData;
+    
+    public IngredientData IngredientData => ingredientData;
+    public Vector3 position => transform.position;
+
+    public StoredData ToStoredData(float sizeX, float originX)
     {
-        
+        return new StoredData(ingredientData, (position.x - originX)/sizeX);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

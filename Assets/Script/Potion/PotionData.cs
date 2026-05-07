@@ -13,7 +13,7 @@ public class PotionData : ScriptableObject
 
     [Header("Potion Properties")]
     public Color potionColor;
-    public List<IngredientData> ingredients = new List<IngredientData>();
+    public List<StoredData> ingredients = new List<StoredData>();
     [SerializeField, ReadOnly] private AnimationCurve potionCurve;
 
     [ContextMenu("Generate Potion Curve")]
@@ -28,12 +28,27 @@ public class PotionData : ScriptableObject
         List<AnimationCurve> ingredientCurves = new List<AnimationCurve>();
         for (int i = 0; i < ingredients.Count; i++)
         {
-            ingredientCurves.Add(ingredients[i].ingredientCurve);
+            ingredientCurves.Add(AdjustCurveToContactPoint(ingredients[i].ingredientData, ingredients[i].contactPoint));
         }
         Vector2[] potionPoints = new Vector2[100];
 
         GraphRender.Instance.ConvertCurvesToSpecifiedPointsLength(ingredientCurves, potionPoints);
         GraphRender.Instance.ConvertSpecifiedPointsToCurve(potionCurve, potionPoints);
         
+    }
+    private AnimationCurve AdjustCurveToContactPoint(IngredientData data, float contactPoint)
+    {
+        AnimationCurve newCurve = new AnimationCurve();
+        newCurve.CopyFrom(data.ingredientCurve);
+        Vector2[] points = new Vector2[10];
+        GraphRender.Instance.ConvertCurveToSpecifiedPointsLength(data.ingredientCurve, points);
+        for (int i = 0; i < points.Length; i++)
+        {
+            points[i].x *= (float)data.ingredientAreaOfEffect/100f;
+            points[i].x += (contactPoint*100f)/(float)data.ingredientAreaOfEffect;
+        }
+        GraphRender.Instance.ConvertSpecifiedPointsToCurve(newCurve, points);
+        return newCurve;
+
     }
 }

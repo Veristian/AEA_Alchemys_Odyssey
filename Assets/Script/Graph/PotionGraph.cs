@@ -8,6 +8,10 @@ public class PotionGraph : MonoBehaviour
     [Header("References")]
     [SerializeField] private SpriteShapeController[] spriteShapeController;
 
+    public SpriteShapeController[] SpriteShapeController
+    {
+        get { return spriteShapeController; }
+    }
     [Header("Graph Settings")]
     [SerializeField] private int pointsLength = 25;
     [SerializeField] private Vector2 graphSize = new Vector2(100, 100);
@@ -42,7 +46,7 @@ public class PotionGraph : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if (potionCurves.Count == 0) return;
+        // if (potionCurves.Count == 0) return;
         if (spriteShapeController.Length == 0)
         {
             Debug.LogWarning("No SpriteShapeController assigned. Please assign at least one SpriteShapeController to draw the graph.");
@@ -68,7 +72,13 @@ public class PotionGraph : MonoBehaviour
 
 
 #region Public Methods
-
+    public void SetGraphProperties(int newPointsLength, Vector2 newGraphSize, float newGraphDefaultRest, Transform newGraphOrigin)
+    {
+        pointsLength = newPointsLength;
+        graphSize = newGraphSize;
+        graphDefaultRest = newGraphDefaultRest;
+        graphOrigin = newGraphOrigin;
+    }
     public void RemoveLastCurve()
     {
         if (potionCurves.Count > 0)
@@ -78,6 +88,56 @@ public class PotionGraph : MonoBehaviour
     public void ClearCurves()
     {
         potionCurves.Clear();
+    }
+
+    public void UpdatePotionCurveAtIndex(int index, AnimationCurve curve)
+    {
+        if (index > potionCurves.Count || index < 0)
+        {
+            Debug.LogError("Index out of range");
+            return;
+        }
+        potionCurves[index] = curve;
+    }
+    public void RemovePotionCurveAtIndex(int index)
+    {
+        if (index > potionCurves.Count - 1 || index < 0)
+        {
+            Debug.LogError("Index out of range");
+            return;
+        }
+        potionCurves.Remove(potionCurves[index]);
+    }
+
+    public void UpdateLatestPotionCurve(AnimationCurve curve)
+    {
+        UpdatePotionCurveAtIndex(potionCurves.Count, curve);
+    }
+   public void FixPotionCurveNumber(int amount)
+    {
+        if (potionCurves.Count > amount)
+        {
+            for (int i = potionCurves.Count - 1; i >= amount; i--)
+            {
+                RemovePotionCurveAtIndex(i);
+            }
+        }
+        else if (potionCurves.Count < amount)
+        {
+            for (int i = potionCurves.Count; i < amount; i++)
+            {
+                AddEmptyCurve();
+            }
+        }
+    }
+
+    public void AddEmptyCurve()
+    {
+        AnimationCurve emptyCurve = AnimationCurve.Linear(0,0,1,0);
+        emptyCurve.preWrapMode = WrapMode.Loop;
+        emptyCurve.postWrapMode = WrapMode.Loop;
+
+        potionCurves.Add(emptyCurve);
     }
 
     public void SetPotionCurves(List<AnimationCurve> newCurves, float accuracyRequired = 0)
@@ -101,12 +161,15 @@ public class PotionGraph : MonoBehaviour
     public void AddPotionCurve(AnimationCurve newCurve, float accuracyRequired = 0)
     {
         AnimationCurve curve = new AnimationCurve();
+        
         foreach (var key in newCurve.keys)
         {
             Keyframe newKey = key;
             newKey.value += accuracyRequired;
             curve.AddKey(newKey);
         }
+        curve.preWrapMode = WrapMode.Loop;
+        curve.postWrapMode = WrapMode.Loop;
         potionCurves.Add(curve);
     }
 
@@ -122,6 +185,8 @@ public class PotionGraph : MonoBehaviour
                 newKey.value += accuracyRequired;
                 newCurve.AddKey(newKey);
             }
+            curve.preWrapMode = WrapMode.Loop;
+            curve.postWrapMode = WrapMode.Loop;
 
             potionCurves.Add(newCurve);
         }

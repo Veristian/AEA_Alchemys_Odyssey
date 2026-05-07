@@ -15,5 +15,16 @@ public class IngredientData : ScriptableObject
     public AnimationCurve ingredientCurve = AnimationCurve.Linear(0, -10, 1, 10);
     public Color ingredientColor;
     [Range(1, 100)] public int ingredientAreaOfEffect = 100;
-    
+
+    private void Awake()
+    {
+        ingredientCurve.postWrapMode = WrapMode.Loop;
+        ingredientCurve.preWrapMode = WrapMode.Loop;
+    }
+
+    private void OnValidate()
+    {
+        ingredientCurve.postWrapMode = WrapMode.Loop;
+        ingredientCurve.preWrapMode = WrapMode.Loop;
+    }
 }

@@ -29,16 +29,25 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 1
     - serializedVersion: 3
-      time: 1
-      value: 10
-      inSlope: 18.661528
-      outSlope: 18.661528
+      time: 0.49348417
+      value: 10.119751
+      inSlope: -0.14322789
+      outSlope: -0.14322789
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.97584873
+      value: -9.886898
+      inSlope: -30.014826
+      outSlope: -30.014826
       tangentMode: 0
       weightedMode: 0
       inWeight: 1
       outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
+    m_PreInfinity: 1
+    m_PostInfinity: 1
     m_RotationOrder: 4
   ingredientColor: {r: 0, g: 0, b: 0, a: 0}
   ingredientAreaOfEffect: 100

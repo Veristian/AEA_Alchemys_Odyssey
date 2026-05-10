@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -22,7 +23,6 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector] public float walkSpeed;
     [HideInInspector] public float sprintSpeed;
-
 
     private Rigidbody rb;
     private bool grounded;
@@ -111,4 +111,5 @@ public class PlayerController : MonoBehaviour
 
     public bool IsGrounded() => grounded;
     public Vector3 GetVelocity() => rb.velocity;
+
 }

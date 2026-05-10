@@ -21,8 +21,10 @@ public class PhysicsObject2D : MonoBehaviour
     [SerializeField, ReadOnly] private bool wasGrabbed;
     private Vector3 previousFramePosition;
     private Vector2 previousFrameSpeed;
+    Camera cam;
     private void Awake()
     {
+        cam = Camera.main;
         rb = GetComponent<Rigidbody>();
         rotation = transform.rotation.eulerAngles;
     }
@@ -81,7 +83,7 @@ public class PhysicsObject2D : MonoBehaviour
 
     private void SetPositionToMouse()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = defaultPlaneZ;
         transform.position = mousePos;
     }
@@ -90,6 +92,7 @@ public class PhysicsObject2D : MonoBehaviour
     {
         isGrabbed = true;
         rb.isKinematic = true;
+        SetPositionToMouse();
     }
     public void Release()
     {

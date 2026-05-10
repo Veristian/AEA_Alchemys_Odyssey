@@ -13,7 +13,7 @@ public class IngredientAcceptor : MonoBehaviour
         {
             OnIngredientAccepted?.Invoke(ingredient);
         }
-        Destroy(collision.gameObject.transform.parent.gameObject);
+        Destroy(collision.gameObject.transform.parent.gameObject, 0.1f);
     }
 
 

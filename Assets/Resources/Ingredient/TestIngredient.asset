@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b044ac8de97ba88449c3d8665f819096, type: 3}
   m_Name: TestIngredient
   m_EditorClassIdentifier: 
-  ingredientId: 
-  ingredientName: 
+  loadState: 0
+  ingredientId: test_ingredient
+  ingredientName: TestPotionName
+  ingredient2DObjectPrefab: {fileID: 1171091932301145056, guid: 6a93a5ffc04272545adc990358e3390e, type: 3}
   ingredientSprite: {fileID: 0}
   description: 
   ingredientCurve:

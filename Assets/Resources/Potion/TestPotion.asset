@@ -12,14 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09e1f531f73ff1a478f4cf5c0ac53ac0, type: 3}
   m_Name: TestPotion
   m_EditorClassIdentifier: 
-  potionId: 
-  potionName: 
+  loadState: 0
+  potionId: test_potion
+  potionName: PotionNameTest
   potionSprite: {fileID: 0}
   description: 
   potionColor: {r: 0, g: 0, b: 0, a: 0}
   ingredients:
-  - {fileID: 11400000, guid: 9422507e7331f42408184ebdf9334ee1, type: 2}
-  - {fileID: 11400000, guid: 9422507e7331f42408184ebdf9334ee1, type: 2}
+  - ingredientData: {fileID: 0}
+    contactPoint: 0
+  - ingredientData: {fileID: 0}
+    contactPoint: 0
   potionCurve:
     serializedVersion: 2
     m_Curve:

@@ -191,14 +191,18 @@ public class PotionManager : MonoBehaviour
         if (CheckPotionBetweenGuides())
         {
             Debug.Log("Potion brewed successfully!");
-            //note to self: add success logic here
+            InventoryManager.Instance.AddPotionObject(activePotionTarget, currentActivePotionIngredients);
+            foreach (StoredData ingredient in currentActivePotionIngredients)
+            {
+                InventoryManager.Instance.SubtractIngredient(ingredient.ingredientData);
+            }
+            ClearPotion();
         }
         else
         {
             Debug.Log("Potion brewing failed. The potion graph does not match the guide graphs.");
             //note to self: add failure logic here
         }
-        //note to self: add brew logic here
     }
     // adds an ingredient to the active potion and updates the potion graphs to reflect the new ingredient. This method will be called when the player adds an ingredient to the potion.
     public void AddIngredientObjectToPotion(PotionIngredientObject newIngredient)
@@ -211,8 +215,6 @@ public class PotionManager : MonoBehaviour
     {
         currentActivePotionIngredients.Clear();
         ClearPotionGraph();
-
-        //note to self: add refund logic here
     }
 
     private void UpdateFuturePotionGraph()
@@ -221,10 +223,19 @@ public class PotionManager : MonoBehaviour
         ConvertPotionObjectsToCurve(futurePotionCurves,potionIngredientObjects);
         potionFutureGraph.FixPotionCurveNumber(futurePotionCurves.Count + currentActivePotionIngredients.Count);
         
-        for (int i = currentActivePotionIngredients.Count; i < futurePotionCurves.Count + currentActivePotionIngredients.Count; i++)
+        for (int i = 0; i < futurePotionCurves.Count + currentActivePotionIngredients.Count; i++)
         {
-            potionFutureGraph.UpdatePotionCurveAtIndex(i,futurePotionCurves[i - currentActivePotionIngredients.Count]);
+            if (i >= currentActivePotionIngredients.Count)
+            {
+                potionFutureGraph.UpdatePotionCurveAtIndex(i,futurePotionCurves[i - currentActivePotionIngredients.Count]);
+            }
+            else
+            {
+                potionFutureGraph.UpdatePotionCurveAtIndex(i,potionGraph.PotionCurves[i]);
+            }
         }
+        //add a way to correct the prev ones
+        
     }
 #endregion
 

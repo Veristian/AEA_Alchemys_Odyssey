@@ -20,7 +20,12 @@ public class PotionGraph : MonoBehaviour
     [SerializeField] private bool topAnchor = false;
 
     [Header("Curves")]
+    [SerializeField] private bool clearOnStartup = true;
     [SerializeField] private List<AnimationCurve> potionCurves = new List<AnimationCurve>();
+    public List<AnimationCurve> PotionCurves
+    {
+        get {return potionCurves;}
+    }
 
     [Header("Debug")]
     [SerializeField] private Vector3[] currentPoints; //vector 2 for position and z for velocity
@@ -31,6 +36,8 @@ public class PotionGraph : MonoBehaviour
 
     private void Initialize()
     {
+        if (clearOnStartup)
+            potionCurves.Clear();
         if (graphOrigin == null)
         {
             Debug.LogWarning("Graph Origin is not assigned. Please assign a Transform to graphOrigin.");

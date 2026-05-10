@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Ingredient", menuName = "Potion/Ingredient")]
-public class IngredientData : ScriptableObject
+public class IngredientData : ResourceData
 {
     [Header("Ingredient Info")]
     public string ingredientId;
     public string ingredientName;
+    public GameObject ingredient2DObjectPrefab;
     public Sprite ingredientSprite;
     public string description;
     

@@ -5,8 +5,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerInput))]
-public class InputManager : MonoBehaviour
-{    
+public class InputManager : Singleton<InputManager>
+{
     [Header("Input Settings")]
     //bool
     public bool canTakeInputs = true;
@@ -36,7 +36,7 @@ public class InputManager : MonoBehaviour
     private InputAction _moveAction;
     private InputAction _jumpAction;
     private InputAction _lookAction;
-    private InputAction _pauseAction; 
+    private InputAction _pauseAction;
     private InputAction _interactAction;
 
     private InputAction _mousePositionAction;
@@ -48,10 +48,14 @@ public class InputManager : MonoBehaviour
     [ReadOnly] public bool isGrabbing; //updates on mouse up or down
     [ReadOnly] public PhysicsObject2D assignedGrabbedObject; //updates on mouse up or down
 
+    //private fields
+    RaycastHit hit;
+    Ray ray;
+    Camera mainCamera;
 
-    private void Awake()
+    protected override void Awake()
     {
-
+        base.Awake();
         canTakeInputs = true;
         playerInput = GetComponent<PlayerInput>();
 
@@ -67,7 +71,7 @@ public class InputManager : MonoBehaviour
         _mousePositionAction = playerInput.actions["MousePos"];
 
         _mouseLeftAction = playerInput.actions["MouseLeft"];
-
+        mainCamera = Camera.main;
 
     }
 
@@ -78,7 +82,7 @@ public class InputManager : MonoBehaviour
             Movement = _moveAction.ReadValue<Vector2>();
             Look = _lookAction.ReadValue<Vector2>();
             MousePosition = _mousePositionAction.ReadValue<Vector2>();
-            
+
             JumpWasPressed = _jumpAction.WasPressedThisFrame();
             JumpIsHeld = _jumpAction.IsPressed();
             JumpWasReleased = _jumpAction.WasReleasedThisFrame();
@@ -86,7 +90,7 @@ public class InputManager : MonoBehaviour
             InteractWasPressed = _interactAction.WasPressedThisFrame();
             InteractIsHeld = _interactAction.IsPressed();
             InteractWasReleased = _interactAction.WasReleasedThisFrame();
-            
+
             MouseLeftWasPressed = _mouseLeftAction.WasPressedThisFrame();
             MouseLeftIsHeld = _mouseLeftAction.IsPressed();
             MouseLeftWasReleased = _mouseLeftAction.WasReleasedThisFrame();
@@ -127,14 +131,22 @@ public class InputManager : MonoBehaviour
     {
         canTakeInputs = true;
     }
+    public void AssignThisAsGrabbable(GameObject grabbedObj)
+    {
+        Release();
 
+        var obj = grabbedObj.GetComponent<PhysicsObject2D>();
+        if (obj == null) return;
+
+        assignedGrabbedObject = obj;
+        Grab();
+    }
     private void HandleGrab()
     {
         //raycast to find grabbable
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(MousePosition);
-        Physics.Raycast(ray, out hit, Mathf.Infinity, grabLayer);
-        if (hit.collider != null)
+
+        ray = mainCamera.ScreenPointToRay(MousePosition);
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, grabLayer))
         {
             hoveringGrabbable = true;
         }
@@ -146,26 +158,39 @@ public class InputManager : MonoBehaviour
         //on mouse left press, if hovering grabbable, assign it as grabbed
         if (MouseLeftWasPressed && hoveringGrabbable)
         {
+            Release();
             assignedGrabbedObject = hit.collider.GetComponent<PhysicsObject2D>();
-            assignedGrabbedObject.Grab();
-            if (assignedGrabbedObject != null)
-            {
-                isGrabbing = true;
-            }
+            Grab();
         }
         //on mouse left release, if currently grabbing, release it
         if (MouseLeftWasReleased && isGrabbing)
         {
-            isGrabbing = false;
-            if (assignedGrabbedObject != null)
-            {
-                assignedGrabbedObject.Release();
-                assignedGrabbedObject = null;
-            }
+            Release();
         }
 
         //draw raycast for debugging
         Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red);
+    }
+
+    private void Grab()
+    {
+        if (assignedGrabbedObject != null)
+        {
+            assignedGrabbedObject.Grab();
+            isGrabbing = true;
+        }
+
+    }
+
+    private void Release()
+    {
+        isGrabbing = false;
+        if (assignedGrabbedObject != null)
+        {
+            assignedGrabbedObject.Release();
+            assignedGrabbedObject = null;
+        }
+
     }
 
 

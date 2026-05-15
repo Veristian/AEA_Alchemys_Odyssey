@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Potion", menuName = "Potion/Potion")]
+
 public class PotionData : ResourceData
 {
     [Header("Potion Info")]

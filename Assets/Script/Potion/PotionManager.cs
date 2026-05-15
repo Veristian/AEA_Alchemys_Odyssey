@@ -71,11 +71,11 @@ public class PotionManager : MonoBehaviour
 
     private void OnEnable()
     {
-        ingredientAcceptor.OnIngredientAccepted += AddIngredientObjectToPotion;
+        ingredientAcceptor.OnIngredientAccepted += CheckAndAddIngredientObjectToPotion;
     }
     private void OnDisable()
     {
-        ingredientAcceptor.OnIngredientAccepted -= AddIngredientObjectToPotion;
+        ingredientAcceptor.OnIngredientAccepted -= CheckAndAddIngredientObjectToPotion;
     }
 
     #region debug
@@ -204,18 +204,33 @@ public class PotionManager : MonoBehaviour
             //note to self: add failure logic here
         }
     }
-    // adds an ingredient to the active potion and updates the potion graphs to reflect the new ingredient. This method will be called when the player adds an ingredient to the potion.
-    public void AddIngredientObjectToPotion(PotionIngredientObject newIngredient)
+    // adds an ingredient to the active potion and updates the potion graphs to reflect the new ingredient. This method will be called when the player adds an ingredient to the potion. Will reject potion if not used for the same questline
+    public void CheckAndAddIngredientObjectToPotion(PotionIngredientObject newIngredient)
     {
-        AddPotionIngredient(newIngredient.IngredientData, (newIngredient.position.x-graphOrigin.position.x)/graphSize.x);
+        if (activePotionTarget == null)
+        {
+            AddPotionIngredient(newIngredient.IngredientData, (newIngredient.position.x-graphOrigin.position.x)/graphSize.x);
+        }
+        else if (newIngredient.IngredientData.quest_id == activePotionTarget.quest_id || (newIngredient.IngredientData.quest_id == null && activePotionTarget.quest_id == null))
+            AddPotionIngredient(newIngredient.IngredientData, (newIngredient.position.x-graphOrigin.position.x)/graphSize.x);
+        else
+        {
+            Debug.Log("Ingredient is not allowed in this potion");
+        }
     }
     // clears the current active potion and updates the potion graph to reflect the cleared potion. This method will be called when the player clicks the clear button.
     // cleared ingredients will be refunded
     public void ClearPotion()
     {
+        // var ingredientDataList = currentActivePotionIngredients
+        IngredientHouse.Instance.UpdateIngredientsHousesObjTaken(currentActivePotionIngredients?
+        .Select(s => s.ingredientData)
+        .ToList() ?? new List<IngredientData>());
         currentActivePotionIngredients.Clear();
         ClearPotionGraph();
+        //note to self: add update ingredient count here
     }
+
 
     private void UpdateFuturePotionGraph()
     {

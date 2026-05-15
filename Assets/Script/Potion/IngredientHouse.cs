@@ -1,17 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class IngredientHouse : MonoBehaviour
+public class IngredientHouse : Singleton<IngredientHouse>
 {
     [Header("Reference")]
     public Transform contentTransform;
 
     public GameObject ingredientHouseItemPrefab;
+    public List<IngredientHouseItem> ingredientHouseItems;
 
-    private void Awake()
+    private void OnEnable()
     {
-        DataManager.Instance.OnGameLoaded += SetupIngredients;
+        var manager = DataManager.Instance;
+        manager.OnGameLoaded += SetupIngredients;
+
+        if (manager.IsGameLoaded)
+            SetupIngredients(); 
+    }
+    private void OnDisable()
+    {
+        DataManager.Instance.OnGameLoaded -= SetupIngredients;
     }
 
     private void SetupIngredients()
@@ -20,10 +30,32 @@ public class IngredientHouse : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        ingredientHouseItems.Clear();
         foreach (IngredientData ingredientData in DataManager.Instance.ingredientDatas)
         {
-            Instantiate(ingredientHouseItemPrefab, contentTransform).GetComponent<IngredientHouseItem>().AssignIngredient(InventoryManager.Instance.PassIngredientReference(ingredientData));
+            IngredientHouseItem item = Instantiate(ingredientHouseItemPrefab, contentTransform).GetComponent<IngredientHouseItem>();
+            ingredientHouseItems.Add(item);
+            item.AssignIngredient(InventoryManager.Instance.PassIngredientReference(ingredientData));
         }
     }
+
+    public void UpdateIngredientsHousesObjTaken(List<IngredientData> ingredientToRemove)
+    {
+        if (ingredientToRemove == null || ingredientToRemove.Count == 0) return;
+        var groupedToRemove = ingredientToRemove
+            .GroupBy(i => i)
+            .ToDictionary(g => g.Key, g => g.Count());
+
+        foreach (var houseItem in ingredientHouseItems)
+        {
+            IngredientData ingredientData = houseItem.Ingredient.ingredientData;
+
+            if (groupedToRemove.TryGetValue(ingredientData, out int removeCount))
+            {
+                houseItem.objTaken += removeCount;
+            }
+        }
+    }
+
 
 }

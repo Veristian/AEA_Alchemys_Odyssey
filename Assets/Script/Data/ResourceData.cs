@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
-
+using System;
+using System.Linq;
+[Serializable]
 public class ResourceData : ScriptableObject, ILoadable
 {
     [Header("Load Setting")]
@@ -10,5 +11,6 @@ public class ResourceData : ScriptableObject, ILoadable
 
     public LoadState LoadState => loadState;
 
-
+    [Header("Quest")]
+    public string quest_id;
 }

@@ -13,15 +13,16 @@ MonoBehaviour:
   m_Name: TestPotion
   m_EditorClassIdentifier: 
   loadState: 0
+  quest_id: 
   potionId: test_potion
   potionName: PotionNameTest
   potionSprite: {fileID: 0}
   description: 
   potionColor: {r: 0, g: 0, b: 0, a: 0}
   ingredients:
-  - ingredientData: {fileID: 0}
+  - ingredientData: {fileID: 11400000, guid: 9422507e7331f42408184ebdf9334ee1, type: 2}
     contactPoint: 0
-  - ingredientData: {fileID: 0}
+  - ingredientData: {fileID: 11400000, guid: 9422507e7331f42408184ebdf9334ee1, type: 2}
     contactPoint: 0
   potionCurve:
     serializedVersion: 2

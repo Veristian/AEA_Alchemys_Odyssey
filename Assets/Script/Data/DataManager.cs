@@ -13,7 +13,7 @@ public class DataManager : Singleton<DataManager>
     private const string potionDatasPath = "Potion";
     public event Action OnGameLoaded;
     public event Action OnGameSaved;
-
+    public bool IsGameLoaded { get; private set; }
     protected override void Awake()
     {
         base.Awake();
@@ -31,7 +31,7 @@ public class DataManager : Singleton<DataManager>
             .ToList();
 
         InventoryManager.Instance.Load();
-
+        IsGameLoaded = true;
         OnGameLoaded?.Invoke();
     }
     [ContextMenu("Save Game Data")]

@@ -9,7 +9,11 @@ public class IngredientHouseItem : MonoBehaviour, IPointerDownHandler
     [SerializeField] private TextMeshProUGUI amountText;  
     [Header("Ingredient Info")]
     [SerializeField] private IngredientInventoryData ingredient;
-    [SerializeField, ReadOnly] private int objTaken;
+    public IngredientInventoryData Ingredient
+    {
+        get {return ingredient;}
+    }
+    [SerializeField, ReadOnly] public int objTaken;
     [SerializeField] private int displayedObjectAmount => ingredient.amount - objTaken;
     
     //private

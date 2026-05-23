@@ -16,6 +16,7 @@ MonoBehaviour:
   quest_id: 
   potionId: test_potion
   potionName: PotionNameTest
+  potion2DObjectPrefab: {fileID: 1171091932301145056, guid: 1bac119c5f3c28a4bb9ef76b166417e2, type: 3}
   potionSprite: {fileID: 0}
   description: 
   potionColor: {r: 0, g: 0, b: 0, a: 0}

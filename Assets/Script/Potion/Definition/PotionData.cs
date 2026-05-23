@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.Linq;
+[Serializable]
 
 [CreateAssetMenu(fileName = "New Potion", menuName = "Potion/Potion")]
 
@@ -9,6 +12,7 @@ public class PotionData : ResourceData
     [Header("Potion Info")]
     public string potionId;
     public string potionName;
+    public GameObject potion2DObjectPrefab;
     public Sprite potionSprite;
     public string description;
 

@@ -22,6 +22,16 @@ public class StoredData
 public class PotionManager : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private Camera potionMakingCamera;
+    public Camera PotionMakingCamera
+    {
+        get {return potionMakingCamera ?? Camera.main; }
+    }
+    [SerializeField] private Transform playArea;
+    public Transform PlayArea
+    {
+        get {return playArea ?? this.transform; }
+    }
     [SerializeField] private PotionGraph potionGraph;
     private PolygonCollider2D potionGraphCollider;
     private IngredientAcceptor ingredientAcceptor;
@@ -109,6 +119,15 @@ public class PotionManager : MonoBehaviour
         potionFutureGraph.SetGraphProperties(pointsLength, graphSize, graphDefaultRest, graphOrigin);
         guideGraphBottom.SetGraphProperties(pointsLength, graphSize, graphDefaultRest, graphOrigin);
         potionGraph.SetGraphProperties(pointsLength, graphSize, graphDefaultRest, graphOrigin);
+    }
+
+    private void SetupPlayArea()
+    {
+        //assign all potion graph under play area
+        guideGraphTop.transform.parent = playArea;
+        potionFutureGraph.transform.parent = playArea;
+        guideGraphBottom.transform.parent = playArea;
+        potionGraph.transform.parent = playArea;
     }
 
     private void SetupPotionGraph()

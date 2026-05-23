@@ -46,6 +46,7 @@ public class DataManager : Singleton<DataManager>
         string fullPath = System.IO.Path.Combine(Application.persistentDataPath, path + ".json");
         string json = SaveUtility.Serialize(data);
         System.IO.File.WriteAllText(fullPath, json);
+        Debug.Log("Saved to " + fullPath);
     }
     public T LoadFromFile<T>(string path, Func<T> defaultFactory)
     {
@@ -54,9 +55,10 @@ public class DataManager : Singleton<DataManager>
         if (System.IO.File.Exists(fullPath))
         {
             string json = System.IO.File.ReadAllText(fullPath);
+            Debug.Log("Loaded from " + fullPath);
             return SaveUtility.Deserialize<T>(json);
         }
-
+    
         return defaultFactory();
     }
 

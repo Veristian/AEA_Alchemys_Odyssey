@@ -9,15 +9,16 @@ using System.Linq;
 public class PotionInventoryData
 {
     public int id;
-    public PotionData potionData;
+    public PotionData potionData; // problem
     public List<StoredData> ingredientsInside;
+    public int amount;
     public string additionalData;
 }
 [Serializable]
 
 public class IngredientInventoryData
 {
-    public IngredientData ingredientData;
+    public IngredientData ingredientData; // problem
     public int amount;
 }
 [Serializable]
@@ -167,6 +168,14 @@ public class InventoryManager : Singleton<InventoryManager>
         return ingredientInventoryList.ingredientsList
             .Find(i => i.ingredientData == ingredientData);
     }
+    public PotionInventoryData PassPotionReference(PotionInventoryData potionInventoryData)
+    {
+        if (potionInventoryList?.potionList == null) return null;
+
+        return potionInventoryList.potionList
+            .Find(i => i.potionData == potionInventoryData.potionData && i.ingredientsInside == potionInventoryData.ingredientsInside);
+    }
+    //note to self: check this func
 
     //save inventory data to json path
     public void Save()

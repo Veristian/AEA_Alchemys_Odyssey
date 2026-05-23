@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
+using System.Linq;
+[Serializable]
 [CreateAssetMenu(fileName = "New Ingredient", menuName = "Potion/Ingredient")]
 public class IngredientData : ResourceData
 {

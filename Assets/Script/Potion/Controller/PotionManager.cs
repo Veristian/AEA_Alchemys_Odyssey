@@ -19,7 +19,7 @@ public class StoredData
         this.contactPoint = contactPoint;
     }
 }
-public class PotionManager : MonoBehaviour
+public class PotionManager : Singleton<PotionManager>
 {
     [Header("References")]
     [SerializeField] private Camera potionMakingCamera;
@@ -63,10 +63,12 @@ public class PotionManager : MonoBehaviour
     private List<PotionIngredientObject> potionIngredientObjects = new List<PotionIngredientObject>();
     private List<AnimationCurve> futurePotionCurves = new List<AnimationCurve>();
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         SetGraphProperties();
         SetupPotionGraph();
+        SetupPlayArea();
     }    
     private void Start()
     {
@@ -203,6 +205,10 @@ public class PotionManager : MonoBehaviour
     }
 #endregion
 #region public methods
+    public void AssignPotionTarget(PotionData potionData)
+    {
+        SetActivePotionTarget(potionData);
+    }
     // brews the active potion using the current ingredients. This method will be called when the player clicks the brew button.
     // brewing will fail if both curves dont match
     public void BrewPotion()

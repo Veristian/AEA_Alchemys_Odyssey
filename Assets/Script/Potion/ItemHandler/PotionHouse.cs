@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class PotionHouse : Singleton<IngredientHouse>
+public class PotionHouse : Singleton<PotionHouse>
 {
     [Header("Reference")]
     public Transform contentTransform;

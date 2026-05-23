@@ -32,10 +32,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1975780392610358481}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 192.5107, y: -22.345}
-  m_SizeDelta: {x: 385.0214, y: 44.69}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 44.69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2306419558591859912
 CanvasRenderer:
@@ -285,6 +285,7 @@ GameObject:
   - component: {fileID: 909393144766310421}
   - component: {fileID: 4844291874352568547}
   - component: {fileID: 6736728735610443949}
+  - component: {fileID: 9008883863368376206}
   m_Layer: 5
   m_Name: RecipeItemBox
   m_TagString: Untagged
@@ -395,6 +396,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9008883863368376206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4528271562127227136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0efde7d8cefd49a4fbcd8a03038b9f71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 6736728735610443949}
+  recipe:
+    targetPotion: {fileID: 0}
+    isUnlocked: 0
+    isQuestRecipe: 0
+    isBulkCraftable: 0
 --- !u!1 &8162217160539717743
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,10 +446,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1975780392610358481}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 192.5107, y: -75.877304}
-  m_SizeDelta: {x: 385.0214, y: 62.3747}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 62.3747}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4243103985652413843
 CanvasRenderer:

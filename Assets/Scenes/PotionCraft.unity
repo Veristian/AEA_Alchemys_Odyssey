@@ -3619,6 +3619,7 @@ GameObject:
   m_Component:
   - component: {fileID: 844262477}
   - component: {fileID: 844262478}
+  - component: {fileID: 844262479}
   m_Layer: 0
   m_Name: DataManager
   m_TagString: Untagged
@@ -3655,6 +3656,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientDatas: []
   potionDatas: []
+--- !u!114 &844262479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844262476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeabbabac0f7dce45a53d1a4439d467e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recipeList:
+    recipes: []
 --- !u!1 &876168380
 GameObject:
   m_ObjectHideFlags: 0
@@ -5390,6 +5405,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a514805d1877f5b4bad0f9a5710028ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  contentTransform: {fileID: 635755829}
+  recipeHouseItemPrefab: {fileID: 4528271562127227136, guid: e997ea2a4800c6e41a69d0e7097414fc, type: 3}
+  recipeHouseItems: []
 --- !u!114 &1219578458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7542,7 +7560,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 829741228}
   m_HandleRect: {fileID: 829741227}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

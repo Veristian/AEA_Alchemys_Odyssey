@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Linq;
 using UnityEngine.Events;
 
+
 public class DataManager : Singleton<DataManager>
 {
     public List<IngredientData> ingredientDatas;
@@ -31,6 +32,7 @@ public class DataManager : Singleton<DataManager>
             .ToList();
 
         InventoryManager.Instance.Load();
+        PlayerDataManager.Instance.Load();
         IsGameLoaded = true;
         OnGameLoaded?.Invoke();
     }

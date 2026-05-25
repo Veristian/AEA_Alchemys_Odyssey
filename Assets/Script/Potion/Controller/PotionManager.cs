@@ -32,6 +32,8 @@ public class PotionManager : Singleton<PotionManager>
     {
         get {return playArea ?? this.transform; }
     }
+    [SerializeField] private GameObject canvas;
+
     [SerializeField] private PotionGraph potionGraph;
     private PolygonCollider2D potionGraphCollider;
     private IngredientAcceptor ingredientAcceptor;
@@ -205,6 +207,26 @@ public class PotionManager : Singleton<PotionManager>
     }
 #endregion
 #region public methods
+    public void DeactivatePotionInterface()
+    {
+    
+        activePotionTarget = null;
+        activePotionIngredientsTarget.Clear();
+        UpdateGuideGraph();
+
+        //deactivate UI
+        canvas.SetActive(false);
+        playArea.gameObject.SetActive(false);
+        potionMakingCamera.gameObject.SetActive(false);
+    }
+
+    public void ActivatePotionInterface()
+    {
+        //activate UI
+        canvas.SetActive(true);
+        playArea.gameObject.SetActive(true);
+        potionMakingCamera.gameObject.SetActive(true);
+    }
     public void AssignPotionTarget(PotionData potionData)
     {
         SetActivePotionTarget(potionData);

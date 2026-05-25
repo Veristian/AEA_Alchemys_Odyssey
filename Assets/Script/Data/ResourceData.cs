@@ -10,7 +10,6 @@ public class ResourceData : ScriptableObject, ILoadable
     public LoadState loadState;
 
     public LoadState LoadState => loadState;
-
     [Header("Quest")]
     public string quest_id;
 }

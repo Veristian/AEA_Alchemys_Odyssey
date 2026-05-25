@@ -6,6 +6,7 @@ using System.Linq;
 using UnityEngine.Events;
 
 
+
 public class DataManager : Singleton<DataManager>
 {
     public List<IngredientData> ingredientDatas;
@@ -40,6 +41,7 @@ public class DataManager : Singleton<DataManager>
     private void SaveGameData()
     {
         InventoryManager.Instance.Save();
+        PlayerDataManager.Instance.Save();
         OnGameSaved?.Invoke();
     }
 

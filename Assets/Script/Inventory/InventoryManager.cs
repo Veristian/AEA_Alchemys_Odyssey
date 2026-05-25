@@ -10,16 +10,45 @@ public class PotionInventoryData
 {
     public int id;
     public PotionData potionData; // problem
+    [ReadOnly] public string potionDataId;
     public List<StoredData> ingredientsInside;
     public int amount;
     public string additionalData;
+    public void OnBeforeSerialize()
+    {
+        if (potionData != null)
+            potionDataId = potionData.potionId;
+    }
+    public void OnAfterDeserialize()
+    {
+        if (!string.IsNullOrEmpty(potionDataId))
+        {
+            potionData = DataManager.Instance.potionDatas
+                .Find(data => data.potionId == potionDataId);
+        }
+    }
 }
 [Serializable]
 
 public class IngredientInventoryData
 {
     public IngredientData ingredientData; // problem
+    [ReadOnly] public string ingredientDataId;
     public int amount;
+
+    public void OnBeforeSerialize()
+    {
+        if (ingredientData != null)
+            ingredientDataId = ingredientData.ingredientId;
+    }
+    public void OnAfterDeserialize()
+    {
+        if (!string.IsNullOrEmpty(ingredientDataId))
+        {
+            ingredientData = DataManager.Instance.ingredientDatas
+                .Find(data => data.ingredientId == ingredientDataId);
+        }
+    }
 }
 [Serializable]
 [Metadata("Potions")]
@@ -180,11 +209,14 @@ public class InventoryManager : Singleton<InventoryManager>
     //save inventory data to json path
     public void Save()
     {
+        potionInventoryList.potionList.ForEach(p => p.OnBeforeSerialize());
+        ingredientInventoryList.ingredientsList.ForEach(i => i.OnBeforeSerialize());
         DataManager.Instance.SaveToFile(potionInventoryListFileName, potionInventoryList);
         DataManager.Instance.SaveToFile(ingredientInventoryListFileName, ingredientInventoryList);
 
         Debug.Log("Inventory Saved");
     }
+    
 
     //get inventory data from json path and return new data set if null
     public void Load()
@@ -199,6 +231,9 @@ public class InventoryManager : Singleton<InventoryManager>
             ingredientInventoryListFileName,
             () => new IngredientInventoryList { ingredientsList = new List<IngredientInventoryData>() }
         );
+
+        potionInventoryList.potionList.ForEach(p => p.OnAfterDeserialize());
+        ingredientInventoryList.ingredientsList.ForEach(i => i.OnAfterDeserialize());
 
         Debug.Log("Inventory Loaded");
         

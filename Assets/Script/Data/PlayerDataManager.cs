@@ -7,11 +7,27 @@ using System.Linq;
 public class Recipe
 {
     public PotionData targetPotion;
+    [ReadOnly] public string targetPotionId;
     public bool isUnlocked;
     public bool isQuestRecipe;
     public bool isBulkCraftable;
+
+    public void OnBeforeSerialize()
+    {
+        if (targetPotion != null)
+            targetPotionId = targetPotion.potionId;
+    }
+    public void OnAfterDeserialize()
+    {
+        if (!string.IsNullOrEmpty(targetPotionId))
+        {
+            targetPotion = DataManager.Instance.potionDatas
+                .Find(data => data.potionId == targetPotionId);
+        }
+    }
 }
 [Serializable]
+[Metadata("Recipes")]
 public class RecipeList
 {
     public List<Recipe> recipes;
@@ -28,6 +44,7 @@ public class PlayerDataManager : Singleton<PlayerDataManager>
     //save inventory data to json path
     public void Save()
     {
+        recipeList.recipes.ForEach(r => r.OnBeforeSerialize());
         DataManager.Instance.SaveToFile(RecipeListFileName, recipeList);
         Debug.Log("Player Data Saved");
     }
@@ -39,6 +56,8 @@ public class PlayerDataManager : Singleton<PlayerDataManager>
             RecipeListFileName,
             () => new RecipeList { recipes = new List<Recipe>() }
         );
+
+        recipeList.recipes.ForEach(r => r.OnAfterDeserialize());
 
         Debug.Log("Player Data Loaded");
 

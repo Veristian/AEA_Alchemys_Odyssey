@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b044ac8de97ba88449c3d8665f819096, type: 3}
-  m_Name: TestIngredient 2
+  m_Name: TestIngredient 4
   m_EditorClassIdentifier: 
   loadState: 0
   quest_id: 
-  ingredientId: Test_ingredient_2
-  ingredientName: Ingredient_3
-  ingredient2DObjectPrefab: {fileID: 1171091932301145056, guid: d74565bc36fc92140840dffccef1ea54, type: 3}
+  ingredientId: Test_ingredient_4
+  ingredientName: Ingredient_4
+  ingredient2DObjectPrefab: {fileID: 1171091932301145056, guid: 1c600d25036062a41898210e83ce5a75, type: 3}
   ingredientSprite: {fileID: 0}
   description: 
   ingredientCurve:
@@ -25,26 +25,26 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: -10
-      outSlope: -10
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.5
-      value: -5
-      inSlope: 0.00441603
-      outSlope: 0.00441603
+      value: 0
+      inSlope: -Infinity
+      outSlope: -Infinity
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.1079787
-      outWeight: 0.33333334
+      inWeight: 0.41423392
+      outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: 10
-      outSlope: 10
+      value: -10
+      inSlope: -20
+      outSlope: -20
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334

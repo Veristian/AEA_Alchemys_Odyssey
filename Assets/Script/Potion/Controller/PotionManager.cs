@@ -92,6 +92,7 @@ public class PotionManager : Singleton<PotionManager>
         DetectAndStorePotionIngredientObjects();
         UpdateFuturePotionGraph();
 
+        //setup offsets for dynamic graphs
         potionGraph.restOffset = restOffset;
         potionFutureGraph.restOffset = restOffset;
 
@@ -133,14 +134,21 @@ public class PotionManager : Singleton<PotionManager>
 #region Setters
     private void SetGraphProperties()
     {
+        //setup size properties for all graphs
         guideGraphTop.SetGraphProperties(pointsLength, graphSize, graphDefaultRest, graphOrigin);
         potionFutureGraph.SetGraphProperties(pointsLength, graphSize, graphDefaultRest, graphOrigin);
         guideGraphBottom.SetGraphProperties(pointsLength, graphSize, graphDefaultRest, graphOrigin);
         potionGraph.SetGraphProperties(pointsLength, graphSize, graphDefaultRest, graphOrigin);
+
+        //setup limits for dynamic graphs
         potionGraph.bottomPaddingRatio = bottomPaddingRatio;
         potionFutureGraph.bottomPaddingRatio = bottomPaddingRatio;
         potionGraph.topPaddingRatio = topPaddingRatio;
         potionFutureGraph.topPaddingRatio = topPaddingRatio;
+        
+        //setup leeway for guide graphs
+        guideGraphTop.restOffset = distanceBetweenGuides/2;
+        guideGraphBottom.restOffset = -distanceBetweenGuides/2;
 
     }
 
@@ -201,8 +209,8 @@ public class PotionManager : Singleton<PotionManager>
     
     private void SetGuideGraphCurves(List<AnimationCurve> newCurves)
     {
-        guideGraphTop.SetPotionCurves(newCurves, distanceBetweenGuides);
-        guideGraphBottom.SetPotionCurves(newCurves, -distanceBetweenGuides);
+        guideGraphTop.SetPotionCurves(newCurves);
+        guideGraphBottom.SetPotionCurves(newCurves);
     }
     
 
@@ -231,11 +239,15 @@ public class PotionManager : Singleton<PotionManager>
 #region Potion
     private bool CheckPotionBetweenGuides()
     {
-        for (int i = 0; i < potionGraph.GetPotionPoints().Length; i++)
+        Vector3[] potionGraphPoints = potionGraph.GetPotionPoints();
+        Vector3[] guideGraphTopPoints = guideGraphTop.GetPotionPoints();
+        Vector3[] guideGraphBottomPoints = guideGraphBottom.GetPotionPoints();
+
+        for (int i = 0; i < potionGraphPoints.Length; i++)
         {
-            if (potionGraph.GetPotionPoints()[i].y + restOffset > guideGraphTop.GetPotionPoints()[i].y || potionGraph.GetPotionPoints()[i].y + restOffset < guideGraphBottom.GetPotionPoints()[i].y)
+            if (potionGraphPoints[i].y + potionGraph.restOffset > guideGraphTopPoints[i].y + guideGraphTop.restOffset || potionGraphPoints[i].y + potionGraph.restOffset < guideGraphBottomPoints[i].y + guideGraphBottom.restOffset)
             {
-                Debug.Log($"Potion point {i} is out of bounds. Potion Y: {potionGraph.GetPotionPoints()[i].y + restOffset*graphDefaultRest}, Top Guide Y: {guideGraphTop.GetPotionPoints()[i].y}, Bottom Guide Y: {guideGraphBottom.GetPotionPoints()[i].y}");
+                Debug.Log($"Potion point {i} is out of bounds. Potion Y: {potionGraphPoints[i].y + potionGraph.restOffset*graphDefaultRest}, Top Guide Y: {guideGraphTopPoints[i].y + guideGraphTop.restOffset}, Bottom Guide Y: {guideGraphBottomPoints[i].y + guideGraphBottom.restOffset}");
                 return false;
             }
         }

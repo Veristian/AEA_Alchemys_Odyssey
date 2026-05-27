@@ -6704,7 +6704,7 @@ MonoBehaviour:
   activePotionTarget: {fileID: 0}
   activePotionIngredientsTarget: []
   currentActivePotionIngredients: []
-  distanceBetweenGuides: 0.9
+  distanceBetweenGuides: 2
   potionConfirmDistance: -5
   ingredientObjectLayer:
     serializedVersion: 2

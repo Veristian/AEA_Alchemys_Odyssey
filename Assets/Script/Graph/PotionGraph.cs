@@ -150,8 +150,15 @@ public class PotionGraph : MonoBehaviour
 
         potionCurves.Add(emptyCurve);
     }
-
-    public void SetPotionCurves(List<AnimationCurve> newCurves, float accuracyRequired = 0)
+    public void SetPotionCurves(List<AnimationCurve> newCurves)
+    {
+        potionCurves = newCurves;
+    }
+    public void AddPotionCurve(AnimationCurve newCurve)
+    {
+        potionCurves.Add(newCurve);
+    }
+    public void SetPotionCurves(List<AnimationCurve> newCurves, float accuracyRequired)
     {
         potionCurves = new List<AnimationCurve>();
 
@@ -169,7 +176,7 @@ public class PotionGraph : MonoBehaviour
         }
     }
 
-    public void AddPotionCurve(AnimationCurve newCurve, float accuracyRequired = 0)
+    public void AddPotionCurve(AnimationCurve newCurve, float accuracyRequired)
     {
         AnimationCurve curve = new AnimationCurve();
         

@@ -22,6 +22,10 @@ public class PotionGraph : MonoBehaviour
     [Header("Curves")]
     [SerializeField] private bool clearOnStartup = true;
     [SerializeField] private List<AnimationCurve> potionCurves = new List<AnimationCurve>();
+    [SerializeField] public float restOffset = 0f;
+    [SerializeField, Range(0f, 0.4f)] public float bottomPaddingRatio = 0f;
+    [SerializeField, Range(0f, 0.4f)] public float topPaddingRatio = 0f;
+
     public List<AnimationCurve> PotionCurves
     {
         get {return potionCurves;}
@@ -74,7 +78,7 @@ public class PotionGraph : MonoBehaviour
             return;
         }
         GraphRender.Instance.ConvertCurvesToSpecifiedPointsLength(potionCurves, currentPoints);
-        GraphRender.Instance.DrawShape(spriteShapeController, currentPoints, graphOrigin.position, graphSize, graphDefaultRest, topAnchor);  
+        GraphRender.Instance.DrawShape(spriteShapeController, currentPoints, graphOrigin.position, graphSize, graphDefaultRest, restOffset, bottomPaddingRatio, topPaddingRatio, topAnchor);  
     }
 
 

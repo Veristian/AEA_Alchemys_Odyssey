@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PotionIngredientObject : MonoBehaviour
 {
+    [ReadOnly] public IngredientHouseItem ingredientHouseItem;
     [SerializeField] private IngredientData ingredientData;
     
     public IngredientData IngredientData => ingredientData;

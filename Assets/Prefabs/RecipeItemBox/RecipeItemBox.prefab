@@ -409,8 +409,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 6736728735610443949}
+  potionNameText: {fileID: 9145190999521657299}
+  potionDetailText: {fileID: 923623744963849180}
   recipe:
     targetPotion: {fileID: 0}
+    targetPotionId: 
     isUnlocked: 0
     isQuestRecipe: 0
     isBulkCraftable: 0

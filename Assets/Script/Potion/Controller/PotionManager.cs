@@ -6,7 +6,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.U2D; 
-
+using TMPro;
 [Serializable]
 public class StoredData
 {
@@ -39,7 +39,12 @@ public class PotionManager : Singleton<PotionManager>
     private IngredientAcceptor ingredientAcceptor;
     [SerializeField] private PotionGraph potionFutureGraph;
     [SerializeField] private PotionGraph guideGraphTop;
-    [SerializeField] private PotionGraph guideGraphBottom;    
+    [SerializeField] private PotionGraph guideGraphBottom;  
+
+    [Header("References/Text Info")]
+    [SerializeField] private TextMeshProUGUI potionNameText;
+    [SerializeField] private TextMeshProUGUI potionDetailText;
+  
     [Header("Active Data")]
     [Tooltip("The currently active potion. This is the potion that will be brewed when the player clicks the brew button.")]
     [SerializeField, ReadOnly] private PotionData activePotionTarget;
@@ -61,6 +66,10 @@ public class PotionManager : Singleton<PotionManager>
     [SerializeField] private Vector2 graphSize = new Vector2(100, 100);
     [SerializeField, Range(0.25f, 0.75f)] private float graphDefaultRest = 0.5f;
     [SerializeField] private Transform graphOrigin;
+    [Header("Potion Info")]
+    [SerializeField] private float restOffset = 0f;
+    [SerializeField, Range(0f, 0.4f)] public float bottomPaddingRatio = 0f;
+    [SerializeField, Range(0f, 0.4f)] public float topPaddingRatio = 0f;
 
     private List<PotionIngredientObject> potionIngredientObjects = new List<PotionIngredientObject>();
     private List<AnimationCurve> futurePotionCurves = new List<AnimationCurve>();
@@ -75,12 +84,17 @@ public class PotionManager : Singleton<PotionManager>
     private void Start()
     {
         guideGraphTop.SetAnchorTop(true);
+        
     }
 
     private void FixedUpdate()
     {
         DetectAndStorePotionIngredientObjects();
         UpdateFuturePotionGraph();
+
+        potionGraph.restOffset = restOffset;
+        potionFutureGraph.restOffset = restOffset;
+
     }
 
     private void OnEnable()
@@ -123,6 +137,11 @@ public class PotionManager : Singleton<PotionManager>
         potionFutureGraph.SetGraphProperties(pointsLength, graphSize, graphDefaultRest, graphOrigin);
         guideGraphBottom.SetGraphProperties(pointsLength, graphSize, graphDefaultRest, graphOrigin);
         potionGraph.SetGraphProperties(pointsLength, graphSize, graphDefaultRest, graphOrigin);
+        potionGraph.bottomPaddingRatio = bottomPaddingRatio;
+        potionFutureGraph.bottomPaddingRatio = bottomPaddingRatio;
+        potionGraph.topPaddingRatio = topPaddingRatio;
+        potionFutureGraph.topPaddingRatio = topPaddingRatio;
+
     }
 
     private void SetupPlayArea()
@@ -162,6 +181,22 @@ public class PotionManager : Singleton<PotionManager>
         activePotionTarget = newPotion;
         activePotionIngredientsTarget = new List<StoredData>(activePotionTarget.ingredients);
         UpdateGuideGraph();
+
+        if (activePotionTarget == null)
+        {
+            potionNameText.text = "";
+            potionDetailText.text = "";
+            return;
+        }
+
+        if (potionNameText == null || potionDetailText == null)
+        {
+            Debug.LogWarning("Potion Name Text or Potion Detail Text is not assigned. Please assign TextMeshProUGUI components to potionNameText and potionDetailText.");
+            return;
+        }
+        potionNameText.text = activePotionTarget.potionName;
+        potionDetailText.text = activePotionTarget.description;
+
     }
     
     private void SetGuideGraphCurves(List<AnimationCurve> newCurves)
@@ -198,8 +233,9 @@ public class PotionManager : Singleton<PotionManager>
     {
         for (int i = 0; i < potionGraph.GetPotionPoints().Length; i++)
         {
-            if (potionGraph.GetPotionPoints()[i].y > guideGraphTop.GetPotionPoints()[i].y || potionGraph.GetPotionPoints()[i].y < guideGraphBottom.GetPotionPoints()[i].y)
+            if (potionGraph.GetPotionPoints()[i].y + restOffset > guideGraphTop.GetPotionPoints()[i].y || potionGraph.GetPotionPoints()[i].y + restOffset < guideGraphBottom.GetPotionPoints()[i].y)
             {
+                Debug.Log($"Potion point {i} is out of bounds. Potion Y: {potionGraph.GetPotionPoints()[i].y + restOffset*graphDefaultRest}, Top Guide Y: {guideGraphTop.GetPotionPoints()[i].y}, Bottom Guide Y: {guideGraphBottom.GetPotionPoints()[i].y}");
                 return false;
             }
         }

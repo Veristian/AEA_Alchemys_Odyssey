@@ -53,7 +53,9 @@ public class IngredientHouseItem : MonoBehaviour, IPointerDownHandler
 
     private GameObject CreateGrabbable()
     {
-        return GameObject.Instantiate(ingredient.ingredientData.ingredient2DObjectPrefab);
+        GameObject grabbable = GameObject.Instantiate(ingredient.ingredientData.ingredient2DObjectPrefab);
+        grabbable.GetComponent<PotionIngredientObject>().ingredientHouseItem = this;
+        return grabbable;
     }
 
     public void IncreaseObjTaken()

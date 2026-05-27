@@ -211,21 +211,21 @@ public class GraphRender : Singleton<GraphRender>
         }
     }
 
-    public void DrawShape(SpriteShapeController[] spriteShape, Vector3[] points, Vector3 anchor, Vector2 size, float graphDefaultRest, bool topAnchor = false)
+    public void DrawShape(SpriteShapeController[] spriteShape, Vector3[] points, Vector3 anchor, Vector2 size, float graphDefaultRest, float restOffset, float bottomPadding, float topPadding, bool topAnchor = false)
     {
-        Draw(spriteShape, points, anchor, size, graphDefaultRest, topAnchor);
+        Draw(spriteShape, points, anchor, size, graphDefaultRest, restOffset, bottomPadding, topPadding, topAnchor);
     }
     public void DrawShape(SpriteShapeController[] spriteShape, Vector3[] points, Vector3 anchor)
     {
-        Draw(spriteShape, points, anchor, size, 0.5f);
+        Draw(spriteShape, points, anchor, size, 0.5f, 0f, 0f, 0f);
     }
     public void DrawShape(SpriteShapeController[] spriteShape, Vector3[] points, Vector2 size)
     {
-        Draw(spriteShape, points, anchor, size, 0.5f);
+        Draw(spriteShape, points, anchor, size, 0.5f, 0f, 0f, 0f);
     }
     public void DrawShape(SpriteShapeController[] spriteShape, Vector3[] points)
     {
-        Draw(spriteShape, points, anchor, size, 0.5f);
+        Draw(spriteShape, points, anchor, size, 0.5f, 0f, 0f, 0f);
     }
 #endregion
 
@@ -258,7 +258,10 @@ public class GraphRender : Singleton<GraphRender>
         waterSpline.SetLeftTangent(index, leftTangent);
         waterSpline.SetRightTangent(index, rightTangent);
     }
-    private void Draw(SpriteShapeController[] spriteShape, Vector3[] points, Vector3 anchor, Vector2 size, float graphDefaultRest, bool topAnchor = false)
+
+    //default rest will not affect point values but only appearance
+    //rest offset will affect point values and appearance
+    private void Draw(SpriteShapeController[] spriteShape, Vector3[] points, Vector3 anchor, Vector2 size, float graphDefaultRest, float restOffset, float bottomPadding, float topPadding, bool topAnchor = false)
     {
         //null handler
         if (spriteShape == null)
@@ -305,20 +308,20 @@ public class GraphRender : Singleton<GraphRender>
         {
             newHeight[i] = spriteShape[0].spline.GetPosition(i + 1).y;
 
-            float xValue = newHeight[i] - (anchor.y + points[i].y + size.y * graphDefaultRest);
+            float xValue = newHeight[i] - (anchor.y + (points[i].y + restOffset) + size.y * graphDefaultRest);
             //debug log to show X Value
             // Debug.DrawLine(new Vector3(anchor.x + points[i].x * ratioX + 1, anchor.y + newHeight[i] + size.y * graphDefaultRest, anchor.z), new Vector3(anchor.x + points[i].x * ratioX + 1, anchor.y + newHeight[i] + size.y * graphDefaultRest - xValue, anchor.z), Color.yellow);
             float acceleration = (-springIndex * xValue) - (dampening * points[i].z);
             //debug line to show the spring force
-            // Debug.DrawLine(new Vector3(anchor.x + points[i].x * ratioX + 2, anchor.y + newHeight[i] + size.y * graphDefaultRest, anchor.z), new Vector3(anchor.x + points[i].x * ratioX + 2, anchor.y + points[i].y + size.y * graphDefaultRest, anchor.z), Color.red);
+            // Debug.DrawLine(new Vector3(anchor.x + points[i].x * ratioX + 2, anchor.y + newHeight[i] + size.y * graphDefaultRest, anchor.z), new Vector3(anchor.x + points[i].x * ratioX + 2, anchor.y + (points[i].y + restOffset) + size.y * graphDefaultRest, anchor.z), Color.red);
 
             newHeight[i] += points[i].z * Time.deltaTime; // position
             points[i].z += acceleration * Time.deltaTime;   // velocity
 
             //debug line to show the current height and the target height
-            // Debug.DrawLine(new Vector3(anchor.x + points[i].x * ratioX + 3, anchor.y + newHeight[i] + size.y * graphDefaultRest, anchor.z), new Vector3(anchor.x + points[i].x * ratioX + 3, anchor.y + points[i].y + size.y * graphDefaultRest, anchor.z), Color.green);
+            // Debug.DrawLine(new Vector3(anchor.x + points[i].x * ratioX + 3, anchor.y + newHeight[i] + size.y * graphDefaultRest, anchor.z), new Vector3(anchor.x + points[i].x * ratioX + 3, anchor.y + (points[i].y + restOffset) + size.y * graphDefaultRest, anchor.z), Color.green);
             
-            // Debug.DrawLine(new Vector3(anchor.x + points[i].x * ratioX + 4, anchor.y + points[i].y + size.y * graphDefaultRest, anchor.z), new Vector3(anchor.x + points[i].x * ratioX + 4, anchor.y + size.y * graphDefaultRest, anchor.z), Color.blue);
+            // Debug.DrawLine(new Vector3(anchor.x + points[i].x * ratioX + 4, anchor.y + (points[i].y + restOffset) + size.y * graphDefaultRest, anchor.z), new Vector3(anchor.x + points[i].x * ratioX + 4, anchor.y + size.y * graphDefaultRest, anchor.z), Color.blue);
         }
         //calculate spread
         float[] leftDeltas = new float[newHeight.Length];
@@ -373,11 +376,11 @@ public class GraphRender : Singleton<GraphRender>
                                 
                 if (anchor.y + newHeight[x - 1] == anchor.y)
                 {
-                    controller.spline.SetPosition(x, new Vector3(anchor.x + points[x-1].x * ratioX, anchor.y + size.y * graphDefaultRest, anchor.z));
+                    controller.spline.SetPosition(x, new Vector3(anchor.x + points[x-1].x * ratioX, Mathf.Clamp(anchor.y + size.y * graphDefaultRest, anchor.y + size.y * bottomPadding, anchor.y + size.y * (1 - topPadding)), anchor.z));
                 }
                 else
                 {
-                    controller.spline.SetPosition(x, new Vector3(anchor.x + points[x-1].x * ratioX, anchor.y + newHeight[x - 1], anchor.z));
+                    controller.spline.SetPosition(x, new Vector3(anchor.x + points[x-1].x * ratioX, Mathf.Clamp(anchor.y + newHeight[x - 1], anchor.y + size.y * bottomPadding, anchor.y + size.y * (1 - topPadding)), anchor.z));
                 }
                 if (x == 1 || x == points.Length)
                 {

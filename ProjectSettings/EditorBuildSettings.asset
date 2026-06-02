@@ -4,5 +4,21 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/ChemyHouse.unity
+    guid: 679cb4d3be086204fa527fad12c5d49e
+  - enabled: 1
+    path: Assets/Scenes/OpenWorld.unity
+    guid: 1dfdc32682a0d5a4cbee795df29e43c3
+  - enabled: 1
+    path: Assets/Scenes/Mayor House.unity
+    guid: c292be1c25495b6408e9f97ed237973b
+  - enabled: 1
+    path: Assets/Scenes/Light House.unity
+    guid: 194eef0abba6fed4aafe3952942aef03
+  - enabled: 1
+    path: Assets/Scenes/Forest.unity
+    guid: 43ff25c0919e0f443b8e6dea98680d56
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0

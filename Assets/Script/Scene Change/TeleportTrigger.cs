@@ -9,6 +9,9 @@ public class TeleportTrigger : MonoBehaviour
     [Tooltip("Name of the scene to load")]
     public string targetSceneName;
 
+    [Tooltip("Name of the Empty GameObject in the target scene to spawn at")]
+    public string spawnPointName = "PlayerSpawnPoint";
+
     private bool playerInside = false;
 
     private void Awake()
@@ -39,6 +42,7 @@ public class TeleportTrigger : MonoBehaviour
         {
             if (!string.IsNullOrEmpty(targetSceneName))
             {
+                PlayerSpawnManager.Instance.SetSpawnInfo(spawnPointName);
                 SceneManager.LoadScene(targetSceneName);
             }
             else

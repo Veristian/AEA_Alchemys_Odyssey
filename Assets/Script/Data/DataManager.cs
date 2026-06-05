@@ -41,6 +41,7 @@ public class DataManager : Singleton<DataManager>
 
         InventoryManager.Instance.Load();
         PlayerDataManager.Instance.Load();
+        
         QuestRuntimeManager.Instance.Load();
         IsGameLoaded = true;
         OnGameLoaded?.Invoke();

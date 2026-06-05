@@ -53,7 +53,6 @@ public enum SubmissionCharacter
 
 public class QuestData : ResourceData
 {
-    [Header("Quest")]
     public string quest_name;
     public string quest_description;
 

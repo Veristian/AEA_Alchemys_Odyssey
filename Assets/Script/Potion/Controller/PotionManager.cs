@@ -100,10 +100,20 @@ public class PotionManager : Singleton<PotionManager>
 
     private void OnEnable()
     {
+        if (ingredientAcceptor == null)
+        {
+            Debug.LogWarning("Ingredient Acceptor is not assigned. Please ensure the PotionGraph has an IngredientAcceptor component.");
+            return;
+        }
         ingredientAcceptor.OnIngredientAccepted += CheckAndAddIngredientObjectToPotion;
     }
     private void OnDisable()
     {
+        if (ingredientAcceptor == null)
+        {
+            Debug.LogWarning("Ingredient Acceptor is not assigned. Please ensure the PotionGraph has an IngredientAcceptor component.");
+            return;
+        }
         ingredientAcceptor.OnIngredientAccepted -= CheckAndAddIngredientObjectToPotion;
     }
 
@@ -134,6 +144,11 @@ public class PotionManager : Singleton<PotionManager>
 #region Setters
     private void SetGraphProperties()
     {
+        if (guideGraphTop == null || potionFutureGraph == null || guideGraphBottom == null || potionGraph == null)
+        {
+            Debug.LogWarning("One or more graph references are not assigned. Please assign all graph references in the inspector.");
+            return;
+        }
         //setup size properties for all graphs
         guideGraphTop.SetGraphProperties(pointsLength, graphSize, graphDefaultRest, graphOrigin);
         potionFutureGraph.SetGraphProperties(pointsLength, graphSize, graphDefaultRest, graphOrigin);
@@ -154,6 +169,12 @@ public class PotionManager : Singleton<PotionManager>
 
     private void SetupPlayArea()
     {
+        if (playArea == null)
+        {
+            Debug.LogWarning("Play Area reference is not assigned. Please assign a Transform reference to playArea in the inspector.");
+            return;
+        }
+        
         //assign all potion graph under play area
         guideGraphTop.transform.parent = playArea;
         potionFutureGraph.transform.parent = playArea;
@@ -163,6 +184,21 @@ public class PotionManager : Singleton<PotionManager>
 
     private void SetupPotionGraph()
     {
+        if (potionGraph == null)
+        {
+            Debug.LogWarning("Potion Graph reference is not assigned. Please assign a PotionGraph reference in the inspector.");
+            return;
+        }
+        if (potionGraphCollider == null)
+        {
+            Debug.LogWarning("Potion Graph Collider is not assigned. Please ensure the PotionGraph has a PolygonCollider2D component.");
+            return;
+        }
+        if (ingredientAcceptor == null)
+        {
+            Debug.LogWarning("Ingredient Acceptor is not assigned. Please ensure the PotionGraph has an IngredientAcceptor component.");
+            return;
+        }
         foreach (SpriteShapeController spriteShape in potionGraph.SpriteShapeController)
         {
             var col = spriteShape.GetComponent<PolygonCollider2D>();

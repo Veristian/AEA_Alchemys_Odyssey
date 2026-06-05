@@ -57,7 +57,7 @@ public class PotionGraph : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        // if (potionCurves.Count == 0) return;
+        if (potionCurves.Count == 0) return;
         if (spriteShapeController.Length == 0)
         {
             Debug.LogWarning("No SpriteShapeController assigned. Please assign at least one SpriteShapeController to draw the graph.");

@@ -12,7 +12,6 @@ public class PotionInventoryData
     public PotionData potionData; // problem
     [ReadOnly] public string potionDataId;
     public List<StoredData> ingredientsInside;
-    public int amount;
     public string additionalData;
     public void OnBeforeSerialize()
     {
@@ -118,7 +117,7 @@ public class InventoryManager : Singleton<InventoryManager>
 
         var potion = potionInventoryList.potionList.Find(p =>
             p.potionData.potionId == potionData.potionId &&
-            AreIngredientListsEqual(p.ingredientsInside, ingredientsInside) &&
+            AreIngredientExactListsEqual(p.ingredientsInside, ingredientsInside) &&
             p.additionalData == additionalData
         );
 
@@ -137,6 +136,7 @@ public class InventoryManager : Singleton<InventoryManager>
             potionInventoryList.potionList.RemoveAt(index);
         }
     }
+    
     public void AddIngredient(IngredientData ingredientData, int amount = 1)
     {
         if (ingredientInventoryList.ingredientsList == null)
@@ -175,12 +175,13 @@ public class InventoryManager : Singleton<InventoryManager>
             ingredientInventoryList.ingredientsList.Remove(existing);
         }
     }
-    private bool AreIngredientListsEqual(List<StoredData> a, List<StoredData> b)
+    private bool AreIngredientExactListsEqual(List<StoredData> a, List<StoredData> b)
     {
         if (a == null && b == null) return true;
         if (a == null || b == null) return false;
         if (a.Count != b.Count) return false;
-
+        a = a.OrderBy(i => i.ingredientData.ingredientId).ToList();
+        b = b.OrderBy(i => i.ingredientData.ingredientId).ToList();
         for (int i = 0; i < a.Count; i++)
         {
             if (!Equals(a[i], b[i]))
@@ -189,6 +190,56 @@ public class InventoryManager : Singleton<InventoryManager>
 
         return true;
     }
+    private bool AreIngredientIDListsEqual(List<StoredData> a, List<StoredData> b)
+    {
+        if (a == null && b == null) return true;
+        if (a == null || b == null) return false;
+        if (a.Count != b.Count) return false;
+        a = a.OrderBy(i => i.ingredientData.ingredientId).ToList();
+        b = b.OrderBy(i => i.ingredientData.ingredientId).ToList();
+        for (int i = 0; i < a.Count; i++)
+        {
+            if (!Equals(a[i].ingredientData.ingredientId, b[i].ingredientData.ingredientId))
+                return false;
+        }
+
+        return true;
+    }
+
+    private bool CompareIngredients(List<StoredData> a, List<StoredData> b, bool exact)
+    {
+        if (exact)
+            return AreIngredientExactListsEqual(a, b);
+
+        return AreIngredientIDListsEqual(a, b);
+    }
+
+    public bool CheckPotionExists(
+        PotionData potionData,
+        List<StoredData> ingredientsInside,
+        bool ignoreAdditionalData = false,
+        string additionalData = null,
+        bool ignoreIngredientList = false,
+        bool matchIngredientsExactly = false)
+    {
+        if (potionInventoryList?.potionList == null) return false;
+
+        return potionInventoryList.potionList.Any(p =>
+            p.potionData.potionId == potionData.potionId &&
+            (ignoreIngredientList || CompareIngredients(p.ingredientsInside, ingredientsInside, matchIngredientsExactly)) &&
+            (ignoreAdditionalData || p.additionalData == additionalData)
+        );
+    }
+
+    // public int GetIngredientCount(string ingredientId)
+    // {
+    //     if (ingredientInventoryList?.ingredientsList == null) return 0;
+
+    //     var ingredient = ingredientInventoryList.ingredientsList
+    //         .Find(i => i.ingredientData.ingredientId == ingredientId);
+
+    //     return ingredient != null ? ingredient.amount : 0;
+    // }
 
     public IngredientInventoryData PassIngredientReference(IngredientData ingredientData)
     {

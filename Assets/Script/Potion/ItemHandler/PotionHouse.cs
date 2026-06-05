@@ -74,7 +74,7 @@ public class PotionHouse : Singleton<PotionHouse>
 
             if (groupedToRemove.TryGetValue(lookupKey, out int removeCount))
             {
-                houseItem.objTaken += removeCount;
+                houseItem.objTaken = true;
             }
         }
     }

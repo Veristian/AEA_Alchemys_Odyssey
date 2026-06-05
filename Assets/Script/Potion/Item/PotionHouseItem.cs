@@ -13,13 +13,13 @@ public class PotionHouseItem : MonoBehaviour, IPointerDownHandler
     {
         get {return potion;}
     }
-    [SerializeField, ReadOnly] public int objTaken;
-    [SerializeField] private int displayedObjectAmount => potion.amount - objTaken;
+    [SerializeField, ReadOnly] public bool objTaken;
+    [SerializeField] private int displayedObjectAmount => objTaken ? 0 : 1;
     
     //private
     private void Start()
     {
-        objTaken = 0;
+        objTaken = false;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -30,10 +30,10 @@ public class PotionHouseItem : MonoBehaviour, IPointerDownHandler
     {
         this.potion = potion;
         UpdateDisplay();
-        if (potion.amount <= 0)
-        {
-            // gameObject.SetActive(false);
-        }
+        // if (potion.amount <= 0)
+        // {
+        //     gameObject.SetActive(false);
+        // }
         
     }
 
@@ -58,12 +58,12 @@ public class PotionHouseItem : MonoBehaviour, IPointerDownHandler
 
     public void IncreaseObjTaken()
     {
-        objTaken++;
+        objTaken = true;
         UpdateDisplay();
     }
     public void DecreaseObjTaken()
     {
-        objTaken = (int)Mathf.Clamp(objTaken - 1, 0, Mathf.Infinity);
+        objTaken = false;
         UpdateDisplay();
     }
 

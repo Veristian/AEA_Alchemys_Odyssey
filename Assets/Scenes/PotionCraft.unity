@@ -2221,6 +2221,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canTakeInputs: 1
   canPause: 1
+  canMove: 1
+  canLook: 1
+  canInteract: 1
   playerInput: {fileID: 555135320}
   Movement: {x: 0, y: 0}
   Look: {x: 0, y: 0}
@@ -4124,6 +4127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientDatas: []
   potionDatas: []
+  questDatas: []
 --- !u!114 &844262479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6431,6 +6435,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419939797}
   m_CullTransparentMesh: 1
+--- !u!1 &1434648760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1434648761}
+  - component: {fileID: 1434648762}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1434648761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434648760}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1773194176}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1434648762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434648760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9b453678b0b12143b4fb598150ba679, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanel: {fileID: 0}
+  dialogueText: {fileID: 0}
+  speakerNameText: {fileID: 0}
+  textSpeed: 0.02
 --- !u!1 &1489473859
 GameObject:
   m_ObjectHideFlags: 0
@@ -6825,7 +6877,6 @@ MonoBehaviour:
       potionData: {fileID: 11400000, guid: bf33ef341f7d3d746b230addfa6dcf67, type: 2}
       potionDataId: 
       ingredientsInside: []
-      amount: 0
       additionalData: 
   ingredientInventoryList:
     ingredientsList: []
@@ -7540,6 +7591,8 @@ Transform:
   - {fileID: 844262477}
   - {fileID: 1598410091}
   - {fileID: 468335079}
+  - {fileID: 2021071497}
+  - {fileID: 1434648761}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1786344239
@@ -8347,6 +8400,58 @@ MonoBehaviour:
   m_Spacing: {x: 25, y: 25}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!1 &2021071496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2021071497}
+  - component: {fileID: 2021071498}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2021071497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021071496}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1773194176}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2021071498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021071496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a669363313ad81418b5a33894259477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerQuestsList:
+    playerQuests: []
+  trackedQuest:
+    questData: {fileID: 0}
+    questId: 
+    isCompleted: 0
+    isOnGoing: 0
+    isUnlocked: 0
 --- !u!1 &2073291642
 GameObject:
   m_ObjectHideFlags: 0

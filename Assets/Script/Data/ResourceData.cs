@@ -11,5 +11,5 @@ public class ResourceData : ScriptableObject, ILoadable
 
     public LoadState LoadState => loadState;
     [Header("Quest")]
-    public string quest_id;
+    public string questId;
 }

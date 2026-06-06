@@ -15,14 +15,14 @@ public class PlayerQuestData
     public void OnBeforeSerialize()
     {
         if (questData != null)
-            questId = questData.quest_id;
+            questId = questData.questId;
     }
     public void OnAfterDeserialize()
     {
         if (!string.IsNullOrEmpty(questId))
         {
             questData = DataManager.Instance.questDatas
-                .Find(data => data.quest_id == questId);
+                .Find(data => data.questId == questId);
         }
     }
 }
@@ -58,7 +58,7 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
         );
 
         var newEntries = DataManager.Instance.questDatas
-            .Where(data => !existingIds.Contains(data.quest_id))
+            .Where(data => !existingIds.Contains(data.questId))
             .Select(data => new PlayerQuestData
             {
                 questData = data,
@@ -74,7 +74,7 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
     private void UpdateQuestInfo(QuestData questData, bool isCompleted, bool isOnGoing, bool isUnlocked)
     {
         PlayerQuestData playerQuest = playerQuestsList.playerQuests
-            .Find(q => q.questData.quest_id == questData.quest_id);
+            .Find(q => q.questData.questId == questData.questId);
 
         if (playerQuest != null)
         {
@@ -89,7 +89,7 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
     public bool IsQuestCompleted(QuestData questData)
     {
         PlayerQuestData playerQuest = playerQuestsList.playerQuests
-            .Find(q => q.questData.quest_id == questData.quest_id);
+            .Find(q => q.questData.questId == questData.questId);
 
         return playerQuest != null && playerQuest.isCompleted;
     }
@@ -97,7 +97,7 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
     public bool IsQuestOnGoing(QuestData questData)
     {
         PlayerQuestData playerQuest = playerQuestsList.playerQuests
-            .Find(q => q.questData.quest_id == questData.quest_id);
+            .Find(q => q.questData.questId == questData.questId);
 
         return playerQuest != null && playerQuest.isOnGoing;
     }
@@ -105,7 +105,7 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
     public bool IsQuestUnlocked(QuestData questData)
     {
         PlayerQuestData playerQuest = playerQuestsList.playerQuests
-            .Find(q => q.questData.quest_id == questData.quest_id);
+            .Find(q => q.questData.questId == questData.questId);
 
         return playerQuest != null && playerQuest.isUnlocked;
     }
@@ -127,7 +127,7 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
 
     public QuestData IdToQuestData(string questId)
     {
-        return DataManager.Instance.questDatas.FirstOrDefault(q => q.quest_id == questId);
+        return DataManager.Instance.questDatas.FirstOrDefault(q => q.questId == questId);
     }
 
 #endregion

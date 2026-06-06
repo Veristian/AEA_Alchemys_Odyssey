@@ -3,18 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
-public abstract class Requirements
+using Ink.Runtime;
+[Serializable]
+public class Requirements
 {
-    public abstract bool IsMet();
+    public virtual bool IsMet()
+    {
+        return true;
+    }
+
 }
+[Serializable]
 public class DaysRequirement : Requirements
 {
     public int minimumDaysPassed;
     public override bool IsMet()
     {
-        return DayManager.Instance.day >= minimumDaysPassed;
+        return DayManager.Instance.Day >= minimumDaysPassed;
     }
 }
+[Serializable]
 public class QuestCompletionRequirement : Requirements
 {
     public string requiredQuestId;
@@ -23,6 +31,7 @@ public class QuestCompletionRequirement : Requirements
         return QuestRuntimeManager.Instance.IsQuestCompleted(QuestRuntimeManager.Instance.IdToQuestData(requiredQuestId));
     }
 }
+[Serializable]
 public class QuestPotionsRequirement : Requirements
 {
     public PotionData requiredPotion;
@@ -33,6 +42,7 @@ public class QuestPotionsRequirement : Requirements
     }
 }
 
+[Serializable]
 public class QuestRewards
 {
     public int goldReward;
@@ -46,29 +56,85 @@ public enum SubmissionCharacter
     Stevie,
     Mayor
 }
+[Serializable]
+public class RequirementList
+{
+    [SerializeReference]
+    public List<Requirements> requirements;
 
+    public bool AreAllMet()
+    {
+        return requirements.All(req => req.IsMet());
+    }
+    [ContextMenu("Add Days Requirement")]
+    public void AddDaysRequirement()
+    {
+        requirements.Add(new DaysRequirement { minimumDaysPassed = 1});
+    }
+    [ContextMenu("Add Quest Completion Requirement")]
+    public void AddQuestCompletionRequirement()
+    {
+        requirements.Add(new QuestCompletionRequirement { requiredQuestId = null});
+    }
+    [ContextMenu("Add Quest Potions Requirement")]
+    public void AddQuestPotionsRequirement()
+    {
+        requirements.Add(new QuestPotionsRequirement { requiredPotion = null, requiredIngredient = null});
+    }
+
+}
 
 [Serializable]
 [CreateAssetMenu(fileName = "New Quest", menuName = "Quest/Create New Quest")]
 
 public class QuestData : ResourceData
 {
-    public string quest_name;
-    public string quest_description;
+    public string questName;
+    public string questDescription;
 
     public SubmissionCharacter submissionCharacter;
-    public List<Requirements> requirementsToUnlock;
-    public List<Requirements> requirementsToComplete;
+    public RequirementList requirementsToUnlock;
+    public RequirementList requirementsToComplete;
     public QuestRewards questRewards;
+    [ReadOnly] public Story story;
+    private void OnEnable()
+    {
+        GetStory();
+    }
+    private void OnValidate()
+    {
+        GetStory();
+    }
+    [ContextMenu("Get Story")]
+    public void GetStory()
+    {
+        if (story != null)
+            return;
+        if (string.IsNullOrEmpty(questId))
+        {
+            Debug.LogWarning("Quest ID is null or empty for quest: " + questName + ". Please assign a valid quest ID.");
+            return;
+        }
+
+        TextAsset inkJSON = DialogueManager.GetInkJSON(questId);
+        if (inkJSON != null)
+        {
+            story = new Story(inkJSON.text);
+        }
+        else
+        {
+            Debug.LogWarning("Failed to load story for quest: " + questId);
+        }
+    }
 
     public bool CheckUnlockConditions()
     {
-        return requirementsToUnlock.All(req => req.IsMet());
+        return requirementsToUnlock.AreAllMet();
     }
 
     public bool CheckCompletionConditions()
     {
-        return requirementsToComplete.All(req => req.IsMet());
+        return requirementsToComplete.AreAllMet();
     }
 
     public bool IsCompleted()
@@ -103,9 +169,9 @@ public class QuestData : ResourceData
 
     public string GetFormattedDescription()
     {
-        string formattedDescription = quest_description;
+        string formattedDescription = questDescription;
 
-        foreach (var requirement in requirementsToUnlock)
+        foreach (var requirement in requirementsToUnlock.requirements)
         {
             if (requirement is DaysRequirement daysReq)
             {
@@ -119,7 +185,7 @@ public class QuestData : ResourceData
                 var requiredQuestData = QuestRuntimeManager.Instance.IdToQuestData(questReq.requiredQuestId);
 
                 string requiredQuestName = requiredQuestData != null
-                    ? requiredQuestData.quest_name
+                    ? requiredQuestData.questName
                     : "Unknown Quest";
 
                 formattedDescription = formattedDescription.Replace(

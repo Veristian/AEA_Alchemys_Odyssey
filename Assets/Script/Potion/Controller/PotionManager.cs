@@ -189,16 +189,7 @@ public class PotionManager : Singleton<PotionManager>
             Debug.LogWarning("Potion Graph reference is not assigned. Please assign a PotionGraph reference in the inspector.");
             return;
         }
-        if (potionGraphCollider == null)
-        {
-            Debug.LogWarning("Potion Graph Collider is not assigned. Please ensure the PotionGraph has a PolygonCollider2D component.");
-            return;
-        }
-        if (ingredientAcceptor == null)
-        {
-            Debug.LogWarning("Ingredient Acceptor is not assigned. Please ensure the PotionGraph has an IngredientAcceptor component.");
-            return;
-        }
+        
         foreach (SpriteShapeController spriteShape in potionGraph.SpriteShapeController)
         {
             var col = spriteShape.GetComponent<PolygonCollider2D>();
@@ -342,7 +333,7 @@ public class PotionManager : Singleton<PotionManager>
         {
             AddPotionIngredient(newIngredient.IngredientData, (newIngredient.position.x-graphOrigin.position.x)/graphSize.x);
         }
-        else if (newIngredient.IngredientData.quest_id == activePotionTarget.quest_id || (newIngredient.IngredientData.quest_id == null && activePotionTarget.quest_id == null))
+        else if (newIngredient.IngredientData.questId == activePotionTarget.questId || (newIngredient.IngredientData.questId == null && activePotionTarget.questId == null))
             AddPotionIngredient(newIngredient.IngredientData, (newIngredient.position.x-graphOrigin.position.x)/graphSize.x);
         else
         {

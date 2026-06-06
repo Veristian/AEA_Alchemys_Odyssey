@@ -57,8 +57,7 @@ public class PotionGraph : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if (potionCurves.Count == 0) return;
-        if (spriteShapeController.Length == 0)
+        if (spriteShapeController.Length == 0 || spriteShapeController[0] == null)
         {
             Debug.LogWarning("No SpriteShapeController assigned. Please assign at least one SpriteShapeController to draw the graph.");
             return;
@@ -220,6 +219,8 @@ public class PotionGraph : MonoBehaviour
     {
         return currentPoints;
     }
+
+    //note to self: add ingredient plop animation thingy here by adding speed to points
 #endregion
 
 

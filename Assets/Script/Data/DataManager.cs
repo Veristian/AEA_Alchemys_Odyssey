@@ -38,10 +38,9 @@ public class DataManager : Singleton<DataManager>
             .GetAll<QuestData>(questDatasPath)
             .ToList();
 
-
+        
         InventoryManager.Instance.Load();
         PlayerDataManager.Instance.Load();
-        
         QuestRuntimeManager.Instance.Load();
         IsGameLoaded = true;
         OnGameLoaded?.Invoke();

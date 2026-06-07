@@ -13,7 +13,17 @@ MonoBehaviour:
   m_Name: Quest1
   m_EditorClassIdentifier: 
   loadState: 0
-  quest_id: quest1
-  quest_name: quest 1
-  quest_description: first quest
+  questId: 
+  questName: 
+  questDescription: 
   submissionCharacter: 0
+  requirementsToUnlock:
+    requirements: []
+  requirementsToComplete:
+    requirements: []
+  questRewards:
+    goldReward: 0
+  storyText: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []

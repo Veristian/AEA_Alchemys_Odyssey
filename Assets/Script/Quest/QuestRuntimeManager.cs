@@ -59,6 +59,17 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
     }
     public event Action OnQuestListUpdated;
     public event Action<PlayerQuestData> OnTrackedQuestChanged;
+    protected override void Awake()
+    {
+        transform.parent = null;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject); 
+            return;
+        }
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
+    }
     private void Start()
     {
         UnlockAvailableQuests();

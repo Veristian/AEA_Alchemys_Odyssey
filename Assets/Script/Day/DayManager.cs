@@ -30,14 +30,14 @@ public class LocalNews
 }
 public class DayManager : Singleton<DayManager>
 {
-    [SerializeField, ReadOnly] private int day;
+    // [SerializeField, ReadOnly] private int day;
     public int Day
     {
-        get => day;
+        get => PlayerDataManager.Instance.day;
         private set
         {
-            day = value;
-            OnDayChanged?.Invoke(day);
+            PlayerDataManager.Instance.day = value;
+            OnDayChanged?.Invoke(PlayerDataManager.Instance.day);
         }
     }
     public event System.Action<int> OnDayChanged;
@@ -57,6 +57,17 @@ public class DayManager : Singleton<DayManager>
     [ReadOnly] public Headline previousHeadline;
     [ReadOnly] public LocalRequest previousLocalRequest;
     [ReadOnly] public LocalNews previousLocalNews;
+    // protected override void Awake()
+    // {
+    //     transform.parent = null;
+    //     if (Instance != null && Instance != this)
+    //     {
+    //         Destroy(gameObject); 
+    //         return;
+    //     }
+    //     base.Awake();
+    //     DontDestroyOnLoad(gameObject);
+    // }
     public void SetDay(int newDay)
     {
         if (newDay < 0)

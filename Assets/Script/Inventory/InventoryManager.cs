@@ -75,6 +75,17 @@ public class InventoryManager : Singleton<InventoryManager>
     {
         get { return ingredientInventoryList; }
     }
+    protected override void Awake()
+    {
+        transform.parent = null;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject); 
+            return;
+        }
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
+    }
 
     //add and subtract from inventory
     public void AddPotionObject(PotionData potionData, List<StoredData> ingredientsInside, string additionalData = null)

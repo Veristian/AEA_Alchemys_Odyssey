@@ -43,10 +43,22 @@ public class PlayerDataManager : Singleton<PlayerDataManager>
     private const string RecipeListFileName = "PlayerRecipeData";
     private const string DayFileName = "PlayerDayData";
     [SerializeField] private RecipeList recipeList;
-    private int day => DayManager.Instance.Day;
+    public int day;
     public RecipeList RecipeList
     {
         get { return recipeList; }
+    }
+
+    protected override void Awake()
+    {
+        transform.parent = null;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject); 
+            return;
+        }
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
     }
 
     //save inventory data to json path

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
+using Unity.VisualScripting;
 [Serializable]
 public class PlayerQuestData
 {
@@ -36,7 +37,7 @@ public class PlayerQuestList
 public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
 {
     private const string PlayerQuestDataFileName = "PlayerQuestData";
-    private PlayerQuestList playerQuestsList;
+    [SerializeField] private PlayerQuestList playerQuestsList;
     public PlayerQuestList PlayerQuestsList
     {
         get { return playerQuestsList; }
@@ -46,7 +47,7 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
             OnQuestListUpdated?.Invoke();
         }
     }
-    private PlayerQuestData trackedQuest;
+    [SerializeField] private PlayerQuestData trackedQuest;
     public PlayerQuestData TrackedQuest
     {
         get { return trackedQuest; }
@@ -58,6 +59,20 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
     }
     public event Action OnQuestListUpdated;
     public event Action<PlayerQuestData> OnTrackedQuestChanged;
+    private void Start()
+    {
+        UnlockAvailableQuests();
+    }
+    private void OnEnable()
+    {
+        DayManager.Instance.OnDayChanged += (day) => UnlockAvailableQuests();
+    }
+
+    private void OnDisable()
+    {
+        DayManager.Instance.OnDayChanged -= (day) => UnlockAvailableQuests();
+    }
+
 
     public void Save()
     {
@@ -98,17 +113,51 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
         PlayerQuestData playerQuest = playerQuestsList.playerQuests
             .Find(q => q.questData.questId == questData.questId);
 
-        if (playerQuest != null)
+        UpdateQuestInfo(playerQuest, isCompleted, isOnGoing, isUnlocked);
+    }
+    private void UpdateQuestInfo(PlayerQuestData questData, bool isCompleted, bool isOnGoing, bool isUnlocked)
+    {
+        if (questData != null)
         {
-            playerQuest.isCompleted = isCompleted;
-            playerQuest.isOnGoing = isOnGoing;
-            playerQuest.isUnlocked = isUnlocked;
+            if (questData.isCompleted)
+            {
+            }
+            else if (questData.isOnGoing && isCompleted)
+            {
+                questData.isCompleted = true;
+                questData.isOnGoing = false;
+                questData.isUnlocked = true;
+            }
+            else if (questData.isUnlocked && isOnGoing)
+            {
+                questData.isCompleted = false;
+                questData.isOnGoing = true;
+                questData.isUnlocked = true;
+            }
+            else if (isUnlocked)
+            {
+                questData.isCompleted = false;
+                questData.isOnGoing = false;
+                questData.isUnlocked = true;
+            }        
         }
         OnQuestListUpdated?.Invoke();
     }
 
+    private void UnlockAvailableQuests()
+    {
+        foreach (PlayerQuestData playerQuestData in playerQuestsList.playerQuests)
+        {
+            if (playerQuestData.questData.requirementsToUnlock.AreAllMet())
+            {
+                MarkQuestAsUnlocked(playerQuestData);
+            }
+        }
+    }
+
 
 #region public
+    
     public List<PlayerQuestData> GetUnlockedQuests()
     {
         return playerQuestsList.playerQuests.FindAll(q => q.isUnlocked == true);
@@ -121,6 +170,7 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
     {
         return playerQuestsList.playerQuests.FindAll(q => q.isCompleted == true);
     }
+    
     public bool IsQuestCompleted(QuestData questData)
     {
         PlayerQuestData playerQuest = playerQuestsList.playerQuests
@@ -143,6 +193,20 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
             .Find(q => q.questData.questId == questData.questId);
 
         return playerQuest != null && playerQuest.isUnlocked;
+    }
+    public void MarkQuestAsCompleted(PlayerQuestData questData)
+    {
+        UpdateQuestInfo(questData, isCompleted: true, isOnGoing: false, isUnlocked: true);
+    }
+
+    public void MarkQuestAsOnGoing(PlayerQuestData questData)
+    {
+        UpdateQuestInfo(questData, isCompleted: false, isOnGoing: true, isUnlocked: true);
+    }
+
+    public void MarkQuestAsUnlocked(PlayerQuestData questData)
+    {
+        UpdateQuestInfo(questData, isCompleted: false, isOnGoing: false, isUnlocked: true);
     }
 
     public void MarkQuestAsCompleted(QuestData questData)

@@ -192,6 +192,7 @@ public class PotionManager : Singleton<PotionManager>
         
         foreach (SpriteShapeController spriteShape in potionGraph.SpriteShapeController)
         {
+            if (spriteShape == null) return;
             var col = spriteShape.GetComponent<PolygonCollider2D>();
             if (col == null)
             {

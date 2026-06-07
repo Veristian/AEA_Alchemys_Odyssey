@@ -58,15 +58,8 @@ public class DialogueManager : Singleton<DialogueManager>
     // ================================
     public void StartDialogue(Story story, string knot = null)
     {
-        // TextAsset inkJSON = GetInkJSON("TestStory");
-
-        // if (inkJSON == null)
-        // {
-        //     return;
-        // }
-
-        // story = new Story(inkJSON.text);
-
+        this.story = story;
+        Debug.Log(story);
         if (!string.IsNullOrEmpty(knot))
         {
             if (story.KnotContainerWithName(knot) != null)

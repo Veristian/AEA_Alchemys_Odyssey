@@ -27,7 +27,9 @@ public class NPCTrigger : MonoBehaviour
     //trigger check
     private void StartConversation()
     {
+        
         List<PlayerQuestData> completedQuest = GetCharacterQuest(true);
+        Debug.Log("aad");
         if (completedQuest == null || completedQuest.Count == 0)
         {
             DialogueManager.Instance.StartDialogue(DialogueManager.GetStory(NPCDefaultDialogue));
@@ -57,7 +59,7 @@ public class NPCTrigger : MonoBehaviour
 
     private void Update()
     {
-        if (InputManager.Instance.InteractWasPressed && DialogueManager.Instance.dialogueActive && playerInside)
+        if (InputManager.Instance.InteractWasPressed && !DialogueManager.Instance.dialogueActive && playerInside)
         {
             StartConversation();
         }

@@ -53,8 +53,14 @@ public class QuestRewards
 public enum SubmissionCharacter
 {
     None,
-    Stevie,
-    Mayor
+    Ramonts,
+    Violette,
+    Kenneth,
+    Sven,
+    Poshe,
+    Circe,
+    Tidus
+
 }
 [Serializable]
 public class RequirementList
@@ -96,7 +102,8 @@ public class QuestData : ResourceData
     public RequirementList requirementsToUnlock;
     public RequirementList requirementsToComplete;
     public QuestRewards questRewards;
-    [ReadOnly] public Story story;
+    [ReadOnly] public TextAsset storyText;
+    public Story story { get; private set; }
     private void OnEnable()
     {
         GetStory();
@@ -116,10 +123,10 @@ public class QuestData : ResourceData
             return;
         }
 
-        TextAsset inkJSON = DialogueManager.GetInkJSON(questId);
-        if (inkJSON != null)
+        storyText = DialogueManager.GetInkJSON(questId);
+        if (storyText != null)
         {
-            story = new Story(inkJSON.text);
+            story = new Story(storyText.text);
         }
         else
         {

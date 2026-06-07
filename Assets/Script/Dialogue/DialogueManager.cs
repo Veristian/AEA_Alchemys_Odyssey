@@ -19,8 +19,8 @@ public class DialogueManager : Singleton<DialogueManager>
     private Story story;
     private Coroutine currentLineCoroutine;
 
-    private bool isTyping;
-    private bool dialogueActive;
+    public bool isTyping {get; private set;}
+    public bool dialogueActive {get; private set;}
     // void Start()
     // {
         
@@ -37,20 +37,35 @@ public class DialogueManager : Singleton<DialogueManager>
         }
         return inkJSON;
     }
+    public static Story GetStory(string name)
+    {
+        TextAsset inkJSON = Resources.Load<TextAsset>(DialogueResourcePath + name);
+        if (inkJSON == null)
+        {
+            Debug.LogWarning("Ink file not found at: " + DialogueResourcePath + name + ". Please ensure the JSON file is placed in a Resources folder and the path is correct.");
+            return null;
+        }
+        return new Story(inkJSON.text);
+    }
+    public static Story GetStory(TextAsset text)
+    {
+        return new Story(text.text);
+    }
+
 
     // ================================
     // 🔹 EXTERNAL CALL ENTRY POINT
     // ================================
-    public void StartDialogue(string knot = null)
+    public void StartDialogue(Story story, string knot = null)
     {
-        TextAsset inkJSON = GetInkJSON("TestStory");
+        // TextAsset inkJSON = GetInkJSON("TestStory");
 
-        if (inkJSON == null)
-        {
-            return;
-        }
+        // if (inkJSON == null)
+        // {
+        //     return;
+        // }
 
-        story = new Story(inkJSON.text);
+        // story = new Story(inkJSON.text);
 
         if (!string.IsNullOrEmpty(knot))
         {

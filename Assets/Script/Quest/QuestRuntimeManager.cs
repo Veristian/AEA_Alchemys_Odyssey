@@ -36,8 +36,29 @@ public class PlayerQuestList
 public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
 {
     private const string PlayerQuestDataFileName = "PlayerQuestData";
-    public PlayerQuestList playerQuestsList;
-    public PlayerQuestData trackedQuest;
+    private PlayerQuestList playerQuestsList;
+    public PlayerQuestList PlayerQuestsList
+    {
+        get { return playerQuestsList; }
+        private set
+        {
+            playerQuestsList = value;
+            OnQuestListUpdated?.Invoke();
+        }
+    }
+    private PlayerQuestData trackedQuest;
+    public PlayerQuestData TrackedQuest
+    {
+        get { return trackedQuest; }
+        private set
+        {
+            trackedQuest = value;
+            OnTrackedQuestChanged?.Invoke(trackedQuest);
+        }
+    }
+    public event Action OnQuestListUpdated;
+    public event Action<PlayerQuestData> OnTrackedQuestChanged;
+
     public void Save()
     {
         playerQuestsList.playerQuests.ForEach(r => r.OnBeforeSerialize());
@@ -68,6 +89,7 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
             });
 
         playerQuestsList.playerQuests.AddRange(newEntries);
+        OnQuestListUpdated?.Invoke();
     }
     
 
@@ -82,10 +104,23 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
             playerQuest.isOnGoing = isOnGoing;
             playerQuest.isUnlocked = isUnlocked;
         }
+        OnQuestListUpdated?.Invoke();
     }
 
 
 #region public
+    public List<PlayerQuestData> GetUnlockedQuests()
+    {
+        return playerQuestsList.playerQuests.FindAll(q => q.isUnlocked == true);
+    }
+    public List<PlayerQuestData> GetOngoingQuests()
+    {
+        return playerQuestsList.playerQuests.FindAll(q => q.isOnGoing == true);
+    }
+    public List<PlayerQuestData> GetCompletedQuests()
+    {
+        return playerQuestsList.playerQuests.FindAll(q => q.isCompleted == true);
+    }
     public bool IsQuestCompleted(QuestData questData)
     {
         PlayerQuestData playerQuest = playerQuestsList.playerQuests

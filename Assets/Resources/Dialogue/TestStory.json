@@ -1,0 +1,1 @@
+﻿{"inkVersion":21,"root":[[["done",{"#f":5,"#n":"g-0"}],null],"done",{"intro":["#","^speaker: NPC","/#","^Hello traveler.","\n","end",{"#f":1}],"quest_accept":["#","^speaker: NPC","/#","^Will you help me?","\n","end",{"#f":1}],"quest_complete":["#","^speaker: NPC","/#","^Thank you for your help!","\n","end",{"#f":1}],"#f":1}],"listDefs":{}}

@@ -32,13 +32,33 @@ public class RecipeList
 {
     public List<Recipe> recipes;
 }
+[Serializable, Metadata("Day")]
+public class DayData
+{
+    public int day;
+}
 public class PlayerDataManager : Singleton<PlayerDataManager>
 {
+    //add day 
     private const string RecipeListFileName = "PlayerRecipeData";
+    private const string DayFileName = "PlayerDayData";
     [SerializeField] private RecipeList recipeList;
+    public int day;
     public RecipeList RecipeList
     {
         get { return recipeList; }
+    }
+
+    protected override void Awake()
+    {
+        transform.parent = null;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject); 
+            return;
+        }
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
     }
 
     //save inventory data to json path
@@ -46,6 +66,7 @@ public class PlayerDataManager : Singleton<PlayerDataManager>
     {
         recipeList.recipes.ForEach(r => r.OnBeforeSerialize());
         DataManager.Instance.SaveToFile(RecipeListFileName, recipeList);
+        DataManager.Instance.SaveToFile(DayFileName, new DayData { day = day });
         Debug.Log("Player Data Saved");
     }
 
@@ -77,6 +98,8 @@ public class PlayerDataManager : Singleton<PlayerDataManager>
             });
 
         recipeList.recipes.AddRange(newEntries);
+        DayManager.Instance.SetDay(DataManager.Instance.LoadFromFile(DayFileName, () => new DayData { day = 0 }).day);
+
 
     }
 

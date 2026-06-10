@@ -329,27 +329,57 @@ public class GraphRender : Singleton<GraphRender>
                     
         // do some passes where springs pull on their neighbours 
         //note to self: convert this to use points as baseline and not 0 0
+        // for (int j = 0; j < 1; j++)
+        // {
+        //     for (int i = 0; i < newHeight.Length; i++)
+        //     {
+        //         if (i > 0)
+        //         {
+        //             leftDeltas[i] = spread * (newHeight[i] - newHeight[i - 1]);
+        //             points[i - 1].z += leftDeltas[i];
+        //         }
+        //         if (i < newHeight.Length - 1)
+        //         {
+        //             rightDeltas[i] = spread * (newHeight[i] - newHeight[i + 1]);
+        //             points[i + 1].z += rightDeltas[i];
+        //         }
+        //     }
+        //     for (int i = 0; i < newHeight.Length; i++)
+        //     {
+        //         if (i > 0)
+        //             points[i - 1].y += leftDeltas[i];
+        //         if (i < newHeight.Length - 1)
+        //             points[i + 1].y += rightDeltas[i];
+        //     }
+        // }
+
+        // do some passes where springs pull on their neighbours using error from target height to prevent energy gain
         for (int j = 0; j < 1; j++)
         {
             for (int i = 0; i < newHeight.Length; i++)
             {
+                float target = anchor.y + (points[i].y + restOffset) + size.y * graphDefaultRest;
+                float error = newHeight[i] - target;
+
                 if (i > 0)
                 {
-                    leftDeltas[i] = spread * (newHeight[i] - newHeight[i - 1]);
-                    points[i - 1].z += leftDeltas[i];
+                    float delta = spread * (error - (
+                        newHeight[i - 1] - (anchor.y + (points[i - 1].y + restOffset) + size.y * graphDefaultRest)
+                    ));
+
+                    points[i - 1].z += delta;
+                    points[i].z     -= delta; // IMPORTANT: conserve energy
                 }
+
                 if (i < newHeight.Length - 1)
                 {
-                    rightDeltas[i] = spread * (newHeight[i] - newHeight[i + 1]);
-                    points[i + 1].z += rightDeltas[i];
+                    float delta = spread * (error - (
+                        newHeight[i + 1] - (anchor.y + (points[i + 1].y + restOffset) + size.y * graphDefaultRest)
+                    ));
+
+                    points[i + 1].z += delta;
+                    points[i].z     -= delta;
                 }
-            }
-            for (int i = 0; i < newHeight.Length; i++)
-            {
-                if (i > 0)
-                    points[i - 1].y += leftDeltas[i];
-                if (i < newHeight.Length - 1)
-                    points[i + 1].y += rightDeltas[i];
             }
         }
 

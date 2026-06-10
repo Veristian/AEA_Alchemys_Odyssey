@@ -26,6 +26,11 @@ public class PotionHouse : Singleton<PotionHouse>
 
     private void SetupPotions()
     {
+        if (contentTransform == null)
+        {
+            Debug.LogWarning("Content Transform reference is not assigned. Please assign a Transform reference to contentTransform in the inspector.");
+            return;
+        }
         foreach (Transform child in contentTransform)
         {
             Destroy(child.gameObject);
@@ -74,7 +79,7 @@ public class PotionHouse : Singleton<PotionHouse>
 
             if (groupedToRemove.TryGetValue(lookupKey, out int removeCount))
             {
-                houseItem.objTaken += removeCount;
+                houseItem.objTaken = true;
             }
         }
     }

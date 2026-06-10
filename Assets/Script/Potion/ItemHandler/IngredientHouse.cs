@@ -26,6 +26,11 @@ public class IngredientHouse : Singleton<IngredientHouse>
 
     private void SetupIngredients()
     {
+        if (contentTransform == null)
+        {
+            Debug.LogWarning("Content Transform reference is not assigned. Please assign a Transform reference to contentTransform in the inspector.");
+            return;
+        }
         foreach (Transform child in contentTransform)
         {
             Destroy(child.gameObject);

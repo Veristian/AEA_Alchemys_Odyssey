@@ -11,8 +11,10 @@ public class DataManager : Singleton<DataManager>
 {
     public List<IngredientData> ingredientDatas;
     public List<PotionData> potionDatas;
+    public List<QuestData> questDatas;
     private const string ingredientDatasPath = "Ingredient";
     private const string potionDatasPath = "Potion";
+    private const string questDatasPath = "Quest";
     public event Action OnGameLoaded;
     public event Action OnGameSaved;
     public bool IsGameLoaded { get; private set; }
@@ -32,8 +34,14 @@ public class DataManager : Singleton<DataManager>
             .GetAll<PotionData>(potionDatasPath)
             .ToList();
 
+        questDatas = ResourceLoader
+            .GetAll<QuestData>(questDatasPath)
+            .ToList();
+
+        
         InventoryManager.Instance.Load();
         PlayerDataManager.Instance.Load();
+        QuestRuntimeManager.Instance.Load();
         IsGameLoaded = true;
         OnGameLoaded?.Invoke();
     }
@@ -42,6 +50,7 @@ public class DataManager : Singleton<DataManager>
     {
         InventoryManager.Instance.Save();
         PlayerDataManager.Instance.Save();
+        QuestRuntimeManager.Instance.Save();
         OnGameSaved?.Invoke();
     }
 

@@ -36,11 +36,23 @@ public class PotionMakingUi : MonoBehaviour
 
     private void Start()
     {
+        if (tabs == null || tabs.Length == 0)
+        {
+            Debug.LogWarning("Tabs are not assigned. Please assign tabs in the inspector.");
+            return;
+        }
         // Add button click events
         for (int i = 0; i < tabs.Length; i++)
         {
             int index = i;
-            tabs[i].tabButton.onClick.AddListener(() => OpenTab(index));
+            if (tabs[i].tabButton != null)
+            {
+                tabs[i].tabButton.onClick.AddListener(() => OpenTab(index));
+            }
+            else
+            {
+                Debug.LogWarning($"Tab button for index {index} is not assigned. Please assign a Button reference to tabButton in the inspector for this tab.");
+            }
         }
 
         // Open first tab by default

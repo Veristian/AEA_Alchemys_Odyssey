@@ -1,0 +1,155 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+
+[Serializable]
+public class Headline
+{
+    // public string headlineId;
+    public GameObject headlinePrefab;
+
+    public RequirementList requirementsToBeShown;
+}
+[Serializable]
+public class LocalRequest
+{
+    // public string requestId;
+    public GameObject requestPrefab;
+    public QuestData questData;
+    public string followUpNewsId;
+
+    public RequirementList requirementsToBeShown;
+}
+[Serializable]
+public class LocalNews
+{
+    public string newsId;
+    public GameObject newsPrefab;
+    // public RequirementList requirementsToBeShown;
+    public bool willBeShown;
+    public bool hasBeenShown;
+    
+}
+public class DayManager : Singleton<DayManager>
+{
+    // [SerializeField, ReadOnly] private int day;
+    public int Day
+    {
+        get => PlayerDataManager.Instance.day;
+        private set
+        {
+            PlayerDataManager.Instance.day = value;
+            OnDayChanged?.Invoke(PlayerDataManager.Instance.day);
+        }
+    }
+    public event System.Action<int> OnDayChanged;
+
+    public List<Headline> AllHeadlines;
+    public List<LocalRequest> AllLocalRequests;
+    public List<LocalNews> AllLocalNews;
+
+    public List<Headline> ActiveHeadlines;
+    public List<LocalRequest> ActiveLocalRequests;
+    public List<LocalNews> ActiveLocalNews;
+
+    public Headline currentHeadline;
+    public LocalRequest currentLocalRequest;
+    public LocalNews currentLocalNews;
+
+    public Headline previousHeadline;
+    public LocalRequest previousLocalRequest;
+    public LocalNews previousLocalNews;
+    protected override void Awake()
+    {
+        transform.parent = null;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject); 
+            return;
+        }
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
+    }
+    public void SetDay(int newDay)
+    {
+        if (newDay < 0)
+        {
+            Debug.LogWarning("Day cannot be negative.");
+            return;
+        }
+        Day = newDay;
+        StartNewDay();
+    }
+    public void IncrementDay()
+    {
+        Day++;
+        StartNewDay();
+    }
+    //method for debugging
+    public void DecrementDay()
+    {
+        if (Day > 0)
+            Day--;
+    }
+
+    private void PoolAndSetActiveElements()
+    {
+        ActiveHeadlines = AllHeadlines.FindAll(h => h.requirementsToBeShown.AreAllMet());
+        ActiveLocalRequests = AllLocalRequests.FindAll(r => r.requirementsToBeShown.AreAllMet() );
+        ActiveLocalNews = AllLocalNews.FindAll(n => n.willBeShown);
+    }
+
+
+    private void StartNewDay()
+    {
+        currentLocalNews.willBeShown = false;
+        currentLocalNews.hasBeenShown = true;
+
+        PoolAndSetActiveElements();
+
+        previousHeadline = currentHeadline;
+        previousLocalRequest = currentLocalRequest;
+        previousLocalNews = currentLocalNews;
+
+        currentHeadline = ActiveHeadlines.Count > 0 ? ActiveHeadlines[UnityEngine.Random.Range(0, ActiveHeadlines.Count)] : null;
+        currentLocalRequest = ActiveLocalRequests.Count > 0 ? ActiveLocalRequests[UnityEngine.Random.Range(0, ActiveLocalRequests.Count)] : null;
+        currentLocalNews = ActiveLocalNews.Count > 0 ? ActiveLocalNews[UnityEngine.Random.Range(0, ActiveLocalNews.Count)] : null;
+
+
+    }
+
+    public void SetShowLocalNews(QuestData questData, bool ignoreHasBeenShown)
+    {
+        if (questData == null) return;
+        //match to local request    
+        var localRequest = AllLocalRequests.Find(n => n.questData == questData);
+        //get local news from the followup id
+        if (localRequest == null || localRequest.followUpNewsId == null || localRequest.followUpNewsId == "") return;
+        var localNews = AllLocalNews.Find(n => n.newsId == localRequest.followUpNewsId);
+        //set local news shown to true
+        if (localNews == null) return;
+        if (localNews.hasBeenShown && !ignoreHasBeenShown) return;
+        localNews.willBeShown = true;
+        localNews.hasBeenShown = false;
+    }
+
+    public void ViewNewsAndAcceptNews()
+    {
+        //open UI
+
+        //accept quests
+        QuestRuntimeManager.Instance.MarkQuestAsOnGoing(currentLocalRequest.questData);
+    }
+
+
+    
+    
+
+
+
+
+
+
+    
+}

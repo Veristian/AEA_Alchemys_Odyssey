@@ -11,6 +11,10 @@ public class InputManager : Singleton<InputManager>
     //bool
     public bool canTakeInputs = true;
     public bool canPause = true;
+    public bool canMove = true;
+    public bool canLook = true;
+    public bool canInteract = true;
+    
     [Header("References")]
     //ref
     public PlayerInput playerInput;
@@ -79,18 +83,43 @@ public class InputManager : Singleton<InputManager>
     {
         if (canTakeInputs)
         {
-            Movement = _moveAction.ReadValue<Vector2>();
-            Look = _lookAction.ReadValue<Vector2>();
+            if (canMove)
+            {
+                Movement = _moveAction.ReadValue<Vector2>();
+                JumpWasPressed = _jumpAction.WasPressedThisFrame();
+                JumpIsHeld = _jumpAction.IsPressed();
+                JumpWasReleased = _jumpAction.WasReleasedThisFrame();
+            }
+            else
+            {
+                Movement = Vector2.zero;
+                JumpWasPressed = false;
+                JumpIsHeld = false;
+                JumpWasReleased = false;
+            }
+            if (canLook)
+            {
+                Look = _lookAction.ReadValue<Vector2>();
+            }
+            else
+            {
+                Look = Vector2.zero;
+            }
             MousePosition = _mousePositionAction.ReadValue<Vector2>();
 
-            JumpWasPressed = _jumpAction.WasPressedThisFrame();
-            JumpIsHeld = _jumpAction.IsPressed();
-            JumpWasReleased = _jumpAction.WasReleasedThisFrame();
-
-            InteractWasPressed = _interactAction.WasPressedThisFrame();
-            InteractIsHeld = _interactAction.IsPressed();
-            InteractWasReleased = _interactAction.WasReleasedThisFrame();
-
+            if (canInteract)
+            {
+                InteractWasPressed = _interactAction.WasPressedThisFrame();
+                InteractIsHeld = _interactAction.IsPressed();
+                InteractWasReleased = _interactAction.WasReleasedThisFrame();
+            }
+            else
+            {
+                InteractWasPressed = false;
+                InteractIsHeld = false;
+                InteractWasReleased = false;
+            }
+            
             MouseLeftWasPressed = _mouseLeftAction.WasPressedThisFrame();
             MouseLeftIsHeld = _mouseLeftAction.IsPressed();
             MouseLeftWasReleased = _mouseLeftAction.WasReleasedThisFrame();

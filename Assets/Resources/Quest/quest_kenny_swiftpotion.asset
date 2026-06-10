@@ -23,9 +23,11 @@ MonoBehaviour:
   requirementsToComplete:
     requirements:
     - rid: 5999243469903888406
-  questRewards:
+  questActions:
     goldReward: 0
-  storyText: {fileID: 0}
+  isMainQuest: 0
+  isRepeatable: 0
+  storyText: {fileID: 4900000, guid: 2593408fe5ae382449027269228a4634, type: 3}
   references:
     version: 2
     RefIds:
@@ -36,5 +38,5 @@ MonoBehaviour:
     - rid: 5999243469903888406
       type: {class: QuestPotionsRequirement, ns: , asm: Assembly-CSharp}
       data:
-        requiredPotion: {fileID: 0}
+        requiredPotion: {fileID: 11400000, guid: 43fe037c7c3bd11409e0c5c6a416d058, type: 2}
         requiredIngredient: []

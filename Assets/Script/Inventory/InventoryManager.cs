@@ -225,21 +225,50 @@ public class InventoryManager : Singleton<InventoryManager>
         return AreIngredientIDListsEqual(a, b);
     }
 
-    public bool CheckPotionExists(
+    public (bool exist, int id) CheckPotionExists(
         PotionData potionData,
         List<StoredData> ingredientsInside,
-        bool ignoreAdditionalData = false,
+        bool ignoreAdditionalData = true,
         string additionalData = null,
-        bool ignoreIngredientList = false,
+        bool ignoreIngredientList = true,
         bool matchIngredientsExactly = false)
     {
-        if (potionInventoryList?.potionList == null) return false;
+        if (potionInventoryList?.potionList == null) return (false, -1);
 
-        return potionInventoryList.potionList.Any(p =>
+        var potion = potionInventoryList.potionList.Find(p =>
             p.potionData.potionId == potionData.potionId &&
             (ignoreIngredientList || CompareIngredients(p.ingredientsInside, ingredientsInside, matchIngredientsExactly)) &&
             (ignoreAdditionalData || p.additionalData == additionalData)
         );
+
+        if (potion == null) return (false, -1);
+
+        return (true, potion.id);
+
+    }
+
+    public bool CheckPotionExistsAndRemove(
+        PotionData potionData,
+        List<StoredData> ingredientsInside,
+        bool ignoreAdditionalData = true,
+        string additionalData = null,
+        bool ignoreIngredientList = true,
+        bool matchIngredientsExactly = false)
+    {
+        if (potionInventoryList?.potionList == null) return false;
+
+        var potion = potionInventoryList.potionList.Find(p =>
+            p.potionData.potionId == potionData.potionId &&
+            (ignoreIngredientList || CompareIngredients(p.ingredientsInside, ingredientsInside, matchIngredientsExactly)) &&
+            (ignoreAdditionalData || p.additionalData == additionalData)
+        );
+
+        if (potion == null) return false;
+
+        RemovePotionObject(potion.id);
+        
+        return true;
+
     }
 
     // public int GetIngredientCount(string ingredientId)

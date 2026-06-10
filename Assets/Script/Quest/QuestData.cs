@@ -11,6 +11,10 @@ public class Requirements
     {
         return true;
     }
+    public virtual bool Submit()
+    {
+        return true;
+    }
 
 }
 [Serializable]
@@ -21,14 +25,51 @@ public class DaysRequirement : Requirements
     {
         return DayManager.Instance.Day >= minimumDaysPassed;
     }
+    public override bool Submit()
+    {
+        return DayManager.Instance.Day >= minimumDaysPassed;
+    }
 }
 [Serializable]
 public class QuestCompletionRequirement : Requirements
 {
     public string requiredQuestId;
+    public bool isCompleted = true;
     public override bool IsMet()
     {
-        return QuestRuntimeManager.Instance.IsQuestCompleted(QuestRuntimeManager.Instance.IdToQuestData(requiredQuestId));
+        return QuestRuntimeManager.Instance.IsQuestCompleted(QuestRuntimeManager.Instance.IdToQuestData(requiredQuestId)) == isCompleted;
+    }
+    public override bool Submit()
+    {
+        return QuestRuntimeManager.Instance.IsQuestCompleted(QuestRuntimeManager.Instance.IdToQuestData(requiredQuestId)) == isCompleted;
+    }
+}
+[Serializable]
+public class QuestOngoingRequirement : Requirements
+{
+    public string requiredQuestId;
+    public bool isOngoing = false;
+    public override bool IsMet()
+    {
+        return QuestRuntimeManager.Instance.IsQuestOnGoing(QuestRuntimeManager.Instance.IdToQuestData(requiredQuestId)) == isOngoing;
+    }
+    public override bool Submit()
+    {
+        return QuestRuntimeManager.Instance.IsQuestOnGoing(QuestRuntimeManager.Instance.IdToQuestData(requiredQuestId)) == isOngoing;
+    }
+}
+[Serializable]
+public class QuestUnlockedRequirement : Requirements
+{
+    public string unlockedQuestId;
+    public bool isUnlocked = true;
+    public override bool IsMet()
+    {
+        return QuestRuntimeManager.Instance.IsQuestUnlocked(QuestRuntimeManager.Instance.IdToQuestData(unlockedQuestId)) == isUnlocked;
+    }
+    public override bool Submit()
+    {
+        return QuestRuntimeManager.Instance.IsQuestUnlocked(QuestRuntimeManager.Instance.IdToQuestData(unlockedQuestId)) == isUnlocked;
     }
 }
 [Serializable]
@@ -38,12 +79,16 @@ public class QuestPotionsRequirement : Requirements
     public List<StoredData> requiredIngredient;
     public override bool IsMet()
     {
-        return InventoryManager.Instance.CheckPotionExists(requiredPotion, requiredIngredient, ignoreIngredientList: requiredIngredient == null || requiredIngredient.Count == 0);
+        return InventoryManager.Instance.CheckPotionExists(requiredPotion, requiredIngredient, ignoreIngredientList: requiredIngredient == null || requiredIngredient.Count == 0).exist;
+    }
+    public override bool Submit()
+    {
+        return InventoryManager.Instance.CheckPotionExistsAndRemove(requiredPotion, requiredIngredient, ignoreIngredientList: requiredIngredient == null || requiredIngredient.Count == 0);
     }
 }
 
 [Serializable]
-public class QuestRewards
+public class QuestAction
 {
     public int goldReward;
 }
@@ -71,6 +116,10 @@ public class RequirementList
     public bool AreAllMet()
     {
         return requirements.All(req => req.IsMet());
+    }
+    public bool SubmitAll()
+    {
+        return requirements.All(req => req.Submit());
     }
     [ContextMenu("Add Days Requirement")]
     public void AddDaysRequirement()
@@ -101,7 +150,9 @@ public class QuestData : ResourceData
     public SubmissionCharacter submissionCharacter;
     public RequirementList requirementsToUnlock;
     public RequirementList requirementsToComplete;
-    public QuestRewards questRewards;
+    public QuestAction questActions;
+    public bool isMainQuest;
+    public bool isRepeatable;
     [ReadOnly] public TextAsset storyText;
     public Story story { get; private set; }
     private void OnEnable()
@@ -159,20 +210,20 @@ public class QuestData : ResourceData
         return QuestRuntimeManager.Instance.IsQuestOnGoing(this);
     }
 
-    public void MarkAsCompleted()
-    {
-        QuestRuntimeManager.Instance.MarkQuestAsCompleted(this);
-    }
+    // public void MarkAsCompleted()
+    // {
+    //     QuestRuntimeManager.Instance.MarkQuestAsCompleted(this);
+    // }
 
-    public void MarkAsOnGoing()
-    {
-        QuestRuntimeManager.Instance.MarkQuestAsOnGoing(this);
-    }
+    // public void MarkAsOnGoing()
+    // {
+    //     QuestRuntimeManager.Instance.MarkQuestAsOnGoing(this);
+    // }
 
-    public void MarkAsUnlocked()
-    {
-        QuestRuntimeManager.Instance.MarkQuestAsUnlocked(this);
-    }
+    // public void MarkAsUnlocked()
+    // {
+    //     QuestRuntimeManager.Instance.MarkQuestAsUnlocked(this);
+    // }
 
     public string GetFormattedDescription()
     {

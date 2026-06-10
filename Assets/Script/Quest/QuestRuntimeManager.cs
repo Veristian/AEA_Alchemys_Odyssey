@@ -76,14 +76,20 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
     }
     private void OnEnable()
     {
-        DayManager.Instance.OnDayChanged += (day) => UnlockAvailableQuests();
+        if (DayManager.Instance)
+            DayManager.Instance.OnDayChanged += HandleDayChanged;
     }
 
     private void OnDisable()
     {
-        DayManager.Instance.OnDayChanged -= (day) => UnlockAvailableQuests();
+        if (DayManager.Instance)
+            DayManager.Instance.OnDayChanged -= HandleDayChanged;
     }
 
+    private void HandleDayChanged(int day)
+    {
+        UnlockAvailableQuests();
+    }
 
     public void Save()
     {
@@ -119,19 +125,23 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
     }
     
 
-    private void UpdateQuestInfo(QuestData questData, bool isCompleted, bool isOnGoing, bool isUnlocked)
+    private void UpdateQuestInfo(QuestData questData, bool isCompleted, bool isOnGoing, bool isUnlocked, bool repeatable)
     {
         PlayerQuestData playerQuest = playerQuestsList.playerQuests
             .Find(q => q.questData.questId == questData.questId);
 
-        UpdateQuestInfo(playerQuest, isCompleted, isOnGoing, isUnlocked);
+        UpdateQuestInfo(playerQuest, isCompleted, isOnGoing, isUnlocked, repeatable);
     }
-    private void UpdateQuestInfo(PlayerQuestData questData, bool isCompleted, bool isOnGoing, bool isUnlocked)
+    private void UpdateQuestInfo(PlayerQuestData questData, bool isCompleted, bool isOnGoing, bool isUnlocked, bool repeatable)
     {
         if (questData != null)
         {
-            if (questData.isCompleted)
+            if (questData.isCompleted && isUnlocked && repeatable)
             {
+                questData.isCompleted = false;
+                questData.isOnGoing = false;
+                questData.isUnlocked = true;
+                DayManager.Instance.SetShowLocalNews(questData.questData, true);
             }
             else if (questData.isOnGoing && isCompleted)
             {
@@ -139,18 +149,22 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
                 questData.isOnGoing = false;
                 questData.isUnlocked = true;
             }
-            else if (questData.isUnlocked && isOnGoing)
+            else if (questData.isUnlocked && isOnGoing && !questData.isCompleted)
             {
                 questData.isCompleted = false;
                 questData.isOnGoing = true;
                 questData.isUnlocked = true;
             }
-            else if (isUnlocked)
+            else if (isUnlocked && !questData.isOnGoing && !questData.isCompleted)
             {
                 questData.isCompleted = false;
                 questData.isOnGoing = false;
                 questData.isUnlocked = true;
-            }        
+            }       
+            if (questData.isCompleted)
+            {
+                DayManager.Instance.SetShowLocalNews(questData.questData, false);
+            } 
         }
         OnQuestListUpdated?.Invoke();
     }
@@ -165,6 +179,8 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
             }
         }
     }
+
+    
 
 
 #region public
@@ -207,32 +223,32 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
     }
     public void MarkQuestAsCompleted(PlayerQuestData questData)
     {
-        UpdateQuestInfo(questData, isCompleted: true, isOnGoing: false, isUnlocked: true);
+        UpdateQuestInfo(questData, isCompleted: true, isOnGoing: false, isUnlocked: true, questData.questData.isRepeatable);
     }
 
     public void MarkQuestAsOnGoing(PlayerQuestData questData)
     {
-        UpdateQuestInfo(questData, isCompleted: false, isOnGoing: true, isUnlocked: true);
+        UpdateQuestInfo(questData, isCompleted: false, isOnGoing: true, isUnlocked: true, questData.questData.isRepeatable);
     }
 
     public void MarkQuestAsUnlocked(PlayerQuestData questData)
     {
-        UpdateQuestInfo(questData, isCompleted: false, isOnGoing: false, isUnlocked: true);
+        UpdateQuestInfo(questData, isCompleted: false, isOnGoing: false, isUnlocked: true, questData.questData.isRepeatable);
     }
 
     public void MarkQuestAsCompleted(QuestData questData)
     {
-        UpdateQuestInfo(questData, isCompleted: true, isOnGoing: false, isUnlocked: true);
+        UpdateQuestInfo(questData, isCompleted: true, isOnGoing: false, isUnlocked: true, questData.isRepeatable);
     }
 
     public void MarkQuestAsOnGoing(QuestData questData)
     {
-        UpdateQuestInfo(questData, isCompleted: false, isOnGoing: true, isUnlocked: true);
+        UpdateQuestInfo(questData, isCompleted: false, isOnGoing: true, isUnlocked: true, questData.isRepeatable);
     }
 
     public void MarkQuestAsUnlocked(QuestData questData)
     {
-        UpdateQuestInfo(questData, isCompleted: false, isOnGoing: false, isUnlocked: true);
+        UpdateQuestInfo(questData, isCompleted: false, isOnGoing: false, isUnlocked: true, questData.isRepeatable);
     }
 
     public QuestData IdToQuestData(string questId)
@@ -241,6 +257,30 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
     }
 
 #endregion
+
+#region Quest Interaction
+    public void SubmitQuest(PlayerQuestData playerQuestData)
+    {
+        //check completion
+        Debug.Log("atempt subnit");
+        if (!playerQuestData.isUnlocked || !playerQuestData.isOnGoing || playerQuestData.isCompleted) return;
+        Debug.Log("pass");
+        if (!playerQuestData.questData.requirementsToComplete.SubmitAll()) return;
+        Debug.Log("submit");
+        //update quest
+        MarkQuestAsCompleted(playerQuestData);
+        //reward player
+        //note to self: add reward gold
+    }
+#endregion
+
+    public void SubmitAllQuest()
+    {
+        foreach (PlayerQuestData questData in playerQuestsList.playerQuests)
+        {
+            SubmitQuest(questData);
+        }
+    }
 
     
 }

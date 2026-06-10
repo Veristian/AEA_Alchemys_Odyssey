@@ -325,7 +325,7 @@ RectTransform:
   m_Children:
   - {fileID: 1636171747}
   - {fileID: 291385207}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 790067190}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1093,7 +1093,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 47220014}
   m_Father: {fileID: 2034495949}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &790067191
@@ -1292,10 +1293,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f5a8379bd13ddf43b46cff2baab67e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  day: 0
-  AllHeadlines: []
-  AllLocalRequests: []
-  AllLocalNews: []
+  AllHeadlines:
+  - headlinePrefab: {fileID: 0}
+    requirementsToBeShown:
+      requirements: []
+  AllLocalRequests:
+  - requestPrefab: {fileID: 0}
+    questData: {fileID: 11400000, guid: 2cc601d7eb1a0d34482f68c1aee0b8ad, type: 2}
+    followUpNewsId: 1
+    requirementsToBeShown:
+      requirements:
+      - rid: 5999243491663675400
+  - requestPrefab: {fileID: 0}
+    questData: {fileID: 11400000, guid: f5bdccf78fbf44e42a3b9e297cd5f6e0, type: 2}
+    followUpNewsId: 2
+    requirementsToBeShown:
+      requirements:
+      - rid: 5999243491663675401
+  - requestPrefab: {fileID: 0}
+    questData: {fileID: 11400000, guid: c423125d58279614da7406928ae1a71a, type: 2}
+    followUpNewsId: 3
+    requirementsToBeShown:
+      requirements:
+      - rid: 5999243491663675397
+      - rid: 5999243491663675402
+  - requestPrefab: {fileID: 0}
+    questData: {fileID: 11400000, guid: df592cb421d85384a83ff7d844309bcd, type: 2}
+    followUpNewsId: 4
+    requirementsToBeShown:
+      requirements:
+      - rid: 5999243491663675398
+      - rid: 5999243491663675403
+  AllLocalNews:
+  - newsId: 1
+    newsPrefab: {fileID: 0}
+    willBeShown: 0
+    hasBeenShown: 0
+  - newsId: 2
+    newsPrefab: {fileID: 0}
+    willBeShown: 0
+    hasBeenShown: 0
+  - newsId: 3
+    newsPrefab: {fileID: 0}
+    willBeShown: 0
+    hasBeenShown: 0
+  - newsId: 4
+    newsPrefab: {fileID: 0}
+    willBeShown: 0
+    hasBeenShown: 0
   ActiveHeadlines: []
   ActiveLocalRequests: []
   ActiveLocalNews: []
@@ -1312,8 +1357,8 @@ MonoBehaviour:
   currentLocalNews:
     newsId: 
     newsPrefab: {fileID: 0}
-    requirementsToBeShown:
-      requirements: []
+    willBeShown: 0
+    hasBeenShown: 0
   previousHeadline:
     headlinePrefab: {fileID: 0}
     requirementsToBeShown:
@@ -1327,11 +1372,41 @@ MonoBehaviour:
   previousLocalNews:
     newsId: 
     newsPrefab: {fileID: 0}
-    requirementsToBeShown:
-      requirements: []
+    willBeShown: 0
+    hasBeenShown: 0
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 5999243491663675397
+      type: {class: QuestUnlockedRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        unlockedQuestId: quest_monrizz_hungerpotion
+        isUnlocked: 1
+    - rid: 5999243491663675398
+      type: {class: QuestUnlockedRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        unlockedQuestId: quest_violette_sleeppotion
+        isUnlocked: 1
+    - rid: 5999243491663675400
+      type: {class: QuestOngoingRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_kenny_swiftpotion
+        isOngoing: 0
+    - rid: 5999243491663675401
+      type: {class: QuestOngoingRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_Iason_jumppotion
+        isOngoing: 0
+    - rid: 5999243491663675402
+      type: {class: QuestOngoingRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_monrizz_hungerpotion
+        isOngoing: 0
+    - rid: 5999243491663675403
+      type: {class: QuestOngoingRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_violette_sleeppotion
+        isOngoing: 0
 --- !u!1 &1444422832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,6 +1995,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipeList:
     recipes: []
+  day: 0
 --- !u!114 &2104368948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1942,7 +2018,6 @@ SceneRoots:
   - {fileID: 1696827230}
   - {fileID: 316463263}
   - {fileID: 2034495949}
-  - {fileID: 47220014}
   - {fileID: 767762946}
   - {fileID: 1444422837}
   - {fileID: 48880522}

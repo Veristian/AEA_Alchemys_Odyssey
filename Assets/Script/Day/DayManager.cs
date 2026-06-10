@@ -26,7 +26,10 @@ public class LocalNews
 {
     public string newsId;
     public GameObject newsPrefab;
-    public RequirementList requirementsToBeShown;
+    // public RequirementList requirementsToBeShown;
+    public bool willBeShown;
+    public bool hasBeenShown;
+    
 }
 public class DayManager : Singleton<DayManager>
 {
@@ -46,28 +49,28 @@ public class DayManager : Singleton<DayManager>
     public List<LocalRequest> AllLocalRequests;
     public List<LocalNews> AllLocalNews;
 
-    [ReadOnly] public List<Headline> ActiveHeadlines;
-    [ReadOnly] public List<LocalRequest> ActiveLocalRequests;
-    [ReadOnly] public List<LocalNews> ActiveLocalNews;
+    public List<Headline> ActiveHeadlines;
+    public List<LocalRequest> ActiveLocalRequests;
+    public List<LocalNews> ActiveLocalNews;
 
     public Headline currentHeadline;
     public LocalRequest currentLocalRequest;
     public LocalNews currentLocalNews;
 
-    [ReadOnly] public Headline previousHeadline;
-    [ReadOnly] public LocalRequest previousLocalRequest;
-    [ReadOnly] public LocalNews previousLocalNews;
-    // protected override void Awake()
-    // {
-    //     transform.parent = null;
-    //     if (Instance != null && Instance != this)
-    //     {
-    //         Destroy(gameObject); 
-    //         return;
-    //     }
-    //     base.Awake();
-    //     DontDestroyOnLoad(gameObject);
-    // }
+    public Headline previousHeadline;
+    public LocalRequest previousLocalRequest;
+    public LocalNews previousLocalNews;
+    protected override void Awake()
+    {
+        transform.parent = null;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject); 
+            return;
+        }
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
+    }
     public void SetDay(int newDay)
     {
         if (newDay < 0)
@@ -90,16 +93,20 @@ public class DayManager : Singleton<DayManager>
             Day--;
     }
 
-    private void PoolActiveElements()
+    private void PoolAndSetActiveElements()
     {
         ActiveHeadlines = AllHeadlines.FindAll(h => h.requirementsToBeShown.AreAllMet());
-        ActiveLocalRequests = AllLocalRequests.FindAll(r => r.requirementsToBeShown.AreAllMet());
-        ActiveLocalNews = AllLocalNews.FindAll(n => n.requirementsToBeShown.AreAllMet());
+        ActiveLocalRequests = AllLocalRequests.FindAll(r => r.requirementsToBeShown.AreAllMet() );
+        ActiveLocalNews = AllLocalNews.FindAll(n => n.willBeShown);
     }
+
 
     private void StartNewDay()
     {
-        PoolActiveElements();
+        currentLocalNews.willBeShown = false;
+        currentLocalNews.hasBeenShown = true;
+
+        PoolAndSetActiveElements();
 
         previousHeadline = currentHeadline;
         previousLocalRequest = currentLocalRequest;
@@ -108,8 +115,35 @@ public class DayManager : Singleton<DayManager>
         currentHeadline = ActiveHeadlines.Count > 0 ? ActiveHeadlines[UnityEngine.Random.Range(0, ActiveHeadlines.Count)] : null;
         currentLocalRequest = ActiveLocalRequests.Count > 0 ? ActiveLocalRequests[UnityEngine.Random.Range(0, ActiveLocalRequests.Count)] : null;
         currentLocalNews = ActiveLocalNews.Count > 0 ? ActiveLocalNews[UnityEngine.Random.Range(0, ActiveLocalNews.Count)] : null;
+
+
     }
 
+    public void SetShowLocalNews(QuestData questData, bool ignoreHasBeenShown)
+    {
+        if (questData == null) return;
+        //match to local request    
+        var localRequest = AllLocalRequests.Find(n => n.questData == questData);
+        //get local news from the followup id
+        if (localRequest == null || localRequest.followUpNewsId == null || localRequest.followUpNewsId == "") return;
+        var localNews = AllLocalNews.Find(n => n.newsId == localRequest.followUpNewsId);
+        //set local news shown to true
+        if (localNews == null) return;
+        if (localNews.hasBeenShown && !ignoreHasBeenShown) return;
+        localNews.willBeShown = true;
+        localNews.hasBeenShown = false;
+    }
+
+    public void ViewNewsAndAcceptNews()
+    {
+        //open UI
+
+        //accept quests
+        QuestRuntimeManager.Instance.MarkQuestAsOnGoing(currentLocalRequest.questData);
+    }
+
+
+    
     
 
 

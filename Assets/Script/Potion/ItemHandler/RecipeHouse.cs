@@ -21,7 +21,8 @@ public class RecipeHouse : Singleton<RecipeHouse>
     }
     private void OnDisable()
     {
-        DataManager.Instance.OnGameLoaded -= SetupRecipes;
+        if (DataManager.Instance != null)
+            DataManager.Instance.OnGameLoaded -= SetupRecipes;
     }
 
     private void SetupRecipes()

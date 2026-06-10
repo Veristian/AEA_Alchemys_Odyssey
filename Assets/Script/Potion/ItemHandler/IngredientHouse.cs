@@ -21,7 +21,8 @@ public class IngredientHouse : Singleton<IngredientHouse>
     }
     private void OnDisable()
     {
-        DataManager.Instance.OnGameLoaded -= SetupIngredients;
+        if (DataManager.Instance != null)
+            DataManager.Instance.OnGameLoaded -= SetupIngredients;
     }
 
     private void SetupIngredients()

@@ -21,7 +21,8 @@ public class PotionHouse : Singleton<PotionHouse>
     }
     private void OnDisable()
     {
-        DataManager.Instance.OnGameLoaded -= SetupPotions;
+        if (DataManager.Instance != null)
+            DataManager.Instance.OnGameLoaded -= SetupPotions;
     }
 
     private void SetupPotions()

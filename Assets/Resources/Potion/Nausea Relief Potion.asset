@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09e1f531f73ff1a478f4cf5c0ac53ac0, type: 3}
-  m_Name: TestPotion 2
+  m_Name: Nausea Relief Potion
   m_EditorClassIdentifier: 
   loadState: 0
-  quest_id: 
-  potionId: test_potion_2
-  potionName: PotionNameTest2
+  questId: 
+  potionId: Nausea Relief Potion
+  potionName: Nausea Relief Potion
   potion2DObjectPrefab: {fileID: 1171091932301145056, guid: 1bac119c5f3c28a4bb9ef76b166417e2, type: 3}
   potionSprite: {fileID: 0}
-  description: pot2
+  description: A good potion to have when encountering nausea either from lack of
+    oxygen when exhausted or from sea sickness.
   potionColor: {r: 0, g: 0, b: 0, a: 0}
   ingredients:
   - ingredientData: {fileID: 11400000, guid: 9422507e7331f42408184ebdf9334ee1, type: 2}

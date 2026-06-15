@@ -79,6 +79,7 @@ public class PlayerDataManager : Singleton<PlayerDataManager>
         );
 
         recipeList.recipes.ForEach(r => r.OnAfterDeserialize());
+        recipeList.recipes.RemoveAll(i => i.targetPotion == null);
 
         Debug.Log("Player Data Loaded");
 

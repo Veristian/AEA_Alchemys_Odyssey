@@ -220,7 +220,12 @@ public class PotionGraph : MonoBehaviour
         return currentPoints;
     }
 
-    //note to self: add ingredient plop animation thingy here by adding speed to points
+    public void Splash(float contactPoint, float force)
+    {
+        int index = Mathf.RoundToInt(Mathf.Clamp((contactPoint*(float)pointsLength),1,pointsLength));
+        
+        currentPoints[index-1].z += force;
+    }
 #endregion
 
 

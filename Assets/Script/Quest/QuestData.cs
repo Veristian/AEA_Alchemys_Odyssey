@@ -104,7 +104,8 @@ public enum SubmissionCharacter
     Sven,
     Poshe,
     Circe,
-    Tidus
+    Tidus,
+    Chemy
 
 }
 [Serializable]

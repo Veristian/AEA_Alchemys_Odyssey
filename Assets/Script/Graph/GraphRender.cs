@@ -328,7 +328,6 @@ public class GraphRender : Singleton<GraphRender>
         float[] rightDeltas = new float[newHeight.Length];
                     
         // do some passes where springs pull on their neighbours 
-        //note to self: convert this to use points as baseline and not 0 0
         // for (int j = 0; j < 1; j++)
         // {
         //     for (int i = 0; i < newHeight.Length; i++)

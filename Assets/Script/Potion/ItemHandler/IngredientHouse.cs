@@ -45,7 +45,7 @@ public class IngredientHouse : Singleton<IngredientHouse>
         }
     }
 
-    public void UpdateIngredientsHousesObjTaken(List<IngredientData> ingredientToRemove)
+    public void UpdateIngredientsHousesObjTaken(List<IngredientData> ingredientToRemove, bool returnIngredient = false)
     {
         if (ingredientToRemove == null || ingredientToRemove.Count == 0) return;
         var groupedToRemove = ingredientToRemove
@@ -58,7 +58,15 @@ public class IngredientHouse : Singleton<IngredientHouse>
 
             if (groupedToRemove.TryGetValue(ingredientData, out int removeCount))
             {
-                houseItem.objTaken += removeCount;
+                if (returnIngredient)
+                {
+                    houseItem.objTaken -= removeCount;
+                }
+                else
+                {
+                    houseItem.objTaken += removeCount;
+                }
+                
             }
         }
     }

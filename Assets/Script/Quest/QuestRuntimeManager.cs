@@ -104,6 +104,7 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
         );
 
         playerQuestsList.playerQuests.ForEach(r => r.OnAfterDeserialize());
+        playerQuestsList.playerQuests.RemoveAll(i => i.questData == null);
 
         var existingIds = new HashSet<string>(
             playerQuestsList.playerQuests

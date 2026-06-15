@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 //change to potion
-public class PotionHouseItem : MonoBehaviour, IPointerDownHandler
+public class PotionHouseItem : MonoBehaviour//, IPointerDownHandler
 {
     [Header("Reference")]
     [SerializeField] private TextMeshProUGUI amountText;  
@@ -22,10 +22,10 @@ public class PotionHouseItem : MonoBehaviour, IPointerDownHandler
         objTaken = false;
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        GrabItem();
-    }
+    // public void OnPointerDown(PointerEventData eventData)
+    // {
+    //     GrabItem();
+    // }
     public void AssignPotion(PotionInventoryData potion)
     {
         this.potion = potion;
@@ -42,30 +42,30 @@ public class PotionHouseItem : MonoBehaviour, IPointerDownHandler
         amountText.text = displayedObjectAmount.ToString();
     }
 
-    private void GrabItem()
-    {
-        if (displayedObjectAmount <= 0) return;
+    // private void GrabItem()
+    // {
+    //     if (displayedObjectAmount <= 0) return;
         
-        InputManager.Instance.AssignThisAsGrabbable(CreateGrabbable());
-        IncreaseObjTaken();
+    //     InputManager.Instance.AssignThisAsGrabbable(CreateGrabbable());
+    //     IncreaseObjTaken();
         
-    }
+    // }
 
-    private GameObject CreateGrabbable()
-    {
-        return GameObject.Instantiate(potion.potionData.potion2DObjectPrefab);
-    }
+    // private GameObject CreateGrabbable()
+    // {
+    //     return GameObject.Instantiate(potion.potionData.potion2DObjectPrefab);
+    // }
 
-    public void IncreaseObjTaken()
-    {
-        objTaken = true;
-        UpdateDisplay();
-    }
-    public void DecreaseObjTaken()
-    {
-        objTaken = false;
-        UpdateDisplay();
-    }
+    // public void IncreaseObjTaken()
+    // {
+    //     objTaken = true;
+    //     UpdateDisplay();
+    // }
+    // public void DecreaseObjTaken()
+    // {
+    //     objTaken = false;
+    //     UpdateDisplay();
+    // }
 
     
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 using System.Linq;
+using Unity.VisualScripting;
 [Serializable]
 
 public class PotionInventoryData
@@ -31,7 +32,7 @@ public class PotionInventoryData
 
 public class IngredientInventoryData
 {
-    public IngredientData ingredientData; // problem
+    public IngredientData ingredientData; 
     [ReadOnly] public string ingredientDataId;
     public int amount;
 
@@ -325,7 +326,8 @@ public class InventoryManager : Singleton<InventoryManager>
 
         potionInventoryList.potionList.ForEach(p => p.OnAfterDeserialize());
         ingredientInventoryList.ingredientsList.ForEach(i => i.OnAfterDeserialize());
-
+        potionInventoryList.potionList.RemoveAll(i => i.potionData == null);
+        ingredientInventoryList.ingredientsList.RemoveAll(i => i.ingredientData == null);
         Debug.Log("Inventory Loaded");
         
         //fills out definitin for all ingredients for faster reload time

@@ -4,28 +4,43 @@ using UnityEngine;
 using TMPro;
 using Ink.Runtime;
 using System;
+using System.Linq;
+using UnityEngine.UI;
+[Serializable]
+public class CharacterSprite
+{
+    public Sprite sprite;
+    public SubmissionCharacter character;
+}
 
 public class DialogueManager : Singleton<DialogueManager>
 {
     private const string DialogueResourcePath = "Dialogue/"; // Base path for dialogue JSON files in Resources
-    [Header("UI")]
+    [Header("UI Reference")]
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText;
     public TextMeshProUGUI speakerNameText;
+    public Image leftSprite;
+    public Image rightSprite;
+    [Header("Character")]
+    public List<CharacterSprite> characterSprites;
+    private HashSet<SubmissionCharacter> shownCharacters = new HashSet<SubmissionCharacter>();
+private SubmissionCharacter? currentSpeaker = null;
 
     [Header("Settings")]
     public float textSpeed = 0.02f;
+    public float fadeDuration = 0.3f;
 
     private Story story;
     private Coroutine currentLineCoroutine;
 
     public bool isTyping {get; private set;}
     public bool dialogueActive {get; private set;}
-    // void Start()
-    // {
-        
-    //     StartDialogue("TestStory");
-    // }
+    void Start()
+    {
+        dialoguePanel.SetActive(false);
+        SetImageTransparent();
+    }
 
     public static TextAsset GetInkJSON(string name)
     {
@@ -186,6 +201,7 @@ public class DialogueManager : Singleton<DialogueManager>
                         Debug.LogWarning("Speaker Name \"" + value + "\" Text reference is not assigned. Please assign a TextMeshProUGUI reference to speakerNameText in the inspector.");
                         return;
                     }
+                    HandleCharacterTag(value);
                     speakerNameText.text = value;
                     break;
 
@@ -224,5 +240,148 @@ public class DialogueManager : Singleton<DialogueManager>
         //         break;
         // }
         // note to self: make functions, make quest ongoing, finish quest, teleport player, fade screen.
+    }
+
+    // ================================
+    // 🔹 CHARACTER TAG
+    // Format: char: Kenny,left
+    // ================================
+void HandleCharacterTag(string value)
+{
+    string[] parts = value.Split(',');
+
+    string characterName = parts[0].Trim();
+    string position = (parts.Length >= 2) ? parts[1].Trim() : "left";
+
+    if (Enum.TryParse(characterName, out SubmissionCharacter character))
+    {
+        currentSpeaker = character;
+        ShowCharacter(character, position);
+    }
+    else
+    {
+        Debug.LogWarning("Invalid character enum: " + characterName);
+    }
+}    // ================================
+    // 🔹 SHOW CHARACTER
+    // ================================
+void ShowCharacter(SubmissionCharacter character, string position)
+{
+    foreach (CharacterSprite cs in characterSprites)
+    {
+        if (cs.character == character)
+        {
+            bool firstTime = !shownCharacters.Contains(character);
+
+            ChangeSprite(cs.sprite, position, firstTime);
+
+            if (firstTime)
+                shownCharacters.Add(character);
+
+            UpdateSpeakerHighlight();
+
+            return;
+        }
+    }
+
+    Debug.LogWarning("Character sprite not found: " + character);
+}
+    // ================================
+    // 🔹 CHANGE SPRITE + FADE
+    // ================================
+void ChangeSprite(Sprite sprite, string position, bool fadeIn)
+{
+    Image target = null;
+
+    switch (position.ToLower())
+    {
+        case "left":
+            target = leftSprite;
+            break;
+        case "right":
+            target = rightSprite;
+            break;
+    }
+
+    if (target == null)
+    {
+        Debug.LogWarning("Invalid position: " + position);
+        return;
+    }
+
+    target.sprite = sprite;
+
+    if (fadeIn)
+    {
+        Color c = target.color;
+        c.a = 0f;
+        target.color = c;
+
+        StartCoroutine(FadeIn(target));
+    }
+}
+    // ================================
+    // 🔹 FADE IN
+    // ================================
+IEnumerator FadeIn(Image renderer)
+{
+    float time = 0f;
+    Color c = renderer.color;
+
+    while (time < fadeDuration)
+    {
+        time += Time.deltaTime;
+        float t = time / fadeDuration;
+
+        c.a = Mathf.Lerp(0f, 1f, t);
+        renderer.color = c;
+
+        yield return null;
+    }
+
+    c.a = 1f;
+    renderer.color = c;
+}    void UpdateSpeakerHighlight()
+{
+    if (currentSpeaker == null) return;
+
+    SubmissionCharacter speaker = currentSpeaker.Value;
+
+    foreach (CharacterSprite cs in characterSprites)
+    {
+        if (!shownCharacters.Contains(cs.character))
+            continue;
+
+        Image target = null;
+
+        if (leftSprite.sprite == cs.sprite)
+            target = leftSprite;
+        else if (rightSprite.sprite == cs.sprite)
+            target = rightSprite;
+
+        if (target == null) continue;
+
+        Color c = target.color;
+
+        if (cs.character == speaker)
+        {
+            c = Color.white;
+            c.a = 1f;
+        }
+        else
+        {
+            c = new Color(0.5f, 0.5f, 0.5f, 1f); // dimmed
+            // c.a = 1f;
+        }
+
+        target.color = c;
+    }
+}
+
+void SetImageTransparent()
+    {
+        if (leftSprite == null || rightSprite == null) return;
+        leftSprite.color = new Color(255,255,255,0); 
+        rightSprite.color = new Color(255,255,255,0); 
     }
 }

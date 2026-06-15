@@ -57,6 +57,7 @@ public class PotionManager : Singleton<PotionManager>
     [Tooltip("Distance inside the potion until it confirms to add the potion ingredient. Starts at 0 to negative values")]
     [SerializeField] private float potionConfirmDistance = -5f;
     [SerializeField] private LayerMask ingredientObjectLayer;
+    [SerializeField] private float splashForce = -100;
     [Header("Debug")]
     [SerializeField] private PotionData setActivePotionDebug;
     [SerializeField] private IngredientData addedDebugIngredient;
@@ -260,6 +261,7 @@ public class PotionManager : Singleton<PotionManager>
     {
         currentActivePotionIngredients.Add(new StoredData(newIngredient, contactPoint));
         AddPotionGraphCurves(AdjustCurveToContactPoint(newIngredient, contactPoint)); 
+        potionGraph.Splash(contactPoint, splashForce);
     }
     
     
@@ -348,10 +350,9 @@ public class PotionManager : Singleton<PotionManager>
         // var ingredientDataList = currentActivePotionIngredients
         IngredientHouse.Instance.UpdateIngredientsHousesObjTaken(currentActivePotionIngredients?
         .Select(s => s.ingredientData)
-        .ToList() ?? new List<IngredientData>());
+        .ToList() ?? new List<IngredientData>(), true);
         currentActivePotionIngredients.Clear();
         ClearPotionGraph();
-        //note to self: add update ingredient count here
     }
 
 

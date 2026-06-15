@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -62,11 +63,12 @@ public class PotionMakingUi : MonoBehaviour
     // Function 1: Open selected tab
     public void OpenTab(int index)
     {
-        if (index < 0 || index >= tabs.Length)
+        if (index < 0 || index >= tabs.Length || tabs == null || tabs.Length == 0)
             return;
 
         for (int i = 0; i < tabs.Length; i++)
         {
+            if (tabs[i].IsUnityNull() || tabs[i].container.IsUnityNull()) continue;
             tabs[i].container.SetActive(i == index);
         }
 

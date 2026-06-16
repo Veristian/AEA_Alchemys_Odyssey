@@ -460,7 +460,8 @@ public class PotionManager : Singleton<PotionManager>
 
     private void DetectAndStorePotionIngredientObjects()
     {
-        Collider[] colliders = Physics.OverlapBox(new Vector3(graphOrigin.x + graphSize.x/2, graphOrigin.y + graphSize.y/2, graphOrigin.z), graphSize*0.5f, Quaternion.identity, ingredientObjectLayer);
+        Collider[] colliders = Physics.OverlapBox(new Vector3(graphOrigin.x + graphSize.x/2, graphOrigin.y + graphSize.y, graphOrigin.z), new Vector3(graphSize.x*.5f,graphSize.y,0), Quaternion.identity, ingredientObjectLayer);
+        
         if (colliders.Length == 0)
         {
             potionIngredientObjects = null;

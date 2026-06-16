@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.U2D; 
 using TMPro;
+using UnityEngine.UI;
 [Serializable]
 public class StoredData
 {
@@ -28,6 +29,7 @@ public class PotionManager : Singleton<PotionManager>
         get {return potionMakingCamera ?? Camera.main; }
     }
     [SerializeField] private Transform playArea;
+    private Vector3 playAreaOrigin;
     public Transform PlayArea
     {
         get {return playArea ?? this.transform; }
@@ -40,6 +42,7 @@ public class PotionManager : Singleton<PotionManager>
     [SerializeField] private PotionGraph potionFutureGraph;
     [SerializeField] private PotionGraph guideGraphTop;
     [SerializeField] private PotionGraph guideGraphBottom;  
+    [SerializeField] private Slider heatSlider;  
 
     [Header("References/Text Info")]
     [SerializeField] private TextMeshProUGUI potionNameText;
@@ -58,6 +61,9 @@ public class PotionManager : Singleton<PotionManager>
     [SerializeField] private float potionConfirmDistance = -5f;
     [SerializeField] private LayerMask ingredientObjectLayer;
     [SerializeField] private float splashForce = -100;
+    [SerializeField] private float minHeatOffset = -5;
+    [SerializeField] private float maxHeatOffset = 5;
+
     [Header("Debug")]
     [SerializeField] private PotionData setActivePotionDebug;
     [SerializeField] private IngredientData addedDebugIngredient;
@@ -66,7 +72,7 @@ public class PotionManager : Singleton<PotionManager>
     [SerializeField] private int pointsLength = 25;
     [SerializeField] private Vector2 graphSize = new Vector2(100, 100);
     [SerializeField, Range(0.25f, 0.75f)] private float graphDefaultRest = 0.5f;
-    [SerializeField] private Transform graphOrigin;
+    [SerializeField] private Vector3 graphOrigin;
     [Header("Potion Info")]
     [SerializeField] private float restOffset = 0f;
     [SerializeField, Range(0f, 0.4f)] public float bottomPaddingRatio = 0f;
@@ -85,6 +91,7 @@ public class PotionManager : Singleton<PotionManager>
     private void Start()
     {
         guideGraphTop.SetAnchorTop(true);
+        playAreaOrigin = playArea.transform.position;
         
     }
 
@@ -92,10 +99,17 @@ public class PotionManager : Singleton<PotionManager>
     {
         DetectAndStorePotionIngredientObjects();
         UpdateFuturePotionGraph();
-
+        UpdateHeat();
         //setup offsets for dynamic graphs
         potionGraph.restOffset = restOffset;
         potionFutureGraph.restOffset = restOffset;
+        
+        // //setup graph position
+        // potionGraph.graphOrigin = graphOrigin;
+        // potionFutureGraph.graphOrigin = graphOrigin;
+        // guideGraphBottom.graphOrigin = graphOrigin;
+        // guideGraphTop.graphOrigin = graphOrigin;
+
 
     }
 
@@ -334,10 +348,10 @@ public class PotionManager : Singleton<PotionManager>
     {
         if (activePotionTarget == null)
         {
-            AddPotionIngredient(newIngredient.IngredientData, (newIngredient.position.x-graphOrigin.position.x)/graphSize.x);
+            AddPotionIngredient(newIngredient.IngredientData, (newIngredient.position.x-graphOrigin.x)/graphSize.x);
         }
         else if (newIngredient.IngredientData.questId == activePotionTarget.questId || (newIngredient.IngredientData.questId == null && activePotionTarget.questId == null))
-            AddPotionIngredient(newIngredient.IngredientData, (newIngredient.position.x-graphOrigin.position.x)/graphSize.x);
+            AddPotionIngredient(newIngredient.IngredientData, (newIngredient.position.x-graphOrigin.x)/graphSize.x);
         else
         {
             Debug.Log("Ingredient is not allowed in this potion");
@@ -380,6 +394,12 @@ public class PotionManager : Singleton<PotionManager>
 
 #region private methods
 // updates the guide graph to show the curves of the ingredients for the target potion. This method will be called whenever the active potion is changed 
+
+    private void UpdateHeat()
+    {
+        restOffset = heatSlider.value * (maxHeatOffset - minHeatOffset) + minHeatOffset;
+        playArea.transform.position = new Vector3(playArea.transform.position.x,playAreaOrigin.y - (restOffset),playArea.transform.position.z);
+    }
     private void UpdateGuideGraph()
     {
         List<AnimationCurve> ingredientCurves = new List<AnimationCurve>();
@@ -440,7 +460,7 @@ public class PotionManager : Singleton<PotionManager>
 
     private void DetectAndStorePotionIngredientObjects()
     {
-        Collider[] colliders = Physics.OverlapBox(new Vector3(graphOrigin.position.x + graphSize.x/2, graphOrigin.position.y + graphSize.y/2, graphOrigin.position.z), graphSize*0.5f, Quaternion.identity, ingredientObjectLayer);
+        Collider[] colliders = Physics.OverlapBox(new Vector3(graphOrigin.x + graphSize.x/2, graphOrigin.y + graphSize.y/2, graphOrigin.z), graphSize*0.5f, Quaternion.identity, ingredientObjectLayer);
         if (colliders.Length == 0)
         {
             potionIngredientObjects = null;
@@ -457,7 +477,7 @@ public class PotionManager : Singleton<PotionManager>
         
         for (int i = 0; i < potionIngredientObjects.Count; i++)
         {
-            potionCurves.Add(AdjustCurveToContactPoint(potionIngredientObjects[i].ToStoredData(graphSize.x,graphOrigin.position.x))); 
+            potionCurves.Add(AdjustCurveToContactPoint(potionIngredientObjects[i].ToStoredData(graphSize.x,graphOrigin.x))); 
         }
     }
 

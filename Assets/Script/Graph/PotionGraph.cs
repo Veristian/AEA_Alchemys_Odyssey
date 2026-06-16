@@ -16,7 +16,7 @@ public class PotionGraph : MonoBehaviour
     [SerializeField] private int pointsLength = 25;
     [SerializeField] private Vector2 graphSize = new Vector2(100, 100);
     [SerializeField, Range(0.25f, 0.75f)] private float graphDefaultRest = 0.5f;
-    [SerializeField] private Transform graphOrigin;
+    [SerializeField] public Vector3 graphOrigin;
     [SerializeField] private bool topAnchor = false;
 
     [Header("Curves")]
@@ -45,7 +45,7 @@ public class PotionGraph : MonoBehaviour
         if (graphOrigin == null)
         {
             Debug.LogWarning("Graph Origin is not assigned. Please assign a Transform to graphOrigin.");
-            graphOrigin = this.transform;
+            graphOrigin = Vector3.zero;
         }
         currentPoints = new Vector3[pointsLength];
         for (int i = 0; i < pointsLength; i++)
@@ -77,12 +77,12 @@ public class PotionGraph : MonoBehaviour
             return;
         }
         GraphRender.Instance.ConvertCurvesToSpecifiedPointsLength(potionCurves, currentPoints);
-        GraphRender.Instance.DrawShape(spriteShapeController, currentPoints, graphOrigin.position, graphSize, graphDefaultRest, restOffset, bottomPaddingRatio, topPaddingRatio, topAnchor);  
+        GraphRender.Instance.DrawShape(spriteShapeController, currentPoints, graphOrigin, graphSize, graphDefaultRest, restOffset, bottomPaddingRatio, topPaddingRatio, topAnchor);  
     }
 
 
 #region Public Methods
-    public void SetGraphProperties(int newPointsLength, Vector2 newGraphSize, float newGraphDefaultRest, Transform newGraphOrigin)
+    public void SetGraphProperties(int newPointsLength, Vector2 newGraphSize, float newGraphDefaultRest, Vector3 newGraphOrigin)
     {
         pointsLength = newPointsLength;
         graphSize = newGraphSize;

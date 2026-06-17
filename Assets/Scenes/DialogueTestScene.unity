@@ -434,6 +434,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 6697333064115204842, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: progressions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697333064115204842, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: progressions.Array.data[0].unlockId
+      value: test
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697333064115204842, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: 'managedReferences[5999243691941953580]'
+      value: Assembly-CSharp DaysRequirement
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697333064115204842, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: 'managedReferences[5999243691941953584]'
+      value: Assembly-CSharp QuestCompletionRequirement
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697333064115204842, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: managedReferences[5999243691941953584].isCompleted
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697333064115204842, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: managedReferences[5999243691941953584].requiredQuestId
+      value: quest_Iason_jumppotion
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697333064115204842, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: managedReferences[5999243691941953580].minimumDaysPassed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697333064115204842, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: progressions.Array.data[0].requirementList.requirements.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697333064115204842, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: 'progressions.Array.data[0].requirementList.requirements.Array.data[0]'
+      value: 5999243691941953584
+      objectReference: {fileID: 0}
     - target: {fileID: 6982703046419081174, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -791,6 +827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCDefaultDialogue: {fileID: 4900000, guid: f56dcd42d55e6b541955aa2fdea71eed, type: 3}
   character: 3
+  isOneTime: 0
 --- !u!65 &1444422834
 BoxCollider:
   m_ObjectHideFlags: 0

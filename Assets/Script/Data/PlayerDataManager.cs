@@ -173,6 +173,7 @@ public class PlayerDataManager : Singleton<PlayerDataManager>
     {
         UnlockData unlockData = gameObjectUnlocks.unlockData.Find(g => g.itemGroupId == id);
         if (unlockData == null) return;
+        if (unlockData.isUnlocked) return;
         unlockData.isUnlocked = unlocked;
         if (UnlockManager.Instance != null && unlocked)
         {

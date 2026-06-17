@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         rb.freezeRotation = true;
 
         if (inputManager == null)
-            inputManager = GetComponent<InputManager>() ?? FindObjectOfType<InputManager>();
+            inputManager = InputManager.Instance;
 
         walkSpeed = moveSpeed;
         sprintSpeed = moveSpeed * 1.5f;

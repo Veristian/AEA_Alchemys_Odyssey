@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
-public class NPCTrigger : MonoBehaviour
+public class NPCTrigger : MonoBehaviour, IInteractable
 {
     [SerializeField] private TextAsset NPCDefaultDialogue;
     [SerializeField] private SubmissionCharacter character;
     private BoxCollider interactCollider;
-    bool playerInside;
+    [SerializeField] private bool isOneTime = false;
+    // bool playerInside;
     private void Awake()
     {
         interactCollider = GetComponent<BoxCollider>();
+        interactCollider.isTrigger = true;
     }
 
     //check quest
@@ -29,7 +31,6 @@ public class NPCTrigger : MonoBehaviour
     {
         
         List<PlayerQuestData> completedQuest = GetCharacterQuest(true);
-        Debug.Log("aad");
         if (completedQuest == null || completedQuest.Count == 0)
         {
             DialogueManager.Instance.StartDialogue(DialogueManager.GetStory(NPCDefaultDialogue));
@@ -38,32 +39,37 @@ public class NPCTrigger : MonoBehaviour
         {
             DialogueManager.Instance.StartDialogue(completedQuest[0].questData.story);
         }
+        if (isOneTime) interactCollider.enabled = false;
     }
 
 
-    //ColliderTrigger
-    private void OnTriggerEnter(Collider other)
+    // //ColliderTrigger
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     if (other.CompareTag("Player"))
+    //     {
+    //         playerInside = true;
+    //     }
+    // }
+    // private void OnTriggerExit(Collider other)
+    // {
+    //     if (other.CompareTag("Player"))
+    //     {
+    //         playerInside = false;
+    //     }
+    // }
+
+    // private void Update()
+    // {
+    //     if (InputManager.Instance.InteractWasPressed && !DialogueManager.Instance.dialogueActive && playerInside)
+    //     {
+    //         StartConversation();
+    //     }
+    // }
+
+    public void Interact(GameObject interactor)
     {
-        if (other.CompareTag("Player"))
-        {
-            playerInside = true;
-        }
+        StartConversation();
     }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerInside = false;
-        }
-    }
-
-    private void Update()
-    {
-        if (InputManager.Instance.InteractWasPressed && !DialogueManager.Instance.dialogueActive && playerInside)
-        {
-            StartConversation();
-        }
-    }
-
 
 }

@@ -37,13 +37,38 @@ public class DayData
 {
     public int day;
 }
+[Serializable, Metadata("Gold")]
+public class GoldData
+{
+    public int gold;
+}
+[Serializable, Metadata("Unlocks")]
+public class UnlocksData
+{
+    public List<UnlockData> unlockData;
+}
+[Serializable]
+public class UnlockData
+{
+    public string itemGroupId;
+    public bool isUnlocked;
+}
 public class PlayerDataManager : Singleton<PlayerDataManager>
 {
     //add day 
     private const string RecipeListFileName = "PlayerRecipeData";
     private const string DayFileName = "PlayerDayData";
+    private const string GoldFileName = "PlayerGoldData";
+    private const string UnlocksFileName = "PlayerUnlocksData";
+
     [SerializeField] private RecipeList recipeList;
     public int day;
+    public int gold;
+    [SerializeField] private UnlocksData gameObjectUnlocks;
+    public UnlocksData GameObjectUnlocks
+    {
+        get { return gameObjectUnlocks; }
+    }
     public RecipeList RecipeList
     {
         get { return recipeList; }
@@ -67,6 +92,8 @@ public class PlayerDataManager : Singleton<PlayerDataManager>
         recipeList.recipes.ForEach(r => r.OnBeforeSerialize());
         DataManager.Instance.SaveToFile(RecipeListFileName, recipeList);
         DataManager.Instance.SaveToFile(DayFileName, new DayData { day = day });
+        DataManager.Instance.SaveToFile(GoldFileName, new GoldData { gold = gold });
+        DataManager.Instance.SaveToFile(UnlocksFileName, gameObjectUnlocks);
         Debug.Log("Player Data Saved");
     }
 
@@ -100,8 +127,75 @@ public class PlayerDataManager : Singleton<PlayerDataManager>
 
         recipeList.recipes.AddRange(newEntries);
         DayManager.Instance.SetDay(DataManager.Instance.LoadFromFile(DayFileName, () => new DayData { day = 0 }).day);
+        gold = DataManager.Instance.LoadFromFile(GoldFileName, () => new GoldData { gold = 0 }).gold;
 
+        gameObjectUnlocks = DataManager.Instance.LoadFromFile(
+            UnlocksFileName,
+            () => new UnlocksData { unlockData = new List<UnlockData>() }
+        );
 
+        InitializeUnlockedObjects();
+
+        
     }
+
+    //called on first load and by unlock manager after game loaded
+    public void InitializeUnlockedObjects()
+    {
+        if (UnlockManager.Instance != null)
+        {
+            Debug.Log("Unlocking Objects");
+            //get unlock data from scene that is missing from save
+
+            //check unlock manager and get missing
+            foreach (GroupObjectData groupObjectData in UnlockManager.Instance.gameObjectUnlockables)
+            {
+                if (!gameObjectUnlocks.unlockData.Any(u => u.itemGroupId == groupObjectData.unlockableObjectsId))
+                {
+                    gameObjectUnlocks.unlockData.Add(new UnlockData
+                    {
+                        itemGroupId = groupObjectData.unlockableObjectsId,
+                        isUnlocked = false
+                    });
+                }
+            }
+            //iterate through list for all unlocked objects to be enabled
+            foreach (UnlockData data in gameObjectUnlocks.unlockData)
+            {
+                if (data.isUnlocked)
+                    UnlockManager.Instance.UnlockObject(data.itemGroupId);
+            }
+        }
+        
+    }
+
+    public void SetUnlock(string id, bool unlocked = true)
+    {
+        UnlockData unlockData = gameObjectUnlocks.unlockData.Find(g => g.itemGroupId == id);
+        if (unlockData == null) return;
+        unlockData.isUnlocked = unlocked;
+        if (UnlockManager.Instance != null && unlocked)
+        {
+            UnlockManager.Instance.UnlockObject(unlockData.itemGroupId);
+        }
+    }
+
+    public void AddGold(int gold)
+    {
+        this.gold += gold;
+    }
+    public bool SubtractGold(int gold)
+    {
+        if (this.gold > gold)
+        {
+            this.gold -= gold;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 
 }

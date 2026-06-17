@@ -91,7 +91,8 @@ public class PotionManager : Singleton<PotionManager>
     private void Start()
     {
         guideGraphTop.SetAnchorTop(true);
-        playAreaOrigin = playArea.transform.position;
+        if (playArea != null)
+            playAreaOrigin = playArea.transform.position;
         
     }
 
@@ -397,6 +398,7 @@ public class PotionManager : Singleton<PotionManager>
 
     private void UpdateHeat()
     {
+        if (playArea == null || heatSlider == null) return;
         restOffset = heatSlider.value * (maxHeatOffset - minHeatOffset) + minHeatOffset;
         playArea.transform.position = new Vector3(playArea.transform.position.x,playAreaOrigin.y - (restOffset),playArea.transform.position.z);
     }

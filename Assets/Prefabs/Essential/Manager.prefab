@@ -183,7 +183,7 @@ MonoBehaviour:
   pointsLength: 7
   graphSize: {x: 30, y: 30}
   graphDefaultRest: 0.5
-  graphOrigin: {fileID: 0}
+  graphOrigin: {x: 0, y: 0, z: 0}
   topAnchor: 0
   clearOnStartup: 1
   potionCurves: []
@@ -191,6 +191,125 @@ MonoBehaviour:
   bottomPaddingRatio: 0
   topPaddingRatio: 0
   currentPoints: []
+--- !u!1 &2419993755514509130
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4842555572009122422}
+  - component: {fileID: 5724813090549620943}
+  - component: {fileID: 5284079424436511723}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4842555572009122422
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2419993755514509130}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 7078022512448633506}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -583, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5724813090549620943
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2419993755514509130}
+  m_CullTransparentMesh: 1
+--- !u!114 &5284079424436511723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2419993755514509130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &2678671256555065925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 58116865638530519}
+  - component: {fileID: 749479527744163733}
+  m_Layer: 0
+  m_Name: UnlockManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &58116865638530519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2678671256555065925}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6982703046419081174}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &749479527744163733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2678671256555065925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a77e17ebcc447d84faf842219d7cc25e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2881807517781530917
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,6 +373,9 @@ MonoBehaviour:
   recipeList:
     recipes: []
   day: 0
+  gold: 0
+  gameObjectUnlocks:
+    unlockData: []
 --- !u!1 &2987545732854737961
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,6 +409,8 @@ RectTransform:
   m_Children:
   - {fileID: 7286739086629902702}
   - {fileID: 8137138569077727377}
+  - {fileID: 4842555572009122422}
+  - {fileID: 2784935082546110199}
   m_Father: {fileID: 2856570885094158131}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -396,6 +520,7 @@ Transform:
   - {fileID: 3386512191229628348}
   - {fileID: 2856570885094158131}
   - {fileID: 3882636369228525139}
+  - {fileID: 58116865638530519}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4532769678296386182
@@ -546,7 +671,7 @@ MonoBehaviour:
   pointsLength: 7
   graphSize: {x: 30, y: 30}
   graphDefaultRest: 0.5
-  graphOrigin: {fileID: 0}
+  graphOrigin: {x: 0, y: 0, z: 0}
   topAnchor: 1
   clearOnStartup: 1
   potionCurves: []
@@ -602,7 +727,27 @@ MonoBehaviour:
   dialoguePanel: {fileID: 2987545732854737961}
   dialogueText: {fileID: 4717797243424691760}
   speakerNameText: {fileID: 1843722197693860505}
+  leftSprite: {fileID: 5284079424436511723}
+  rightSprite: {fileID: 5055632512454541423}
+  characterSprites:
+  - sprite: {fileID: 21300000, guid: ee158f323737863419607e239010fbfd, type: 3}
+    character: 3
+  - sprite: {fileID: 21300000, guid: ee158f323737863419607e239010fbfd, type: 3}
+    character: 8
+  - sprite: {fileID: 21300000, guid: ee158f323737863419607e239010fbfd, type: 3}
+    character: 1
+  - sprite: {fileID: 21300000, guid: ee158f323737863419607e239010fbfd, type: 3}
+    character: 2
+  - sprite: {fileID: 21300000, guid: ee158f323737863419607e239010fbfd, type: 3}
+    character: 4
+  - sprite: {fileID: 21300000, guid: ee158f323737863419607e239010fbfd, type: 3}
+    character: 5
+  - sprite: {fileID: 21300000, guid: ee158f323737863419607e239010fbfd, type: 3}
+    character: 6
+  - sprite: {fileID: 21300000, guid: ee158f323737863419607e239010fbfd, type: 3}
+    character: 7
   textSpeed: 0.02
+  fadeDuration: 0.3
 --- !u!1 &6378966838399308029
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,6 +803,7 @@ MonoBehaviour:
   potionFutureGraph: {fileID: 6244464100089745632}
   guideGraphTop: {fileID: 957895872771311304}
   guideGraphBottom: {fileID: 1003710109303722919}
+  heatSlider: {fileID: 0}
   potionNameText: {fileID: 0}
   potionDetailText: {fileID: 0}
   activePotionTarget: {fileID: 0}
@@ -668,15 +814,93 @@ MonoBehaviour:
   ingredientObjectLayer:
     serializedVersion: 2
     m_Bits: 64
+  splashForce: -100
+  minHeatOffset: -5
+  maxHeatOffset: 5
   setActivePotionDebug: {fileID: 11400000, guid: bf33ef341f7d3d746b230addfa6dcf67, type: 2}
   addedDebugIngredient: {fileID: 11400000, guid: 9422507e7331f42408184ebdf9334ee1, type: 2}
   pointsLength: 7
   graphSize: {x: 30, y: 30}
   graphDefaultRest: 0.5
-  graphOrigin: {fileID: 8758211441527730599}
+  graphOrigin: {x: 0, y: 0, z: 0}
   restOffset: 0
   bottomPaddingRatio: 0.1
   topPaddingRatio: 0.1
+--- !u!1 &6461899620146279829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2784935082546110199}
+  - component: {fileID: 9118222212925791443}
+  - component: {fileID: 5055632512454541423}
+  m_Layer: 5
+  m_Name: Image (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2784935082546110199
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6461899620146279829}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 7078022512448633506}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 620, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &9118222212925791443
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6461899620146279829}
+  m_CullTransparentMesh: 1
+--- !u!114 &5055632512454541423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6461899620146279829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6559379029980097276
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,7 +950,7 @@ MonoBehaviour:
   pointsLength: 7
   graphSize: {x: 30, y: 30}
   graphDefaultRest: 0.5
-  graphOrigin: {fileID: 0}
+  graphOrigin: {x: 0, y: 0, z: 0}
   topAnchor: 0
   clearOnStartup: 1
   potionCurves: []
@@ -994,7 +1218,7 @@ MonoBehaviour:
   pointsLength: 7
   graphSize: {x: 30, y: 30}
   graphDefaultRest: 0.5
-  graphOrigin: {fileID: 0}
+  graphOrigin: {x: 0, y: 0, z: 0}
   topAnchor: 0
   clearOnStartup: 1
   potionCurves: []

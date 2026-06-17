@@ -256,6 +256,10 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
     {
         return DataManager.Instance.questDatas.FirstOrDefault(q => q.questId == questId);
     }
+    public PlayerQuestData IdToPlayerQuestData(string questId)
+    {
+        return playerQuestsList.playerQuests.FirstOrDefault(q => q.questId == questId);
+    }
 
 #endregion
 
@@ -263,15 +267,23 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
     public void SubmitQuest(PlayerQuestData playerQuestData)
     {
         //check completion
-        Debug.Log("atempt subnit");
         if (!playerQuestData.isUnlocked || !playerQuestData.isOnGoing || playerQuestData.isCompleted) return;
-        Debug.Log("pass");
         if (!playerQuestData.questData.requirementsToComplete.SubmitAll()) return;
-        Debug.Log("submit");
         //update quest
         MarkQuestAsCompleted(playerQuestData);
         //reward player
-        //note to self: add reward gold
+        PlayerDataManager.Instance.AddGold(playerQuestData.questData.questActions.goldReward);
+    }
+    public void SubmitQuest(string questId)
+    {
+        PlayerQuestData playerQuestData = IdToPlayerQuestData(questId);
+        //check completion
+        if (!playerQuestData.isUnlocked || !playerQuestData.isOnGoing || playerQuestData.isCompleted) return;
+        if (!playerQuestData.questData.requirementsToComplete.SubmitAll()) return;
+        //update quest
+        MarkQuestAsCompleted(playerQuestData);
+        //reward player
+        PlayerDataManager.Instance.AddGold(playerQuestData.questData.questActions.goldReward);
     }
 #endregion
 

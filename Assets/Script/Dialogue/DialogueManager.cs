@@ -233,13 +233,19 @@ private SubmissionCharacter? currentSpeaker = null;
     // ================================
     void HandleFunction(string func)
     {
-        // switch (func)
-        // {
-        //     case "StartQuest":
-        //         QuestManager.Instance.StartQuest("Quest1");
-        //         break;
-        // }
-        // note to self: make functions, make quest ongoing, finish quest, teleport player, fade screen.
+        string[] parts = func.Split(',');
+
+        string funcName = parts[0].Trim();
+        string parameter = (parts.Length >= 2) ? parts[1].Trim() : "";
+
+        switch (funcName)
+        {
+            case "SubmitQuest":
+                QuestRuntimeManager.Instance.SubmitQuest(parameter);
+                break;
+            
+        }
+        // note to self: make functions, finish quest, teleport player, fade screen.
     }
 
     // ================================

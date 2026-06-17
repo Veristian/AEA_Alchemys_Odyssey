@@ -17,7 +17,7 @@ public class TeleportTrigger : MonoBehaviour
     private void Awake()
     {
         if (inputManager == null)
-            inputManager = GetComponent<InputManager>() ?? FindObjectOfType<InputManager>(); 
+            inputManager = InputManager.Instance;
     }
     private void OnTriggerEnter(Collider other)
     {

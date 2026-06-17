@@ -1,5 +1,7 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
@@ -17,12 +19,21 @@ public class PlayerController : MonoBehaviour
 
     [Header("References")]
     public InputManager inputManager;
-    public Transform orientation;        
-    public Transform cameraTarget;       
+    public Transform orientation;
+    public Transform cameraTarget;
 
 
     [HideInInspector] public float walkSpeed;
     [HideInInspector] public float sprintSpeed;
+
+    [Header("Animation")]
+    [SerializeField] private Animator animator;
+    [SerializeField] private float IdleWait = 10f;
+    [SerializeField] private float speedThrehold = 2f; // Adjust as needed
+
+
+
+    private Coroutine idleRoutine;
 
     private Rigidbody rb;
     private bool grounded;
@@ -38,7 +49,12 @@ public class PlayerController : MonoBehaviour
             inputManager = GetComponent<InputManager>() ?? FindObjectOfType<InputManager>();
 
         walkSpeed = moveSpeed;
-        sprintSpeed = moveSpeed * 1.5f;  
+        sprintSpeed = moveSpeed * 1.5f;
+    }
+
+    private void Start()
+    {
+        idleRoutine = StartCoroutine(WaitAndChooseRandom());
     }
 
     private void Update()
@@ -53,11 +69,18 @@ public class PlayerController : MonoBehaviour
 
         // Handle drag
         rb.drag = grounded ? groundDrag : 0;
+
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
+
+
+       float CurrentSpeed = rb.velocity.magnitude;
+       animator.SetFloat("Speed", CurrentSpeed);  
+
+        
     }
 
     private void MyInput()
@@ -112,4 +135,41 @@ public class PlayerController : MonoBehaviour
     public bool IsGrounded() => grounded;
     public Vector3 GetVelocity() => rb.velocity;
 
+    IEnumerator WaitAndChooseRandom()
+    {
+        while (true)
+        {
+            while (isMoving())
+            {
+                yield return null; // Wait until the player is not moving
+            }
+            // Wait for set seconds
+            yield return new WaitForSeconds(IdleWait);
+
+            // Choose a random number. 
+
+            int randomNumber = Random.Range(1, 3);
+
+            // Perform actions based on the chosen number
+            if (randomNumber == 1)
+            {
+                animator.SetTrigger("IdleHop");
+            }
+            else if (randomNumber == 2)
+            {
+                animator.SetTrigger("IdleStretch");
+            }
+        }
+
+    }
+
+    public float GetCurrentSpeed()
+    {
+        return rb.velocity.magnitude;
+    }
+
+    bool isMoving()
+    {
+        return GetCurrentSpeed() > speedThrehold; // Adjust threshold as needed
+    }
 }

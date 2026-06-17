@@ -16,7 +16,7 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (InputManager.Instance.InteractWasPressed)
         {
             TryInteract();
         }

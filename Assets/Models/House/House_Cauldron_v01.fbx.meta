@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: ebece3ab9ef0cfd42a0c5519f9acfdf9
+guid: ad63f7970a8333a42b2897643fd2719a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_Cauldron
+    second: {fileID: 2100000, guid: 05a2500a37f7f34489668f184d90cda5, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

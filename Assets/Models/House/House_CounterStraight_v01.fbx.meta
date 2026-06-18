@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: 27f7530e0cabe2b4b91681cd10a77ecf
+guid: cf1a40e8b27961941bcc83df7478f623
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_CounterStraight_Side
+    second: {fileID: 2100000, guid: cafdafdd2350ea34984cefefa1d5eb2a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_CounterStraight_Top
+    second: {fileID: 2100000, guid: 2ebbd7e6d84bfda4886b4518d5f2e30c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

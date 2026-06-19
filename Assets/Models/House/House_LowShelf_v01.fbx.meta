@@ -1,9 +1,29 @@
 fileFormatVersion: 2
-guid: ee3a8e53da90b174882f1977dc8dadca
+guid: 8e471d481a4fdc243b40aa9f4dc326e0
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_LowShelf
+    second: {fileID: 2100000, guid: c3d67373aebc8f64e8e631759e9ee315, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: LowShelf_House_v01_T_LowShelf_BaseColor
+    second: {fileID: 2800000, guid: bc06de81627762a4082c3868c9f312b4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: LowShelf_House_v01_T_LowShelf_Metallic
+    second: {fileID: 2800000, guid: 581e1c26437945b4dac591570e267f80, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: LowShelf_House_v01_T_LowShelf_Roughness
+    second: {fileID: 2800000, guid: 45a0a57cc2bed2341aebe1035fdc5d90, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -88,7 +108,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.03
+    globalScale: 3
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

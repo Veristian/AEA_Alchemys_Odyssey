@@ -13,7 +13,8 @@ public class CinemachineInputHandler : MonoBehaviour
 
     [Header("Camera Styles")]
     public GameObject thirdPersonCam;    // Cinemachine Virtual Cam 
-
+    private Vector3 lastInputDir = Vector3.zero;
+    [SerializeField, Range(0f,1f)] private float directionChangeThreshold = 0.1f; 
 
     private void Start()
     {
@@ -34,7 +35,11 @@ public class CinemachineInputHandler : MonoBehaviour
     private void HandleOrientation()
     {
         Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
-        orientation.forward = viewDir.normalized;       
+        if (Vector2.Dot(InputManager.Instance.Movement, lastInputDir) <  (1 - directionChangeThreshold) || Vector3.Dot(orientation.forward, viewDir.normalized) > (1 - directionChangeThreshold))
+        {
+            orientation.forward = viewDir.normalized;       
+        }
+        lastInputDir = InputManager.Instance.Movement;
     }
 
     private void HandlePlayerRotation()

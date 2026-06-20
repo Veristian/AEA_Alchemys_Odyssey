@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class IngredientHouseItem : MonoBehaviour, IPointerDownHandler
+public class IngredientHouseItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("Reference")]
     [SerializeField] private TextMeshProUGUI amountText;  
@@ -20,6 +20,22 @@ public class IngredientHouseItem : MonoBehaviour, IPointerDownHandler
     private void Start()
     {
         objTaken = 0;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        //gives self info and sets to show
+        IngredientCurveDisplay.Instance.ingredientInventoryData = ingredient;
+        IngredientCurveDisplay.Instance.SetVisibility(true);
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        //check if info is self and set null if yes and turn off
+        if (IngredientCurveDisplay.Instance.ingredientInventoryData == ingredient)
+        {
+            IngredientCurveDisplay.Instance.ingredientInventoryData = null;
+            IngredientCurveDisplay.Instance.SetVisibility(false);
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)

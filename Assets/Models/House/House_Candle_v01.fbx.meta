@@ -1,9 +1,24 @@
 fileFormatVersion: 2
-guid: c35457c9dd4514f4e936addb0b8ddb3f
+guid: 72ece3e3e7993ae49b15d43e9ccb1875
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_Candle_Base
+    second: {fileID: 2100000, guid: 20cd6b9a8e95ce64e8e9510e25e712db, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_Candle_Wax
+    second: {fileID: 2100000, guid: 0b596fd841387254aa266f7b2d9f588f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_Candle_Wick
+    second: {fileID: 2100000, guid: 3be14b5db63f257488743b3331aacdc0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

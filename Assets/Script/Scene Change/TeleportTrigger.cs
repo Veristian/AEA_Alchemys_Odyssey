@@ -1,9 +1,10 @@
-using UnityEngine;
+    using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class TeleportTrigger : MonoBehaviour
 {
     public InputManager inputManager;
+    public GameObject OverlayCanvas;
 
     [Header("Scene Transition Settings")]
     [Tooltip("Name of the scene to load")]
@@ -25,6 +26,12 @@ public class TeleportTrigger : MonoBehaviour
         {
             playerInside = true;
         }
+        //OverlayCanvas.SetActive(true);
+        if (OverlayCanvas != null)
+        {
+            UITransitionManager.Instance.FadeIn(OverlayCanvas);
+        }
+        
     }
 
     private void OnTriggerExit(Collider other)
@@ -32,6 +39,11 @@ public class TeleportTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInside = false;
+        }
+        //OverlayCanvas.SetActive(false);
+        if (OverlayCanvas != null)
+        {
+            UITransitionManager.Instance.FadeOut(OverlayCanvas);
         }
     }
 

@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PotionMakingUi : MonoBehaviour
 {
+    public static PotionMakingUi Instance;
+
     [System.Serializable]
     public class Tab
     {
@@ -17,13 +20,38 @@ public class PotionMakingUi : MonoBehaviour
 
     private int currentTabIndex = -1;
 
-    [Header("Recipe Panel")]
+    [Header("Recipe Panel Section")]
     public GameObject RecipePanel;
     public Button RecipeOpenBtn;
     public Button RecipeCloseBtn;
+    [SerializeField] public GameObject RecipeTargetGO;
+
+    [Header("Brewing Result Section")]
+    [SerializeField] private GameObject ResultDisplayGO;
+    [SerializeField] private Image ResultItemBox;
+    [SerializeField] private TextMeshProUGUI ResultText;
+    [SerializeField] private TextMeshProUGUI ResultItemName;
+    [SerializeField] private Image ResultItemImage;
+    [SerializeField] private Image ResultBackgroundImage;
+    [SerializeField] private Button ResultDisplayCloseBtn;
+    [SerializeField] private GameObject CauldronGO;
+
+    [Header("Brew Potion Animation")]
+    [SerializeField] private GameObject[] ItemToHidnWhenBrew;
+
+
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         if (RecipeOpenBtn != null)
         {
             RecipeOpenBtn.onClick.AddListener(OpenRecipePanel);
@@ -32,6 +60,10 @@ public class PotionMakingUi : MonoBehaviour
         if (RecipeCloseBtn != null)
         {
             RecipeCloseBtn.onClick.AddListener(CloseRecipePanel);
+        }
+        if (ResultDisplayCloseBtn !=null)
+        {
+            ResultDisplayCloseBtn.onClick.AddListener(CloseResultPanel);
         }
     }
 
@@ -75,15 +107,123 @@ public class PotionMakingUi : MonoBehaviour
         currentTabIndex = index;
     }
     
-    public void OpenRecipePanel()
+    private void OpenRecipePanel()
     {
         if (RecipePanel!=null)
-            RecipePanel.SetActive(true);
+            //RecipePanel.SetActive(true);
+            UITransitionManager.Instance.FadeIn(RecipePanel.gameObject);
     }
 
-    public void CloseRecipePanel()
+    private void CloseRecipePanel()
     {
         if (RecipePanel!=null)
-            RecipePanel.SetActive(false);
+            //RecipePanel.SetActive(false);
+            UITransitionManager.Instance.FadeOut(RecipePanel.gameObject);
     }
+
+    private void OpenRecipeTarget()
+    {
+        if (RecipeTargetGO != null)
+        {
+            RecipeTargetGO.SetActive(true);
+        }
+    }
+    private void CloseRecipeTarget()
+    {
+        if (RecipeTargetGO != null)
+        {
+            RecipeTargetGO.SetActive(false);
+        }
+    }
+
+    public void SetRecipeTarget()
+    {
+        CloseRecipePanel();
+        OpenRecipeTarget();
+    }
+
+    private void OpenResultPanel()
+    {
+        //ResultDisplayGO.SetActive(true);
+        UITransitionManager.Instance.FadeIn(ResultDisplayGO.gameObject);
+        Animator ResultAnim = ResultDisplayGO.GetComponent<Animator>();
+        ResultAnim.SetTrigger("OpenCloseBtn");
+    }
+    private void CloseResultPanel()
+    {
+        //ResultDisplayGO.SetActive(false);
+        UITransitionManager.Instance.FadeOut(ResultDisplayGO.gameObject);
+        ShowUiComponent();
+        Animator CauldronAnim = CauldronGO.GetComponent<Animator>();
+        CauldronAnim.enabled = false;
+        CauldronAnim.enabled = true;
+    }
+
+    public void ResultDisplaySet(bool result)
+    {
+        StartCauldronAnim();
+
+        if (result)
+        {
+            ResultBackgroundImage.color = new Color(0.6f, 0.6f, 0.6f, 1f); ;
+            ResultItemBox.color = Color.white;
+            ResultItemImage.gameObject.SetActive(true);
+            ResultText.text = "SUCCESS";
+            //ResultItemName.text = "Potion Brewed";
+        }
+        else
+        {
+            ResultBackgroundImage.color = new Color(0.58f, 0f, 0f, 1f); // dark red
+            ResultItemBox.color = Color.gray;
+            ResultItemImage.gameObject.SetActive(false);
+            ResultText.text = "FAILED";
+            ResultItemName.text = "No Potion Brewed";
+        }
+    }
+
+    private void StartCauldronAnim()
+    {
+        Animator CauldronAnim = CauldronGO.GetComponent<Animator>();
+        CauldronAnim.SetTrigger("StartAnim");
+        HideUiComponent();
+    }
+
+    public void CauldronBrewAnimCompleted()
+    {
+        Animator CauldronAnim = CauldronGO.GetComponent<Animator>();
+        CauldronAnim.ResetTrigger("StartAnim");
+        OpenResultPanel();
+    }
+    public void CauldronResetAnimCompleted()
+    {
+        Animator CauldronAnim = CauldronGO.GetComponent<Animator>();
+        CauldronAnim.ResetTrigger("StartReset");
+        ShowUiComponent();
+    }
+
+    public void ResetCauldron()
+    {
+        Animator CauldronAnim = CauldronGO.GetComponent<Animator>();
+        CauldronAnim.SetTrigger("StartReset");
+        HideUiComponent();
+    }
+
+    private void HideUiComponent()
+    {
+        foreach (var t in ItemToHidnWhenBrew)
+        {
+            //t.SetActive(false);
+            UITransitionManager.Instance.FadeOut(t);
+        }
+    }
+
+    private void ShowUiComponent()
+    {
+        foreach (var t in ItemToHidnWhenBrew)
+        {
+            //t.SetActive(false);
+            UITransitionManager.Instance.FadeIn(t);
+        }
+    }
+
 }

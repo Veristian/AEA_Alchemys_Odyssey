@@ -9,6 +9,7 @@ public class RecipeHouseItem : MonoBehaviour
     [SerializeField] private Button button;  
     [SerializeField] private TextMeshProUGUI potionNameText;
     [SerializeField] private TextMeshProUGUI potionDetailText;
+    
 
     [Header("Recipe Info")]
     [SerializeField] private Recipe recipe;
@@ -52,8 +53,9 @@ public class RecipeHouseItem : MonoBehaviour
 
     private void SetTarget()
     {
+        PotionMakingUi.Instance.SetRecipeTarget();
         PotionManager.Instance.AssignPotionTarget(recipe.targetPotion);
-    }
 
+    }
 
 }

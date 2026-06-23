@@ -24,6 +24,11 @@ public class UITransitionManager : MonoBehaviour
         StartCoroutine(Fade(target, 0f, 1f, defaultDuration, true));
     }
 
+    public void FadeOut(GameObject target, System.Action onComplete)
+    {
+        StartCoroutine(Fade(target, 1f, 0f, defaultDuration, false, onComplete));
+    }
+
     public void FadeOut(GameObject target)
     {
         StartCoroutine(Fade(target, 1f, 0f, defaultDuration, false));
@@ -34,12 +39,12 @@ public class UITransitionManager : MonoBehaviour
         StartCoroutine(Fade(target, 0f, 1f, duration, true));
     }
 
-    public void FadeOut(GameObject target, float duration)
+    public void FadeOut(GameObject target, float duration, System.Action onComplete)
     {
-        StartCoroutine(Fade(target, 1f, 0f, duration, false));
+        StartCoroutine(Fade(target, 1f, 0f, duration, false, onComplete));
     }
 
-    private IEnumerator Fade(GameObject target, float startAlpha, float endAlpha, float duration, bool showBeforeFade)
+    private IEnumerator Fade(GameObject target, float startAlpha, float endAlpha, float duration, bool showBeforeFade, System.Action onComplete = null)
     {
         if (target == null) yield break;
 
@@ -66,5 +71,7 @@ public class UITransitionManager : MonoBehaviour
 
         if (endAlpha <= 0f)
             target.SetActive(false);
+
+        onComplete?.Invoke();
     }
 }

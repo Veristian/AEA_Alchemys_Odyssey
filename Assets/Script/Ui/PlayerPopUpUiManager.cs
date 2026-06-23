@@ -69,15 +69,12 @@ public class PlayerPopUpUiManager : MonoBehaviour
             InputManager.Instance.canLook = true;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-
             return;
         }
-
         if (isPopUpOpened)
         {
             return;
         }
-
         CloseCurrentPopup();
 
         InputManager.Instance.canMove = false;
@@ -91,8 +88,8 @@ public class PlayerPopUpUiManager : MonoBehaviour
 
         if (transBG != null)
         {
-            //UITransitionManager.Instance.FadeIn(transBG);
-            transBG.SetActive(true);
+            UITransitionManager.Instance.FadeIn(transBG);
+            //transBG.SetActive(true);
         }
         isPopUpOpened = true;
     }

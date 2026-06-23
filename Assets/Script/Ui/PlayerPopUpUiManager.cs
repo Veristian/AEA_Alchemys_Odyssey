@@ -44,25 +44,32 @@ public class PlayerPopUpUiManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            OpenInventory();
-        }
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            OpenJournal();
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (InputManager.Instance.PauseWasPressed)
         {
             OpenPauseMenu();
         }
+        if (InputManager.Instance.InventoryWasPressed)
+        {
+            OpenInventory();
+        }
+        if (InputManager.Instance.JournalWasPressed)
+        {
+            OpenJournal();
+        }
+
     }
+
     public void OpenPopup(GameObject popup)
     {
         if (currentPopup == popup)
         {
             CloseCurrentPopup();
             isPopUpOpened = false;
+            InputManager.Instance.canMove = true;
+            InputManager.Instance.canLook = true;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
             return;
         }
 
@@ -72,6 +79,12 @@ public class PlayerPopUpUiManager : MonoBehaviour
         }
 
         CloseCurrentPopup();
+
+        InputManager.Instance.canMove = false;
+        InputManager.Instance.canLook = false;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         currentPopup = popup;
         UITransitionManager.Instance.FadeIn(currentPopup);
@@ -124,6 +137,7 @@ public class PlayerPopUpUiManager : MonoBehaviour
     {
         OpenPopup(inventoryPanel);
     }
+
 
     public void OpenPauseMenu()
     {

@@ -14,6 +14,7 @@ public class InputManager : Singleton<InputManager>
     public bool canMove = true;
     public bool canLook = true;
     public bool canInteract = true;
+    public bool canUiPopup = true;
     
     [Header("References")]
     //ref
@@ -34,6 +35,8 @@ public class InputManager : Singleton<InputManager>
     [ReadOnly] public bool MouseLeftWasPressed;
     [ReadOnly] public bool MouseLeftIsHeld;
     [ReadOnly] public bool MouseLeftWasReleased;
+    [ReadOnly] public bool InventoryWasPressed;
+    [ReadOnly] public bool JournalWasPressed;
 
 
     //actions
@@ -42,6 +45,8 @@ public class InputManager : Singleton<InputManager>
     private InputAction _lookAction;
     private InputAction _pauseAction;
     private InputAction _interactAction;
+    private InputAction _inventoryAction;
+    private InputAction _journalAction;
 
     private InputAction _mousePositionAction;
 
@@ -75,6 +80,9 @@ public class InputManager : Singleton<InputManager>
         _mousePositionAction = playerInput.actions["MousePos"];
 
         _mouseLeftAction = playerInput.actions["MouseLeft"];
+
+        _inventoryAction = playerInput.actions["Inventory"];
+        _journalAction = playerInput.actions["Journal"];
         mainCamera = Camera.main;
 
     }
@@ -147,6 +155,11 @@ public class InputManager : Singleton<InputManager>
         if (canPause)
         {
             PauseWasPressed = _pauseAction.WasPressedThisFrame();
+        }
+        if (canUiPopup)
+        {
+            JournalWasPressed = _journalAction.WasPressedThisFrame();
+            InventoryWasPressed = _inventoryAction.WasPressedThisFrame();
         }
         HandleGrab();
 

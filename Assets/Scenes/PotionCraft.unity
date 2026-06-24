@@ -27454,6 +27454,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1653900283}
     - target: {fileID: 3499962511287893855, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: tabs.Array.data[0].tabImage
+      value: 
+      objectReference: {fileID: 495064942}
+    - target: {fileID: 3499962511287893855, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: tabs.Array.data[1].tabImage
+      value: 
+      objectReference: {fileID: 1812609192}
+    - target: {fileID: 3499962511287893855, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: tabs.Array.data[0].container
       value: 
       objectReference: {fileID: 1257958139}

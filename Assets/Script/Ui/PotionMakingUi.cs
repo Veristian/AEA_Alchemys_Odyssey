@@ -14,6 +14,7 @@ public class PotionMakingUi : MonoBehaviour
     {
         public Button tabButton;
         public GameObject container;
+        public Image tabImage;
     }
 
     public Tab[] tabs;
@@ -106,8 +107,19 @@ public class PotionMakingUi : MonoBehaviour
 
         for (int i = 0; i < tabs.Length; i++)
         {
-            if (tabs[i].IsUnityNull() || tabs[i].container.IsUnityNull()) continue;
-            tabs[i].container.SetActive(i == index);
+            //if (tabs[i].IsUnityNull() || tabs[i].container.IsUnityNull()) continue;
+            //tabs[i].container.SetActive(i == index);
+
+            if (tabs[i] == null) continue;
+
+            // Show/hide container
+            if (tabs[i].container != null)
+                tabs[i].container.SetActive(i == index);
+            // Change tab color
+            if (tabs[i].tabImage != null)
+                tabs[i].tabImage.color = (i == index)
+                    ? Color.white
+                    : Color.gray;
         }
 
         currentTabIndex = index;

@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: b1b32d5bc00934a4f90d0bb810b3e9d8
+guid: 625bca6dec1921440b146f63c0d3ccc6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_Mirror
+    second: {fileID: 2100000, guid: 9a93e48bcb0a2cb4aba883f8cee6e6c1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

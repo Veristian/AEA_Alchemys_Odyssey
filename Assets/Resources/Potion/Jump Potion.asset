@@ -17,7 +17,7 @@ MonoBehaviour:
   potionId: Jump Potion
   potionName: Jump Potion
   potion2DObjectPrefab: {fileID: 1171091932301145056, guid: 1bac119c5f3c28a4bb9ef76b166417e2, type: 3}
-  potionSprite: {fileID: 0}
+  potionSprite: {fileID: 21300000, guid: f2139c242cea3274ca2f99cc47d88a76, type: 3}
   description: This potion give the ability to jump higher.
   potionColor: {r: 0, g: 0, b: 0, a: 0}
   ingredients:

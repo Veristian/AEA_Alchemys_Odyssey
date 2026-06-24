@@ -17,7 +17,7 @@ MonoBehaviour:
   ingredientId: Manabaum
   ingredientName: Manabaum
   ingredient2DObjectPrefab: {fileID: 1171091932301145056, guid: d74565bc36fc92140840dffccef1ea54, type: 3}
-  ingredientSprite: {fileID: 0}
+  ingredientSprite: {fileID: 21300000, guid: abc2970a7c0a9a244956f890011e7ed2, type: 3}
   description: "A common plant used as catalyst in @alchemy. It\u2019s cotton like
     stem enables it to absorb @mana from its surrounding and store it inside its
     ovule and is use as a nutrient during reproduction."

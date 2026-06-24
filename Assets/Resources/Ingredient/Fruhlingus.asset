@@ -17,7 +17,7 @@ MonoBehaviour:
   ingredientId: Fruhlingus
   ingredientName: Fruhlingus
   ingredient2DObjectPrefab: {fileID: 1171091932301145056, guid: 1c600d25036062a41898210e83ce5a75, type: 3}
-  ingredientSprite: {fileID: 21300000, guid: 086f16bf4995c0f43af105475f69953b, type: 3}
+  ingredientSprite: {fileID: 21300000, guid: 1d5b0d628c7f168449178c61d76c7bf9, type: 3}
   description: A species of mushroom that grows in the @Breezewood Forest. It protects
     itself with its spring-like cap which can bounce any incoming threat away from
     it.

@@ -232,9 +232,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 116, y: 0}
+  m_AnchoredPosition: {x: 229.06494, y: 0}
   m_SizeDelta: {x: 226.13, y: 226.13}
-  m_Pivot: {x: 0, y: 0.5}
+  m_Pivot: {x: 0.49999994, y: 0.5}
 --- !u!222 &5867665081072800720
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -263,9 +263,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 43aeaeb6c8d102349bca0f50439a6b77, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -411,6 +411,7 @@ MonoBehaviour:
   button: {fileID: 6736728735610443949}
   potionNameText: {fileID: 9145190999521657299}
   potionDetailText: {fileID: 923623744963849180}
+  ItemImage: {fileID: 5189099177786868153}
   recipe:
     targetPotion: {fileID: 0}
     targetPotionId: 

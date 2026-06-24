@@ -39,7 +39,13 @@ public class PotionMakingUi : MonoBehaviour
     [Header("Brew Potion Animation")]
     [SerializeField] private GameObject[] ItemToHidnWhenBrew;
 
+    [Header("Potion Info")]
+    [SerializeField] private PotionInventoryData potion;
 
+    public PotionInventoryData Potion
+    {
+        get { return potion; }
+    }
 
     private void Awake()
     {
@@ -159,7 +165,7 @@ public class PotionMakingUi : MonoBehaviour
         CauldronAnim.enabled = true;
     }
 
-    public void ResultDisplaySet(bool result)
+    public void ResultDisplaySet(bool result, Sprite PotionImage, string ItemName)
     {
         StartCauldronAnim();
 
@@ -168,8 +174,12 @@ public class PotionMakingUi : MonoBehaviour
             ResultBackgroundImage.color = new Color(0.6f, 0.6f, 0.6f, 1f); ;
             ResultItemBox.color = Color.white;
             ResultItemImage.gameObject.SetActive(true);
+            ResultItemImage.sprite = PotionImage;
+            ResultItemName.text = ItemName.ToString();
             ResultText.text = "SUCCESS";
             //ResultItemName.text = "Potion Brewed";
+
+            
         }
         else
         {

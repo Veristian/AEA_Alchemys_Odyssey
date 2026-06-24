@@ -47,6 +47,7 @@ public class PotionManager : Singleton<PotionManager>
     [Header("References/Text Info")]
     [SerializeField] private TextMeshProUGUI potionNameText;
     [SerializeField] private TextMeshProUGUI potionDetailText;
+    [SerializeField] private Image potionImage;
   
     [Header("Active Data")]
     [Tooltip("The currently active potion. This is the potion that will be brewed when the player clicks the brew button.")]
@@ -248,7 +249,7 @@ public class PotionManager : Singleton<PotionManager>
         }
         potionNameText.text = activePotionTarget.potionName;
         potionDetailText.text = activePotionTarget.description;
-
+        potionImage.sprite = activePotionTarget.potionSprite;
     }
     
     private void SetGuideGraphCurves(List<AnimationCurve> newCurves)
@@ -331,7 +332,15 @@ public class PotionManager : Singleton<PotionManager>
         if (CheckPotionBetweenGuides())
         {
             Debug.Log("Potion brewed successfully!");
-            PotionMakingUi.Instance.ResultDisplaySet(true);
+            if (activePotionTarget != null)
+            {
+                PotionMakingUi.Instance.ResultDisplaySet(true, activePotionTarget.potionSprite, activePotionTarget.potionName);
+            }
+            else
+            {
+                PotionMakingUi.Instance.ResultDisplaySet(false, null, null);
+            }
+            //PotionMakingUi.Instance.ResultDisplaySet(true, activePotionTarget.potionSprite, activePotionTarget.potionName);
             InventoryManager.Instance.AddPotionObject(activePotionTarget, currentActivePotionIngredients);
             foreach (StoredData ingredient in currentActivePotionIngredients)
             {
@@ -343,7 +352,7 @@ public class PotionManager : Singleton<PotionManager>
         {
             Debug.Log("Potion brewing failed. The potion graph does not match the guide graphs.");
             //note to self: add failure logic here
-            PotionMakingUi.Instance.ResultDisplaySet(false);
+            PotionMakingUi.Instance.ResultDisplaySet(false, null,null);
         }
     }
     // adds an ingredient to the active potion and updates the potion graphs to reflect the new ingredient. This method will be called when the player adds an ingredient to the potion. Will reject potion if not used for the same questline

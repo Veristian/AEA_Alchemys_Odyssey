@@ -6,7 +6,8 @@ using TMPro;
 public class PotionHouseItem : MonoBehaviour//, IPointerDownHandler
 {
     [Header("Reference")]
-    [SerializeField] private TextMeshProUGUI amountText;  
+    [SerializeField] private TextMeshProUGUI amountText;
+    [SerializeField] private Image ItemImage;
     [Header("Potion Info")]
     [SerializeField] private PotionInventoryData potion;
     public PotionInventoryData Potion
@@ -40,6 +41,11 @@ public class PotionHouseItem : MonoBehaviour//, IPointerDownHandler
     private void UpdateDisplay()
     {
         amountText.text = displayedObjectAmount.ToString();
+
+        if (potion != null && potion.potionData != null)
+        {
+            ItemImage.sprite = potion.potionData.potionSprite;
+        }
     }
 
     // private void GrabItem()

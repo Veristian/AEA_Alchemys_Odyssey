@@ -17,7 +17,7 @@ MonoBehaviour:
   potionId: Nausea Relief Potion
   potionName: Nausea Relief Potion
   potion2DObjectPrefab: {fileID: 1171091932301145056, guid: 1bac119c5f3c28a4bb9ef76b166417e2, type: 3}
-  potionSprite: {fileID: 0}
+  potionSprite: {fileID: 21300000, guid: de5998aee2842ba4ebe4f4a4a011cee8, type: 3}
   description: A good potion to have when encountering nausea either from lack of
     oxygen when exhausted or from sea sickness.
   potionColor: {r: 0, g: 0, b: 0, a: 0}

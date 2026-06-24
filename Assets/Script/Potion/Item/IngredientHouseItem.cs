@@ -6,7 +6,8 @@ using TMPro;
 public class IngredientHouseItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("Reference")]
-    [SerializeField] private TextMeshProUGUI amountText;  
+    [SerializeField] private TextMeshProUGUI amountText;
+    [SerializeField] private Image ItemImage;
     [Header("Ingredient Info")]
     [SerializeField] private IngredientInventoryData ingredient;
     public IngredientInventoryData Ingredient
@@ -56,6 +57,11 @@ public class IngredientHouseItem : MonoBehaviour, IPointerDownHandler, IPointerE
     private void UpdateDisplay()
     {
         amountText.text = displayedObjectAmount.ToString();
+
+        if (ingredient != null && ingredient.ingredientData != null)
+        {
+            ItemImage.sprite = ingredient.ingredientData.ingredientSprite;
+        }
     }
 
     private void GrabItem()

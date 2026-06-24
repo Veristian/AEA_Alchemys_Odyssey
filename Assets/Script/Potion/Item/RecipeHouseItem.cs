@@ -9,6 +9,7 @@ public class RecipeHouseItem : MonoBehaviour
     [SerializeField] private Button button;  
     [SerializeField] private TextMeshProUGUI potionNameText;
     [SerializeField] private TextMeshProUGUI potionDetailText;
+    [SerializeField] private Image ItemImage;
     
 
     [Header("Recipe Info")]
@@ -49,6 +50,7 @@ public class RecipeHouseItem : MonoBehaviour
         } 
         potionNameText.text = recipe.targetPotion.potionName;
         potionDetailText.text = recipe.targetPotion.description;
+        ItemImage.sprite = recipe.targetPotion.potionSprite;
     }
 
     private void SetTarget()

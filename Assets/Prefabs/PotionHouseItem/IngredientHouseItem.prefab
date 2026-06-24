@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 92.0686, y: 92.0686}
+  m_SizeDelta: {x: 103.8414, y: 103.8414}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1004211981125897179
 CanvasRenderer:
@@ -65,9 +65,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 03d19050f852d614dbe37e9a130a22e9, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -109,7 +109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.8, y: -26.3}
+  m_AnchoredPosition: {x: 34.5, y: -26.3}
   m_SizeDelta: {x: 31.2362, y: 31.2362}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8748648216765225833
@@ -300,6 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amountText: {fileID: 7303416438348904379}
+  ItemImage: {fileID: 2792292592349725520}
   ingredient:
     ingredientData: {fileID: 0}
     ingredientDataId: 

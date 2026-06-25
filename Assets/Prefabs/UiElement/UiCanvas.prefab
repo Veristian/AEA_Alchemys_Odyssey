@@ -5862,9 +5862,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -53, y: 45}
+  m_AnchoredPosition: {x: -103, y: 95}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 1, y: 0}
+  m_Pivot: {x: 0.50000036, y: 0.49999988}
 --- !u!222 &5035499055627540043
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10984,6 +10984,7 @@ GameObject:
   - component: {fileID: 7336172646442666794}
   - component: {fileID: 2000584354137062743}
   - component: {fileID: 4956794593979281283}
+  - component: {fileID: 7664715830359883317}
   m_Layer: 5
   m_Name: LoadingScreen
   m_TagString: Untagged
@@ -11049,6 +11050,28 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &7664715830359883317
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8487739355001917127}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8f02062dc46e31c4a8131cbfadee1c25, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8494594997202402754
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,7 +21,14 @@ public class Herb : MonoBehaviour, IInteractable
         
         herbModel?.SetActive(false);
         if (ingredientData)
+        {
             InventoryManager.Instance.AddIngredient(ingredientData);
+            if (PickupPopupManager.Instance != null)
+            {
+                PickupPopupManager.Instance.ShowPickup(ingredientData);
+            }
+        }
+            
     }
 
     void RefreshHerb()

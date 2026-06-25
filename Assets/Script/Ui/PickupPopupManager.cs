@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickupPopupManager : MonoBehaviour
+public class PickupPopupManager : Singleton<PickupPopupManager>
 {
-    public static PickupPopupManager Instance;
+    //public static PickupPopupManager Instance;
 
     [Header("References")]
     [SerializeField] private RectTransform popupContainer;
@@ -21,18 +21,18 @@ public class PickupPopupManager : MonoBehaviour
     [SerializeField] private float overlapAmount = 20f;
 
     private readonly List<PickupPopupUI> activePopups = new();
+    //[SerializeField] private IngredientData ingredientData;
 
-    private void Awake()
-    {
-        Instance = this;
-    }
+    //private void Awake()
+    //{
+    //    Instance = this;
+    //}
 
-    public void ShowPickup(Sprite icon, string itemName, int amount = 1)
+    public void ShowPickup(IngredientData IngData)
     {
         PickupPopupUI newPopup = Instantiate(popupPrefab, popupContainer);
 
-        
-        newPopup.Setup(icon, itemName);
+        newPopup.Setup(IngData.ingredientSprite, IngData.name);
 
         activePopups.Insert(0, newPopup);  //this make the new stack infront of old
 

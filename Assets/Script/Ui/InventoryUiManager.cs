@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,9 @@ public class InventoryUiManager : MonoBehaviour
 
     public Tab[] tabs;
     private int currentTabIndex = -1;
+
+    [Header("Reference")]
+    [SerializeField] private TextMeshProUGUI CoinText;
 
     private void OnEnable()
     {
@@ -73,5 +77,6 @@ public class InventoryUiManager : MonoBehaviour
     public void InventoryItemSetup()
     {
         //setup the item over here...
+        CoinText.text = "0";
     }
 }

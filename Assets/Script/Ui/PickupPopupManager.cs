@@ -47,24 +47,24 @@ public class PickupPopupManager : Singleton<PickupPopupManager>
         StartCoroutine(RemoveAfterDelay(newPopup));
     }
 
-    public void ShowPickup2()
-    {
-        PickupPopupUI newPopup = Instantiate(popupPrefab, popupContainer);
+    //public void ShowPickup2()
+    //{
+    //    PickupPopupUI newPopup = Instantiate(popupPrefab, popupContainer);
 
-        newPopup.Setup();
+    //    newPopup.Setup();
 
-        activePopups.Insert(0, newPopup);
+    //    activePopups.Insert(0, newPopup);
 
-        if (activePopups.Count > maxPopups)
-        {
-            PickupPopupUI lastPopup = activePopups[^1];
-            activePopups.RemoveAt(activePopups.Count - 1);
-            lastPopup.Close();
-        }
+    //    if (activePopups.Count > maxPopups)
+    //    {
+    //        PickupPopupUI lastPopup = activePopups[^1];
+    //        activePopups.RemoveAt(activePopups.Count - 1);
+    //        lastPopup.Close();
+    //    }
 
-        UpdatePopupPositions();
-        StartCoroutine(RemoveAfterDelay(newPopup));
-    }
+    //    UpdatePopupPositions();
+    //    StartCoroutine(RemoveAfterDelay(newPopup));
+    //}
 
     private IEnumerator RemoveAfterDelay(PickupPopupUI popup)
     {

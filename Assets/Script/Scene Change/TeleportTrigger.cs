@@ -1,4 +1,4 @@
-    using UnityEngine;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class TeleportTrigger : MonoBehaviour
@@ -55,7 +55,8 @@ public class TeleportTrigger : MonoBehaviour
             if (!string.IsNullOrEmpty(targetSceneName))
             {
                 PlayerSpawnManager.Instance.SetSpawnInfo(spawnPointName);
-                SceneManager.LoadScene(targetSceneName);
+                //SceneManager.LoadScene(targetSceneName);
+                SceneLoadingManager.Instance.LoadScene(targetSceneName);
             }
             else
             {

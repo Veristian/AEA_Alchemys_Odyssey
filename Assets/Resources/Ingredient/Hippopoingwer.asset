@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b044ac8de97ba88449c3d8665f819096, type: 3}
+  m_Name: Hippopoingwer
+  m_EditorClassIdentifier: 
+  loadState: 0
+  questId: 
+  ingredientId: Hippopoingwer
+  ingredientName: Hippopoingwer
+  ingredient2DObjectPrefab: {fileID: 1171091932301145056, guid: cd9da64cef1706a4db33f827c6ace7dd, type: 3}
+  ingredientSprite: {fileID: 21300000, guid: 6faeb45fd8f7d154494c221e289a72d5, type: 3}
+  description: "A ginger with an internode that looks like the face of a hippo. This
+    herb\u2019s  inner temperature is very high, it usually found in shallow body
+    of water to regulate its own temperature."
+  ingredientCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.016608723
+      outSlope: 0.016608723
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.8341241
+    - serializedVersion: 3
+      time: 0.125
+      value: 5
+      inSlope: 0.012737444
+      outSlope: 0.012737444
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.25
+      value: -4
+      inSlope: -0.025390228
+      outSlope: -0.025390228
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.375
+      value: 3
+      inSlope: 0.022368133
+      outSlope: 0.022368133
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.8869016
+    - serializedVersion: 3
+      time: 0.5
+      value: -2
+      inSlope: 0.037925247
+      outSlope: 0.037925247
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.625
+      value: 1
+      inSlope: -0.007980758
+      outSlope: -0.007980758
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.75
+      value: -0.25
+      inSlope: 0.0030374795
+      outSlope: 0.0030374795
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.9032011
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.875
+      value: 0
+      inSlope: -0.044315577
+      outSlope: -0.044315577
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.7906499
+    - serializedVersion: 3
+      time: 1.0048218
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 1
+    m_PostInfinity: 1
+    m_RotationOrder: 4
+  ingredientColor: {r: 0, g: 0, b: 0, a: 0}
+  ingredientAreaOfEffect: 100

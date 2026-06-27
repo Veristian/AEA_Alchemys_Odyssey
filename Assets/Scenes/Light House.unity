@@ -3166,7 +3166,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 11
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 1584766177}
+  m_LookAt: {fileID: 1010326381}
   m_Follow: {fileID: 545575126}
   m_Lens:
     FieldOfView: 60.000004
@@ -15434,7 +15434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orientation: {fileID: 1859362452}
   playerObj: {fileID: 1010326381}
-  player: {fileID: 1584766177}
+  player: {fileID: 1010326381}
   inputManager: {fileID: 1060227544}
   rotationSpeed: 12
   thirdPersonCam: {fileID: 1393936034}
@@ -16278,11 +16278,6 @@ Transform:
   - {fileID: 1860395246}
   m_Father: {fileID: 1780434397}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1584766177 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6539077205983189526, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
-  m_PrefabInstance: {fileID: 906425108}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1588140875
 GameObject:
   m_ObjectHideFlags: 0

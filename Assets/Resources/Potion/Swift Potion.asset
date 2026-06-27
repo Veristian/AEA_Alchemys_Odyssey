@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadState: 0
   questId: 
-  potionId: Swift Potion
+  potionId: Swift_Potion
   potionName: Swift Potion
   potion2DObjectPrefab: {fileID: 1171091932301145056, guid: 1bac119c5f3c28a4bb9ef76b166417e2, type: 3}
   potionSprite: {fileID: 21300000, guid: c2d00b9f495a88e4099a1109c62d54c6, type: 3}
@@ -22,9 +22,9 @@ MonoBehaviour:
   potionColor: {r: 0, g: 0, b: 0, a: 0}
   ingredients:
   - ingredientData: {fileID: 11400000, guid: 945a20f9ae5c6a847a344166c2d5fb02, type: 2}
-    contactPoint: 0.1
-  - ingredientData: {fileID: 11400000, guid: 945a20f9ae5c6a847a344166c2d5fb02, type: 2}
-    contactPoint: 0.6
+    contactPoint: 0.5
+  - ingredientData: {fileID: 11400000, guid: 5e2d3ec729a9d1e4b9e699587e81719b, type: 2}
+    contactPoint: 0.5
   potionCurve:
     serializedVersion: 2
     m_Curve:

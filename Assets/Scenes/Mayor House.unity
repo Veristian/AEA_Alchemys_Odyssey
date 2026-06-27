@@ -3100,7 +3100,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 11
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 1406568695}
+  m_LookAt: {fileID: 1721241645}
   m_Follow: {fileID: 545575126}
   m_Lens:
     FieldOfView: 60.000004
@@ -18893,7 +18893,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orientation: {fileID: 763619355}
   playerObj: {fileID: 1721241645}
-  player: {fileID: 1406568695}
+  player: {fileID: 1721241645}
   inputManager: {fileID: 1060227544}
   rotationSpeed: 12
   thirdPersonCam: {fileID: 1393936034}
@@ -19096,11 +19096,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400711938}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1406568695 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6539077205983189526, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
-  m_PrefabInstance: {fileID: 1544213597}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1419860649
 GameObject:
   m_ObjectHideFlags: 0

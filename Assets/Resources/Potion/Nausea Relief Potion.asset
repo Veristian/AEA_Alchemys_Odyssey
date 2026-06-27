@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadState: 0
   questId: 
-  potionId: Nausea Relief Potion
+  potionId: Nausea_Relief_Potion
   potionName: Nausea Relief Potion
   potion2DObjectPrefab: {fileID: 1171091932301145056, guid: 1bac119c5f3c28a4bb9ef76b166417e2, type: 3}
   potionSprite: {fileID: 21300000, guid: de5998aee2842ba4ebe4f4a4a011cee8, type: 3}
@@ -23,9 +23,9 @@ MonoBehaviour:
   potionColor: {r: 0, g: 0, b: 0, a: 0}
   ingredients:
   - ingredientData: {fileID: 11400000, guid: 9422507e7331f42408184ebdf9334ee1, type: 2}
-    contactPoint: 0.6
+    contactPoint: 0.5
   - ingredientData: {fileID: 11400000, guid: 5e2d3ec729a9d1e4b9e699587e81719b, type: 2}
-    contactPoint: 0.2
+    contactPoint: 0.25
   potionCurve:
     serializedVersion: 2
     m_Curve:

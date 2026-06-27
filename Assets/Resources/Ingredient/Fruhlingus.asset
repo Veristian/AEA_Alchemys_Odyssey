@@ -18,7 +18,7 @@ MonoBehaviour:
   ingredientName: Fruhlingus
   ingredient2DObjectPrefab: {fileID: 1171091932301145056, guid: 1c600d25036062a41898210e83ce5a75, type: 3}
   ingredientSprite: {fileID: 21300000, guid: 1d5b0d628c7f168449178c61d76c7bf9, type: 3}
-  description: A species of mushroom that grows in the @Breezewood Forest. It protects
+  description: A species of mushroom that grows in the Breezewood Forest. It protects
     itself with its spring-like cap which can bounce any incoming threat away from
     it.
   ingredientCurve:
@@ -26,30 +26,66 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 5
-      inSlope: -6.2657857
-      outSlope: -6.2657857
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.5374844
-      value: 1.6322379
-      inSlope: -3.242161
-      outSlope: -3.242161
+      value: 0
+      inSlope: 0.055173337
+      outSlope: 0.055173337
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.432321
-      outWeight: 0.3623647
+      inWeight: 0
+      outWeight: 0.53862464
     - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: -1.3669548
-      outSlope: -1.3669548
-      tangentMode: 34
+      time: 0.25
+      value: 5
+      inSlope: 0.033986967
+      outSlope: 0.033986967
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.64436984
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.375
+      value: -5
+      inSlope: -0.0036354065
+      outSlope: -0.0036354065
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 5
+      inSlope: -0.01716419
+      outSlope: -0.01716419
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.625
+      value: -5
+      inSlope: 0.011526108
+      outSlope: 0.011526108
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.75
+      value: 5
+      inSlope: -0.02806876
+      outSlope: -0.02806876
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.78023314
+    - serializedVersion: 3
+      time: 1
+      value: -0.011108398
+      inSlope: -0.05004713
+      outSlope: -0.05004713
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.59332323
       outWeight: 0
     m_PreInfinity: 1
     m_PostInfinity: 1

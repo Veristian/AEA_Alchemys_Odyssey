@@ -17,7 +17,7 @@ MonoBehaviour:
   ingredientId: Drehenblume
   ingredientName: Drehenblume
   ingredient2DObjectPrefab: {fileID: 1171091932301145056, guid: 6a93a5ffc04272545adc990358e3390e, type: 3}
-  ingredientSprite: {fileID: 0}
+  ingredientSprite: {fileID: 21300000, guid: 58df94745c9629e44bfbb1d3b5624f7e, type: 3}
   description: A flower with a spinning spiral as its petal. it use its spinning
     petal to make its predator confuse to protect itself.
   ingredientCurve:

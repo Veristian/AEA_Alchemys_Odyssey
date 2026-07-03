@@ -39,13 +39,28 @@ public class IngredientHouse : Singleton<IngredientHouse>
         ingredientHouseItems.Clear();
         foreach (IngredientData ingredientData in DataManager.Instance.ingredientDatas)
         {
+            if (ingredientData == null)
+            {
+                Debug.LogWarning("IngredientData is null. Skipping this entry.");
+                continue;
+            }
+            IngredientInventoryData ingredient = InventoryManager.Instance.PassIngredientReference(ingredientData);
+            if (ingredient == null)
+            {
+                Debug.LogWarning($"IngredientInventoryData for {ingredientData.ingredientName} is null. Skipping this entry.");
+                continue;
+            }
+            if (ingredient.amount <= 0)
+            {
+                continue;
+            }
             IngredientHouseItem item = Instantiate(ingredientHouseItemPrefab, contentTransform).GetComponent<IngredientHouseItem>();
             ingredientHouseItems.Add(item);
-            item.AssignIngredient(InventoryManager.Instance.PassIngredientReference(ingredientData));
+            item.AssignIngredient(ingredient);
         }
     }
 
-    public void UpdateIngredientsHousesObjTaken(List<IngredientData> ingredientToRemove, bool returnIngredient = false)
+    public void UpdateIngredientsHousesObjTaken(List<IngredientData> ingredientToRemove, bool returnIngredient = false, bool forceReturnAll = false)
     {
         if (ingredientToRemove == null || ingredientToRemove.Count == 0) return;
         var groupedToRemove = ingredientToRemove
@@ -60,11 +75,23 @@ public class IngredientHouse : Singleton<IngredientHouse>
             {
                 if (returnIngredient)
                 {
-                    houseItem.objTaken -= removeCount;
+                    if (forceReturnAll)
+                    {
+                        houseItem.objTaken = 0;
+                    }
+                    else
+                    {
+                        houseItem.objTaken -= removeCount;
+                    }
+                    houseItem.gameObject.SetActive(true);
                 }
                 else
                 {
                     houseItem.objTaken += removeCount;
+                    if (houseItem.objTaken >= houseItem.Ingredient.amount)
+                    {
+                        houseItem.gameObject.SetActive(false);
+                    }
                 }
                 
             }

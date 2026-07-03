@@ -76,7 +76,8 @@ public class InventoryUiManager : MonoBehaviour
 
     public void InventoryItemSetup()
     {
-        //setup the item over here...
-        CoinText.text = "0";
+        CoinText.text = PlayerDataManager.Instance.gold.ToString();
+        UiLoader.Instance.CallOpenInventoryEvent();
+
     }
 }

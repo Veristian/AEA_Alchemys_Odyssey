@@ -261,6 +261,11 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
         return playerQuestsList.playerQuests.FirstOrDefault(q => q.questId == questId);
     }
 
+    public void SetTrackedQuest(PlayerQuestData questData)
+    {
+        TrackedQuest = questData;
+    }
+
 #endregion
 
 #region Quest Interaction

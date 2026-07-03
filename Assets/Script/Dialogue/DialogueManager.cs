@@ -25,7 +25,7 @@ public class DialogueManager : Singleton<DialogueManager>
     [Header("Character")]
     public List<CharacterSprite> characterSprites;
     private HashSet<SubmissionCharacter> shownCharacters = new HashSet<SubmissionCharacter>();
-private SubmissionCharacter? currentSpeaker = null;
+    private SubmissionCharacter? currentSpeaker = null;
 
     [Header("Settings")]
     public float textSpeed = 0.02f;
@@ -34,8 +34,8 @@ private SubmissionCharacter? currentSpeaker = null;
     private Story story;
     private Coroutine currentLineCoroutine;
 
-    public bool isTyping {get; private set;}
-    public bool dialogueActive {get; private set;}
+    public bool isTyping { get; private set; }
+    public bool dialogueActive { get; private set; }
     void Start()
     {
         dialoguePanel.SetActive(false);
@@ -82,7 +82,7 @@ private SubmissionCharacter? currentSpeaker = null;
             else
                 Debug.Log("Knot not found, starting from beginning");
         }
-        
+
         if (dialoguePanel != null)
         {
             dialoguePanel.SetActive(true);
@@ -243,7 +243,7 @@ private SubmissionCharacter? currentSpeaker = null;
             case "SubmitQuest":
                 QuestRuntimeManager.Instance.SubmitQuest(parameter);
                 break;
-            
+
         }
         // note to self: make functions, finish quest, teleport player, fade screen.
     }
@@ -252,142 +252,143 @@ private SubmissionCharacter? currentSpeaker = null;
     // 🔹 CHARACTER TAG
     // Format: char: Kenny,left
     // ================================
-void HandleCharacterTag(string value)
-{
-    string[] parts = value.Split(',');
+    void HandleCharacterTag(string value)
+    {
+        string[] parts = value.Split(',');
 
-    string characterName = parts[0].Trim();
-    string position = (parts.Length >= 2) ? parts[1].Trim() : "left";
+        string characterName = parts[0].Trim();
+        string position = (parts.Length >= 2) ? parts[1].Trim() : "left";
 
-    if (Enum.TryParse(characterName, out SubmissionCharacter character))
-    {
-        currentSpeaker = character;
-        ShowCharacter(character, position);
-    }
-    else
-    {
-        Debug.LogWarning("Invalid character enum: " + characterName);
-    }
-}    // ================================
-    // 🔹 SHOW CHARACTER
-    // ================================
-void ShowCharacter(SubmissionCharacter character, string position)
-{
-    foreach (CharacterSprite cs in characterSprites)
-    {
-        if (cs.character == character)
+        if (Enum.TryParse(characterName, out SubmissionCharacter character))
         {
-            bool firstTime = !shownCharacters.Contains(character);
-
-            ChangeSprite(cs.sprite, position, firstTime);
-
-            if (firstTime)
-                shownCharacters.Add(character);
-
-            UpdateSpeakerHighlight();
-
-            return;
-        }
-    }
-
-    Debug.LogWarning("Character sprite not found: " + character);
-}
-    // ================================
-    // 🔹 CHANGE SPRITE + FADE
-    // ================================
-void ChangeSprite(Sprite sprite, string position, bool fadeIn)
-{
-    Image target = null;
-
-    switch (position.ToLower())
-    {
-        case "left":
-            target = leftSprite;
-            break;
-        case "right":
-            target = rightSprite;
-            break;
-    }
-
-    if (target == null)
-    {
-        Debug.LogWarning("Invalid position: " + position);
-        return;
-    }
-
-    target.sprite = sprite;
-
-    if (fadeIn)
-    {
-        Color c = target.color;
-        c.a = 0f;
-        target.color = c;
-
-        StartCoroutine(FadeIn(target));
-    }
-}
-    // ================================
-    // 🔹 FADE IN
-    // ================================
-IEnumerator FadeIn(Image renderer)
-{
-    float time = 0f;
-    Color c = renderer.color;
-
-    while (time < fadeDuration)
-    {
-        time += Time.deltaTime;
-        float t = time / fadeDuration;
-
-        c.a = Mathf.Lerp(0f, 1f, t);
-        renderer.color = c;
-
-        yield return null;
-    }
-
-    c.a = 1f;
-    renderer.color = c;
-}    void UpdateSpeakerHighlight()
-{
-    if (currentSpeaker == null) return;
-
-    SubmissionCharacter speaker = currentSpeaker.Value;
-
-    foreach (CharacterSprite cs in characterSprites)
-    {
-        if (!shownCharacters.Contains(cs.character))
-            continue;
-
-        Image target = null;
-
-        if (leftSprite.sprite == cs.sprite)
-            target = leftSprite;
-        else if (rightSprite.sprite == cs.sprite)
-            target = rightSprite;
-
-        if (target == null) continue;
-
-        Color c = target.color;
-
-        if (cs.character == speaker)
-        {
-            c = Color.white;
-            c.a = 1f;
+            currentSpeaker = character;
+            ShowCharacter(character, position);
         }
         else
         {
-            c = new Color(0.5f, 0.5f, 0.5f, 1f); // dimmed
-            // c.a = 1f;
+            Debug.LogWarning("Invalid character enum: " + characterName);
+        }
+    }    // ================================
+         // 🔹 SHOW CHARACTER
+         // ================================
+    void ShowCharacter(SubmissionCharacter character, string position)
+    {
+        foreach (CharacterSprite cs in characterSprites)
+        {
+            if (cs.character == character)
+            {
+                bool firstTime = !shownCharacters.Contains(character);
+
+                ChangeSprite(cs.sprite, position, firstTime);
+
+                if (firstTime)
+                    shownCharacters.Add(character);
+
+                UpdateSpeakerHighlight();
+
+                return;
+            }
         }
 
-        target.color = c;
+        Debug.LogWarning("Character sprite not found: " + character);
     }
-}
+    // ================================
+    // 🔹 CHANGE SPRITE + FADE
+    // ================================
+    void ChangeSprite(Sprite sprite, string position, bool fadeIn)
+    {
+        Image target = null;
 
-void SetImageTransparent()
+        switch (position.ToLower())
+        {
+            case "left":
+                target = leftSprite;
+                break;
+            case "right":
+                target = rightSprite;
+                break;
+        }
+
+        if (target == null)
+        {
+            Debug.LogWarning("Invalid position: " + position);
+            return;
+        }
+
+        target.sprite = sprite;
+
+        if (fadeIn)
+        {
+            Color c = target.color;
+            c.a = 0f;
+            target.color = c;
+
+            StartCoroutine(FadeIn(target));
+        }
+    }
+    // ================================
+    // 🔹 FADE IN
+    // ================================
+    IEnumerator FadeIn(Image renderer)
+    {
+        float time = 0f;
+        Color c = renderer.color;
+
+        while (time < fadeDuration)
+        {
+            time += Time.deltaTime;
+            float t = time / fadeDuration;
+
+            c.a = Mathf.Lerp(0f, 1f, t);
+            renderer.color = c;
+
+            yield return null;
+        }
+
+        c.a = 1f;
+        renderer.color = c;
+    }
+    void UpdateSpeakerHighlight()
+    {
+        if (currentSpeaker == null) return;
+
+        SubmissionCharacter speaker = currentSpeaker.Value;
+
+        foreach (CharacterSprite cs in characterSprites)
+        {
+            if (!shownCharacters.Contains(cs.character))
+                continue;
+
+            Image target = null;
+
+            if (leftSprite.sprite == cs.sprite)
+                target = leftSprite;
+            else if (rightSprite.sprite == cs.sprite)
+                target = rightSprite;
+
+            if (target == null) continue;
+
+            Color c = target.color;
+
+            if (cs.character == speaker)
+            {
+                c = Color.white;
+                c.a = 1f;
+            }
+            else
+            {
+                c = new Color(0.5f, 0.5f, 0.5f, 1f); // dimmed
+                                                     // c.a = 1f;
+            }
+
+            target.color = c;
+        }
+    }
+
+    void SetImageTransparent()
     {
         if (leftSprite == null || rightSprite == null) return;
-        leftSprite.color = new Color(255,255,255,0); 
-        rightSprite.color = new Color(255,255,255,0); 
+        leftSprite.color = new Color(255, 255, 255, 0);
+        rightSprite.color = new Color(255, 255, 255, 0);
     }
 }

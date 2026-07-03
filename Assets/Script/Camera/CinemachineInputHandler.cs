@@ -20,6 +20,7 @@ public class CinemachineInputHandler : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        inputManager = InputManager.Instance;
 
     }
 

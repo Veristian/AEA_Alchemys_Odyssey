@@ -331,10 +331,6 @@ public class InventoryManager : Singleton<InventoryManager>
         Debug.Log("Inventory Loaded");
         
         //fills out definitin for all ingredients for faster reload time
-        // foreach (IngredientData ingredientData in DataManager.Instance.ingredientDatas)
-        // {
-            
-        // }
         var existingIds = new HashSet<string>(
             ingredientInventoryList.ingredientsList
                 .Select(inv => inv.ingredientData.ingredientId)

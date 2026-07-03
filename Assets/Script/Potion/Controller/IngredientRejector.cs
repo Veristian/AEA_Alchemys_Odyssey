@@ -13,6 +13,8 @@ public class IngredientRejector : MonoBehaviour
         {
             OnIngredientRejected?.Invoke(ingredient);
             ingredient.ingredientHouseItem.DecreaseObjTaken();
+            ingredient.ingredientHouseItem.gameObject.SetActive(true);
+
         }
         Destroy(collision.gameObject.transform.parent.gameObject, 0.1f);
     }

@@ -376,7 +376,7 @@ public class PotionManager : Singleton<PotionManager>
         // var ingredientDataList = currentActivePotionIngredients
         IngredientHouse.Instance.UpdateIngredientsHousesObjTaken(currentActivePotionIngredients?
         .Select(s => s.ingredientData)
-        .ToList() ?? new List<IngredientData>(), true);
+        .ToList() ?? new List<IngredientData>(), returnIngredient: true, forceReturnAll: true);
         currentActivePotionIngredients.Clear();
         ClearPotionGraph();
     }

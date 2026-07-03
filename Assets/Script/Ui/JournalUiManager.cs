@@ -153,7 +153,8 @@ public class JournalUiManager : MonoBehaviour
 
     public void JournalItemSetup()
     {
-        //setup the item over here...
+        UiLoader.Instance.CallOpenIndexEvent();
+        UiLoader.Instance.CallOpenQuestEvent();
     }
 
     

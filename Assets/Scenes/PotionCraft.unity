@@ -20558,7 +20558,7 @@ MonoBehaviour:
     amount: 0
   displayBoard: {fileID: 100315631}
   graph: {fileID: 100315633}
-  pointsLength: 7
+  pointsLength: 10
   graphSize: {x: 24, y: 21}
   graphDefaultRest: 0.5
   graphOrigin: {x: 0, y: 0, z: 0}
@@ -27389,6 +27389,22 @@ PrefabInstance:
       propertyPath: contentTransform
       value: 
       objectReference: {fileID: 635755829}
+    - target: {fileID: 1789954941151435890, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571495696662888705, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571495696662888705, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571495696662888705, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 39.11
+      objectReference: {fileID: 0}
     - target: {fileID: 2713631496233544058, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: contentTransform
       value: 
@@ -27479,7 +27495,7 @@ PrefabInstance:
       objectReference: {fileID: 1812609191}
     - target: {fileID: 3499962511287893855, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: ItemToHidnWhenBrew.Array.size
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3499962511287893855, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: 'ItemToHidnWhenBrew.Array.data[0]'
@@ -27550,6 +27566,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 710466336}
     - target: {fileID: 6758462516254006501, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: pointsLength
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758462516254006501, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: graphOrigin.x
       value: 3.22
       objectReference: {fileID: 0}
@@ -27609,10 +27629,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8035096939596221948, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8906088090140821762, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: contentTransform
       value: 
       objectReference: {fileID: 1945626841}
+    - target: {fileID: 9149103158041147773, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 55.86
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

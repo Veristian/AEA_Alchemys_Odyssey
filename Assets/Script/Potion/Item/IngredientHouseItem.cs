@@ -61,7 +61,13 @@ public class IngredientHouseItem : MonoBehaviour, IPointerDownHandler, IPointerE
         if (ingredient != null && ingredient.ingredientData != null)
         {
             ItemImage.sprite = ingredient.ingredientData.ingredientSprite;
+            if (displayedObjectAmount <= 0)
+            {
+                gameObject.SetActive(false);
+            }
+
         }
+
     }
 
     private void GrabItem()
@@ -88,6 +94,12 @@ public class IngredientHouseItem : MonoBehaviour, IPointerDownHandler, IPointerE
     public void DecreaseObjTaken()
     {
         objTaken = (int)Mathf.Clamp(objTaken - 1, 0, Mathf.Infinity);
+        UpdateDisplay();
+    }
+
+    private void OnEnable()
+    {
+        // Reset objTaken when the item is enabled
         UpdateDisplay();
     }
 

@@ -149,6 +149,10 @@ public class UiLoader : Singleton<UiLoader>
 
         foreach (PotionData potionData in DataManager.Instance.potionDatas)
         {
+            if (potionData.potionId == "Null_Potion")
+            {
+                continue;
+            }
             GameObject potionItem = Instantiate(indexPrefab, indexPotionContainer);
             JournalDisplay journalDisplay = potionItem.GetComponent<JournalDisplay>();
             journalDisplay.InitPotionDisplay(potionData);

@@ -17,12 +17,14 @@ public class PlayerPopUpUiManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenuPanel;
     [SerializeField] private GameObject dialogPanel;
     [SerializeField] private GameObject dailyTidalsPanel;
+    [SerializeField] private GameObject gameStorePanel;
 
     [Header("CloseBtns")]
     [SerializeField] private Button JournalCloseBtn;
     [SerializeField] private Button InventoryCloseBtn;
     [SerializeField] private Button PauseMenuCloseBtn;
     [SerializeField] private Button DailyTidalCloseBtn;
+    [SerializeField] private Button GameStoreCloseBtn;
 
     private GameObject currentPopup;
     private bool isPopUpOpened = false;
@@ -154,6 +156,11 @@ public class PlayerPopUpUiManager : MonoBehaviour
         OpenPopup(dailyTidalsPanel);
     }
 
+    public void OpenGameStore()
+    {
+        OpenPopup(gameStorePanel);
+    }
+
     private void ButtonAssign()
     {
         if (JournalCloseBtn != null)
@@ -171,6 +178,10 @@ public class PlayerPopUpUiManager : MonoBehaviour
         if (DailyTidalCloseBtn != null)
         {
             DailyTidalCloseBtn.onClick.AddListener(OpenDailyTidals);
+        }
+        if (GameStoreCloseBtn != null)
+        {
+            GameStoreCloseBtn.onClick.AddListener(OpenGameStore);
         }
 
     }

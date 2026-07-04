@@ -33,6 +33,7 @@ public class UiLoader : Singleton<UiLoader>
     [SerializeField] private Transform mainQuestContainer;
     [SerializeField] private Transform subQuestContainer;
     [SerializeField] private GameObject questPrefab;
+    [SerializeField] private GameObject questEmptyPrefab;
     [Header("Quest/Display")]
     [SerializeField] private TextMeshProUGUI questName;
     [SerializeField] private TextMeshProUGUI questDescription;
@@ -197,7 +198,7 @@ public class UiLoader : Singleton<UiLoader>
         questDescription.text = "";
         goldIcon.SetActive(false);
         goldRewardAmount.text = "";
-
+        bool hasQuest = false;
 
         foreach (PlayerQuestData questData in QuestRuntimeManager.Instance.PlayerQuestsList.playerQuests)
         {
@@ -210,6 +211,8 @@ public class UiLoader : Singleton<UiLoader>
             {
                 continue;
             }
+
+            hasQuest = true;
             GameObject questItem = Instantiate(questPrefab, mainQuestContainer);
             QuestDisplay questDisplay = questItem.GetComponent<QuestDisplay>();
 
@@ -218,6 +221,11 @@ public class UiLoader : Singleton<UiLoader>
                 questItem.transform.SetParent(subQuestContainer);
             }
             questDisplay.Initialize(questData);
+        }
+        if (!hasQuest)
+        {
+            Debug.Log("No ongoing quests.");
+            DisplayEmptyQuest();
         }
 
     }
@@ -240,6 +248,12 @@ public class UiLoader : Singleton<UiLoader>
             trackedQuestName.text = displayedQuestData.questData.questName;
             trackedQuestDescription.text = displayedQuestData.questData.questDescription;
         }
+    }
+
+    private void DisplayEmptyQuest()
+    {
+        Instantiate(questEmptyPrefab, mainQuestContainer);
+        Instantiate(questEmptyPrefab, subQuestContainer);
     }
 
     

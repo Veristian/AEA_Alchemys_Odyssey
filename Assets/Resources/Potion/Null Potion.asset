@@ -15,10 +15,10 @@ MonoBehaviour:
   loadState: 0
   questId: 
   potionId: Null_Potion
-  potionName: Null_Potion
+  potionName: Empty
   potion2DObjectPrefab: {fileID: 1171091932301145056, guid: 1bac119c5f3c28a4bb9ef76b166417e2, type: 3}
   potionSprite: {fileID: 21300000, guid: b870049a09bb3654eaa433da2e7e553e, type: 3}
-  description: Its a potion with no effect.
+  description: 
   potionColor: {r: 0, g: 0, b: 0, a: 0}
   ingredients: []
   potionCurve:

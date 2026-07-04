@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class RecipeHouse : Singleton<RecipeHouse>
@@ -10,6 +11,8 @@ public class RecipeHouse : Singleton<RecipeHouse>
 
     public GameObject recipeHouseItemPrefab;
     public List<RecipeHouseItem> recipeHouseItems;
+    public TextMeshProUGUI RecipeAmountText;
+    private int RecipeAmount = 0;
 
     private void OnEnable()
     {
@@ -39,10 +42,19 @@ public class RecipeHouse : Singleton<RecipeHouse>
         recipeHouseItems.Clear();
         foreach (Recipe recipe in PlayerDataManager.Instance.RecipeList.recipes)
         {
+            if (recipe.targetPotion.potionId == "Null_Potion")
+            {
+                continue;
+            }
+                
             RecipeHouseItem item = Instantiate(recipeHouseItemPrefab, contentTransform).GetComponent<RecipeHouseItem>();
             recipeHouseItems.Add(item);
             item.AssignRecipe(recipe);
+            RecipeAmount++;
+               
         }
+        int TotalPotionLength = DataManager.Instance.potionDatas.Count - 1;
+        RecipeAmountText.text = RecipeAmount.ToString() + "/" + TotalPotionLength;
     }
 
 }

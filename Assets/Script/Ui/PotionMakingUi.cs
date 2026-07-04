@@ -26,6 +26,8 @@ public class PotionMakingUi : MonoBehaviour
     public Button RecipeOpenBtn;
     public Button RecipeCloseBtn;
     [SerializeField] public GameObject RecipeTargetGO;
+    public Button ResetRecipeTargetBtn;
+    public PotionData emptyPotionTarget;
 
     [Header("Brewing Result Section")]
     [SerializeField] private GameObject ResultDisplayGO;
@@ -68,9 +70,13 @@ public class PotionMakingUi : MonoBehaviour
         {
             RecipeCloseBtn.onClick.AddListener(CloseRecipePanel);
         }
-        if (ResultDisplayCloseBtn !=null)
+        if (ResultDisplayCloseBtn != null)
         {
             ResultDisplayCloseBtn.onClick.AddListener(CloseResultPanel);
+        }
+        if (ResetRecipeTargetBtn != null)
+        {
+            ResetRecipeTargetBtn.onClick.AddListener(ResetRecipeTargetItem);
         }
     }
 
@@ -143,14 +149,16 @@ public class PotionMakingUi : MonoBehaviour
     {
         if (RecipeTargetGO != null)
         {
-            RecipeTargetGO.SetActive(true);
+            //RecipeTargetGO.SetActive(true);
+            UITransitionManager.Instance.FadeIn(RecipeTargetGO.gameObject);
         }
     }
     private void CloseRecipeTarget()
     {
         if (RecipeTargetGO != null)
         {
-            RecipeTargetGO.SetActive(false);
+            //RecipeTargetGO.SetActive(false);
+            UITransitionManager.Instance.FadeOut(RecipeTargetGO.gameObject);
         }
     }
 
@@ -246,6 +254,12 @@ public class PotionMakingUi : MonoBehaviour
             //t.SetActive(false);
             UITransitionManager.Instance.FadeIn(t);
         }
+    }
+
+    private void ResetRecipeTargetItem()
+    {
+        CloseRecipeTarget();
+        PotionManager.Instance.AssignPotionTarget(emptyPotionTarget);
     }
 
 }

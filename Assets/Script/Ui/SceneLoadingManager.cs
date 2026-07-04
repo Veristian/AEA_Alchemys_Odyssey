@@ -55,10 +55,16 @@ public class SceneLoadingManager : Singleton<SceneLoadingManager>
         if (loadingScreen != null)
         {
             loadingScreen.SetActive(true);
-
-            yield return new WaitForSeconds(0.2f); // Wait 1 frame
+            //InputManager.Instance.canMove = false;
+            //InputManager.Instance.canLook = false;
+            InputManager.Instance.DisableInputs();
+            yield return new WaitForSeconds(1.5f); // Wait 1 frame
             float fadeduration = 0.5f;
             UITransitionManager.Instance.FadeOut(loadingScreen,fadeduration);
+            yield return new WaitForSeconds(.5f);
+            InputManager.Instance.EnableInputs();
+            //InputManager.Instance.canMove = true;
+            //InputManager.Instance.canLook = true;
         }
     }
 

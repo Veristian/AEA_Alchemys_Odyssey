@@ -347,6 +347,7 @@ public class PotionManager : Singleton<PotionManager>
                 InventoryManager.Instance.SubtractIngredient(ingredient.ingredientData);
             }
             ClearPotion();
+            PotionHouse.Instance.UpdatePotionDisplay();
         }
         else
         {

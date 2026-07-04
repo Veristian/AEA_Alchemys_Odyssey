@@ -31,6 +31,7 @@ public class JournalUiManager : MonoBehaviour
     private void OnEnable()
     {
         JournalPageSetup();
+        JournalItemSetup();
     }
 
     private void JournalTabSetup()
@@ -111,7 +112,7 @@ public class JournalUiManager : MonoBehaviour
                     : Color.gray;
             if (pages[i].isJournal)
             {
-                JournalItemSetup();
+                
                 JournalTabSetup();
             }
 

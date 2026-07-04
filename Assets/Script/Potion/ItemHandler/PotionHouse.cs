@@ -102,4 +102,10 @@ public class PotionHouse : Singleton<PotionHouse>
         );
     }
 
+
+    public void UpdatePotionDisplay()
+    {
+        SetupPotions();
+    }
+
 }

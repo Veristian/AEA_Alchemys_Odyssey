@@ -65,8 +65,9 @@ public class PlayerPopUpUiManager : MonoBehaviour
         {
             CloseCurrentPopup();
             isPopUpOpened = false;
-            InputManager.Instance.canMove = true;
-            InputManager.Instance.canLook = true;
+            InputManager.Instance.EnableInputs();
+            //InputManager.Instance.canMove = true;
+            //InputManager.Instance.canLook = true;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             return;
@@ -77,8 +78,10 @@ public class PlayerPopUpUiManager : MonoBehaviour
         }
         CloseCurrentPopup();
 
-        InputManager.Instance.canMove = false;
-        InputManager.Instance.canLook = false;
+        //InputManager.Instance.canMove = false;
+        //InputManager.Instance.canLook = false;
+        InputManager.Instance.DisableInputs();
+
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

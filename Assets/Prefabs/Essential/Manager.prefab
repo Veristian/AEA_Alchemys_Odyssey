@@ -319,10 +319,12 @@ MonoBehaviour:
   pauseMenuPanel: {fileID: 886575005170879379}
   dialogPanel: {fileID: 521922860535740613}
   dailyTidalsPanel: {fileID: 6747434029583911112}
+  gameStorePanel: {fileID: 597566503529007705}
   JournalCloseBtn: {fileID: 6080820996860698865}
   InventoryCloseBtn: {fileID: 5632452113436301098}
   PauseMenuCloseBtn: {fileID: 1131508274133475077}
   DailyTidalCloseBtn: {fileID: 3472511733449212519}
+  GameStoreCloseBtn: {fileID: 6816120874483180616}
 --- !u!114 &2934891651131802162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1685,6 +1687,8 @@ MonoBehaviour:
   RecipeOpenBtn: {fileID: 0}
   RecipeCloseBtn: {fileID: 0}
   RecipeTargetGO: {fileID: 0}
+  ResetRecipeTargetBtn: {fileID: 0}
+  emptyPotionTarget: {fileID: 0}
   ResultDisplayGO: {fileID: 0}
   ResultItemBox: {fileID: 0}
   ResultText: {fileID: 0}
@@ -1913,6 +1917,7 @@ MonoBehaviour:
   contentTransform: {fileID: 0}
   recipeHouseItemPrefab: {fileID: 4528271562127227136, guid: e997ea2a4800c6e41a69d0e7097414fc, type: 3}
   recipeHouseItems: []
+  RecipeAmountText: {fileID: 0}
 --- !u!1001 &5673823884265799760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2041,6 +2046,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5096565614592710477, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
   m_PrefabInstance: {fileID: 5673823884265799760}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &597566503529007705 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5113700295872776713, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
+  m_PrefabInstance: {fileID: 5673823884265799760}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &729922575882359095 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4943910560011637095, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
@@ -2105,6 +2115,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1377762024333838488, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
   m_PrefabInstance: {fileID: 5673823884265799760}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6816120874483180616 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1164955730751235096, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
+  m_PrefabInstance: {fileID: 5673823884265799760}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7560576636607829066 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2761243847322948634, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}

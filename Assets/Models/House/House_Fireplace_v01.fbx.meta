@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: 40744011a0bda67489df9a90065c5595
+guid: a0eb22d994ce74145b0403310c7488af
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_ Fireplace_Body
+    second: {fileID: 2100000, guid: cc4eaf6b1efbbdc499820b66c90bf16f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_Fireplace_Smokehole
+    second: {fileID: 2100000, guid: 9356b6170b23a4d46a32f35effd435a8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -88,7 +98,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.035
+    globalScale: 3.5
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

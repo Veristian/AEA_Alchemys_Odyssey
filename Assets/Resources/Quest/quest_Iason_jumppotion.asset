@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadState: 0
   questId: quest_Iason_jumppotion
-  questName: 
-  questDescription: 
+  questName: This is the End
+  questDescription: Deliver a Hunger Potion to The Mayor. Mr Jason.
   submissionCharacter: 1
   requirementsToUnlock:
     requirements:

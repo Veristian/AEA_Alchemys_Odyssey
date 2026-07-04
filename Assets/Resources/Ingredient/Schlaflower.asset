@@ -17,7 +17,7 @@ MonoBehaviour:
   ingredientId: Schlaflower
   ingredientName: Schlaflower
   ingredient2DObjectPrefab: {fileID: 1171091932301145056, guid: f4c8d2e23f2fad84e9514876811b8150, type: 3}
-  ingredientSprite: {fileID: 21300000, guid: 41526d2d979ea1a47851c58160707bf9, type: 3}
+  ingredientSprite: {fileID: 21300000, guid: f647b5dbe2efe1b44ae13e0c194a5c0a, type: 3}
   description: the plant mobile looking stem produce pollens that contains melatonin
     which cause approaching threats sleepy.
   ingredientCurve:

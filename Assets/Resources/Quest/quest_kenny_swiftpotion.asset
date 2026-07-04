@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadState: 0
   questId: quest_kenny_swiftpotion
-  questName: 
-  questDescription: 
+  questName: What happen Kenny?
+  questDescription: Deliver a Sleep Potion to Kenny
   submissionCharacter: 0
   requirementsToUnlock:
     requirements:
@@ -24,7 +24,7 @@ MonoBehaviour:
     requirements:
     - rid: 5999243469903888406
   questActions:
-    goldReward: 0
+    goldReward: 200
   isMainQuest: 0
   isRepeatable: 0
   storyText: {fileID: 4900000, guid: 2593408fe5ae382449027269228a4634, type: 3}

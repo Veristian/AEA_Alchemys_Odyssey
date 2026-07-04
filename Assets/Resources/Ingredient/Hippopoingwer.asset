@@ -17,7 +17,7 @@ MonoBehaviour:
   ingredientId: Hippopoingwer
   ingredientName: Hippopoingwer
   ingredient2DObjectPrefab: {fileID: 1171091932301145056, guid: cd9da64cef1706a4db33f827c6ace7dd, type: 3}
-  ingredientSprite: {fileID: 21300000, guid: 6faeb45fd8f7d154494c221e289a72d5, type: 3}
+  ingredientSprite: {fileID: 21300000, guid: 531e168254160004a83a82d3374051a0, type: 3}
   description: "A ginger with an internode that looks like the face of a hippo. This
     herb\u2019s  inner temperature is very high, it usually found in shallow body
     of water to regulate its own temperature."

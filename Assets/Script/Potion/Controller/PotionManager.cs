@@ -233,7 +233,7 @@ public class PotionManager : Singleton<PotionManager>
     {
         activePotionTarget = newPotion;
         activePotionIngredientsTarget = new List<StoredData>(activePotionTarget.ingredients);
-        UpdateGuideGraph();
+        UpdateGuideGraph(newPotion);
 
         if (activePotionTarget == null)
         {
@@ -414,12 +414,22 @@ public class PotionManager : Singleton<PotionManager>
         restOffset = heatSlider.value * (maxHeatOffset - minHeatOffset) + minHeatOffset;
         playArea.transform.position = new Vector3(playArea.transform.position.x,playAreaOrigin.y - (restOffset),playArea.transform.position.z);
     }
-    private void UpdateGuideGraph()
+    private void UpdateGuideGraph(PotionData potionData = null)
     {
         List<AnimationCurve> ingredientCurves = new List<AnimationCurve>();
         for (int i = 0; i < activePotionIngredientsTarget.Count; i++)
         {
             ingredientCurves.Add(AdjustCurveToContactPoint(activePotionIngredientsTarget[i].ingredientData,activePotionIngredientsTarget[i].contactPoint));
+        }
+        if (potionData != null)
+        {
+            guideGraphTop.restOffset = potionData.restOffset + distanceBetweenGuides/2;
+            guideGraphBottom.restOffset = potionData.restOffset - distanceBetweenGuides/2;
+        }
+        else
+        {
+            guideGraphTop.restOffset = distanceBetweenGuides/2;
+            guideGraphBottom.restOffset = -distanceBetweenGuides/2;
         }
         SetGuideGraphCurves(ingredientCurves);
     }

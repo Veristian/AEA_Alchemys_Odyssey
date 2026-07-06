@@ -19,7 +19,9 @@ public class PotionData : ResourceData
     [Header("Potion Properties")]
     public Color potionColor;
     public List<StoredData> ingredients = new List<StoredData>();
+    public float restOffset;
     [SerializeField, ReadOnly] private AnimationCurve potionCurve;
+    
 
     [ContextMenu("Generate Potion Curve")]
     public void GeneratePotionCurve()

@@ -19,12 +19,13 @@ public class DialogueManager : Singleton<DialogueManager>
     [Header("UI Reference")]
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText;
-    public TextMeshProUGUI speakerNameText;
+    public TextMeshProUGUI rightSpeakerNameText;
+    public TextMeshProUGUI leftSpeakerNameText;
     public Image leftSprite;
     public Image rightSprite;
     [Header("Character")]
     public List<CharacterSprite> characterSprites;
-    private HashSet<SubmissionCharacter> shownCharacters = new HashSet<SubmissionCharacter>();
+    // private HashSet<SubmissionCharacter> shownCharacters = new HashSet<SubmissionCharacter>();
     private SubmissionCharacter? currentSpeaker = null;
 
     [Header("Settings")]
@@ -39,7 +40,7 @@ public class DialogueManager : Singleton<DialogueManager>
     void Start()
     {
         dialoguePanel.SetActive(false);
-        SetImageTransparent();
+        // SetImageTransparent();
     }
 
     public static TextAsset GetInkJSON(string name)
@@ -196,13 +197,19 @@ public class DialogueManager : Singleton<DialogueManager>
             switch (key)
             {
                 case "speaker":
-                    if (speakerNameText == null)
+                    if (leftSpeakerNameText == null || rightSpeakerNameText == null)
                     {
-                        Debug.LogWarning("Speaker Name \"" + value + "\" Text reference is not assigned. Please assign a TextMeshProUGUI reference to speakerNameText in the inspector.");
+                        Debug.LogWarning("Speaker Name \"" + value + "\" Text reference is not assigned. Please assign a TextMeshProUGUI reference to leftSpeakerNameText or rightSpeakerNameText in the inspector.");
                         return;
                     }
-                    HandleCharacterTag(value);
-                    speakerNameText.text = value;
+                    if (HandleCharacterTag(value))
+                    {
+                        leftSpeakerNameText.text = value;
+                    }
+                    else
+                    {
+                        rightSpeakerNameText.text = value;
+                    }
                     break;
 
                 case "speed":
@@ -250,41 +257,55 @@ public class DialogueManager : Singleton<DialogueManager>
 
     // ================================
     // 🔹 CHARACTER TAG
-    // Format: char: Kenny,left
+    // Format: char: Kenny
     // ================================
-    void HandleCharacterTag(string value)
+    bool HandleCharacterTag(string value)
     {
-        string[] parts = value.Split(',');
-
-        string characterName = parts[0].Trim();
-        string position = (parts.Length >= 2) ? parts[1].Trim() : "left";
-
-        if (Enum.TryParse(characterName, out SubmissionCharacter character))
+        if (Enum.TryParse(value, out SubmissionCharacter character))
         {
             currentSpeaker = character;
-            ShowCharacter(character, position);
+            if (currentSpeaker == SubmissionCharacter.Chemy)
+            {
+                ShowCharacter(character, true);
+                return true;
+            }
+            else
+            {
+                ShowCharacter(character, false);
+                return false;
+
+            }
         }
         else
         {
-            Debug.LogWarning("Invalid character enum: " + characterName);
+            Debug.LogWarning("Invalid character enum: " + value);
         }
+        return false;
     }    // ================================
          // 🔹 SHOW CHARACTER
          // ================================
-    void ShowCharacter(SubmissionCharacter character, string position)
+    void ShowCharacter(SubmissionCharacter character, bool isMainCharacter)
     {
         foreach (CharacterSprite cs in characterSprites)
         {
             if (cs.character == character)
             {
-                bool firstTime = !shownCharacters.Contains(character);
+                // bool firstTime = !shownCharacters.Contains(character);
 
-                ChangeSprite(cs.sprite, position, firstTime);
+                if (isMainCharacter)
+                {
+                    ChangeSprite(cs.sprite, "left");
+                    DialogUiManager.Instance.MainCharacterSpeak();
+                }
+                else
+                {
+                    ChangeSprite(cs.sprite, "right");
+                    DialogUiManager.Instance.SubCharacterSpeak();
+                }
+                // if (firstTime)
+                //     shownCharacters.Add(character);
 
-                if (firstTime)
-                    shownCharacters.Add(character);
-
-                UpdateSpeakerHighlight();
+                // UpdateSpeakerHighlight();
 
                 return;
             }
@@ -295,7 +316,7 @@ public class DialogueManager : Singleton<DialogueManager>
     // ================================
     // 🔹 CHANGE SPRITE + FADE
     // ================================
-    void ChangeSprite(Sprite sprite, string position, bool fadeIn)
+    void ChangeSprite(Sprite sprite, string position)
     {
         Image target = null;
 
@@ -317,78 +338,78 @@ public class DialogueManager : Singleton<DialogueManager>
 
         target.sprite = sprite;
 
-        if (fadeIn)
-        {
-            Color c = target.color;
-            c.a = 0f;
-            target.color = c;
+        // if (fadeIn)
+        // {
+        //     Color c = target.color;
+        //     c.a = 0f;
+        //     target.color = c;
 
-            StartCoroutine(FadeIn(target));
-        }
+        //     StartCoroutine(FadeIn(target));
+        // }
     }
-    // ================================
-    // 🔹 FADE IN
-    // ================================
-    IEnumerator FadeIn(Image renderer)
-    {
-        float time = 0f;
-        Color c = renderer.color;
+    // // ================================
+    // // 🔹 FADE IN
+    // // ================================
+    // IEnumerator FadeIn(Image renderer)
+    // {
+    //     float time = 0f;
+    //     Color c = renderer.color;
 
-        while (time < fadeDuration)
-        {
-            time += Time.deltaTime;
-            float t = time / fadeDuration;
+    //     while (time < fadeDuration)
+    //     {
+    //         time += Time.deltaTime;
+    //         float t = time / fadeDuration;
 
-            c.a = Mathf.Lerp(0f, 1f, t);
-            renderer.color = c;
+    //         c.a = Mathf.Lerp(0f, 1f, t);
+    //         renderer.color = c;
 
-            yield return null;
-        }
+    //         yield return null;
+    //     }
 
-        c.a = 1f;
-        renderer.color = c;
-    }
-    void UpdateSpeakerHighlight()
-    {
-        if (currentSpeaker == null) return;
+    //     c.a = 1f;
+    //     renderer.color = c;
+    // }
+    // void UpdateSpeakerHighlight()
+    // {
+    //     if (currentSpeaker == null) return;
 
-        SubmissionCharacter speaker = currentSpeaker.Value;
+    //     SubmissionCharacter speaker = currentSpeaker.Value;
 
-        foreach (CharacterSprite cs in characterSprites)
-        {
-            if (!shownCharacters.Contains(cs.character))
-                continue;
+    //     foreach (CharacterSprite cs in characterSprites)
+    //     {
+    //         if (!shownCharacters.Contains(cs.character))
+    //             continue;
 
-            Image target = null;
+    //         Image target = null;
 
-            if (leftSprite.sprite == cs.sprite)
-                target = leftSprite;
-            else if (rightSprite.sprite == cs.sprite)
-                target = rightSprite;
+    //         if (leftSprite.sprite == cs.sprite)
+    //             target = leftSprite;
+    //         else if (rightSprite.sprite == cs.sprite)
+    //             target = rightSprite;
 
-            if (target == null) continue;
+    //         if (target == null) continue;
 
-            Color c = target.color;
+    //         Color c = target.color;
 
-            if (cs.character == speaker)
-            {
-                c = Color.white;
-                c.a = 1f;
-            }
-            else
-            {
-                c = new Color(0.5f, 0.5f, 0.5f, 1f); // dimmed
-                                                     // c.a = 1f;
-            }
+    //         if (cs.character == speaker)
+    //         {
+    //             c = Color.white;
+    //             c.a = 1f;
+    //         }
+    //         else
+    //         {
+    //             c = new Color(0.5f, 0.5f, 0.5f, 1f); // dimmed
+    //                                                  // c.a = 1f;
+    //         }
 
-            target.color = c;
-        }
-    }
+    //         target.color = c;
+    //     }
+    // }
 
-    void SetImageTransparent()
-    {
-        if (leftSprite == null || rightSprite == null) return;
-        leftSprite.color = new Color(255, 255, 255, 0);
-        rightSprite.color = new Color(255, 255, 255, 0);
-    }
+    // void SetImageTransparent()
+    // {
+    //     if (leftSprite == null || rightSprite == null) return;
+    //     leftSprite.color = new Color(255, 255, 255, 0);
+    //     rightSprite.color = new Color(255, 255, 255, 0);
+    // }
 }

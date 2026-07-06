@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialogUiManager : MonoBehaviour
+public class DialogUiManager : Singleton<DialogUiManager>
 {
     [Header("Chat Containers")]
     [SerializeField] private Transform ActiveChatBox;

@@ -1,6 +1,7 @@
-﻿# speaker: Chemy, left
+﻿# speaker: Kenneth
+# speaker: Chemy
 lorem ipsum
-# speaker: Kenneth, right
+# speaker: Kenneth
 asdasd
 aaaa
 ssss

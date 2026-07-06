@@ -27,6 +27,7 @@ MonoBehaviour:
     contactPoint: 0.5
   - ingredientData: {fileID: 11400000, guid: f4d3a9f710c06324592e647e1c38033a, type: 2}
     contactPoint: 0.25
+  restOffset: 0
   potionCurve:
     serializedVersion: 2
     m_Curve:

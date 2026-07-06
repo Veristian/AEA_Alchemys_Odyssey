@@ -430,6 +430,18 @@ PrefabInstance:
       propertyPath: 'gameObjectUnlockables.Array.data[0].unlockableObjects.Array.data[3]'
       value: 
       objectReference: {fileID: 1578064685}
+    - target: {fileID: 2571495696662888705, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571495696662888705, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571495696662888705, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4377430157187098734, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: m_Name
       value: Manager
@@ -510,8 +522,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8670527385924476079, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -31.56604
+      objectReference: {fileID: 0}
+    - target: {fileID: 9149103158041147773, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2987545732854737961, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}

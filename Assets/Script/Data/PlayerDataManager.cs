@@ -172,7 +172,11 @@ public class PlayerDataManager : Singleton<PlayerDataManager>
     public void SetUnlock(string id, bool unlocked = true)
     {
         UnlockData unlockData = gameObjectUnlocks.unlockData.Find(g => g.itemGroupId == id);
-        if (unlockData == null) return;
+        if (unlockData == null) 
+        {
+            Debug.LogWarning($"UnlockData with id {id} not found in gameObjectUnlocks.");
+            return;
+        }
         if (unlockData.isUnlocked) return;
         unlockData.isUnlocked = unlocked;
         if (UnlockManager.Instance != null && unlocked)
@@ -196,6 +200,13 @@ public class PlayerDataManager : Singleton<PlayerDataManager>
         {
             return false;
         }
+    }
+
+    public bool IsUnlocked(string id)
+    {
+        UnlockData unlockData = gameObjectUnlocks.unlockData.Find(g => g.itemGroupId == id);
+        if (unlockData == null) return false;
+        return unlockData.isUnlocked;
     }
 
 

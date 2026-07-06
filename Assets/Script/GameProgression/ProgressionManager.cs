@@ -9,6 +9,7 @@ public class Progression
     public RequirementList requirementList;
     public string unlockId;
 }
+//used to enable herbs or furniture on certain days, or after certain quests are completed or bought.
 public class ProgressionManager : Singleton<ProgressionManager>
 {
     public List<Progression> progressions;

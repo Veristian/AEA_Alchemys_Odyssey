@@ -26,12 +26,12 @@ public class JournalDisplay : MonoBehaviour, IPointerDownHandler
     {
         if (ingredientData != null)
         {
-            UiLoader.Instance.CallOpenIndexEvent();
+            // UiLoader.Instance.CallOpenIndexEvent();
             UiLoader.Instance.DisplayIngredientData(ingredientData);
         }
         else if (potionData != null)
         {
-            UiLoader.Instance.CallOpenIndexEvent();
+            // UiLoader.Instance.CallOpenIndexEvent();
             UiLoader.Instance.DisplayPotionData(potionData);
         }
     }

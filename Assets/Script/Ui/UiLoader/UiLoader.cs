@@ -13,6 +13,8 @@ public class UiLoader : Singleton<UiLoader>
 
     public event Action OnQuestOpen;
 
+    public event Action OnShopOpen;
+
     [Header("Inventory")]
 
     [SerializeField] private Transform inventoryIngredientContainer;
@@ -46,6 +48,17 @@ public class UiLoader : Singleton<UiLoader>
     [SerializeField] private GameObject trackedQuestPanel;
     private PlayerQuestData displayedQuestData;
 
+    [Header("Shop")]
+    [Header("Shop/Load")]
+    [SerializeField] private Transform shopItemContainer;
+    [SerializeField] private GameObject shopItemPrefab;
+    [Header("Shop/Display")]
+    [SerializeField] private TextMeshProUGUI shopItemName;
+    [SerializeField] private TextMeshProUGUI shopItemDescription;
+    [SerializeField] private TextMeshProUGUI shopItemPrice;
+    [SerializeField] private Image shopItemImage;
+
+    private ShopItemData displayedShopItemData;
 
 
 #region Subscription
@@ -59,12 +72,14 @@ public class UiLoader : Singleton<UiLoader>
         OnInventoryOpen += LoadInventoryData;
         OnIndexOpen += LoadIndexData;
         OnQuestOpen += LoadQuestData;
+        OnShopOpen += LoadShopData;
     }
     private void OnDisable()
     {
         OnInventoryOpen -= LoadInventoryData;
         OnIndexOpen -= LoadIndexData;
         OnQuestOpen -= LoadQuestData;
+        OnShopOpen -= LoadShopData;
     }
 #endregion
 #region  Inventory
@@ -261,5 +276,62 @@ public class UiLoader : Singleton<UiLoader>
     }
 
     
+#endregion
+
+#region Shop
+    
+    public void CallOpenShopEvent()
+    {
+        OnShopOpen?.Invoke();
+    }
+
+    // PlayerDataManager will unlock the items once bought and the progression manager will enable the item in scene based on player data
+    public void LoadShopData()
+    {
+        foreach (Transform child in shopItemContainer)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (ShopItemData shopItemData in ShopManager.Instance.shopItems
+             .Where(item => item != null)
+             .OrderBy(item => !item.IsUnlocked)   
+             .ThenBy(item => item.price))        // cheapest first
+        {
+            GameObject shopItem = Instantiate(shopItemPrefab, shopItemContainer);
+            ShopDisplay shopDisplay = shopItem.GetComponent<ShopDisplay>();
+            shopDisplay.InitShopDisplay(shopItemData);
+        }
+    }
+
+    public void DisplayShopItemData(ShopItemData shopItemData)
+    {
+        displayedShopItemData = shopItemData;
+        if (shopItemName)
+            shopItemName.text = displayedShopItemData.itemName;
+        if (shopItemDescription)
+            shopItemDescription.text = displayedShopItemData.description;
+        if (shopItemPrice)
+            shopItemPrice.text = displayedShopItemData.price.ToString();
+        if (shopItemImage)
+            shopItemImage.sprite = displayedShopItemData.itemSprite;
+    }
+
+    public void BuyShopItem()
+    {
+        if (displayedShopItemData != null)
+        {
+            if (PlayerDataManager.Instance.SubtractGold(displayedShopItemData.price))
+            {
+                PlayerDataManager.Instance.SetUnlock(displayedShopItemData.itemGroupId, true);
+                LoadShopData(); // Refresh the shop display after purchase
+            }
+            else
+            {
+                Debug.Log("Not enough gold to buy this item.");
+            }
+        }
+    }
+
 #endregion
 }

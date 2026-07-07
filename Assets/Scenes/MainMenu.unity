@@ -1491,8 +1491,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1178928663}
   - component: {fileID: 1178928667}
-  - component: {fileID: 1178928666}
-  - component: {fileID: 1178928665}
   - component: {fileID: 1178928664}
   m_Layer: 0
   m_Name: UiManager
@@ -1528,52 +1526,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb70e447ee667c84fbd8d9226505ac35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingScreen: {fileID: 0}
+  loadingScreen: {fileID: 4950616491842853293}
   minimumLoadingTime: 2
---- !u!114 &1178928665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1178928662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f0bcbd75a0d15f4a8a6f82cb01d7ca4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  popupContainer: {fileID: 0}
-  popupPrefab: {fileID: 0}
-  maxPopups: 4
-  popupDuration: 3
-  moveSpeed: 12
-  startY: 0
-  spacingY: 100
-  overlapAmount: 20
---- !u!114 &1178928666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1178928662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46980beb5d9e38946aefd1475287898a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transBG: {fileID: 0}
-  journalPanel: {fileID: 0}
-  inventoryPanel: {fileID: 0}
-  pauseMenuPanel: {fileID: 0}
-  dialogPanel: {fileID: 0}
-  dailyTidalsPanel: {fileID: 0}
-  gameStorePanel: {fileID: 0}
-  JournalCloseBtn: {fileID: 0}
-  InventoryCloseBtn: {fileID: 0}
-  PauseMenuCloseBtn: {fileID: 0}
-  DailyTidalCloseBtn: {fileID: 0}
-  GameStoreCloseBtn: {fileID: 0}
 --- !u!114 &1178928667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2910,80 +2864,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &3874721888027900669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4324634491319050144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7352b35f9255c1f4c8628b284b5967fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryIngredientContainer: {fileID: 0}
-  inventoryPotionContainer: {fileID: 0}
-  inventoryPrefab: {fileID: 1893104686480014010, guid: 8426e8bb1124c8d4099f7a3761c465d9, type: 3}
-  indexIngredientContainer: {fileID: 0}
-  indexPotionContainer: {fileID: 0}
-  indexPrefab: {fileID: 1893104686480014010, guid: cc5d346b95198de4fb205dbb8d072e55, type: 3}
-  indexName: {fileID: 0}
-  indexDescription: {fileID: 0}
-  indexImage: {fileID: 0}
-  mainQuestContainer: {fileID: 0}
-  subQuestContainer: {fileID: 0}
-  questPrefab: {fileID: 5445225964478593423, guid: 5bc09e9bdc5305b4083237af76b2ac80, type: 3}
-  questEmptyPrefab: {fileID: 7433619549139082584, guid: 940002e26873c1b47bec7e41e5985200, type: 3}
-  questName: {fileID: 0}
-  questDescription: {fileID: 0}
-  goldRewardAmount: {fileID: 0}
-  goldIcon: {fileID: 0}
-  trackedQuestName: {fileID: 0}
-  trackedQuestDescription: {fileID: 0}
-  trackedQuestPanel: {fileID: 0}
-  shopItemContainer: {fileID: 0}
-  shopItemPrefab: {fileID: 769239210394230808, guid: 5f4671319fd59d94193bec0fd00893d1, type: 3}
-  shopItemName: {fileID: 0}
-  shopItemDescription: {fileID: 0}
-  shopItemPrice: {fileID: 0}
-  shopItemImage: {fileID: 0}
---- !u!1 &4324634491319050144
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4745025247111820869}
-  - component: {fileID: 3874721888027900669}
-  m_Layer: 5
-  m_Name: UILoader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &4745025247111820869
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4324634491319050144}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8630090874329563175}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4943900869856520872
 GameObject:
   m_ObjectHideFlags: 0
@@ -3211,7 +3091,6 @@ RectTransform:
   m_Children:
   - {fileID: 5308953618856044862}
   - {fileID: 8479337191307248956}
-  - {fileID: 4745025247111820869}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

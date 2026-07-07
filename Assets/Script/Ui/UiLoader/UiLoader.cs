@@ -14,6 +14,7 @@ public class UiLoader : Singleton<UiLoader>
     public event Action OnQuestOpen;
 
     public event Action OnShopOpen;
+    public event Action OnNewsOpen;
 
     [Header("Inventory")]
 
@@ -59,6 +60,19 @@ public class UiLoader : Singleton<UiLoader>
     [SerializeField] private Image shopItemImage;
 
     private ShopItemData displayedShopItemData;
+    [Header("News")]
+    [SerializeField] private GameObject NewsGameObject;
+    [Header("News/Display")]
+    [SerializeField] private TextMeshProUGUI newsHeadlineText;
+    [SerializeField] private TextMeshProUGUI newsHeadlineDescription;
+    [SerializeField] private Image newsHeadlineImage;
+    [SerializeField] private TextMeshProUGUI localNewsText;
+    [SerializeField] private TextMeshProUGUI localNewsDescription;
+    [SerializeField] private Image localNewsImage;
+
+    [Header("News/Load")]
+    [SerializeField] private Transform newsRequestContainer;
+    [SerializeField] private GameObject newsRequestPrefab;
 
 
 #region Subscription
@@ -73,6 +87,7 @@ public class UiLoader : Singleton<UiLoader>
         OnIndexOpen += LoadIndexData;
         OnQuestOpen += LoadQuestData;
         OnShopOpen += LoadShopData;
+        OnNewsOpen += LoadNewsData;
     }
     private void OnDisable()
     {
@@ -80,6 +95,7 @@ public class UiLoader : Singleton<UiLoader>
         OnIndexOpen -= LoadIndexData;
         OnQuestOpen -= LoadQuestData;
         OnShopOpen -= LoadShopData;
+        OnNewsOpen -= LoadNewsData;
     }
 #endregion
 #region  Inventory
@@ -333,5 +349,45 @@ public class UiLoader : Singleton<UiLoader>
         }
     }
 
+#endregion
+
+#region News
+    public void CallOpenNewsEvent()
+    {
+        OnNewsOpen?.Invoke();
+    }
+
+    private void LoadNewsData()
+    {
+        newsHeadlineText.text = DayManager.Instance.currentHeadline.headlineText;
+        newsHeadlineDescription.text = DayManager.Instance.currentHeadline.headlineDescription;
+        newsHeadlineImage.sprite = DayManager.Instance.currentHeadline.headlineImage;
+
+        localNewsText.text = DayManager.Instance.currentLocalNews.newsText;
+        localNewsDescription.text = DayManager.Instance.currentLocalNews.newsDescription;
+        localNewsImage.sprite = DayManager.Instance.currentLocalNews.newsImage;
+
+
+        foreach (Transform child in newsRequestContainer)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (LocalRequest localRequest in DayManager.Instance.ActiveLocalRequests)
+        {
+            GameObject newsRequestItem = Instantiate(newsRequestPrefab, newsRequestContainer);
+            DailyTaskDisplay dailyTaskDisplay = newsRequestItem.GetComponent<DailyTaskDisplay>();
+            dailyTaskDisplay.InitDisplay(localRequest);
+        }
+    }
+
+    // public void ActivateNews(bool active)
+    // {
+    //     NewsGameObject.SetActive(active);
+    //     if (active)
+    //     {
+    //         CallOpenNewsEvent();
+    //     }
+    // }
 #endregion
 }

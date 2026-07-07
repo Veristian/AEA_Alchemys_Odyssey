@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
+using System.Linq;
 [Serializable]
 public class Headline
 {
-    // public string headlineId;
-    public GameObject headlinePrefab;
+    [TextArea(3, 10)]
+    public string headlineText;
+    [TextArea(3, 10)]
+    public string headlineDescription;
+    public Sprite headlineImage;
 
     public RequirementList requirementsToBeShown;
 }
@@ -15,7 +18,11 @@ public class Headline
 public class LocalRequest
 {
     // public string requestId;
-    public GameObject requestPrefab;
+    [TextArea(3, 10)]
+    public string requestText;
+    [TextArea(3, 10)]
+    public string requestDescription;
+    public Sprite requestImage;
     public QuestData questData;
     public string followUpNewsId;
 
@@ -25,7 +32,11 @@ public class LocalRequest
 public class LocalNews
 {
     public string newsId;
-    public GameObject newsPrefab;
+    [TextArea(3, 10)]
+    public string newsText;
+    [TextArea(3, 10)]
+    public string newsDescription;
+    public Sprite newsImage;
     // public RequirementList requirementsToBeShown;
     public bool willBeShown;
     public bool hasBeenShown;
@@ -54,11 +65,11 @@ public class DayManager : Singleton<DayManager>
     public List<LocalNews> ActiveLocalNews;
 
     public Headline currentHeadline;
-    public LocalRequest currentLocalRequest;
+    public List<LocalRequest> currentLocalRequest;
     public LocalNews currentLocalNews;
 
     public Headline previousHeadline;
-    public LocalRequest previousLocalRequest;
+    public List<LocalRequest> previousLocalRequest;
     public LocalNews previousLocalNews;
     protected override void Awake()
     {
@@ -113,7 +124,10 @@ public class DayManager : Singleton<DayManager>
         previousLocalNews = currentLocalNews;
 
         currentHeadline = ActiveHeadlines.Count > 0 ? ActiveHeadlines[UnityEngine.Random.Range(0, ActiveHeadlines.Count)] : null;
-        currentLocalRequest = ActiveLocalRequests.Count > 0 ? ActiveLocalRequests[UnityEngine.Random.Range(0, ActiveLocalRequests.Count)] : null;
+        currentLocalRequest = ActiveLocalRequests
+            .OrderBy(x => UnityEngine.Random.value)
+            .Take(Mathf.Min(3, ActiveLocalRequests.Count))
+            .ToList();
         currentLocalNews = ActiveLocalNews.Count > 0 ? ActiveLocalNews[UnityEngine.Random.Range(0, ActiveLocalNews.Count)] : null;
 
 
@@ -137,19 +151,14 @@ public class DayManager : Singleton<DayManager>
     public void ViewNewsAndAcceptNews()
     {
         //open UI
-
+        PlayerPopUpUiManager.Instance.OpenDailyTidals();
+        UiLoader.Instance.CallOpenNewsEvent();
         //accept quests
-        QuestRuntimeManager.Instance.MarkQuestAsOnGoing(currentLocalRequest.questData);
+        foreach (var request in currentLocalRequest)
+        {
+            QuestRuntimeManager.Instance.MarkQuestAsOnGoing(request.questData);
+        }
     }
-
-
-    
-    
-
-
-
-
-
 
     
 }

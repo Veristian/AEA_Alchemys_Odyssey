@@ -4,5 +4,7 @@ using UnityEngine;
 
 public interface IInteractable
 {
+    string text { get; }
+    bool interactable {get; }
     void Interact(GameObject interactor);
 }

@@ -15,6 +15,20 @@ public class Herb : MonoBehaviour, IInteractable
     {
         GetComponent<Collider>().isTrigger = true;  
     }
+    public string text
+    {
+        get
+        {
+            return "Collect";
+        }
+    }
+    public bool interactable
+    {
+        get
+        {
+            return !isTaken;
+        }
+    }
     public void Interact(GameObject interactor)
     {
         TakeHerb();
@@ -36,6 +50,7 @@ public class Herb : MonoBehaviour, IInteractable
                 CollectedEffect.Play();
             }
         }
+        
             
     }
 

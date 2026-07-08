@@ -9,6 +9,21 @@ public class NPCTrigger : MonoBehaviour, IInteractable
     [SerializeField] private SubmissionCharacter character;
     private BoxCollider interactCollider;
     [SerializeField] private bool isOneTime = false;
+
+    public string text
+    {
+        get
+        {
+            return "Talk";
+        }
+    }
+    public bool interactable
+    {
+        get
+        {
+            return true;
+        }
+    }
     // bool playerInside;
     private void Awake()
     {

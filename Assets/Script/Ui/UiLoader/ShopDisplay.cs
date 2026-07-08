@@ -10,6 +10,7 @@ public class ShopDisplay : MonoBehaviour, IPointerDownHandler
     [SerializeField] private TextMeshProUGUI shopItemDescription;
     [SerializeField] private TextMeshProUGUI shopItemPrice;
     [SerializeField] private Image shopItemImage;
+    [SerializeField] private GameObject soldOverlay;
     private ShopItemData shopItemData;
     public void InitShopDisplay(ShopItemData shopItemData)
     {
@@ -22,6 +23,10 @@ public class ShopDisplay : MonoBehaviour, IPointerDownHandler
             shopItemPrice.text = shopItemData.price.ToString();
         if (shopItemImage)
             shopItemImage.sprite = shopItemData.itemSprite;
+        if (soldOverlay != null)
+        {
+            soldOverlay.SetActive(shopItemData.IsUnlocked);
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)

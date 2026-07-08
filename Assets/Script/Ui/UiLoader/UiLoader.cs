@@ -53,6 +53,7 @@ public class UiLoader : Singleton<UiLoader>
     [Header("Shop/Load")]
     [SerializeField] private Transform shopItemContainer;
     [SerializeField] private GameObject shopItemPrefab;
+    [SerializeField] private TextMeshProUGUI shopCoinDisplay;
     [Header("Shop/Display")]
     [SerializeField] private TextMeshProUGUI shopItemName;
     [SerializeField] private TextMeshProUGUI shopItemDescription;
@@ -317,6 +318,10 @@ public class UiLoader : Singleton<UiLoader>
             GameObject shopItem = Instantiate(shopItemPrefab, shopItemContainer);
             ShopDisplay shopDisplay = shopItem.GetComponent<ShopDisplay>();
             shopDisplay.InitShopDisplay(shopItemData);
+        }
+        if (shopCoinDisplay != null)
+        {
+            shopCoinDisplay.text = PlayerDataManager.Instance.gold.ToString();
         }
     }
 

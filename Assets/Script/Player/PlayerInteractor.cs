@@ -54,6 +54,11 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Interact()
     {
+        if (interactable == null) 
+        {
+            interactText = null;
+            return;
+        }
         interactable.Interact(gameObject);
         if (!interactable.interactable) interactText = null;
     }    

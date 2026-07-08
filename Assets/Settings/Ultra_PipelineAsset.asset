@@ -33,7 +33,7 @@ MonoBehaviour:
   m_EnableLODCrossFade: 1
   m_LODCrossFadeDitheringType: 1
   m_ShEvalMode: 0
-  m_LightProbeSystem: 0
+  m_LightProbeSystem: 1
   m_ProbeVolumeMemoryBudget: 1024
   m_SupportProbeVolumeStreaming: 0
   m_ProbeVolumeSHBands: 1
@@ -91,8 +91,9 @@ MonoBehaviour:
     m_ObsoleteSerializedBakingSets: []
     serializedBounds: []
     serializedHasVolumes: []
-    bakingSets: []
-    m_LightingScenario: 
+    bakingSets:
+    - {fileID: 11400000, guid: 4f868afc42ac6654cb30904cc5c7fe62, type: 2}
+    m_LightingScenario: Default
   m_PrefilteringModeMainLightShadows: 1
   m_PrefilteringModeAdditionalLight: 4
   m_PrefilteringModeAdditionalLightShadows: 1

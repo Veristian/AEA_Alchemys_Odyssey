@@ -6,6 +6,7 @@ public class PickupPopupUI : MonoBehaviour
 {
     [SerializeField] private Image itemIcon;
     [SerializeField] private TMP_Text itemText;
+    [SerializeField] private TMP_Text itemDes;
     //[SerializeField] private CanvasGroup canvasGroup;
 
     private RectTransform rectTransform;
@@ -22,7 +23,7 @@ public class PickupPopupUI : MonoBehaviour
     {
         itemIcon.sprite = icon;
         itemText.text = text;
-
+        itemDes .text = "x1";
         //canvasGroup.alpha = 0f;
         //rectTransform.localScale = Vector3.one * 0.9f;
 

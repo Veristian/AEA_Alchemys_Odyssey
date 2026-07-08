@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(SphereCollider))]
 public class Herb : MonoBehaviour, IInteractable
 {
     [SerializeField] private IngredientData ingredientData;
     [SerializeField] private GameObject herbModel;
+    [SerializeField] private ParticleSystem CollectedEffect;
     private bool isTaken;
     private int dayTaken;
+    SphereCollider col;
+
+    private void Start()
+    {
+        GetComponent<Collider>().isTrigger = true;  
+    }
     public void Interact(GameObject interactor)
     {
         TakeHerb();
@@ -26,6 +33,7 @@ public class Herb : MonoBehaviour, IInteractable
             if (PickupPopupManager.Instance != null)
             {
                 PickupPopupManager.Instance.ShowPickup(ingredientData);
+                CollectedEffect.Play();
             }
         }
             

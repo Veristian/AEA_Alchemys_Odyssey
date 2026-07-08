@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9fa123a2afd6ba4799620c16a8f1bb8, type: 3}
-  m_Name: quest_Iason_jumppotion
+  m_Name: quest_tidus_jumppotion
   m_EditorClassIdentifier: 
   loadState: 0
-  questId: quest_Iason_jumppotion
+  questId: quest_tidus_jumppotion
   questName: This is the End
   questDescription: Deliver a Hunger Potion to The Mayor. Mr Jason.
   submissionCharacter: 1
@@ -27,7 +27,7 @@ MonoBehaviour:
     goldReward: 10
   isMainQuest: 1
   isRepeatable: 0
-  storyText: {fileID: 4900000, guid: 1033a510e40e9c54a91eed0ea460b7f5, type: 3}
+  storyText: {fileID: 4900000, guid: 8250bb8fdc6a6ad47b66c6a194710a7c, type: 3}
   references:
     version: 2
     RefIds:

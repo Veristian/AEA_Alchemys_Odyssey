@@ -27,6 +27,7 @@ MonoBehaviour:
     contactPoint: 0.75
   - ingredientData: {fileID: 11400000, guid: 7948d811dea7165409c4586a89461985, type: 2}
     contactPoint: 0.25
+  restOffset: 0
   potionCurve:
     serializedVersion: 2
     m_Curve:
@@ -933,3 +934,13 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  requirementsToUnlock:
+    requirements:
+    - rid: 1115517412648419370
+  references:
+    version: 2
+    RefIds:
+    - rid: 1115517412648419370
+      type: {class: DaysRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        minimumDaysPassed: 3

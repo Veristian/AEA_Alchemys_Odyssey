@@ -21,7 +21,8 @@ public class PotionData : ResourceData
     public List<StoredData> ingredients = new List<StoredData>();
     public float restOffset;
     [SerializeField, ReadOnly] private AnimationCurve potionCurve;
-    
+    public RequirementList requirementsToUnlock;
+
 
     [ContextMenu("Generate Potion Curve")]
     public void GeneratePotionCurve()

@@ -1173,7 +1173,7 @@ MonoBehaviour:
     - rid: 5999243491663675397
       type: {class: QuestUnlockedRequirement, ns: , asm: Assembly-CSharp}
       data:
-        unlockedQuestId: quest_monrizz_hungerpotion
+        unlockedQuestId: quest_ramonts_hungerpotion
         isUnlocked: 1
     - rid: 5999243491663675398
       type: {class: QuestUnlockedRequirement, ns: , asm: Assembly-CSharp}
@@ -1183,17 +1183,17 @@ MonoBehaviour:
     - rid: 5999243491663675400
       type: {class: QuestOngoingRequirement, ns: , asm: Assembly-CSharp}
       data:
-        requiredQuestId: quest_kenny_swiftpotion
+        requiredQuestId: quest_kenneth_swiftpotion
         isOngoing: 0
     - rid: 5999243491663675401
       type: {class: QuestOngoingRequirement, ns: , asm: Assembly-CSharp}
       data:
-        requiredQuestId: quest_Iason_jumppotion
+        requiredQuestId: quest_tidus_jumppotion
         isOngoing: 0
     - rid: 5999243491663675402
       type: {class: QuestOngoingRequirement, ns: , asm: Assembly-CSharp}
       data:
-        requiredQuestId: quest_monrizz_hungerpotion
+        requiredQuestId: quest_ramonts_hungerpotion
         isOngoing: 0
     - rid: 5999243491663675403
       type: {class: QuestOngoingRequirement, ns: , asm: Assembly-CSharp}

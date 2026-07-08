@@ -46,17 +46,17 @@ public class RecipeHouse : Singleton<RecipeHouse>
             {
                 continue;
             }
-            if (!recipe.isUnlocked)
+
+            if (recipe.targetPotion.requirementsToUnlock.AreAllMet())
             {
-                if (recipe.requirementsToUnlock.AreAllMet())
-                {
-                    recipe.isUnlocked = true;
-                }
-                else
-                {
-                    continue;
-                }
+                recipe.isUnlocked = true;
             }
+            else
+            {
+                recipe.isUnlocked = false;
+                continue;
+            }
+            
                 
             RecipeHouseItem item = Instantiate(recipeHouseItemPrefab, contentTransform).GetComponent<RecipeHouseItem>();
             recipeHouseItems.Add(item);

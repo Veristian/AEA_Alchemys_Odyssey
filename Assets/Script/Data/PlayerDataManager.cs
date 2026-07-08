@@ -8,7 +8,6 @@ public class Recipe
 {
     public PotionData targetPotion;
     [ReadOnly] public string targetPotionId;
-    public RequirementList requirementsToUnlock;
     public bool isUnlocked;
     // public bool isQuestRecipe;
     // public bool isBulkCraftable;

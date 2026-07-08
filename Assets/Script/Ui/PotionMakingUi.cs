@@ -134,8 +134,12 @@ public class PotionMakingUi : MonoBehaviour
     private void OpenRecipePanel()
     {
         if (RecipePanel!=null)
+        {
             //RecipePanel.SetActive(true);
             UITransitionManager.Instance.FadeIn(RecipePanel.gameObject);
+            RecipeHouse.Instance.SetupRecipes();
+        }
+
     }
 
     private void CloseRecipePanel()

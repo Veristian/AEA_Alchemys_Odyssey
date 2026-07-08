@@ -8,9 +8,10 @@ public class Recipe
 {
     public PotionData targetPotion;
     [ReadOnly] public string targetPotionId;
+    public RequirementList requirementsToUnlock;
     public bool isUnlocked;
-    public bool isQuestRecipe;
-    public bool isBulkCraftable;
+    // public bool isQuestRecipe;
+    // public bool isBulkCraftable;
 
     public void OnBeforeSerialize()
     {
@@ -121,8 +122,8 @@ public class PlayerDataManager : Singleton<PlayerDataManager>
             {
                 targetPotion = data,
                 isUnlocked = false,
-                isQuestRecipe = false,
-                isBulkCraftable = false
+                // isQuestRecipe = false,
+                // isBulkCraftable = false
             });
 
         recipeList.recipes.AddRange(newEntries);

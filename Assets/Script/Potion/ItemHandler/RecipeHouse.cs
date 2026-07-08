@@ -14,21 +14,21 @@ public class RecipeHouse : Singleton<RecipeHouse>
     public TextMeshProUGUI RecipeAmountText;
     private int RecipeAmount = 0;
 
-    private void OnEnable()
-    {
-        var manager = DataManager.Instance;
-        manager.OnGameLoaded += SetupRecipes;
+    // private void OnEnable()
+    // {
+    //     var manager = DataManager.Instance;
+    //     manager.OnGameLoaded += SetupRecipes;
 
-        if (manager.IsGameLoaded)
-            SetupRecipes(); 
-    }
-    private void OnDisable()
-    {
-        if (DataManager.Instance != null)
-            DataManager.Instance.OnGameLoaded -= SetupRecipes;
-    }
+    //     if (manager.IsGameLoaded)
+    //         SetupRecipes(); 
+    // }
+    // private void OnDisable()
+    // {
+    //     if (DataManager.Instance != null)
+    //         DataManager.Instance.OnGameLoaded -= SetupRecipes;
+    // }
 
-    private void SetupRecipes()
+    public void SetupRecipes()
     {
         if (contentTransform == null)
         {
@@ -45,6 +45,17 @@ public class RecipeHouse : Singleton<RecipeHouse>
             if (recipe.targetPotion.potionId == "Null_Potion")
             {
                 continue;
+            }
+            if (!recipe.isUnlocked)
+            {
+                if (recipe.requirementsToUnlock.AreAllMet())
+                {
+                    recipe.isUnlocked = true;
+                }
+                else
+                {
+                    continue;
+                }
             }
                 
             RecipeHouseItem item = Instantiate(recipeHouseItemPrefab, contentTransform).GetComponent<RecipeHouseItem>();

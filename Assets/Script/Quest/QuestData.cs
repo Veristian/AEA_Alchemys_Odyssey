@@ -116,6 +116,8 @@ public class RequirementList
 
     public bool AreAllMet()
     {
+        if (requirements == null) return true;
+
         return requirements.All(req => req.IsMet());
     }
     public bool SubmitAll()

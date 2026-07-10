@@ -1015,56 +1015,106 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllHeadlines:
-  - headlineText: 
-    headlineDescription: 
+  - headlineText: 'Main Headline : Big Names Arrived!'
+    headlineDescription: "Two big name factions have landed to A\u2019ea.  Marcel
+      Trading Company arrived with five ships worth of personel and resources to
+      scout the island for their resources. Meanwhile, in our humble town of Wavecrest,
+      Chemy, a representative of the Alchemist Association has arrived to stay with
+      us to learn more about our local flora and fauna. Lets give them a warm welcome
+      and show the hospitality of the people of A\u2019ea."
     headlineImage: {fileID: 0}
     requirementsToBeShown:
-      requirements: []
+      requirements:
+      - rid: 1115517454946664451
+  - headlineText: 'Main Headline: Marcel Trading Company Opening Up Outpost'
+    headlineDescription: "After the scouting process concluded yesterday, Marcel
+      Trading Company decides to stay in A\u2019ea decides to stay in A\u2019ea for
+      a while. They plan to open up outpost across the island to extract the resources
+      and commercialize them globally. Marcel Trading Company promises to promote
+      our island to increase trade in return for allowing them to gather resources
+      from our island. This endeavor might finally put our island on the map."
+    headlineImage: {fileID: 0}
+    requirementsToBeShown:
+      requirements:
+      - rid: 1115517454946664452
+  - headlineText: 'Main Headline: New Mayor Elected in Frostshine'
+    headlineDescription: 'Mr. White, a representative of Marcel Trading Company was
+      elected as the new mayor for the frosty town of Frostshine. After occupying
+      the town, Marcel Trading Company managed to provide heating alternatives for
+      the citizen of Frostshine. Thanks to their industrialized heater, citizens
+      of Frostshine no longer need to worry about preserving fuel to keep warm throughout
+      the year. '
+    headlineImage: {fileID: 0}
+    requirementsToBeShown:
+      requirements:
+      - rid: 1115517454946664452
+  - headlineText: 'Main Headline: Winterfest is Drawing Near'
+    headlineDescription: As summer is reaching its end comes time to reflect on all
+      that happened within this season and look forward to the festivities of winter.
+      This Summer, many new faces have been welcomed into our lovely island. For
+      this Winterfest, the island plans to go all out to celebrate their new guests.
+      We hope everyone is excited to celebrate the festivities with family and friends.
+    headlineImage: {fileID: 0}
+    requirementsToBeShown:
+      requirements:
+      - rid: 1115517454946664452
   AllLocalRequests:
-  - requestText: 
-    requestDescription: 
+  - requestText: 'Local Request: Farm Boy Kenneth'
+    requestDescription: "Due to his brothers being currently out of town to buy supplies
+      for the farm, Kenneth doesn\u2019t have enough time to complete his daily chores
+      on the farm. Help him by creating a @Swift potion."
     requestImage: {fileID: 0}
     questData: {fileID: 11400000, guid: 2cc601d7eb1a0d34482f68c1aee0b8ad, type: 2}
-    followUpNewsId: 1
+    followUpNewsId: local_kenneth_swiftpotion
     requirementsToBeShown:
       requirements:
       - rid: 5999243491663675400
-  - requestText: 
-    requestDescription: 
+      - rid: 1115517454946664449
+  - requestText: 'Local Request 2 : Mr. Tidus'
+    requestDescription: Due to strong winds near the port, his hat is stuck suspended
+      in the air. help him by making a @jump potion to retrieve the hat.
     requestImage: {fileID: 0}
     questData: {fileID: 11400000, guid: f5bdccf78fbf44e42a3b9e297cd5f6e0, type: 2}
-    followUpNewsId: 2
+    followUpNewsId: local_tidus_jumppotion
     requirementsToBeShown:
       requirements:
       - rid: 5999243491663675401
-  - requestText: 
-    requestDescription: 
+      - rid: 1115517454946664450
+  - requestText: 'Local Request: Mr. Ramonts'
+    requestDescription: "His sister is coming to visit him and she usually cooks
+      a lot. Mr. Ramonts is usually unable to finish all the food she makes,which
+      always leaves him feeling guilty. Make him a Hunger potion to help him digest
+      all of his sister\u2019s food."
     requestImage: {fileID: 0}
     questData: {fileID: 11400000, guid: c423125d58279614da7406928ae1a71a, type: 2}
-    followUpNewsId: 3
+    followUpNewsId: local_ramonts_hungerpotion
     requirementsToBeShown:
       requirements:
       - rid: 5999243491663675397
       - rid: 5999243491663675402
-  - requestText: 
-    requestDescription: 
+      - rid: 1115517454946664453
+  - requestText: 'Local Request: Bookworm Violette'
+    requestDescription: Bookworm Violette has trouble sleeping at night due to always
+      thinking about the next book she wants to read. This make her feel tired everyday
+      and reduces her enjoyment when reading books. Make her a Sleep Potion to help
+      her sleep at night.
     requestImage: {fileID: 0}
     questData: {fileID: 11400000, guid: df592cb421d85384a83ff7d844309bcd, type: 2}
-    followUpNewsId: 4
+    followUpNewsId: local_violette_sleeppotion
     requirementsToBeShown:
       requirements:
       - rid: 5999243491663675398
       - rid: 5999243491663675403
+      - rid: 1115517454946664454
   AllLocalNews:
-  - newsId: 1
-    newsText: 
-    newsDescription: 
-    newsImage: {fileID: 0}
-    willBeShown: 0
-    hasBeenShown: 0
-  - newsId: 2
-    newsText: 
-    newsDescription: 
+  - newsId: local_kenneth_swiftpotion
+    newsText: 'Local News: Farm Boy Kenneth is On a Roll'
+    newsDescription: "Yesterday, Farm Boy Kenneth came to the market place with two
+      full carts of corn and cabbages. For a boy who is managing the farm alone,
+      that is a LOT. Our reported asked him, how did he manage to do all this work
+      in one day?.  Farm Boy Kenneth responded with \u201C Thanks the the potion
+      Chemy gave me, I feel like I can work all day without getting tired!\u201D.
+      We hope he doesn\u2019t overwork himself while his brothers are away."
     newsImage: {fileID: 0}
     willBeShown: 0
     hasBeenShown: 0
@@ -1074,11 +1124,14 @@ MonoBehaviour:
     newsImage: {fileID: 0}
     willBeShown: 0
     hasBeenShown: 0
-  - newsId: 4
-    newsText: 
-    newsDescription: 
+  - newsId: local_sven_spoon
+    newsText: 'Local News: Old Man Sven Found His Lucky Spoon, Again!'
+    newsDescription: "After losing his lucky spoon for 4 days, Post Girl Poshe found
+      it inside the fountain in town square while trying to retrieve her hat. We
+      still don\u2019t know how it got there but lets hope Old Man Sven won\u2019t
+      lose it again."
     newsImage: {fileID: 0}
-    willBeShown: 0
+    willBeShown: 1
     hasBeenShown: 0
   ActiveHeadlines: []
   ActiveLocalRequests: []
@@ -1170,6 +1223,34 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 1115517454946664449
+      type: {class: QuestCompletionRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_kenneth_swiftpotion
+        isCompleted: 0
+    - rid: 1115517454946664450
+      type: {class: QuestCompletionRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_tidus_jumppotion
+        isCompleted: 0
+    - rid: 1115517454946664451
+      type: {class: ExactDaysRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        currentDay: 2
+    - rid: 1115517454946664452
+      type: {class: ExactDaysRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        currentDay: 5
+    - rid: 1115517454946664453
+      type: {class: QuestCompletionRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_ramonts_hungerpotion
+        isCompleted: 0
+    - rid: 1115517454946664454
+      type: {class: QuestCompletionRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_violette_sleeppotion
+        isCompleted: 0
     - rid: 5999243491663675397
       type: {class: QuestUnlockedRequirement, ns: , asm: Assembly-CSharp}
       data:

@@ -31,6 +31,32 @@ public class DaysRequirement : Requirements
     }
 }
 [Serializable]
+public class MaxDaysRequirement : Requirements
+{
+    public int maximumDaysPassed;
+    public override bool IsMet()
+    {
+        return DayManager.Instance.Day <= maximumDaysPassed;
+    }
+    public override bool Submit()
+    {
+        return DayManager.Instance.Day <= maximumDaysPassed;
+    }
+}
+[Serializable]
+public class ExactDaysRequirement : Requirements
+{
+    public int currentDay;
+    public override bool IsMet()
+    {
+        return DayManager.Instance.Day == currentDay;
+    }
+    public override bool Submit()
+    {
+        return DayManager.Instance.Day == currentDay;
+    }
+}
+[Serializable]
 public class QuestCompletionRequirement : Requirements
 {
     public string requiredQuestId;
@@ -124,7 +150,7 @@ public class RequirementList
     {
         return requirements.All(req => req.Submit());
     }
-    [ContextMenu("Add Days Requirement")]
+    [ContextMenu("Add Minimum Days Requirement")]
     public void AddDaysRequirement()
     {
         requirements.Add(new DaysRequirement { minimumDaysPassed = 1});
@@ -138,6 +164,16 @@ public class RequirementList
     public void AddQuestPotionsRequirement()
     {
         requirements.Add(new QuestPotionsRequirement { requiredPotion = null, requiredIngredient = null});
+    }
+    [ContextMenu("Add Maximum Days Requirement")]
+    public void AddMaxDaysRequirement()
+    {
+        requirements.Add(new MaxDaysRequirement { maximumDaysPassed = 1});
+    }
+    [ContextMenu("Add Exact Days Requirement")]
+    public void AddExactDaysRequirement()
+    {
+        requirements.Add(new ExactDaysRequirement { currentDay = 1});
     }
 
 }

@@ -36,18 +36,37 @@ public class PlayerInteractor : MonoBehaviour
             interactText = null;
             interactable = null;
         }
+        // foreach (var col in hits)
+        // {
+        //     interactable = col.GetComponent<IInteractable>();
+        //     if (interactable != null)
+        //     {
+        //         if (!interactable.interactable)
+        //         {
+        //             continue;
+        //         }
+        //         interactText = interactable.text;
+        //         // interactable.Interact(gameObject);
+        //         break; // interact with first found
+                
+        //     }
+        // }
+        Collider closest = null;
+
         foreach (var col in hits)
         {
-            interactable = col.GetComponent<IInteractable>();
-            if (interactable != null)
+            var candidate = col.GetComponent<IInteractable>();
+
+            if (candidate == null || !candidate.interactable)
+                continue;
+
+            if (closest == null ||
+                (col.transform.position - transform.position).sqrMagnitude <
+                (closest.transform.position - transform.position).sqrMagnitude)
             {
-                if (!interactable.interactable)
-                {
-                    continue;
-                }
-                interactText = interactable.text;
-                // interactable.Interact(gameObject);
-                break; // interact with first found
+                closest = col;
+                interactable = candidate;
+                interactText = candidate.text;
             }
         }
     }

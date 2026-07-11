@@ -37,11 +37,6 @@ public class DialogueManager : Singleton<DialogueManager>
 
     public bool isTyping { get; private set; }
     public bool dialogueActive { get; private set; }
-    void Start()
-    {
-        dialoguePanel.SetActive(false);
-        // SetImageTransparent();
-    }
 
     public static TextAsset GetInkJSON(string name)
     {
@@ -68,10 +63,10 @@ public class DialogueManager : Singleton<DialogueManager>
         return new Story(text.text);
     }
 
-
-    // ================================
-    // 🔹 EXTERNAL CALL ENTRY POINT
-    // ================================
+    public void StartDialogue(string name)
+    {
+        StartDialogue(GetStory(name), null);
+    }
     public void StartDialogue(Story story, string knot = null)
     {
         this.story = story;
@@ -240,19 +235,27 @@ public class DialogueManager : Singleton<DialogueManager>
     // ================================
     void HandleFunction(string func)
     {
-        string[] parts = func.Split(',');
+        string[] parts = func.Split('@');
 
         string funcName = parts[0].Trim();
         string parameter = (parts.Length >= 2) ? parts[1].Trim() : "";
 
         switch (funcName)
         {
-            case "SubmitQuest":
+            case "submitquest":
                 QuestRuntimeManager.Instance.SubmitQuest(parameter);
+                break;
+            case "teleport":
+                SceneLoadingManager.Instance.Teleport(parameter);
+                break;
+            case "setactivetrue":
+                GameObject.Find(parameter).SetActive(true);
+                break;
+            case "setactivefalse":
+                GameObject.Find(parameter).SetActive(false);
                 break;
 
         }
-        // note to self: make functions, finish quest, teleport player, fade screen.
     }
 
     // ================================

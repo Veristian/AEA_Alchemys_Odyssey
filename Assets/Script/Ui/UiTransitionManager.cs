@@ -38,6 +38,10 @@ public class UITransitionManager : MonoBehaviour
     {
         StartCoroutine(Fade(target, 0f, 1f, duration, true));
     }
+    public void FadeIn(GameObject target, System.Action onComplete)
+    {
+        StartCoroutine(Fade(target, 0f, 1f, defaultDuration, false, onComplete));
+    }
 
     public void FadeOut(GameObject target, float duration)
     {
@@ -73,5 +77,27 @@ public class UITransitionManager : MonoBehaviour
             target.SetActive(false);
 
         onComplete?.Invoke();
+    }
+
+    public void FadeInAndOut(GameObject target, float visibleTime)
+    {
+        StartCoroutine(FadeInAndOutRoutine(target, defaultDuration, visibleTime, defaultDuration));
+    }
+
+    public void FadeInAndOut(GameObject target, float fadeInDuration, float visibleTime, float fadeOutDuration)
+    {
+        StartCoroutine(FadeInAndOutRoutine(target, fadeInDuration, visibleTime, fadeOutDuration));
+    }
+
+    private IEnumerator FadeInAndOutRoutine(GameObject target, float fadeInDuration, float visibleTime, float fadeOutDuration)
+    {
+        if (target == null)
+            yield break;
+
+        yield return Fade(target, 0f, 1f, fadeInDuration, true);
+
+        yield return new WaitForSeconds(visibleTime);
+
+        yield return Fade(target, 1f, 0f, fadeOutDuration, false);
     }
 }

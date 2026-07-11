@@ -270,10 +270,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a841d53b07611e448c96632bde6a865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressions: []
+  progressions:
+  - requirementList:
+      requirements:
+      - rid: 1115517488788668479
+    unlockId: StartUpActivator
+  - requirementList:
+      requirements:
+      - rid: 1115517488788668480
+    unlockId: DayOneActivator
+  - requirementList:
+      requirements:
+      - rid: 1115517488788668481
+    unlockId: DayTwoActivator
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 1115517488788668479
+      type: {class: DaysRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        minimumDaysPassed: 2
+    - rid: 1115517488788668480
+      type: {class: ExactDaysRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        currentDay: 1
+    - rid: 1115517488788668481
+      type: {class: ExactDaysRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        currentDay: 2
 --- !u!1 &2056234286102749589
 GameObject:
   m_ObjectHideFlags: 0

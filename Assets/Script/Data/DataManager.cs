@@ -24,7 +24,7 @@ public class DataManager : Singleton<DataManager>
         LoadGameData();
     }
     [ContextMenu("Load Game Data")]
-    private void LoadGameData()
+    public void LoadGameData()
     {
         ingredientDatas = ResourceLoader
             .GetAll<IngredientData>(ingredientDatasPath)
@@ -46,7 +46,7 @@ public class DataManager : Singleton<DataManager>
         OnGameLoaded?.Invoke();
     }
     [ContextMenu("Save Game Data")]
-    private void SaveGameData()
+    public void SaveGameData()
     {
         InventoryManager.Instance.Save();
         PlayerDataManager.Instance.Save();

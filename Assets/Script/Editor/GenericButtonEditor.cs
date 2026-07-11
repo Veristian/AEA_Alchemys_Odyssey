@@ -204,7 +204,7 @@ public class GenericButtonEditor : Editor
             return Enum.GetValues(type).GetValue(0);
 
         if (type.IsValueType)
-            return Activator.CreateInstance(type);
+            return System.Activator.CreateInstance(type);
 
         return null;
     }

@@ -36,7 +36,7 @@ public class RequirementListDrawer : PropertyDrawer
 
             menu.AddItem(new GUIContent(path), false, () =>
             {
-                var instance = Activator.CreateInstance(type) as Requirements;
+                var instance = System.Activator.CreateInstance(type) as Requirements;
 
                 // Optional: set defaults
                 ApplyDefaults(instance);

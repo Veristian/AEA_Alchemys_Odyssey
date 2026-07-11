@@ -126,7 +126,6 @@ public class PlayerDataManager : Singleton<PlayerDataManager>
             });
 
         recipeList.recipes.AddRange(newEntries);
-        DayManager.Instance.SetDay(DataManager.Instance.LoadFromFile(DayFileName, () => new DayData { day = 0 }).day);
         gold = DataManager.Instance.LoadFromFile(GoldFileName, () => new GoldData { gold = 0 }).gold;
 
         gameObjectUnlocks = DataManager.Instance.LoadFromFile(
@@ -135,6 +134,7 @@ public class PlayerDataManager : Singleton<PlayerDataManager>
         );
 
         InitializeUnlockedObjects();
+        DayManager.Instance.SetDay(DataManager.Instance.LoadFromFile(DayFileName, () => new DayData { day = 0 }).day);
 
         
     }

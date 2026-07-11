@@ -83,7 +83,8 @@ public class InputManager : Singleton<InputManager>
 
         _inventoryAction = playerInput.actions["Inventory"];
         _journalAction = playerInput.actions["Journal"];
-        mainCamera = Camera.main;
+        mainCamera = Camera.main ?? FindFirstObjectByType<Camera>();
+        
 
     }
 

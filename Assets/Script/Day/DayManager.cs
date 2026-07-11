@@ -161,5 +161,11 @@ public class DayManager : Singleton<DayManager>
         }
     }
 
+    public void SaveAndProceedNextDay()
+    {
+        IncrementDay();
+        DataManager.Instance.SaveGameData();
+    }
+
     
 }

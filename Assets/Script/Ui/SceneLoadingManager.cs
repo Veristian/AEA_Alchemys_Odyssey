@@ -68,4 +68,52 @@ public class SceneLoadingManager : Singleton<SceneLoadingManager>
         }
     }
 
+    private IEnumerator TeleportRoutine(Vector3 destination)
+    {
+        bool faded = false;
+
+        UITransitionManager.Instance.FadeIn(loadingScreen, () =>
+        {
+            transform.position = destination;
+            faded = true;
+        });
+
+        yield return new WaitUntil(() => faded);
+
+        UITransitionManager.Instance.FadeOut(loadingScreen);
+    }
+
+    public void Teleport(Vector3 destination)
+    {
+        StartCoroutine(TeleportRoutine(destination));
+    }
+
+    public void Teleport(string destination)
+    {
+        string[] parts = destination.Split(',');
+
+        if (parts.Length == 3)
+        {
+            Vector3 position = new Vector3(
+            float.Parse(parts[0]),
+            float.Parse(parts[1]),
+            float.Parse(parts[2])
+            );
+
+            Teleport(position);
+        }
+
+        if (parts.Length == 1)
+        {
+            var point = GameObject.Find(parts[0]);
+            if (point == null)
+            {
+                Debug.LogError(parts[0] +" object not found");
+                return;
+            }
+            Teleport(point.transform.position);
+        }
+
+    }
+
 }

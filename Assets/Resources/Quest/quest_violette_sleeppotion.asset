@@ -25,9 +25,11 @@ MonoBehaviour:
   requirementsToComplete:
     requirements:
     - rid: 5999243469903888408
-  questRewards:
-    goldReward: 0
-  storyText: {fileID: 0}
+  questActions:
+    goldReward: 500
+  isMainQuest: 1
+  isRepeatable: 0
+  storyText: {fileID: 4900000, guid: 40e37b6620f467144ae11d84fbe2a9af, type: 3}
   references:
     version: 2
     RefIds:
@@ -38,11 +40,13 @@ MonoBehaviour:
     - rid: 5999243469903888403
       type: {class: QuestCompletionRequirement, ns: , asm: Assembly-CSharp}
       data:
-        requiredQuestId: quest_Iason_jumppotion
+        requiredQuestId: quest_tidus_jumppotion
+        isCompleted: 1
     - rid: 5999243469903888404
       type: {class: QuestCompletionRequirement, ns: , asm: Assembly-CSharp}
       data:
-        requiredQuestId: quest_kenny_swiftpotion
+        requiredQuestId: quest_kenneth_swiftpotion
+        isCompleted: 1
     - rid: 5999243469903888408
       type: {class: QuestPotionsRequirement, ns: , asm: Assembly-CSharp}
       data:

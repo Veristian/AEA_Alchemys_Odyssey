@@ -203,6 +203,7 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
     {
         PlayerQuestData playerQuest = playerQuestsList.playerQuests
             .Find(q => q.questData.questId == questData.questId);
+            
 
         return playerQuest != null && playerQuest.isCompleted;
     }

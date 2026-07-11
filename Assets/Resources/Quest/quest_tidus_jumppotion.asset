@@ -24,7 +24,7 @@ MonoBehaviour:
     requirements:
     - rid: 5999243469903888405
   questActions:
-    goldReward: 10
+    goldReward: 500
   isMainQuest: 1
   isRepeatable: 0
   storyText: {fileID: 4900000, guid: 8250bb8fdc6a6ad47b66c6a194710a7c, type: 3}

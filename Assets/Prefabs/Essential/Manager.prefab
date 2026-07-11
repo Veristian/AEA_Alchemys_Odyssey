@@ -1047,7 +1047,7 @@ MonoBehaviour:
     headlineImage: {fileID: 0}
     requirementsToBeShown:
       requirements:
-      - rid: 1115517454946664452
+      - rid: 1115517474069282832
   - headlineText: 'Main Headline: Winterfest is Drawing Near'
     headlineDescription: As summer is reaching its end comes time to reflect on all
       that happened within this season and look forward to the festivities of winter.
@@ -1057,7 +1057,7 @@ MonoBehaviour:
     headlineImage: {fileID: 0}
     requirementsToBeShown:
       requirements:
-      - rid: 1115517454946664452
+      - rid: 1115517474069282833
   AllLocalRequests:
   - requestText: 'Local Request: Farm Boy Kenneth'
     requestDescription: "Due to his brothers being currently out of town to buy supplies
@@ -1118,9 +1118,13 @@ MonoBehaviour:
     newsImage: {fileID: 0}
     willBeShown: 0
     hasBeenShown: 0
-  - newsId: 3
-    newsText: 
-    newsDescription: 
+  - newsId: local_ramonts_hungerpotion
+    newsText: 'Local News: Mr. Ramonts Found unconscious on the Inn Floor'
+    newsDescription: "Early rising customer found the inn owner Mr. Ramonts immobilized
+      on the floor of the inn this morning. Witness accounts that Mr. Ramonts was
+      groaning on the floor while mumbling \u201C No more\u2026 It cant fit\u2026\u201D.
+      After providing him proper treatment and care, Mr. Ramonts said \u201CEven
+      with the hunger potion, my sister\u2019s food was still too much.\u201D"
     newsImage: {fileID: 0}
     willBeShown: 0
     hasBeenShown: 0
@@ -1240,7 +1244,7 @@ MonoBehaviour:
     - rid: 1115517454946664452
       type: {class: ExactDaysRequirement, ns: , asm: Assembly-CSharp}
       data:
-        currentDay: 5
+        currentDay: 3
     - rid: 1115517454946664453
       type: {class: QuestCompletionRequirement, ns: , asm: Assembly-CSharp}
       data:
@@ -1251,6 +1255,14 @@ MonoBehaviour:
       data:
         requiredQuestId: quest_violette_sleeppotion
         isCompleted: 0
+    - rid: 1115517474069282832
+      type: {class: ExactDaysRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        currentDay: 4
+    - rid: 1115517474069282833
+      type: {class: ExactDaysRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        currentDay: 5
     - rid: 5999243491663675397
       type: {class: QuestUnlockedRequirement, ns: , asm: Assembly-CSharp}
       data:

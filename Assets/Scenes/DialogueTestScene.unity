@@ -272,6 +272,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   drawDebug: 1
+  interactText: 
 --- !u!1 &316463261
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,7 +785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6697333064115204842, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: progressions.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6697333064115204842, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: progressions.Array.data[0].unlockId
@@ -812,7 +813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6697333064115204842, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: progressions.Array.data[0].requirementList.requirements.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6697333064115204842, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: 'progressions.Array.data[0].requirementList.requirements.Array.data[0]'

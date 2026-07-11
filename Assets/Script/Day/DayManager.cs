@@ -114,8 +114,6 @@ public class DayManager : Singleton<DayManager>
 
     private void StartNewDay()
     {
-        currentLocalNews.willBeShown = false;
-        currentLocalNews.hasBeenShown = true;
 
         PoolAndSetActiveElements();
 
@@ -150,6 +148,9 @@ public class DayManager : Singleton<DayManager>
 
     public void ViewNewsAndAcceptNews()
     {
+        currentLocalNews.willBeShown = false;
+        currentLocalNews.hasBeenShown = true;
+
         //open UI
         PlayerPopUpUiManager.Instance.OpenDailyTidals();
         UiLoader.Instance.CallOpenNewsEvent();

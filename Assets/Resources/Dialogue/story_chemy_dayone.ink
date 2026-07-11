@@ -26,6 +26,7 @@ Hahaha, indeed its true, I do have hair. Sorr' 'bout that, the thought came to m
 # speaker: Chemy
 Third... 'Sure' I'll be happy to share some stories with you Mr. Tidus! I'm looking forward to making new stories here in A'ea too.
 
+//explainations ltr
 Port
 
 Light House
@@ -40,42 +41,32 @@ Home
 
 Forest
 
-
-
-
-
 # speaker: Tidus
-Now, your residence is just outside town, near Breezewood Forest. It should be the perfect place for an alchemist.
+Now, your abode is just outside town, near Breezewood Forest. Perfect place for you Little Missy.
 
 # speaker: Tidus
 Here we are.
 
 # speaker: Tidus
-It's a modest little cottage, but it has everything you'll need. The previous alchemist left behind a sturdy workbench as well.
+It's a modest little cottage, but it has everything you'll need. The previous alchemist left behind some of their equipment here as well. But, if you ever need more furniture just knock some coins on me and I'll arrange it to be delivered straight here!
 
 # speaker: Chemy
 It's wonderful! Thank you for preparing everything.
 
 # speaker: Tidus
-Think nothing of it. If you ever need help, feel free to ask anyone in town.
+Don't mind, don't mind. Least I could do really.
 
 # speaker: Tidus
-Get some rest after you've unpacked. Tomorrow will come quickly.
+Get some rest, I'm sure the ride was a squiggly whoozy.
 
 # speaker: Chemy
 I will. Thank you, Mayor Tidus.
-
-# speaker: Tidus
-Welcome to your new home, Chemy.
-
-# speaker: Chemy
-Phew... that's the last box.
 
 # speaker: Chemy
 ...
 
 # speaker: Chemy
-I still feel a little dizzy from the voyage here.
+Phew... I still feel a little dizzy from the ride here.
 
 # speaker: Chemy
 I should be able to make a Nausea Relief Potion with a few simple ingredients.

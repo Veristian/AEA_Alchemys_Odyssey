@@ -26,26 +26,26 @@ Hahaha, indeed its true, I do have hair. Sorr' 'bout that, the thought came to m
 # speaker: Chemy
 Third... 'Sure' I'll be happy to share some stories with you Mr. Tidus! I'm looking forward to making new stories here in A'ea too.
 
-//explainations ltr
-Port
-
-Light House
-
-Farm
-
-Post Office
-
-Inn
-
-Home
-
-Forest
+# speaker: Tidus
+I'll get to tourin' quick now. This here behind me is the port you just came from and right next to my house too.
 
 # speaker: Tidus
-Now, your abode is just outside town, near Breezewood Forest. Perfect place for you Little Missy.
+On the cliff over there is the light house, where our unlucky old lad Sven lives.
 
 # speaker: Tidus
-Here we are.
+Next to it is the local Farm run by Kenneth and his brothers.
+
+# speaker: Tidus
+This here is the post office, Poshe practically lives there.
+
+# speaker: Tidus
+This here is Mr. Ramonts' Inn. Cozy place here, I was going to place you right here, but I found a better place for you.
+
+# speaker: Tidus
+Your new abode is just outside town, near Breezewood Forest. Perfect place for you Little Missy. 
+
+# speaker: Tidus
+Here we are. Just like a mutton dressed as lamb this one.
 
 # speaker: Tidus
 It's a modest little cottage, but it has everything you'll need. The previous alchemist left behind some of their equipment here as well. But, if you ever need more furniture just knock some coins on me and I'll arrange it to be delivered straight here!

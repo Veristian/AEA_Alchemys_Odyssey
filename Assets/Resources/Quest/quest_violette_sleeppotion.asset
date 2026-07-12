@@ -50,5 +50,5 @@ MonoBehaviour:
     - rid: 5999243469903888408
       type: {class: QuestPotionsRequirement, ns: , asm: Assembly-CSharp}
       data:
-        requiredPotion: {fileID: 0}
+        requiredPotion: {fileID: 11400000, guid: bf33ef341f7d3d746b230addfa6dcf67, type: 2}
         requiredIngredient: []

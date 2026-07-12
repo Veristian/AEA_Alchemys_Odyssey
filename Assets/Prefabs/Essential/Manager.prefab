@@ -47,7 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 960ebe5d7fd7e104a9407d75242de588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SfxClip: []
+  SfxClip:
+  - sname: MouseClick
+    clip: {fileID: 8300000, guid: a5ec241da5d061447b83defcdc5b38dd, type: 3}
+  - sname: MouseHover
+    clip: {fileID: 8300000, guid: f3002f7d278344d4ba92e4353ecb2585, type: 3}
   mixer: {fileID: 24100000, guid: c9ef8e8ae3caadf4b9e649663e9367c2, type: 2}
   bgmSourceA: {fileID: 4357190896315327549}
   bgmSourceB: {fileID: 7072061399187101781}

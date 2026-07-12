@@ -3684,6 +3684,7 @@ GameObject:
   - component: {fileID: 3958299255569276434}
   - component: {fileID: 1713566707485192319}
   - component: {fileID: 3574553200487662557}
+  - component: {fileID: 4016128361514047649}
   m_Layer: 5
   m_Name: DailyTidalsPanel
   m_TagString: Untagged
@@ -3754,6 +3755,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4016128361514047649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377762024333838488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21cfa0b37207c45429385ec1df3c3d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1459364519755530275
 GameObject:
   m_ObjectHideFlags: 0
@@ -12083,6 +12096,7 @@ GameObject:
   - component: {fileID: 7186124032675059778}
   - component: {fileID: 7698748249298728572}
   - component: {fileID: 322503191224051380}
+  - component: {fileID: 6624663079274728617}
   m_Layer: 5
   m_Name: JournalPanel
   m_TagString: Untagged
@@ -12180,6 +12194,18 @@ MonoBehaviour:
     pageImage: {fileID: 3264352747535810562}
     RootLayout: {fileID: 317461572785000576}
     isJournal: 0
+--- !u!114 &6624663079274728617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4943910560011637095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21cfa0b37207c45429385ec1df3c3d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4949773152222341787
 GameObject:
   m_ObjectHideFlags: 0
@@ -12500,6 +12526,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2434200026101556531}
+  - component: {fileID: 3705384602950211740}
   m_Layer: 5
   m_Name: GameStorePanel
   m_TagString: Untagged
@@ -12528,6 +12555,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3705384602950211740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5113700295872776713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21cfa0b37207c45429385ec1df3c3d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5136647056522971314
 GameObject:
   m_ObjectHideFlags: 0
@@ -12957,6 +12996,7 @@ GameObject:
   - component: {fileID: 8824689979769850286}
   - component: {fileID: 5288407012529309627}
   - component: {fileID: 7460769706364924706}
+  - component: {fileID: 4303540247887706389}
   m_Layer: 5
   m_Name: InventoryPanel
   m_TagString: Untagged
@@ -13046,6 +13086,18 @@ MonoBehaviour:
     container: {fileID: 6583127063141713083}
     tabImage: {fileID: 5759175241500486113}
   CoinText: {fileID: 657120469288990796}
+--- !u!114 &4303540247887706389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5272202344069182339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21cfa0b37207c45429385ec1df3c3d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5297155452288186517
 GameObject:
   m_ObjectHideFlags: 0

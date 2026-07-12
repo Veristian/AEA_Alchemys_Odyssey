@@ -31,6 +31,9 @@ public class UiLoader : Singleton<UiLoader>
     [SerializeField] private TextMeshProUGUI indexName;
     [SerializeField] private TextMeshProUGUI indexDescription;
     [SerializeField] private Image indexImage;
+    [Header("Day")]
+    [SerializeField] private TextMeshProUGUI dayText;
+
     [Header("Quest")]
     [Header("Quest/Load")]
     [SerializeField] private Transform mainQuestContainer;
@@ -81,6 +84,7 @@ public class UiLoader : Singleton<UiLoader>
     private void Start()
     {
         trackedQuestPanel?.SetActive(false);
+        DisplayDay(DayManager.Instance.Day);
     }
     private void OnEnable()
     {
@@ -89,6 +93,7 @@ public class UiLoader : Singleton<UiLoader>
         OnQuestOpen += LoadQuestData;
         OnShopOpen += LoadShopData;
         OnNewsOpen += LoadNewsData;
+        if (DayManager.Instance) DayManager.Instance.OnDayChanged += DisplayDay;
     }
     private void OnDisable()
     {
@@ -97,6 +102,7 @@ public class UiLoader : Singleton<UiLoader>
         OnQuestOpen -= LoadQuestData;
         OnShopOpen -= LoadShopData;
         OnNewsOpen -= LoadNewsData;
+        if (DayManager.Instance) DayManager.Instance.OnDayChanged -= DisplayDay;
     }
 #endregion
 #region  Inventory
@@ -210,6 +216,10 @@ public class UiLoader : Singleton<UiLoader>
 #endregion
 
 #region Day
+    public void DisplayDay(int day)
+    {
+        if (dayText) dayText.text = "Day "+ day.ToString();
+    }
 
 #endregion
 

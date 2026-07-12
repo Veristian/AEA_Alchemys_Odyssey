@@ -2561,6 +2561,7 @@ MonoBehaviour:
   indexName: {fileID: 7652241764921888081}
   indexDescription: {fileID: 1193930855450792511}
   indexImage: {fileID: 8710079362407008553}
+  dayText: {fileID: 30571091483674755}
   mainQuestContainer: {fileID: 8065845639571215845}
   subQuestContainer: {fileID: 3873264372666821653}
   questPrefab: {fileID: 5445225964478593423, guid: 5bc09e9bdc5305b4083237af76b2ac80, type: 3}

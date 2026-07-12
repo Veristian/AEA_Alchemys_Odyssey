@@ -197,10 +197,7 @@ public class AudioController : MonoBehaviour
     {
         usingDualBGM = true;
 
-        bgmSourceA.clip = music.bgm01;
-        bgmSourceA.loop = true;
-        bgmSourceA.volume = 1f;
-        bgmSourceA.Play();
+        PlayBGM(music.bgm01);
 
         bgmSourceB.clip = music.bgm02;
         bgmSourceB.loop = true;
@@ -211,36 +208,36 @@ public class AudioController : MonoBehaviour
         nextSource = bgmSourceB;
     }
 
-    IEnumerator CrossFade(AudioClip clip)
-    {
-        nextSource.clip = clip;
-        nextSource.loop = true;
-        nextSource.volume = 0f;
-        nextSource.Play();
+    //IEnumerator CrossFade(AudioClip clip)
+    //{
+    //    nextSource.clip = clip;
+    //    nextSource.loop = true;
+    //    nextSource.volume = 0f;
+    //    nextSource.Play();
 
-        float time = 0;
+    //    float time = 0;
 
-        while (time < fadeDuration)
-        {
-            time += Time.deltaTime;
+    //    while (time < fadeDuration)
+    //    {
+    //        time += Time.deltaTime;
 
-            float t = time / fadeDuration;
+    //        float t = time / fadeDuration;
 
-            currentSource.volume = Mathf.Lerp(1, 0, t);
-            nextSource.volume = Mathf.Lerp(0, 1, t);
+    //        currentSource.volume = Mathf.Lerp(1, 0, t);
+    //        nextSource.volume = Mathf.Lerp(0, 1, t);
 
-            yield return null;
-        }
+    //        yield return null;
+    //    }
 
-        currentSource.Stop();
+    //    currentSource.Stop();
 
-        AudioSource temp = currentSource;
-        currentSource = nextSource;
-        nextSource = temp;
+    //    AudioSource temp = currentSource;
+    //    currentSource = nextSource;
+    //    nextSource = temp;
 
-        currentSource.volume = 1f;
-        nextSource.volume = 0f;
-    }
+    //    currentSource.volume = 1f;
+    //    nextSource.volume = 0f;
+    //}
 
     IEnumerator FadeBetweenSources()
     {
@@ -270,6 +267,8 @@ public class AudioController : MonoBehaviour
 
         fadeRoutine = null;
     }
+
+
     //public void SetMasterVolume(float value)
     //{
     //    mixer.SetFloat("MasterVolume", Mathf.Log10(value) * 20);

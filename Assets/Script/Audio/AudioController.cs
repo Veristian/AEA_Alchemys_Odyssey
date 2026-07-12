@@ -24,6 +24,8 @@ public class AudioController : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float fadeDuration = 1.5f;
 
+    private SceneMusic music;
+
     private AudioSource currentSource;
     private AudioSource nextSource;
 
@@ -41,8 +43,8 @@ public class AudioController : MonoBehaviour
         //DontDestroyOnLoad(gameObject);
 
         currentSource = bgmSourceA;
-        //nextSource = bgmSourceB;
-        
+        nextSource = bgmSourceB;
+
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -54,11 +56,11 @@ public class AudioController : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         
-        SceneMusic music = FindFirstObjectByType<SceneMusic>();
+        music = FindFirstObjectByType<SceneMusic>();
 
         if (music != null)
         {
-            PlayBGM(music.bgm);
+            PlayBGM(music.bgm01);
         }
         else
         {
@@ -98,7 +100,29 @@ public class AudioController : MonoBehaviour
         fadeRoutine = StartCoroutine(FadeIn(clip));
     }
 
-    
+    public void BGMToogle()
+    {
+        if (music.bgm02 == null)
+        {
+            return;
+        }
+        if (currentSource.clip == music.bgm01 && currentSource.isPlaying)
+        {
+            if (fadeRoutine != null)
+            {
+                StopCoroutine(fadeRoutine);
+            }
+            fadeRoutine = StartCoroutine(CrossFade(music.bgm02));
+        }
+        else
+        {
+            if (fadeRoutine != null)
+            {
+                StopCoroutine(fadeRoutine);
+            }
+            fadeRoutine = StartCoroutine(CrossFade(music.bgm01));
+        }
+    }
 
     IEnumerator FadeIn(AudioClip clip)
     {
@@ -133,7 +157,7 @@ public class AudioController : MonoBehaviour
 
     IEnumerator FadeOutBGM()
     {
-        StopCoroutine(fadeRoutine);
+        //StopCoroutine(fadeRoutine);
         float startVolume = currentSource.volume;
         //float nstartVolume = nextSource.volume;
         float time = 0;
@@ -151,6 +175,7 @@ public class AudioController : MonoBehaviour
         fadeRoutine = null;
     }
 
+   
     IEnumerator CrossFade(AudioClip clip)
     {
         nextSource.clip = clip;

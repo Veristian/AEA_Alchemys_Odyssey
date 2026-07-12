@@ -313,6 +313,7 @@ GameObject:
   - component: {fileID: 1754718411012724333}
   - component: {fileID: 2934891651131802162}
   - component: {fileID: 7490064658524721074}
+  - component: {fileID: 2337733751379548351}
   m_Layer: 0
   m_Name: UiManager
   m_TagString: Untagged
@@ -374,6 +375,7 @@ MonoBehaviour:
   PauseMenuCloseBtn: {fileID: 1131508274133475077}
   DailyTidalCloseBtn: {fileID: 3472511733449212519}
   GameStoreCloseBtn: {fileID: 6816120874483180616}
+  PlayerHUD: {fileID: 6700309536345766601}
 --- !u!114 &2934891651131802162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,6 +410,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingScreen: {fileID: 4285167605539688087}
   minimumLoadingTime: 2
+--- !u!114 &2337733751379548351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789954941151435890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21cfa0b37207c45429385ec1df3c3d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1871990389010162383
 GameObject:
   m_ObjectHideFlags: 0
@@ -2501,6 +2515,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6700309536345766601 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1315386188647332505, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
+  m_PrefabInstance: {fileID: 5673823884265799760}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6747434029583911112 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1377762024333838488, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}

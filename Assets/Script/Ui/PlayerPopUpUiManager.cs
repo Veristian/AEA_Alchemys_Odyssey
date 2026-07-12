@@ -26,6 +26,9 @@ public class PlayerPopUpUiManager : MonoBehaviour
     [SerializeField] private Button DailyTidalCloseBtn;
     [SerializeField] private Button GameStoreCloseBtn;
 
+    [Header("UiCategory")]
+    [SerializeField] private GameObject PlayerHUD;
+
     private GameObject currentPopup;
     private bool isPopUpOpened = false;
 
@@ -184,5 +187,24 @@ public class PlayerPopUpUiManager : MonoBehaviour
             GameStoreCloseBtn.onClick.AddListener(OpenGameStore);
         }
 
+    }
+
+    public void disableHUD()
+    {
+        InputManager.Instance.canUiPopup = false;
+        PlayerHUD.SetActive(false);
+        CloseAllPopups();
+        InputManager.Instance.DisableInputs();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void EnableHUD()
+    {
+        InputManager.Instance.canUiPopup = true;
+        PlayerHUD.SetActive(true);
+        InputManager.Instance.EnableInputs();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

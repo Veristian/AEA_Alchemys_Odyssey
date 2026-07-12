@@ -99,6 +99,7 @@ public class TeleportTrigger : MonoBehaviour, IInteractable
 
     public void Interact(GameObject interactor)
     {
+        if (!interactable) return;
         if (string.IsNullOrEmpty(targetSceneName))
         {
             Debug.LogWarning("Target scene name is not set.");
@@ -107,33 +108,34 @@ public class TeleportTrigger : MonoBehaviour, IInteractable
 
         PlayerSpawnManager.Instance.SetSpawnInfo(spawnPointName);
         SceneLoadingManager.Instance.LoadScene(targetSceneName);
+        isInteractable = false;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!other.CompareTag("Player"))
-            return;
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     if (!other.CompareTag("Player"))
+    //         return;
 
-        if (overlayCanvas != null)
-            UITransitionManager.Instance.FadeIn(overlayCanvas);
-    }
+    //     if (overlayCanvas != null)
+    //         UITransitionManager.Instance.FadeIn(overlayCanvas);
+    // }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (!other.CompareTag("Player"))
-            return;
+    // private void OnTriggerExit(Collider other)
+    // {
+    //     if (!other.CompareTag("Player"))
+    //         return;
 
-        if (overlayCanvas != null)
-            UITransitionManager.Instance.FadeOut(overlayCanvas);
-    }
+    //     if (overlayCanvas != null)
+    //         UITransitionManager.Instance.FadeOut(overlayCanvas);
+    // }
 
-    public void SetInteractable(bool value)
-    {
-        isInteractable = value;
-    }
+    // public void SetInteractable(bool value)
+    // {
+    //     isInteractable = value;
+    // }
 
-    public void ToggleInteractable()
-    {
-        isInteractable = !isInteractable;
-    }
+    // public void ToggleInteractable()
+    // {
+    //     isInteractable = !isInteractable;
+    // }
 }

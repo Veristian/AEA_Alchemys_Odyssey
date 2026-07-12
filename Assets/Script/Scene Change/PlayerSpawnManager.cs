@@ -2,23 +2,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class PlayerSpawnManager : MonoBehaviour
+public class PlayerSpawnManager : Singleton<PlayerSpawnManager>
 {
-    public static PlayerSpawnManager Instance;
 
     private string targetSpawnPointName;
-
-    private void Awake()
+    protected override void Awake()
     {
-        if (Instance == null)
+        transform.parent = null;
+        if (Instance != null && Instance != this)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);   // Now this will work
+            Destroy(gameObject); 
+            return;
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
     }
 
     public void SetSpawnInfo(string spawnName)
@@ -35,19 +32,23 @@ public class PlayerSpawnManager : MonoBehaviour
 
     private IEnumerator SpawnAfterLoad()
     {
-        yield return new WaitForSeconds(0.2f); // Increased delay for safety
-
+        Debug.Log("sapwning");
+        yield return new WaitUntil(() =>
+            GameObject.FindAnyObjectByType<PlayerController>() != null &&
+            GameObject.Find(targetSpawnPointName) != null);
         GameObject spawnPoint = GameObject.Find(targetSpawnPointName);
 
         if (spawnPoint != null)
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-
+            GameObject player = GameObject.FindAnyObjectByType<PlayerController>(FindObjectsInactive.Exclude).gameObject;
             if (player != null)
             {
-                player.transform.position = spawnPoint.transform.position;
-                player.transform.rotation = spawnPoint.transform.rotation;
-                Debug.Log($" Player teleported to: {targetSpawnPointName}");
+                Rigidbody rb = player.GetComponent<Rigidbody>();
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+
+                rb.position = spawnPoint.transform.position;
+                rb.rotation = spawnPoint.transform.rotation;
             }
             else
             {
@@ -59,7 +60,7 @@ public class PlayerSpawnManager : MonoBehaviour
             Debug.LogError($" Spawn point '{targetSpawnPointName}' not found!");
         }
 
-        targetSpawnPointName = null; // Reset
+        // targetSpawnPointName = null; // Reset
     }
 
     private void OnEnable()

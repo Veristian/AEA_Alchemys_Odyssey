@@ -11,6 +11,7 @@ public class SceneLoadingManager : Singleton<SceneLoadingManager>
 
     [Header("Settings")]
     [SerializeField] private float minimumLoadingTime = 1f;
+    private bool isLoading = false;
 
     private void OnEnable()
     {
@@ -23,6 +24,10 @@ public class SceneLoadingManager : Singleton<SceneLoadingManager>
 
     public void LoadScene(string sceneName)
     {
+        if (isLoading)
+            return;
+
+        isLoading = true;
         StartCoroutine(LoadSceneRoutine(sceneName));
     }
 

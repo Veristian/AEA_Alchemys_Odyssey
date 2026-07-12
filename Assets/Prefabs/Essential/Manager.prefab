@@ -52,6 +52,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: a5ec241da5d061447b83defcdc5b38dd, type: 3}
   - sname: MouseHover
     clip: {fileID: 8300000, guid: f3002f7d278344d4ba92e4353ecb2585, type: 3}
+  - sname: PickUp
+    clip: {fileID: 8300000, guid: e637f4e68789c404d96955018b347ab3, type: 3}
   mixer: {fileID: 24100000, guid: c9ef8e8ae3caadf4b9e649663e9367c2, type: 2}
   bgmSourceA: {fileID: 4357190896315327549}
   bgmSourceB: {fileID: 7072061399187101781}
@@ -380,6 +382,8 @@ MonoBehaviour:
   DailyTidalCloseBtn: {fileID: 3472511733449212519}
   GameStoreCloseBtn: {fileID: 6816120874483180616}
   PlayerHUD: {fileID: 6700309536345766601}
+  IiPanel: {fileID: 0}
+  iIndicators: []
 --- !u!114 &2934891651131802162
 MonoBehaviour:
   m_ObjectHideFlags: 0

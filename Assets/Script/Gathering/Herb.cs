@@ -48,6 +48,7 @@ public class Herb : MonoBehaviour, IInteractable
             {
                 PickupPopupManager.Instance.ShowPickup(ingredientData);
                 CollectedEffect.Play();
+                AudioController.Instance.PlaySFX("PickUp");
             }
         }
         

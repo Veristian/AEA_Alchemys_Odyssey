@@ -28,7 +28,8 @@ public class AudioController : MonoBehaviour
 
     private AudioSource currentSource;
     private AudioSource nextSource;
-
+    private bool usingDualBGM = false;
+    
     Coroutine fadeRoutine;
 
     private void Awake()
@@ -60,7 +61,15 @@ public class AudioController : MonoBehaviour
 
         if (music != null)
         {
-            PlayBGM(music.bgm01);
+            if (music.bgm02 != null)
+            {
+                PlayBothBGM();
+            }
+            else
+            {
+                PlayBGM(music.bgm01);
+            }
+            
         }
         else
         {
@@ -102,26 +111,35 @@ public class AudioController : MonoBehaviour
 
     public void BGMToogle()
     {
-        if (music.bgm02 == null)
-        {
+        //if (music.bgm02 == null)
+        //{
+        //    return;
+        //}
+        //if (currentSource.clip == music.bgm01 && currentSource.isPlaying)
+        //{
+        //    if (fadeRoutine != null)
+        //    {
+        //        StopCoroutine(fadeRoutine);
+        //    }
+        //    fadeRoutine = StartCoroutine(CrossFade(music.bgm02));
+        //}
+        //else
+        //{
+        //    if (fadeRoutine != null)
+        //    {
+        //        StopCoroutine(fadeRoutine);
+        //    }
+        //    fadeRoutine = StartCoroutine(CrossFade(music.bgm01));
+        //}
+
+        if (!usingDualBGM)
             return;
-        }
-        if (currentSource.clip == music.bgm01 && currentSource.isPlaying)
-        {
-            if (fadeRoutine != null)
-            {
-                StopCoroutine(fadeRoutine);
-            }
-            fadeRoutine = StartCoroutine(CrossFade(music.bgm02));
-        }
-        else
-        {
-            if (fadeRoutine != null)
-            {
-                StopCoroutine(fadeRoutine);
-            }
-            fadeRoutine = StartCoroutine(CrossFade(music.bgm01));
-        }
+
+        if (fadeRoutine != null)
+            StopCoroutine(fadeRoutine);
+
+        fadeRoutine = StartCoroutine(FadeBetweenSources());
+
     }
 
     IEnumerator FadeIn(AudioClip clip)
@@ -175,7 +193,24 @@ public class AudioController : MonoBehaviour
         fadeRoutine = null;
     }
 
-   
+    public void PlayBothBGM()
+    {
+        usingDualBGM = true;
+
+        bgmSourceA.clip = music.bgm01;
+        bgmSourceA.loop = true;
+        bgmSourceA.volume = 1f;
+        bgmSourceA.Play();
+
+        bgmSourceB.clip = music.bgm02;
+        bgmSourceB.loop = true;
+        bgmSourceB.volume = 0f;
+        bgmSourceB.Play();
+
+        currentSource = bgmSourceA;
+        nextSource = bgmSourceB;
+    }
+
     IEnumerator CrossFade(AudioClip clip)
     {
         nextSource.clip = clip;
@@ -207,6 +242,34 @@ public class AudioController : MonoBehaviour
         nextSource.volume = 0f;
     }
 
+    IEnumerator FadeBetweenSources()
+    {
+        float currentStart = currentSource.volume;
+        float nextStart = nextSource.volume;
+
+        float time = 0f;
+
+        while (time < fadeDuration)
+        {
+            time += Time.deltaTime;
+
+            float t = time / fadeDuration;
+
+            currentSource.volume = Mathf.Lerp(currentStart, 0f, t);
+            nextSource.volume = Mathf.Lerp(nextStart, 1f, t);
+
+            yield return null;
+        }
+
+        currentSource.volume = 0f;
+        nextSource.volume = 1f;
+
+        AudioSource temp = currentSource;
+        currentSource = nextSource;
+        nextSource = temp;
+
+        fadeRoutine = null;
+    }
     //public void SetMasterVolume(float value)
     //{
     //    mixer.SetFloat("MasterVolume", Mathf.Log10(value) * 20);

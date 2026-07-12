@@ -8,12 +8,7 @@ using UnityEngine.UI;
 
 public class PlayerPopUpUiManager : MonoBehaviour
 {
-    [System.Serializable]
-    public class InteractIndicator
-    {
-        public string name;
-        public Sprite image;
-    }
+    
 
     public static PlayerPopUpUiManager Instance;
 
@@ -38,9 +33,7 @@ public class PlayerPopUpUiManager : MonoBehaviour
     [Header("UiCategory")]
     [SerializeField] private GameObject PlayerHUD;
 
-    [Header("Interactable Indicator")]
-    [SerializeField] private GameObject IiPanel;
-    [SerializeField] private InteractIndicator[] iIndicators;
+    
 
     private GameObject currentPopup;
     private bool isPopUpOpened = false;
@@ -221,15 +214,5 @@ public class PlayerPopUpUiManager : MonoBehaviour
         Cursor.visible = false;
     }
 
-    public void interactableIndicatorChecker(string text)
-    {
-        if (text == null)
-        {
-            UITransitionManager.Instance.FadeOut(IiPanel);
-        }
-        else
-        {
-            UITransitionManager.Instance.FadeIn(IiPanel);
-        }
-    }
+   
 }

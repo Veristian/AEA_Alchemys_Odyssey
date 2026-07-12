@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerInteractIndicator : Singleton<PlayerInteractIndicator>
 {
@@ -14,17 +14,28 @@ public class PlayerInteractIndicator : Singleton<PlayerInteractIndicator>
     [Header("Interactable Indicator")]
     [SerializeField] private GameObject IiPanel;
     [SerializeField] private InteractIndicator[] iIndicators;
+    [SerializeField] private Image indicatorImage;
     // Start is called before the first frame update
 
     public void interactableIndicatorChecker(string text)
     {
-        if (text == null)
+        if (string.IsNullOrEmpty(text))
         {
             UITransitionManager.Instance.FadeOut(IiPanel);
+            return;
+        }
+
+        InteractIndicator indicator = Array.Find(iIndicators, x => x.name == text);
+
+        if (indicator != null)
+        {
+            indicatorImage.sprite = indicator.image;
+            UITransitionManager.Instance.FadeIn(IiPanel);
         }
         else
         {
-            UITransitionManager.Instance.FadeIn(IiPanel);
+            Debug.LogWarning($"No indicator found for '{text}'");
+            UITransitionManager.Instance.FadeOut(IiPanel);
         }
     }
 }

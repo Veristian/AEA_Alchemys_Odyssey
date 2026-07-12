@@ -35,6 +35,7 @@ public class PlayerInteractor : MonoBehaviour
         {
             interactText = null;
             interactable = null;
+            PlayerInteractIndicator.Instance.interactableIndicatorChecker(interactText);
         }
         // foreach (var col in hits)
         // {
@@ -67,6 +68,7 @@ public class PlayerInteractor : MonoBehaviour
                 closest = col;
                 interactable = candidate;
                 interactText = candidate.text;
+                PlayerInteractIndicator.Instance.interactableIndicatorChecker(interactText);
             }
         }
     }
@@ -76,10 +78,16 @@ public class PlayerInteractor : MonoBehaviour
         if (interactable == null) 
         {
             interactText = null;
+            PlayerInteractIndicator.Instance.interactableIndicatorChecker(interactText);
             return;
         }
         interactable.Interact(gameObject);
-        if (!interactable.interactable) interactText = null;
+        if (!interactable.interactable)
+        {
+            interactText = null;
+            PlayerInteractIndicator.Instance.interactableIndicatorChecker(interactText);
+        }
+
     }    
 
    private void OnDrawGizmos()

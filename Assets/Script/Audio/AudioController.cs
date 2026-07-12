@@ -38,11 +38,11 @@ public class AudioController : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         currentSource = bgmSourceA;
         //nextSource = bgmSourceB;
-
+        
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -53,7 +53,7 @@ public class AudioController : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        VolumeSetup();
+        
         SceneMusic music = FindFirstObjectByType<SceneMusic>();
 
         if (music != null)
@@ -64,6 +64,10 @@ public class AudioController : MonoBehaviour
         {
             Debug.LogWarning("Pls Add MusicSource for the Scene");
         }
+    }
+    private void Start()
+    {
+        VolumeSetup();
     }
 
     public void PlaySFX(string name)

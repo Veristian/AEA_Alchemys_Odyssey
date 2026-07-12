@@ -134,7 +134,7 @@ public class PlayerDataManager : Singleton<PlayerDataManager>
         );
 
         InitializeUnlockedObjects();
-        DayManager.Instance.SetDay(DataManager.Instance.LoadFromFile(DayFileName, () => new DayData { day = 0 }).day);
+        DayManager.Instance.SetDay(DataManager.Instance.LoadFromFile(DayFileName, () => new DayData { day = 1 }).day);
 
         
     }

@@ -103,9 +103,12 @@ MonoBehaviour:
       hasProbeVolumes: 0
     - sceneGUID: 679cb4d3be086204fa527fad12c5d49e
       hasProbeVolumes: 1
+    - sceneGUID: 1dfdc32682a0d5a4cbee795df29e43c3
+      hasProbeVolumes: 0
     bakingSets:
     - {fileID: 11400000, guid: 04f6eeb6ee8b4bd4fb081bcfd3cabfa8, type: 2}
     - {fileID: 11400000, guid: 4f868afc42ac6654cb30904cc5c7fe62, type: 2}
+    - {fileID: 11400000, guid: a5a5a1b3946846b4f836a9e88c9562aa, type: 2}
     m_LightingScenario: Default
   m_PrefilteringModeMainLightShadows: 1
   m_PrefilteringModeAdditionalLight: 4

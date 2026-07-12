@@ -24,6 +24,8 @@ public class PotionManager : Singleton<PotionManager>
 {
     [Header("References")]
     [SerializeField] private Camera potionMakingCamera;
+    [SerializeField] private Camera defaultCamera;
+    [SerializeField] private GameObject UiCanvasHUD;
     public Camera PotionMakingCamera
     {
         get {return potionMakingCamera ?? Camera.main; }
@@ -88,9 +90,18 @@ public class PotionManager : Singleton<PotionManager>
         SetGraphProperties();
         SetupPotionGraph();
         SetupPlayArea();
+
+        Camera[] cam = FindObjectsByType<Camera>(FindObjectsSortMode.None);
+        foreach (Camera c in cam)
+        {
+            if (c == potionMakingCamera) continue;
+            defaultCamera = c;
+            break;
+        }
     }    
     private void Start()
     {
+        
         guideGraphTop.SetAnchorTop(true);
         if (playArea != null)
             playAreaOrigin = playArea.transform.position;
@@ -303,7 +314,7 @@ public class PotionManager : Singleton<PotionManager>
 #region public methods
     public void DeactivatePotionInterface()
     {
-    
+        
         activePotionTarget = null;
         activePotionIngredientsTarget.Clear();
         UpdateGuideGraph();
@@ -312,6 +323,17 @@ public class PotionManager : Singleton<PotionManager>
         canvas.SetActive(false);
         playArea.gameObject.SetActive(false);
         potionMakingCamera.gameObject.SetActive(false);
+        
+
+        //activate camera and other UI
+        if (defaultCamera) defaultCamera.gameObject.SetActive(true);
+        if (UiCanvasHUD) UiCanvasHUD.gameObject.SetActive(true);
+        InputManager.Instance.canInteract = true;
+        InputManager.Instance.canMove = true;
+        InputManager.Instance.canLook = true;
+        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void ActivatePotionInterface()
@@ -320,6 +342,17 @@ public class PotionManager : Singleton<PotionManager>
         canvas.SetActive(true);
         playArea.gameObject.SetActive(true);
         potionMakingCamera.gameObject.SetActive(true);
+
+        //deactivate camera and other UI
+        if (defaultCamera) defaultCamera.gameObject.SetActive(false);
+        if (UiCanvasHUD) UiCanvasHUD.gameObject.SetActive(false);
+
+        InputManager.Instance.canInteract = false;
+        InputManager.Instance.canMove = false;
+        InputManager.Instance.canLook = false;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     public void AssignPotionTarget(PotionData potionData)
     {

@@ -1105,6 +1105,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   potionMakingCamera: {fileID: 0}
+  defaultCamera: {fileID: 0}
+  UiCanvasHUD: {fileID: 4278320579171679634}
   playArea: {fileID: 0}
   canvas: {fileID: 0}
   potionGraph: {fileID: 2747699161765731438}
@@ -2496,6 +2498,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4278320579171679634 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8494594997202402754, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
+  m_PrefabInstance: {fileID: 5673823884265799760}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4285167605539688087 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8487739355001917127, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}

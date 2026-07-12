@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoadingManager : Singleton<SceneLoadingManager>
 {
     [Header("Loading UI")]
-    [SerializeField] private GameObject loadingScreen;
+    [SerializeField] public GameObject loadingScreen;
 
     [Header("Settings")]
     [SerializeField] private float minimumLoadingTime = 1f;

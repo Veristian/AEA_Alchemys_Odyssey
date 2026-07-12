@@ -8,8 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Flower01A
-  m_Shader: {fileID: -6465566751694194690, guid: 399a5461f3655314798b059dad5f3df4,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 399a5461f3655314798b059dad5f3df4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -140,7 +139,7 @@ Material:
     - _Bend_Direction: {r: 4, g: 4, b: 0, a: 0}
     - _Color: {r: 0.25882354, g: 0.5372549, b: 0.03137255, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Primary_Color: {r: 0.15294118, g: 0.42745098, b: 0.5764706, a: 1}
+    - _Primary_Color: {r: 0.4418079, g: 0.15294118, b: 0.5764706, a: 1}
     - _Secondary_Color: {r: 0.1632448, g: 0.3301887, b: 0.05762727, a: 1}
     - _Tertiary_Color: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

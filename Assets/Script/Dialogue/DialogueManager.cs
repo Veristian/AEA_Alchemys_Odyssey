@@ -245,6 +245,9 @@ public class DialogueManager : Singleton<DialogueManager>
             case "submitquest":
                 QuestRuntimeManager.Instance.SubmitQuest(parameter);
                 break;
+            case "givequest":
+                QuestRuntimeManager.Instance.GiveQuest(parameter);
+                break;
             case "teleport":
                 SceneLoadingManager.Instance.Teleport(parameter);
                 break;

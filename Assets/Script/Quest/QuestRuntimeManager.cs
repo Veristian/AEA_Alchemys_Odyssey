@@ -279,6 +279,8 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
         MarkQuestAsCompleted(playerQuestData);
         //reward player
         PlayerDataManager.Instance.AddGold(playerQuestData.questData.questActions.goldReward);
+
+        if (UiLoader.Instance.displayedQuestData == playerQuestData) UiLoader.Instance.UnTrackQuest();
     }
     public void SubmitQuest(string questId)
     {
@@ -301,5 +303,19 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
         }
     }
 
-    
+    public void GiveQuest(string questId)
+    {
+        PlayerQuestData playerQuestData = IdToPlayerQuestData(questId);
+
+        if (playerQuestData == null)
+        {
+            Debug.LogWarning($"Quest '{questId}' not found.");
+            return;
+        }
+
+        if (playerQuestData.isCompleted && !playerQuestData.questData.isRepeatable)
+            return;
+
+        MarkQuestAsOnGoing(playerQuestData);
+    }
 }

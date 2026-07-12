@@ -50,7 +50,7 @@ public class UiLoader : Singleton<UiLoader>
     [SerializeField] private TextMeshProUGUI trackedQuestName;
     [SerializeField] private TextMeshProUGUI trackedQuestDescription;
     [SerializeField] private GameObject trackedQuestPanel;
-    private PlayerQuestData displayedQuestData;
+    public PlayerQuestData displayedQuestData;
 
     [Header("Shop")]
     [Header("Shop/Load")]
@@ -294,6 +294,14 @@ public class UiLoader : Singleton<UiLoader>
             trackedQuestName.text = displayedQuestData.questData.questName;
             trackedQuestDescription.text = displayedQuestData.questData.questDescription;
         }
+    }
+    public void UnTrackQuest()
+    {
+        QuestRuntimeManager.Instance.SetTrackedQuest(null);
+        trackedQuestPanel.SetActive(false);
+        trackedQuestName.text = "";
+        trackedQuestDescription.text = "";
+        
     }
 
     private void DisplayEmptyQuest()

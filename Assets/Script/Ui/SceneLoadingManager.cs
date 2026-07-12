@@ -29,6 +29,7 @@ public class SceneLoadingManager : Singleton<SceneLoadingManager>
     private IEnumerator LoadSceneRoutine(string sceneName)
     {
         UITransitionManager.Instance.FadeIn(loadingScreen);
+        AudioController.Instance.FadeOutCurrentBGM();
         //loadingScreen.SetActive(true);
         yield return new WaitForSeconds(.3f);
         float timer = 0f;

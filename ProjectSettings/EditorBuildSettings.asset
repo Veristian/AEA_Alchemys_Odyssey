@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 93e6c3038c30ec14e9f0da09377d4892
+  - enabled: 1
     path: Assets/Scenes/ChemyHouse.unity
     guid: 679cb4d3be086204fa527fad12c5d49e
   - enabled: 1

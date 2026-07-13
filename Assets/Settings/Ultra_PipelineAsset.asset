@@ -98,6 +98,14 @@ MonoBehaviour:
       bounds:
         m_Center: {x: -81, y: 364.5, z: -243}
         m_Extent: {x: 81, y: 40.5, z: 81}
+    - sceneGUID: c292be1c25495b6408e9f97ed237973b
+      bounds:
+        m_Center: {x: -202.5, y: 364.5, z: -40.5}
+        m_Extent: {x: 526.5, y: 40.5, z: 526.5}
+    - sceneGUID: 194eef0abba6fed4aafe3952942aef03
+      bounds:
+        m_Center: {x: -202.5, y: 364.5, z: -40.5}
+        m_Extent: {x: 526.5, y: 40.5, z: 526.5}
     serializedHasVolumes:
     - sceneGUID: 43ff25c0919e0f443b8e6dea98680d56
       hasProbeVolumes: 0
@@ -105,9 +113,15 @@ MonoBehaviour:
       hasProbeVolumes: 1
     - sceneGUID: 1dfdc32682a0d5a4cbee795df29e43c3
       hasProbeVolumes: 0
+    - sceneGUID: c292be1c25495b6408e9f97ed237973b
+      hasProbeVolumes: 0
+    - sceneGUID: 194eef0abba6fed4aafe3952942aef03
+      hasProbeVolumes: 0
     bakingSets:
     - {fileID: 11400000, guid: 04f6eeb6ee8b4bd4fb081bcfd3cabfa8, type: 2}
     - {fileID: 11400000, guid: 4f868afc42ac6654cb30904cc5c7fe62, type: 2}
+    - {fileID: 11400000, guid: 0b43fafdaace7a14ea7e448833190dc1, type: 2}
+    - {fileID: 11400000, guid: 56ff3bd71a516404680f0ad371d4d7e2, type: 2}
     - {fileID: 11400000, guid: a5a5a1b3946846b4f836a9e88c9562aa, type: 2}
     m_LightingScenario: Default
   m_PrefilteringModeMainLightShadows: 1

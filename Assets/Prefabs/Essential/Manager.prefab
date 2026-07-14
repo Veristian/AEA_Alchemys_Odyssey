@@ -382,8 +382,6 @@ MonoBehaviour:
   DailyTidalCloseBtn: {fileID: 3472511733449212519}
   GameStoreCloseBtn: {fileID: 6816120874483180616}
   PlayerHUD: {fileID: 6700309536345766601}
-  IiPanel: {fileID: 0}
-  iIndicators: []
 --- !u!114 &2934891651131802162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,6 +485,18 @@ MonoBehaviour:
       requirements:
       - rid: 1115517488788668481
     unlockId: DayTwoActivator
+  - requirementList:
+      requirements:
+      - rid: 1115517542344163366
+    unlockId: DayOneHerbs
+  - requirementList:
+      requirements:
+      - rid: 1115517542344163367
+    unlockId: DayTwoHerbs
+  - requirementList:
+      requirements:
+      - rid: 1115517542344163368
+    unlockId: DayThreeHerbs
   references:
     version: 2
     RefIds:
@@ -502,6 +512,18 @@ MonoBehaviour:
       type: {class: ExactDaysRequirement, ns: , asm: Assembly-CSharp}
       data:
         currentDay: 2
+    - rid: 1115517542344163366
+      type: {class: DaysRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        minimumDaysPassed: 1
+    - rid: 1115517542344163367
+      type: {class: DaysRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        minimumDaysPassed: 2
+    - rid: 1115517542344163368
+      type: {class: DaysRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        minimumDaysPassed: 3
 --- !u!1 &2056234286102749589
 GameObject:
   m_ObjectHideFlags: 0

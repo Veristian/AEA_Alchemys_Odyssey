@@ -932,3 +932,13 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  requirementsToUnlock:
+    requirements:
+    - rid: 1115517542344163370
+  references:
+    version: 2
+    RefIds:
+    - rid: 1115517542344163370
+      type: {class: DaysRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        minimumDaysPassed: 2

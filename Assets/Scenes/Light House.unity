@@ -10647,6 +10647,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: gameObjectUnlockables.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: gameObjectUnlockables.Array.data[0].unlockableObjectsId
+      value: DayTheeHerbs
+      objectReference: {fileID: 0}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: gameObjectUnlockables.Array.data[0].unlockableObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: 'gameObjectUnlockables.Array.data[0].unlockableObjects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 379522413}
     - target: {fileID: 2571495696662888705, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

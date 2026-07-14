@@ -381,6 +381,19 @@ public class PotionManager : Singleton<PotionManager>
             }
             ClearPotion();
             PotionHouse.Instance.UpdatePotionDisplay();
+
+            //update quest if potion is for Chemy
+
+            List<PlayerQuestData> completedQuest = QuestRuntimeManager.Instance.GetOngoingQuests().FindAll(q => q.questData.submissionCharacter == SubmissionCharacter.Chemy).FindAll(q => q.questData.requirementsToComplete.AreAllMet());
+
+            if (completedQuest == null || completedQuest.Count == 0)
+            {
+                
+            }
+            else
+            {
+                QuestRuntimeManager.Instance.SubmitQuest(completedQuest[0].questId);
+            }
         }
         else
         {

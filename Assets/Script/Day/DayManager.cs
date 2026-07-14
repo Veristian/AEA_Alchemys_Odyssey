@@ -148,6 +148,7 @@ public class DayManager : Singleton<DayManager>
 
     public void ViewNewsAndAcceptNews()
     {
+        if (currentLocalNews == null || currentHeadline == null) return;
         currentLocalNews.willBeShown = false;
         currentLocalNews.hasBeenShown = true;
 

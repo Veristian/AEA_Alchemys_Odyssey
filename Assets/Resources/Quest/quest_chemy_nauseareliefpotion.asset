@@ -10,33 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9fa123a2afd6ba4799620c16a8f1bb8, type: 3}
-  m_Name: quest_kenneth_swiftpotion
+  m_Name: quest_chemy_nauseareliefpotion
   m_EditorClassIdentifier: 
   loadState: 0
-  questId: quest_kenneth_swiftpotion
-  questName: Hard at Work Kenneth?
-  questDescription: Deliver a Swift Potion to Kenneth
-  submissionCharacter: 0
+  questId: quest_chemy_nauseareliefpotion
+  questName: I'm Dizzy...
+  questDescription: Make a Nausea Relief Potion
+  submissionCharacter: 8
   requirementsToUnlock:
     requirements:
-    - rid: 5999243469903888397
+    - rid: 1115517542344163335
   requirementsToComplete:
     requirements:
-    - rid: 5999243469903888406
+    - rid: 1115517542344163336
   questActions:
-    goldReward: 500
+    goldReward: 0
   isMainQuest: 1
   isRepeatable: 0
-  storyText: {fileID: 4900000, guid: 311f4ce8f2184d34fa382551140fd0e4, type: 3}
+  storyText: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 5999243469903888397
-      type: {class: DaysRequirement, ns: , asm: Assembly-CSharp}
+    - rid: 1115517542344163335
+      type: {class: ExactDaysRequirement, ns: , asm: Assembly-CSharp}
       data:
-        minimumDaysPassed: 1
-    - rid: 5999243469903888406
+        currentDay: 1
+    - rid: 1115517542344163336
       type: {class: QuestPotionsRequirement, ns: , asm: Assembly-CSharp}
       data:
-        requiredPotion: {fileID: 11400000, guid: 382647a46022bc8449802f6eb150bf8d, type: 2}
+        requiredPotion: {fileID: 11400000, guid: 43fe037c7c3bd11409e0c5c6a416d058, type: 2}
         requiredIngredient: []

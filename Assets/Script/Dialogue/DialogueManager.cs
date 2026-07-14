@@ -6,6 +6,7 @@ using Ink.Runtime;
 using System;
 using System.Linq;
 using UnityEngine.UI;
+using Cinemachine;
 [Serializable]
 public class CharacterSprite
 {
@@ -257,6 +258,13 @@ public class DialogueManager : Singleton<DialogueManager>
             case "setactivefalse":
                 GameObject.Find(parameter).SetActive(false);
                 break;
+            case "setlook":
+                GameObject.FindAnyObjectByType<CinemachineFreeLook>(FindObjectsInactive.Exclude).m_XAxis.Value = float.Parse(parameter);
+                break;
+            case "viewnews":
+                DayManager.Instance.ViewNewsAndAcceptNews();
+                break;
+            
 
         }
     }

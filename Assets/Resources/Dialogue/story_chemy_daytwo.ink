@@ -5,6 +5,7 @@ Helloooo there's mail for Chemy!
 # speaker: Chemy
 Mmm... coming...
 
+# func: teleport@-57.9275093,365.427765,-260.37915
 # speaker: Poshe
 Good morning! You must be Chemy, the new alchemist!
 
@@ -41,4 +42,5 @@ Bye!
 # speaker: Chemy
 I should try help out around town. Let's see what's in today's paper...
 
+#func: viewnews
 -> END

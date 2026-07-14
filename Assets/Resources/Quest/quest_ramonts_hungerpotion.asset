@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadState: 0
   questId: quest_ramonts_hungerpotion
-  questName: 
-  questDescription: 
+  questName: Keeping Up Appearances
+  questDescription: Deliver a Hunger Potion to Mr. Ramonts
   submissionCharacter: 0
   requirementsToUnlock:
     requirements:

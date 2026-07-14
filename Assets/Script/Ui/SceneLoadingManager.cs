@@ -77,16 +77,28 @@ public class SceneLoadingManager : Singleton<SceneLoadingManager>
     private IEnumerator TeleportRoutine(Vector3 destination)
     {
         bool faded = false;
-
-        UITransitionManager.Instance.FadeIn(loadingScreen, () =>
+        UITransitionManager.Instance.FadeIn(loadingScreen, 0.25f, () =>
         {
-            transform.position = destination;
             faded = true;
         });
 
         yield return new WaitUntil(() => faded);
+        GameObject player = GameObject.FindAnyObjectByType<PlayerController>(FindObjectsInactive.Exclude).gameObject;
+        if (player != null)
+        {
+            Rigidbody rb = player.GetComponent<Rigidbody>();
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
 
-        UITransitionManager.Instance.FadeOut(loadingScreen);
+            rb.position = destination;
+        }
+        else
+        {
+            Debug.LogError(" Could not find Player with tag 'Player'");
+        }
+        yield return new WaitForSeconds(0.25f);
+
+        UITransitionManager.Instance.FadeOut(loadingScreen, 0.25f);
     }
 
     public void Teleport(Vector3 destination)

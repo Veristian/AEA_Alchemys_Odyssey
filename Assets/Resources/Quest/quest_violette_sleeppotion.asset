@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadState: 0
   questId: quest_violette_sleeppotion
-  questName: 
-  questDescription: 
+  questName: Passionate Reading
+  questDescription: Deliver a Sleep Potion to Violette
   submissionCharacter: 0
   requirementsToUnlock:
     requirements:

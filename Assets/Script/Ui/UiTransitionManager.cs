@@ -42,10 +42,20 @@ public class UITransitionManager : MonoBehaviour
     {
         StartCoroutine(Fade(target, 0f, 1f, defaultDuration, false, onComplete));
     }
+    
+
 
     public void FadeOut(GameObject target, float duration)
     {
         StartCoroutine(Fade(target, 1f, 0f, duration, false));
+    }
+    public void FadeIn(GameObject target, float duration, System.Action onComplete)
+    {
+        StartCoroutine(Fade(target, 0f, 1f, duration, true, onComplete));
+    }
+    public void FadeOut(GameObject target, float duration, System.Action onComplete)
+    {
+        StartCoroutine(Fade(target, 1f, 0f, duration, true, onComplete));
     }
 
     private IEnumerator Fade(GameObject target, float startAlpha, float endAlpha, float duration, bool showBeforeFade, System.Action onComplete = null)

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadState: 0
   questId: quest_tidus_jumppotion
-  questName: This is the End
-  questDescription: Deliver a Hunger Potion to The Mayor. Mr Jason.
+  questName: Runaway Hatter
+  questDescription: Deliver a Jump Potion to The Mayor. Mr Tidus.
   submissionCharacter: 1
   requirementsToUnlock:
     requirements:

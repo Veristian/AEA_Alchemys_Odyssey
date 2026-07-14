@@ -14,7 +14,7 @@ Yeah, I've gotta put triple the muscle into it, but seeing the farm's harvest pa
 
 # speaker: Chemy
 Hehe, don't push yourself too hard now. Good luck with the harvest, Kenneth!
-
+# func: submitquest@quest_kenneth_swiftpotion
 # speaker: Kenneth
 I'll keep that in mind. Thanks, Chemy.
 

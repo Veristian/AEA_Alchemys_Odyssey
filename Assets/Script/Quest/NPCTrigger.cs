@@ -21,7 +21,7 @@ public class NPCTrigger : MonoBehaviour, IInteractable
     {
         get
         {
-            return true;
+            return NPCDefaultDialogue != null || GetCharacterQuest(true).Count != 0;
         }
     }
     // bool playerInside;

@@ -15,6 +15,7 @@ So, your sister is coming to visit, yes? She must make quite the generous amount
 Hehe, I'm sure you will! A Hunger Potion's effects are no joke.
 
 # speaker: Ramonts
+# func: submitquest@quest_ramonts_hungerpotion
 Thank you, Chemy. I really appreicate it.
 
 -> END

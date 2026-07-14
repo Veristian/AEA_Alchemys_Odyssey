@@ -31,6 +31,7 @@ public class ShopDisplay : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (shopItemData.IsUnlocked) return;
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             // UiLoader.Instance.CallOpenShopEvent();

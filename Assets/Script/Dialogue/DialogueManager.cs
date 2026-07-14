@@ -264,7 +264,9 @@ public class DialogueManager : Singleton<DialogueManager>
             case "viewnews":
                 DayManager.Instance.ViewNewsAndAcceptNews();
                 break;
-            
+            case "viewshop":
+                PlayerPopUpUiManager.Instance.OpenGameStore();
+                break;
 
         }
     }

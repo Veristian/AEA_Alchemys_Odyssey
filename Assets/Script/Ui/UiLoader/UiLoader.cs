@@ -85,6 +85,7 @@ public class UiLoader : Singleton<UiLoader>
     {
         trackedQuestPanel?.SetActive(false);
         DisplayDay(DayManager.Instance.Day);
+        LoadShopData();
     }
     private void OnEnable()
     {
@@ -341,6 +342,15 @@ public class UiLoader : Singleton<UiLoader>
         {
             shopCoinDisplay.text = PlayerDataManager.Instance.gold.ToString();
         }
+        if (shopItemName)
+            shopItemName.text = "";
+        if (shopItemDescription)
+            shopItemDescription.text = "";
+        if (shopItemPrice)
+            shopItemPrice.text = "";
+        if (shopItemImage)
+            shopItemImage.enabled = false;
+
     }
 
     public void DisplayShopItemData(ShopItemData shopItemData)
@@ -353,7 +363,10 @@ public class UiLoader : Singleton<UiLoader>
         if (shopItemPrice)
             shopItemPrice.text = displayedShopItemData.price.ToString();
         if (shopItemImage)
+        {
+            shopItemImage.enabled = true;
             shopItemImage.sprite = displayedShopItemData.itemSprite;
+        }
     }
 
     public void BuyShopItem()

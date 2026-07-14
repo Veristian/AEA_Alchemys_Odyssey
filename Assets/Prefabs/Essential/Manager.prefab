@@ -1304,7 +1304,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b07c4bcdb856ba4db182182f324f02a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopItems: []
+  shopItems:
+  - itemName: Cabinet
+    description: 
+    itemSprite: {fileID: 21300000, guid: bc2123d636aaf6741a7abcdf780fae41, type: 3}
+    price: 250
+    itemGroupId: cabinet
+  - itemName: Chair
+    description: 
+    itemSprite: {fileID: 21300000, guid: 8253bd092db86b24ebfbfde55722e88e, type: 3}
+    price: 250
+    itemGroupId: chair
+  - itemName: CoffeeTable
+    description: 
+    itemSprite: {fileID: 21300000, guid: 62fe9f937d0f9c24fb419264bfeb62fe, type: 3}
+    price: 300
+    itemGroupId: coffeetable
+  - itemName: Couch
+    description: 
+    itemSprite: {fileID: 21300000, guid: bfdb6f9024940ba4e836eb08853e5396, type: 3}
+    price: 500
+    itemGroupId: couch
+  - itemName: HighShelf
+    description: 
+    itemSprite: {fileID: 21300000, guid: 8c7e6bca6a712b84d8dfc141c3d10f8a, type: 3}
+    price: 300
+    itemGroupId: highshelf
+  - itemName: LowShelf
+    description: 
+    itemSprite: {fileID: 21300000, guid: 029658479d9369d41883787fef65dbfc, type: 3}
+    price: 200
+    itemGroupId: lowshelf
 --- !u!1 &7052658780712438383
 GameObject:
   m_ObjectHideFlags: 0

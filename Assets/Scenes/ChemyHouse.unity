@@ -661,6 +661,10 @@ PrefabInstance:
       value: House_CoffeeTable_v01
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3fd2a141f379fba45aaa48293dc5d94f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3fd2a141f379fba45aaa48293dc5d94f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -672,6 +676,11 @@ PrefabInstance:
 --- !u!4 &42839533 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3fd2a141f379fba45aaa48293dc5d94f, type: 3}
+  m_PrefabInstance: {fileID: 42839532}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &42839534 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3fd2a141f379fba45aaa48293dc5d94f, type: 3}
   m_PrefabInstance: {fileID: 42839532}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &43490725
@@ -3359,7 +3368,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 255593169}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08661649, y: -0.000000018204464, z: 0.0000000015827551, w: 0.99624175}
+  m_LocalRotation: {x: 0.08661651, y: 0.000000016622508, z: -0.0000000014452151, w: 0.99624175}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3562,6 +3571,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ffaf621e6e954b549b5d96ee4467c061, type: 3}
       propertyPath: m_Name
       value: House_Cushion_v01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ffaf621e6e954b549b5d96ee4467c061, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ffaf621e6e954b549b5d96ee4467c061, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4314,7 +4327,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306333329}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3921383, y: -1.4918069e-15, z: 1.3931551e-15, w: 0.9199063}
+  m_LocalRotation: {x: 0.3921383, y: 1.4918069e-15, z: -1.3931551e-15, w: 0.9199063}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9429,6 +9442,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1993136836}
   m_SourcePrefab: {fileID: 100100000, guid: f2675452986361d419f9cc401a649bfd, type: 3}
+--- !u!1 &680613634 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ffaf621e6e954b549b5d96ee4467c061, type: 3}
+  m_PrefabInstance: {fileID: 1710011996}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &685271662
 GameObject:
   m_ObjectHideFlags: 0
@@ -10265,6 +10283,11 @@ MeshCollider:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9183fb1447382184cbfe09742fc9175a, type: 3}
   m_PrefabInstance: {fileID: 18785113}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &755963514 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ffaf621e6e954b549b5d96ee4467c061, type: 3}
+  m_PrefabInstance: {fileID: 256968129}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &758923235
 PrefabInstance:
@@ -15768,6 +15791,10 @@ PrefabInstance:
       value: House_Compass_v01
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ba4704c20cdd02341b130dd2873d1efc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ba4704c20cdd02341b130dd2873d1efc, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -15783,6 +15810,11 @@ PrefabInstance:
 --- !u!4 &790460405 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ba4704c20cdd02341b130dd2873d1efc, type: 3}
+  m_PrefabInstance: {fileID: 790460404}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &790460406 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ba4704c20cdd02341b130dd2873d1efc, type: 3}
   m_PrefabInstance: {fileID: 790460404}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &790502553
@@ -25986,6 +26018,10 @@ PrefabInstance:
       value: House_LowShelf_v01
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8e471d481a4fdc243b40aa9f4dc326e0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8e471d481a4fdc243b40aa9f4dc326e0, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -25994,6 +26030,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e471d481a4fdc243b40aa9f4dc326e0, type: 3}
+--- !u!1 &1160194695 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e471d481a4fdc243b40aa9f4dc326e0, type: 3}
+  m_PrefabInstance: {fileID: 1160194694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1163344039
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26659,6 +26700,10 @@ PrefabInstance:
       value: House_Cabinet_v01
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 30d25b8ec2114524c912696c2c9898d2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 30d25b8ec2114524c912696c2c9898d2, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -26670,6 +26715,11 @@ PrefabInstance:
 --- !u!4 &1247253250 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 30d25b8ec2114524c912696c2c9898d2, type: 3}
+  m_PrefabInstance: {fileID: 1247253249}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1247253251 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 30d25b8ec2114524c912696c2c9898d2, type: 3}
   m_PrefabInstance: {fileID: 1247253249}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1260776596
@@ -27447,6 +27497,10 @@ PrefabInstance:
       value: House_HighShelf_v01
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f55a55cc0f935f41af5c33cc0db53f0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f55a55cc0f935f41af5c33cc0db53f0, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -27455,6 +27509,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f55a55cc0f935f41af5c33cc0db53f0, type: 3}
+--- !u!1 &1307281352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6f55a55cc0f935f41af5c33cc0db53f0, type: 3}
+  m_PrefabInstance: {fileID: 1307281351}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1310652129
 GameObject:
   m_ObjectHideFlags: 0
@@ -30185,6 +30244,10 @@ PrefabInstance:
       value: House_Chair_v01
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a007fc5f49065e0408055d81854fe21d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a007fc5f49065e0408055d81854fe21d, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -30196,6 +30259,11 @@ PrefabInstance:
 --- !u!4 &1523091633 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a007fc5f49065e0408055d81854fe21d, type: 3}
+  m_PrefabInstance: {fileID: 1523091632}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1523091634 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a007fc5f49065e0408055d81854fe21d, type: 3}
   m_PrefabInstance: {fileID: 1523091632}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1532994219 stripped
@@ -36778,7 +36846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 1
-  size: {x: 63.39711, y: 16.792969, z: 58.17665}
+  size: {x: 63.39711, y: 16.640564, z: 58.17665}
   overrideRendererFilters: 0
   minRendererVolumeSize: 0.1
   objectLayerMask:
@@ -36818,7 +36886,7 @@ Transform:
   m_GameObject: {fileID: 1702225539}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -54, y: 372.58582, z: -240.1}
+  m_LocalPosition: {x: -54, y: 372.66202, z: -240.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -37132,6 +37200,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ffaf621e6e954b549b5d96ee4467c061, type: 3}
       propertyPath: m_Name
       value: House_Cushion_v01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ffaf621e6e954b549b5d96ee4467c061, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ffaf621e6e954b549b5d96ee4467c061, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -39304,7 +39376,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: gameObjectUnlockables.Array.size
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: gameObjectUnlockables.Array.data[0].canLockAgain
@@ -39323,11 +39395,59 @@ PrefabInstance:
       value: ViewNews
       objectReference: {fileID: 0}
     - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: gameObjectUnlockables.Array.data[2].unlockableObjectsId
+      value: cabinet
+      objectReference: {fileID: 0}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: gameObjectUnlockables.Array.data[3].unlockableObjectsId
+      value: coffeetable
+      objectReference: {fileID: 0}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: gameObjectUnlockables.Array.data[4].unlockableObjectsId
+      value: chair
+      objectReference: {fileID: 0}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: gameObjectUnlockables.Array.data[5].unlockableObjectsId
+      value: couch
+      objectReference: {fileID: 0}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: gameObjectUnlockables.Array.data[6].unlockableObjectsId
+      value: highshelf
+      objectReference: {fileID: 0}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: gameObjectUnlockables.Array.data[7].unlockableObjectsId
+      value: lowshelf
+      objectReference: {fileID: 0}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: gameObjectUnlockables.Array.data[0].unlockableObjects.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: gameObjectUnlockables.Array.data[1].unlockableObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: gameObjectUnlockables.Array.data[2].unlockableObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: gameObjectUnlockables.Array.data[3].unlockableObjects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: gameObjectUnlockables.Array.data[4].unlockableObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: gameObjectUnlockables.Array.data[5].unlockableObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: gameObjectUnlockables.Array.data[6].unlockableObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: gameObjectUnlockables.Array.data[7].unlockableObjects.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
@@ -39338,6 +39458,42 @@ PrefabInstance:
       propertyPath: 'gameObjectUnlockables.Array.data[1].unlockableObjects.Array.data[0]'
       value: 
       objectReference: {fileID: 1260776596}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: 'gameObjectUnlockables.Array.data[2].unlockableObjects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1247253251}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: 'gameObjectUnlockables.Array.data[3].unlockableObjects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 42839534}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: 'gameObjectUnlockables.Array.data[3].unlockableObjects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 790460406}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: 'gameObjectUnlockables.Array.data[4].unlockableObjects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1523091634}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: 'gameObjectUnlockables.Array.data[5].unlockableObjects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2067088215}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: 'gameObjectUnlockables.Array.data[5].unlockableObjects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 755963514}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: 'gameObjectUnlockables.Array.data[5].unlockableObjects.Array.data[2]'
+      value: 
+      objectReference: {fileID: 680613634}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: 'gameObjectUnlockables.Array.data[6].unlockableObjects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1307281352}
+    - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: 'gameObjectUnlockables.Array.data[7].unlockableObjects.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1160194695}
     - target: {fileID: 957895872771311304, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: 'spriteShapeController.Array.data[0]'
       value: 
@@ -39609,6 +39765,10 @@ PrefabInstance:
     - target: {fileID: 8035096939596221948, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670527385924476079, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -31.56604
       objectReference: {fileID: 0}
     - target: {fileID: 8906088090140821762, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: contentTransform
@@ -41669,6 +41829,10 @@ PrefabInstance:
       value: House_Couch_v01
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a5fcf50f83919ff49aef90e3c68002cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a5fcf50f83919ff49aef90e3c68002cf, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -41688,6 +41852,11 @@ PrefabInstance:
 --- !u!4 &2067088214 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a5fcf50f83919ff49aef90e3c68002cf, type: 3}
+  m_PrefabInstance: {fileID: 2067088213}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2067088215 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a5fcf50f83919ff49aef90e3c68002cf, type: 3}
   m_PrefabInstance: {fileID: 2067088213}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2068201473

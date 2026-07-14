@@ -1476,6 +1476,15 @@ MonoBehaviour:
     requirementsToBeShown:
       requirements:
       - rid: 1115517474069282833
+  - headlineText: 'Main Headline: Peaceful Times'
+    headlineDescription: "Another quiet day has passed on A\u2019ea. The people of
+      Wavecrest continue their daily lives, and all remains peaceful across the island.
+      There are no major happenings to report today, so we wish everyone a safe and
+      pleasant day until the next edition of the paper.\r"
+    headlineImage: {fileID: 0}
+    requirementsToBeShown:
+      requirements:
+      - rid: 1115517554788139031
   AllLocalRequests:
   - requestText: 'Local Request: Farm Boy Kenneth'
     requestDescription: "Due to his brothers being currently out of town to buy supplies
@@ -1536,6 +1545,7 @@ MonoBehaviour:
     newsImage: {fileID: 0}
     willBeShown: 0
     hasBeenShown: 0
+    canAlwaysShow: 0
   - newsId: local_ramonts_hungerpotion
     newsText: 'Local News: Mr. Ramonts Found unconscious on the Inn Floor'
     newsDescription: "Early rising customer found the inn owner Mr. Ramonts immobilized
@@ -1546,6 +1556,7 @@ MonoBehaviour:
     newsImage: {fileID: 0}
     willBeShown: 0
     hasBeenShown: 0
+    canAlwaysShow: 0
   - newsId: local_sven_spoon
     newsText: 'Local News: Old Man Sven Found His Lucky Spoon, Again!'
     newsDescription: "After losing his lucky spoon for 4 days, Post Girl Poshe found
@@ -1555,6 +1566,19 @@ MonoBehaviour:
     newsImage: {fileID: 0}
     willBeShown: 1
     hasBeenShown: 0
+    canAlwaysShow: 0
+  - newsId: peace
+    newsText: 'Local News: Peaceful Days'
+    newsDescription: "Life carries on peacefully in Wavecrest, with friendly faces
+      filling the streets and warm smiles shared between neighbors. The town has
+      enjoyed another quiet day, with everyone tending to their daily routines and
+      lending a helping hand where needed. We are happy to report that all remains
+      well, and we hope the days ahead continue to bring the same peace and cheer
+      to our beloved town.\r"
+    newsImage: {fileID: 0}
+    willBeShown: 1
+    hasBeenShown: 0
+    canAlwaysShow: 1
   ActiveHeadlines: []
   ActiveLocalRequests: []
   ActiveLocalNews: []
@@ -1600,6 +1624,7 @@ MonoBehaviour:
     newsImage: {fileID: 0}
     willBeShown: 0
     hasBeenShown: 0
+    canAlwaysShow: 0
   previousHeadline:
     headlineText: 
     headlineDescription: 
@@ -1642,6 +1667,7 @@ MonoBehaviour:
     newsImage: {fileID: 0}
     willBeShown: 0
     hasBeenShown: 0
+    canAlwaysShow: 0
   references:
     version: 2
     RefIds:
@@ -1681,6 +1707,10 @@ MonoBehaviour:
       type: {class: ExactDaysRequirement, ns: , asm: Assembly-CSharp}
       data:
         currentDay: 5
+    - rid: 1115517554788139031
+      type: {class: DaysRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        minimumDaysPassed: 6
     - rid: 5999243491663675397
       type: {class: QuestUnlockedRequirement, ns: , asm: Assembly-CSharp}
       data:

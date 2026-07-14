@@ -40,6 +40,7 @@ public class LocalNews
     // public RequirementList requirementsToBeShown;
     public bool willBeShown;
     public bool hasBeenShown;
+    public bool canAlwaysShow = false;
     
 }
 public class DayManager : Singleton<DayManager>
@@ -149,8 +150,11 @@ public class DayManager : Singleton<DayManager>
     public void ViewNewsAndAcceptNews()
     {
         if (currentLocalNews == null || currentHeadline == null) return;
-        currentLocalNews.willBeShown = false;
-        currentLocalNews.hasBeenShown = true;
+        if (!currentLocalNews.canAlwaysShow)
+        {
+            currentLocalNews.willBeShown = false;
+            currentLocalNews.hasBeenShown = true;
+        }
 
         //open UI
         PlayerPopUpUiManager.Instance.OpenDailyTidals();

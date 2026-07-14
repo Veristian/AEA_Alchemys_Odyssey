@@ -175,7 +175,20 @@ public class PlayerDataManager : Singleton<PlayerDataManager>
         if (unlockData == null) 
         {
             Debug.LogWarning($"UnlockData with id {id} not found in gameObjectUnlocks.");
-            return;
+            if (unlocked)
+            {
+                    gameObjectUnlocks.unlockData.Add(new UnlockData
+                    {
+                        itemGroupId = id,
+                        isUnlocked = true
+                    });                
+                    UnlockManager.Instance.UnlockObject(unlockData.itemGroupId);
+                    return;
+            }
+            else
+            {
+                return;
+            }
         }
         if (unlockData.isUnlocked) return;
         unlockData.isUnlocked = unlocked;

@@ -497,6 +497,10 @@ MonoBehaviour:
       requirements:
       - rid: 1115517542344163368
     unlockId: DayThreeHerbs
+  - requirementList:
+      requirements:
+      - rid: 1115517542344163376
+    unlockId: ViewNews
   references:
     version: 2
     RefIds:
@@ -524,6 +528,10 @@ MonoBehaviour:
       type: {class: DaysRequirement, ns: , asm: Assembly-CSharp}
       data:
         minimumDaysPassed: 3
+    - rid: 1115517542344163376
+      type: {class: DaysRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        minimumDaysPassed: 2
 --- !u!1 &2056234286102749589
 GameObject:
   m_ObjectHideFlags: 0

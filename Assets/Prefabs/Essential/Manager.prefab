@@ -1490,7 +1490,7 @@ MonoBehaviour:
     requestDescription: "Due to his brothers being currently out of town to buy supplies
       for the farm, Kenneth doesn\u2019t have enough time to complete his daily chores
       on the farm. Help him by creating a @Swift potion."
-    requestImage: {fileID: 0}
+    requestImage: {fileID: 21300000, guid: 4638114a12e868c46af3e9f51d3ce539, type: 3}
     questData: {fileID: 11400000, guid: 2cc601d7eb1a0d34482f68c1aee0b8ad, type: 2}
     followUpNewsId: local_kenneth_swiftpotion
     requirementsToBeShown:
@@ -1500,7 +1500,7 @@ MonoBehaviour:
   - requestText: 'Local Request 2 : Mr. Tidus'
     requestDescription: Due to strong winds near the port, his hat is stuck suspended
       in the air. help him by making a @jump potion to retrieve the hat.
-    requestImage: {fileID: 0}
+    requestImage: {fileID: 21300000, guid: cd167975a92cd984486c99af8afa0c28, type: 3}
     questData: {fileID: 11400000, guid: f5bdccf78fbf44e42a3b9e297cd5f6e0, type: 2}
     followUpNewsId: local_tidus_jumppotion
     requirementsToBeShown:
@@ -1512,7 +1512,7 @@ MonoBehaviour:
       a lot. Mr. Ramonts is usually unable to finish all the food she makes,which
       always leaves him feeling guilty. Make him a Hunger potion to help him digest
       all of his sister\u2019s food."
-    requestImage: {fileID: 0}
+    requestImage: {fileID: 21300000, guid: 9ee4eeedc1601d746833a666b166a55f, type: 3}
     questData: {fileID: 11400000, guid: c423125d58279614da7406928ae1a71a, type: 2}
     followUpNewsId: local_ramonts_hungerpotion
     requirementsToBeShown:
@@ -1525,7 +1525,7 @@ MonoBehaviour:
       thinking about the next book she wants to read. This make her feel tired everyday
       and reduces her enjoyment when reading books. Make her a Sleep Potion to help
       her sleep at night.
-    requestImage: {fileID: 0}
+    requestImage: {fileID: 21300000, guid: e3f49ef8e09df5349b6b2165575c2b74, type: 3}
     questData: {fileID: 11400000, guid: df592cb421d85384a83ff7d844309bcd, type: 2}
     followUpNewsId: local_violette_sleeppotion
     requirementsToBeShown:

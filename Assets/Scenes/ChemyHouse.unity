@@ -94,7 +94,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: eabdc97184ab7cd4fb6389fe2357fd73, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 885560a546c6250489ef8edc5797f496, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 66d0eea77f9d9d24288210b60597b7eb, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -4327,7 +4327,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306333329}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3921383, y: 1.4918069e-15, z: -1.3931551e-15, w: 0.9199063}
+  m_LocalRotation: {x: 0.3921383, y: -0.000000027415345, z: 0.000000011686633, w: 0.91990626}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -36864,7 +36864,7 @@ MonoBehaviour:
     e10: 0
     e11: 1
     e12: 0
-    e13: -372.58582
+    e13: -372.66202
     e20: 0
     e21: 0
     e22: 1
@@ -36873,7 +36873,7 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 1
-  cachedHashCode: 1344613690
+  cachedHashCode: 443683404
   fillEmptySpaces: 0
   version: 1
   globalVolume: 0
@@ -41339,7 +41339,7 @@ MonoBehaviour:
   serializedScenarios:
   - scenario: Default
     data:
-      sceneHash: 1405593444
+      sceneHash: 1860756935
       cellDataAsset: {fileID: 4900000, guid: 56f6e89d9a0da4d4f96706d9b153e39c, type: 3}
       cellOptionalDataAsset: {fileID: 4900000, guid: 0453783a94946844ab9ad7fdaa936c6c, type: 3}
 --- !u!4 &2026395147
@@ -41382,7 +41382,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035374599}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.029240545, y: -0.0000000018618489, z: 5.4464766e-11, w: 0.9995724}
+  m_LocalRotation: {x: 0.029240543, y: -8.407205e-24, z: 7.0119233e-25, w: 0.9995724}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

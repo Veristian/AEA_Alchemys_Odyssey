@@ -331,7 +331,7 @@ public class UiLoader : Singleton<UiLoader>
 
         foreach (ShopItemData shopItemData in ShopManager.Instance.shopItems
              .Where(item => item != null)
-             .OrderBy(item => !item.IsUnlocked)   
+             .OrderBy(item => item.IsUnlocked)   
              .ThenBy(item => item.price))        // cheapest first
         {
             GameObject shopItem = Instantiate(shopItemPrefab, shopItemContainer);
@@ -350,6 +350,7 @@ public class UiLoader : Singleton<UiLoader>
             shopItemPrice.text = "";
         if (shopItemImage)
             shopItemImage.enabled = false;
+        displayedShopItemData = null;
 
     }
 

@@ -1068,21 +1068,21 @@ MonoBehaviour:
   leftSprite: {fileID: 4003802838692361382}
   rightSprite: {fileID: 815607317122090773}
   characterSprites:
-  - sprite: {fileID: 21300000, guid: ee158f323737863419607e239010fbfd, type: 3}
+  - sprite: {fileID: 21300000, guid: 50f07f7bda3670c4484e5e50566ef010, type: 3}
     character: 3
-  - sprite: {fileID: 21300000, guid: ee158f323737863419607e239010fbfd, type: 3}
+  - sprite: {fileID: 21300000, guid: da5cfba06652c6e4f9e8758316783c48, type: 3}
     character: 8
-  - sprite: {fileID: 21300000, guid: ee158f323737863419607e239010fbfd, type: 3}
+  - sprite: {fileID: 21300000, guid: 1ecd572b266d2894190056f1578a2a71, type: 3}
     character: 1
-  - sprite: {fileID: 21300000, guid: ee158f323737863419607e239010fbfd, type: 3}
+  - sprite: {fileID: 21300000, guid: 81e392aaee45d3640ad30bfc19931bee, type: 3}
     character: 2
   - sprite: {fileID: 21300000, guid: ee158f323737863419607e239010fbfd, type: 3}
     character: 4
-  - sprite: {fileID: 21300000, guid: ee158f323737863419607e239010fbfd, type: 3}
+  - sprite: {fileID: 21300000, guid: f853ef1738867484d81b28deafd19d1a, type: 3}
     character: 5
   - sprite: {fileID: 21300000, guid: ee158f323737863419607e239010fbfd, type: 3}
     character: 6
-  - sprite: {fileID: 21300000, guid: ee158f323737863419607e239010fbfd, type: 3}
+  - sprite: {fileID: 21300000, guid: 170530e41c892a249b9bd1d277287840, type: 3}
     character: 7
   textSpeed: 0.02
   fadeDuration: 0.3

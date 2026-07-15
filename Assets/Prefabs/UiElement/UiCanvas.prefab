@@ -2573,6 +2573,12 @@ MonoBehaviour:
   trackedQuestName: {fileID: 576973097314738309}
   trackedQuestDescription: {fileID: 5967146747692976667}
   trackedQuestPanel: {fileID: 2796736246882555014}
+  displayedQuestData:
+    questData: {fileID: 0}
+    questId: 
+    isCompleted: 0
+    isOnGoing: 0
+    isUnlocked: 0
   shopItemContainer: {fileID: 3296889026950161024}
   shopItemPrefab: {fileID: 769239210394230808, guid: 5f4671319fd59d94193bec0fd00893d1, type: 3}
   shopCoinDisplay: {fileID: 8782152939915222643}
@@ -9400,8 +9406,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3346382854634229932}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 380.0267, y: 0}
   m_Pivot: {x: 0, y: 1}
@@ -12241,7 +12247,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 503, y: 133}
+  m_AnchoredPosition: {x: 503, y: 75}
   m_SizeDelta: {x: -1172.4629, y: -231.3542}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5906973078780169889
@@ -12272,7 +12278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ee158f323737863419607e239010fbfd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 81e392aaee45d3640ad30bfc19931bee, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -17144,7 +17150,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -502, y: 133}
+  m_AnchoredPosition: {x: -502, y: 77}
   m_SizeDelta: {x: -1172.4629, y: -231.3542}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5372911966460958156
@@ -17175,7 +17181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ee158f323737863419607e239010fbfd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: da5cfba06652c6e4f9e8758316783c48, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

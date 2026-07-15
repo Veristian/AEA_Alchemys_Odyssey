@@ -82,7 +82,8 @@ public class DialogueManager : Singleton<DialogueManager>
 
         if (dialoguePanel != null)
         {
-            dialoguePanel.SetActive(true);
+            //dialoguePanel.SetActive(true);
+            PlayerPopUpUiManager.Instance.OpenDialog();
         }
         dialogueActive = true;
 
@@ -125,7 +126,8 @@ public class DialogueManager : Singleton<DialogueManager>
     void EndDialogue()
     {
         dialogueActive = false;
-        dialoguePanel.SetActive(false);
+        //dialoguePanel.SetActive(false);
+        PlayerPopUpUiManager.Instance.OpenDialog();
 
         SetPlayerControl(true);
     }
@@ -175,6 +177,10 @@ public class DialogueManager : Singleton<DialogueManager>
     void SetPlayerControl(bool enabled)
     {
         InputManager.Instance.canMove = enabled;
+        InputManager.Instance.canLook = enabled;
+        InputManager.Instance.canInteract = enabled;
+        InputManager.Instance.canUiPopup = enabled;
+
     }
 
     // ================================

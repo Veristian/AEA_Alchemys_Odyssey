@@ -16,6 +16,9 @@ public class PlayerInteractor : MonoBehaviour
 
     IInteractable interactable;
     public string interactText;
+    [SerializeField] private Animator animator;
+    [SerializeField] private Rigidbody rb;
+
     private void FixedUpdate()
     {
         CheckInteractable();
@@ -81,11 +84,19 @@ public class PlayerInteractor : MonoBehaviour
             PlayerInteractIndicator.Instance.interactableIndicatorChecker(interactText);
             return;
         }
-        interactable.Interact(gameObject);
-        if (!interactable.interactable)
+        if (interactable.GetType() == typeof(Herb))
         {
-            interactText = null;
-            PlayerInteractIndicator.Instance.interactableIndicatorChecker(interactText);
+            StartCoroutine(PickUpAnimation());
+        }
+        else
+        {
+            interactable.Interact(gameObject);
+            if (!interactable.interactable)
+            {
+                interactText = null;
+                PlayerInteractIndicator.Instance.interactableIndicatorChecker(interactText);
+            }
+
         }
 
     }    
@@ -99,5 +110,21 @@ public class PlayerInteractor : MonoBehaviour
         Vector3 origin = transform.position + castCenter;
 
         Gizmos.DrawWireSphere(origin, radius);
+    }
+
+    IEnumerator PickUpAnimation()
+    {
+        rb.velocity = Vector3.zero;
+        animator.SetTrigger("PickUp");
+        InputManager.Instance.canMove = false;
+        yield return new WaitForSeconds(0.5f);
+        interactable.Interact(gameObject);
+        InputManager.Instance.canMove = true;
+        if (!interactable.interactable)
+        {
+            interactText = null;
+            PlayerInteractIndicator.Instance.interactableIndicatorChecker(interactText);
+        }
+
     }
 }

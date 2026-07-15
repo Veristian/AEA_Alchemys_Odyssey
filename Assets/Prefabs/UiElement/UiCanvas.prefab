@@ -15208,10 +15208,10 @@ RectTransform:
   - {fileID: 4264750072866743050}
   - {fileID: 2013912507015704198}
   - {fileID: 1025087461237315169}
-  - {fileID: 1704141000818085974}
   - {fileID: 6396669879257210433}
   - {fileID: 3958299255569276434}
   - {fileID: 2434200026101556531}
+  - {fileID: 1704141000818085974}
   m_Father: {fileID: 5096565614592710477}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

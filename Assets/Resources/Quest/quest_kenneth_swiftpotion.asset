@@ -16,7 +16,7 @@ MonoBehaviour:
   questId: quest_kenneth_swiftpotion
   questName: Hard at Work Kenneth?
   questDescription: Deliver a Swift Potion to Kenneth
-  submissionCharacter: 0
+  submissionCharacter: 3
   requirementsToUnlock:
     requirements:
     - rid: 5999243469903888397

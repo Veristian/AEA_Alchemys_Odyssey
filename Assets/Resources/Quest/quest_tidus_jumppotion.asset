@@ -16,7 +16,7 @@ MonoBehaviour:
   questId: quest_tidus_jumppotion
   questName: Runaway Hatter
   questDescription: Deliver a Jump Potion to The Mayor. Mr Tidus.
-  submissionCharacter: 1
+  submissionCharacter: 7
   requirementsToUnlock:
     requirements:
     - rid: 5999243469903888398

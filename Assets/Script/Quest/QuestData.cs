@@ -205,8 +205,6 @@ public class QuestData : ResourceData
     [ContextMenu("Get Story")]
     public void GetStory()
     {
-        if (story != null)
-            return;
         if (string.IsNullOrEmpty(questId))
         {
             Debug.LogWarning("Quest ID is null or empty for quest: " + questName + ". Please assign a valid quest ID.");

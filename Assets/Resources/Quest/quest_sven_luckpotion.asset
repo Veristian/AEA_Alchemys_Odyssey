@@ -10,45 +10,45 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9fa123a2afd6ba4799620c16a8f1bb8, type: 3}
-  m_Name: quest_ramonts_hungerpotion
+  m_Name: quest_sven_luckpotion
   m_EditorClassIdentifier: 
   loadState: 0
-  questId: quest_ramonts_hungerpotion
-  questName: Keeping Up Appearances
-  questDescription: Deliver a Hunger Potion to Mr. Ramonts
-  submissionCharacter: 1
+  questId: quest_sven_luckpotion
+  questName: Unlucky Sven
+  questDescription: Deliver a Luck Potion to Sven
+  submissionCharacter: 4
   requirementsToUnlock:
     requirements:
-    - rid: 5999243469903888399
-    - rid: 5999243469903888401
-    - rid: 5999243469903888402
+    - rid: 5999243469903888400
+    - rid: 5999243469903888403
+    - rid: 5999243469903888404
   requirementsToComplete:
     requirements:
-    - rid: 5999243469903888407
+    - rid: 5999243469903888408
   questActions:
     goldReward: 500
   isMainQuest: 1
   isRepeatable: 0
-  storyText: {fileID: 4900000, guid: fe27d366d2d73a14f906b887cc219d86, type: 3}
+  storyText: {fileID: 4900000, guid: f64bdadb1d3a18d4eb5acf442208e97a, type: 3}
   references:
     version: 2
     RefIds:
-    - rid: 5999243469903888399
+    - rid: 5999243469903888400
       type: {class: DaysRequirement, ns: , asm: Assembly-CSharp}
       data:
-        minimumDaysPassed: 2
-    - rid: 5999243469903888401
+        minimumDaysPassed: 5
+    - rid: 5999243469903888403
       type: {class: QuestCompletionRequirement, ns: , asm: Assembly-CSharp}
       data:
         requiredQuestId: quest_tidus_jumppotion
         isCompleted: 1
-    - rid: 5999243469903888402
+    - rid: 5999243469903888404
       type: {class: QuestCompletionRequirement, ns: , asm: Assembly-CSharp}
       data:
         requiredQuestId: quest_kenneth_swiftpotion
         isCompleted: 1
-    - rid: 5999243469903888407
+    - rid: 5999243469903888408
       type: {class: QuestPotionsRequirement, ns: , asm: Assembly-CSharp}
       data:
-        requiredPotion: {fileID: 11400000, guid: dbba26e6b30614f44ab52b69968b0471, type: 2}
+        requiredPotion: {fileID: 11400000, guid: 17a0df7bcc89d9b4091962bce3e05b08, type: 2}
         requiredIngredient: []

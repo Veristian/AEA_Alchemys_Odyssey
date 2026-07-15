@@ -111,23 +111,23 @@ public class TeleportTrigger : MonoBehaviour, IInteractable
         isInteractable = false;
     }
 
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if (!other.CompareTag("Player"))
-    //         return;
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Player"))
+            return;
 
-    //     if (overlayCanvas != null)
-    //         UITransitionManager.Instance.FadeIn(overlayCanvas);
-    // }
+        if (overlayCanvas != null)
+            UITransitionManager.Instance.FadeIn(overlayCanvas);
+    }
 
-    // private void OnTriggerExit(Collider other)
-    // {
-    //     if (!other.CompareTag("Player"))
-    //         return;
+    private void OnTriggerExit(Collider other)
+    {
+        if (!other.CompareTag("Player"))
+            return;
 
-    //     if (overlayCanvas != null)
-    //         UITransitionManager.Instance.FadeOut(overlayCanvas);
-    // }
+        if (overlayCanvas != null)
+            UITransitionManager.Instance.FadeOut(overlayCanvas);
+    }
 
     // public void SetInteractable(bool value)
     // {

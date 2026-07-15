@@ -128,9 +128,15 @@ MonoBehaviour:
   IiPanel: {fileID: 4647640133385688422}
   iIndicators:
   - name: Collect
-    image: {fileID: 21300000, guid: 4e9f667a0b4eb2748a8405ffe0e95da4, type: 3}
+    image: {fileID: 21300000, guid: 03d19050f852d614dbe37e9a130a22e9, type: 3}
   - name: Sleep
-    image: {fileID: 21300000, guid: 569eeb9e416be854585a50368425235c, type: 3}
+    image: {fileID: 21300000, guid: b63e9c6cc4d853a40b3b3c8495cd740e, type: 3}
+  - name: Enter
+    image: {fileID: 21300000, guid: 0d8b9ad3f0f7f03469c098d992409d00, type: 3}
+  - name: Talk
+    image: {fileID: 21300000, guid: f9e76652d8469c9498dfa812b67e57ce, type: 3}
+  - name: Potion
+    image: {fileID: 21300000, guid: 43aeaeb6c8d102349bca0f50439a6b77, type: 3}
   indicatorImage: {fileID: 3495684355279163717}
 --- !u!1 &9073336058168787388
 GameObject:

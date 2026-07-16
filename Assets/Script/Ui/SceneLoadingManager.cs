@@ -33,6 +33,7 @@ public class SceneLoadingManager : Singleton<SceneLoadingManager>
 
     private IEnumerator LoadSceneRoutine(string sceneName)
     {
+        InputManager.Instance.DisableInputs();
         UITransitionManager.Instance.FadeIn(loadingScreen);
         AudioController.Instance.FadeOutCurrentBGM();
         //loadingScreen.SetActive(true);
@@ -53,6 +54,7 @@ public class SceneLoadingManager : Singleton<SceneLoadingManager>
 
             yield return null;
         }
+        InputManager.Instance.EnableInputs();
     }
 
 

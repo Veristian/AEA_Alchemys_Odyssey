@@ -40,21 +40,7 @@ public class PlayerInteractor : MonoBehaviour
             interactable = null;
             PlayerInteractIndicator.Instance.interactableIndicatorChecker(interactText);
         }
-        // foreach (var col in hits)
-        // {
-        //     interactable = col.GetComponent<IInteractable>();
-        //     if (interactable != null)
-        //     {
-        //         if (!interactable.interactable)
-        //         {
-        //             continue;
-        //         }
-        //         interactText = interactable.text;
-        //         // interactable.Interact(gameObject);
-        //         break; // interact with first found
-                
-        //     }
-        // }
+
         Collider closest = null;
 
         foreach (var col in hits)
@@ -96,7 +82,7 @@ public class PlayerInteractor : MonoBehaviour
                 interactText = null;
                 PlayerInteractIndicator.Instance.interactableIndicatorChecker(interactText);
             }
-
+            interactable = null;
         }
 
     }    
@@ -117,8 +103,8 @@ public class PlayerInteractor : MonoBehaviour
         rb.velocity = Vector3.zero;
         animator.SetTrigger("PickUp");
         InputManager.Instance.canMove = false;
+        InputManager.Instance.canInteract = false;
         yield return new WaitForSeconds(0.5f);
-        InputManager.Instance.canMove = true;
         if (interactable != null)
         {
             interactable.Interact(gameObject);
@@ -127,7 +113,11 @@ public class PlayerInteractor : MonoBehaviour
                 interactText = null;
                 PlayerInteractIndicator.Instance.interactableIndicatorChecker(interactText);
             }
+            interactable = null;
         }
+        InputManager.Instance.canMove = true;
+        InputManager.Instance.canInteract = true;
+
 
     }
 }

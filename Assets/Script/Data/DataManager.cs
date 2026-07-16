@@ -20,9 +20,19 @@ public class DataManager : Singleton<DataManager>
     public bool IsGameLoaded { get; private set; }
     protected override void Awake()
     {
+        transform.parent = null;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject); 
+            return;
+        }
         base.Awake();
-        LoadGameData();
+        DontDestroyOnLoad(gameObject);
+        if (!IsGameLoaded && Instance == this)
+            LoadGameData();
+
     }
+
     [ContextMenu("Load Game Data")]
     public void LoadGameData()
     {

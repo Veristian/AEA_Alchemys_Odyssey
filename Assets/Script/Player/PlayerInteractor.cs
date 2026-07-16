@@ -118,12 +118,15 @@ public class PlayerInteractor : MonoBehaviour
         animator.SetTrigger("PickUp");
         InputManager.Instance.canMove = false;
         yield return new WaitForSeconds(0.5f);
-        interactable.Interact(gameObject);
         InputManager.Instance.canMove = true;
-        if (!interactable.interactable)
+        if (interactable != null)
         {
-            interactText = null;
-            PlayerInteractIndicator.Instance.interactableIndicatorChecker(interactText);
+            interactable.Interact(gameObject);
+            if (!interactable.interactable)
+            {
+                interactText = null;
+                PlayerInteractIndicator.Instance.interactableIndicatorChecker(interactText);
+            }
         }
 
     }

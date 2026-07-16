@@ -1017,6 +1017,50 @@ MonoBehaviour:
   bottomPaddingRatio: 0
   topPaddingRatio: 0
   currentPoints: []
+--- !u!1 &5184167207511817973
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2333892345990704039}
+  - component: {fileID: 7169933578681385103}
+  m_Layer: 0
+  m_Name: HerbManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2333892345990704039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5184167207511817973}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6172091022269831871}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7169933578681385103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5184167207511817973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccea752f81ce16f41859eed8adf2fe78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6373641287142106150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,6 +1302,7 @@ Transform:
   - {fileID: 3386512191229628348}
   - {fileID: 3882636369228525139}
   - {fileID: 3434823099372032109}
+  - {fileID: 2333892345990704039}
   m_Father: {fileID: 6982703046419081174}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6866963593315820328
@@ -1738,17 +1783,17 @@ MonoBehaviour:
     - rid: 1115517572505927684
       type: {class: QuestUnlockedRequirement, ns: , asm: Assembly-CSharp}
       data:
-        unlockedQuestId: local_sven_luckpotion
+        unlockedQuestId: quest_sven_luckpotion
         isUnlocked: 1
     - rid: 1115517572505927685
       type: {class: QuestCompletionRequirement, ns: , asm: Assembly-CSharp}
       data:
-        requiredQuestId: local_sven_luckpotion
+        requiredQuestId: quest_sven_luckpotion
         isCompleted: 0
     - rid: 1115517572505927686
       type: {class: QuestOngoingRequirement, ns: , asm: Assembly-CSharp}
       data:
-        requiredQuestId: local_sven_luckpotion
+        requiredQuestId: quest_sven_luckpotion
         isOngoing: 0
     - rid: 5999243491663675397
       type: {class: QuestUnlockedRequirement, ns: , asm: Assembly-CSharp}

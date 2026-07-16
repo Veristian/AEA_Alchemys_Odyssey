@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 [Serializable]
 public class Progression
 {
@@ -32,6 +32,8 @@ public class ProgressionManager : Singleton<ProgressionManager>
             QuestRuntimeManager.Instance.OnQuestListUpdated += UpdateProgress;
         if (DayManager.Instance != null)
             DayManager.Instance.OnDayChanged += HandleDayChanged;
+        // SceneManager.sceneLoaded += (Scene, LoadSceneMode) => UpdateProgress();
+
     }
     void OnDisable()
     {
@@ -39,6 +41,7 @@ public class ProgressionManager : Singleton<ProgressionManager>
             QuestRuntimeManager.Instance.OnQuestListUpdated -= UpdateProgress;
         if (DayManager.Instance != null)
             DayManager.Instance.OnDayChanged -= HandleDayChanged;
+        // SceneManager.sceneLoaded -= (Scene, LoadSceneMode) => UpdateProgress();
 
     }
     private void HandleDayChanged(int day)

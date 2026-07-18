@@ -123,10 +123,24 @@ public class DayManager : Singleton<DayManager>
         previousLocalNews = currentLocalNews;
 
         currentHeadline = ActiveHeadlines.Count > 0 ? ActiveHeadlines[UnityEngine.Random.Range(0, ActiveHeadlines.Count)] : null;
-        currentLocalRequest = ActiveLocalRequests
+        var mainQuests = ActiveLocalRequests
+            .Where(x => x.questData.isMainQuest)
             .OrderBy(x => UnityEngine.Random.value)
-            .Take(Mathf.Min(3, ActiveLocalRequests.Count))
             .ToList();
+
+        var sideQuests = ActiveLocalRequests
+            .Where(x => !x.questData.isMainQuest)
+            .OrderBy(x => UnityEngine.Random.value)
+            .ToList();
+
+        currentLocalRequest = mainQuests
+            .Take(3)
+            .Concat(sideQuests.Take(Mathf.Max(0, 3 - mainQuests.Count)))
+            .ToList();
+        // currentLocalRequest = ActiveLocalRequests
+        //     .OrderBy(x => UnityEngine.Random.value)
+        //     .Take(Mathf.Min(3, ActiveLocalRequests.Count))
+        //     .ToList();
         currentLocalNews = ActiveLocalNews.Count > 0 ? ActiveLocalNews[UnityEngine.Random.Range(0, ActiveLocalNews.Count)] : null;
 
 

@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fa123a2afd6ba4799620c16a8f1bb8, type: 3}
+  m_Name: quest_violette_sleeppotion_2
+  m_EditorClassIdentifier: 
+  loadState: 0
+  questId: quest_violette_sleeppotion_2
+  questName: Passionate Reading
+  questDescription: Deliver a Sleep Potion to Violette
+  submissionCharacter: 2
+  requirementsToUnlock:
+    requirements:
+    - rid: 1115517637186027528
+  requirementsToComplete:
+    requirements:
+    - rid: 5999243469903888408
+  questActions:
+    goldReward: 200
+  isMainQuest: 0
+  isRepeatable: 1
+  storyText: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 1115517637186027528
+      type: {class: DaysRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        minimumDaysPassed: 4
+    - rid: 5999243469903888408
+      type: {class: QuestPotionsRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredPotion: {fileID: 11400000, guid: bf33ef341f7d3d746b230addfa6dcf67, type: 2}
+        requiredIngredient: []

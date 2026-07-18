@@ -1556,7 +1556,20 @@ MonoBehaviour:
       requirements:
       - rid: 5999243491663675400
       - rid: 1115517454946664449
-  - requestText: 'Local Request 2 : Mr. Tidus'
+  - requestText: 'Local Request: Farm Boy Kenneth'
+    requestDescription: "Due to his brothers being currently out of town to buy supplies
+      for the farm, Kenneth doesn\u2019t have enough time to complete his daily chores
+      on the farm. Help him by creating a @Swift potion."
+    requestImage: {fileID: 21300000, guid: 4638114a12e868c46af3e9f51d3ce539, type: 3}
+    questData: {fileID: 11400000, guid: 638aabf14be794a479192b96eb7f6ac2, type: 2}
+    followUpNewsId: local_kenneth_swiftpotion_2
+    requirementsToBeShown:
+      requirements:
+      - rid: 1115517637186027529
+      - rid: 1115517637186027530
+      - rid: 1115517637186027531
+      - rid: 1115517637186027535
+  - requestText: 'Local Request: Mr. Tidus'
     requestDescription: Due to strong winds near the port, his hat is stuck suspended
       in the air. help him by making a @jump potion to retrieve the hat.
     requestImage: {fileID: 21300000, guid: cd167975a92cd984486c99af8afa0c28, type: 3}
@@ -1566,6 +1579,18 @@ MonoBehaviour:
       requirements:
       - rid: 5999243491663675401
       - rid: 1115517454946664450
+  - requestText: 'Local Request: Mr. Tidus'
+    requestDescription: Due to strong winds near the port, his hat is stuck suspended
+      in the air. help him by making a @jump potion to retrieve the hat.
+    requestImage: {fileID: 21300000, guid: cd167975a92cd984486c99af8afa0c28, type: 3}
+    questData: {fileID: 11400000, guid: 7fe30404e643a0e4a9b3a0dce101d3f2, type: 2}
+    followUpNewsId: local_tidus_jumppotion_2
+    requirementsToBeShown:
+      requirements:
+      - rid: 1115517637186027532
+      - rid: 1115517637186027533
+      - rid: 1115517637186027534
+      - rid: 1115517637186027536
   - requestText: 'Local Request: Mr. Ramonts'
     requestDescription: "His sister is coming to visit him and she usually cooks
       a lot. Mr. Ramonts is usually unable to finish all the food she makes,which
@@ -1579,6 +1604,20 @@ MonoBehaviour:
       - rid: 5999243491663675397
       - rid: 5999243491663675402
       - rid: 1115517454946664453
+  - requestText: 'Local Request: Mr. Ramonts'
+    requestDescription: "His sister is coming to visit him and she usually cooks
+      a lot. Mr. Ramonts is usually unable to finish all the food she makes,which
+      always leaves him feeling guilty. Make him a Hunger potion to help him digest
+      all of his sister\u2019s food."
+    requestImage: {fileID: 21300000, guid: 9ee4eeedc1601d746833a666b166a55f, type: 3}
+    questData: {fileID: 11400000, guid: 557211d6325c0574eb82f6b0b68ae079, type: 2}
+    followUpNewsId: local_ramonts_hungerpotion_2
+    requirementsToBeShown:
+      requirements:
+      - rid: 1115517637186027541
+      - rid: 1115517637186027542
+      - rid: 1115517637186027543
+      - rid: 1115517637186027544
   - requestText: 'Local Request: Bookworm Violette'
     requestDescription: Bookworm Violette has trouble sleeping at night due to always
       thinking about the next book she wants to read. This make her feel tired everyday
@@ -1592,6 +1631,20 @@ MonoBehaviour:
       - rid: 5999243491663675398
       - rid: 5999243491663675403
       - rid: 1115517454946664454
+  - requestText: 'Local Request: Bookworm Violette'
+    requestDescription: Bookworm Violette has trouble sleeping at night due to always
+      thinking about the next book she wants to read. This make her feel tired everyday
+      and reduces her enjoyment when reading books. Make her a Sleep Potion to help
+      her sleep at night.
+    requestImage: {fileID: 21300000, guid: e3f49ef8e09df5349b6b2165575c2b74, type: 3}
+    questData: {fileID: 11400000, guid: 4ce18d63c921c3f4aa4a07beaf3d7eee, type: 2}
+    followUpNewsId: local_violette_sleeppotion_2
+    requirementsToBeShown:
+      requirements:
+      - rid: 1115517637186027545
+      - rid: 1115517637186027546
+      - rid: 1115517637186027547
+      - rid: 1115517637186027548
   - requestText: 'Local Request: Old Man Sven'
     requestDescription: After countless of time losing his lucky spoon, Old Man Sven
       thinks he just has very bad luck. He wonders if the new alchemist in town has
@@ -1606,6 +1659,21 @@ MonoBehaviour:
       - rid: 1115517572505927684
       - rid: 1115517572505927685
       - rid: 1115517572505927686
+  - requestText: 'Local Request: Old Man Sven'
+    requestDescription: After countless of time losing his lucky spoon, Old Man Sven
+      thinks he just has very bad luck. He wonders if the new alchemist in town has
+      a solution to prevent him from losing his lucky spoon again. Make a Luck Potion
+      for him to negate his bad luck. It is said that a herb that is connected to
+      luck grows near the lighthouse.
+    requestImage: {fileID: 0}
+    questData: {fileID: 11400000, guid: 99379e52a7e8da34ea5fdea08b871211, type: 2}
+    followUpNewsId: local_sven_luckpotion_2
+    requirementsToBeShown:
+      requirements:
+      - rid: 1115517637186027549
+      - rid: 1115517637186027550
+      - rid: 1115517637186027551
+      - rid: 1115517637186027552
   AllLocalNews:
   - newsId: local_kenneth_swiftpotion
     newsText: 'Local News: Farm Boy Kenneth is On a Roll'
@@ -1619,7 +1687,30 @@ MonoBehaviour:
     willBeShown: 0
     hasBeenShown: 0
     canAlwaysShow: 0
+  - newsId: local_kenneth_swiftpotion_2
+    newsText: 'Local News: Farm Boy Kenneth is On a Roll'
+    newsDescription: "Yesterday, Farm Boy Kenneth came to the market place with two
+      full carts of corn and cabbages. For a boy who is managing the farm alone,
+      that is a LOT. Our reported asked him, how did he manage to do all this work
+      in one day?.  Farm Boy Kenneth responded with \u201C Thanks the the potion
+      Chemy gave me, I feel like I can work all day without getting tired!\u201D.
+      We hope he doesn\u2019t overwork himself while his brothers are away."
+    newsImage: {fileID: 0}
+    willBeShown: 0
+    hasBeenShown: 0
+    canAlwaysShow: 0
   - newsId: local_ramonts_hungerpotion
+    newsText: 'Local News: Mr. Ramonts Found unconscious on the Inn Floor'
+    newsDescription: "Early rising customer found the inn owner Mr. Ramonts immobilized
+      on the floor of the inn this morning. Witness accounts that Mr. Ramonts was
+      groaning on the floor while mumbling \u201C No more\u2026 It cant fit\u2026\u201D.
+      After providing him proper treatment and care, Mr. Ramonts said \u201CEven
+      with the hunger potion, my sister\u2019s food was still too much.\u201D"
+    newsImage: {fileID: 0}
+    willBeShown: 0
+    hasBeenShown: 0
+    canAlwaysShow: 0
+  - newsId: local_ramonts_hungerpotion_2
     newsText: 'Local News: Mr. Ramonts Found unconscious on the Inn Floor'
     newsDescription: "Early rising customer found the inn owner Mr. Ramonts immobilized
       on the floor of the inn this morning. Witness accounts that Mr. Ramonts was
@@ -1659,9 +1750,9 @@ MonoBehaviour:
       mayor of Frostshine, Mr. White. If you see a big black horse wondering around
       town, don\u2019t forget to say hi!"
     newsImage: {fileID: 0}
-    willBeShown: 1
+    willBeShown: 0
     hasBeenShown: 0
-    canAlwaysShow: 1
+    canAlwaysShow: 0
   ActiveHeadlines: []
   ActiveLocalRequests: []
   ActiveLocalNews: []
@@ -1809,6 +1900,106 @@ MonoBehaviour:
       data:
         requiredQuestId: quest_sven_luckpotion
         isOngoing: 0
+    - rid: 1115517637186027529
+      type: {class: QuestOngoingRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_kenneth_swiftpotion_2
+        isOngoing: 0
+    - rid: 1115517637186027530
+      type: {class: QuestCompletionRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_kenneth_swiftpotion_2
+        isCompleted: 0
+    - rid: 1115517637186027531
+      type: {class: QuestCompletionRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_kenneth_swiftpotion
+        isCompleted: 1
+    - rid: 1115517637186027532
+      type: {class: QuestCompletionRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_tidus_jumppotion_2
+        isCompleted: 0
+    - rid: 1115517637186027533
+      type: {class: QuestOngoingRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_tidus_jumppotion_2
+        isOngoing: 0
+    - rid: 1115517637186027534
+      type: {class: QuestCompletionRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_tidus_jumppotion
+        isCompleted: 1
+    - rid: 1115517637186027535
+      type: {class: QuestUnlockedRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        unlockedQuestId: quest_kenneth_swiftpotion_2
+        isUnlocked: 1
+    - rid: 1115517637186027536
+      type: {class: QuestUnlockedRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        unlockedQuestId: quest_tidus_jumppotion_2
+        isUnlocked: 1
+    - rid: 1115517637186027541
+      type: {class: QuestUnlockedRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        unlockedQuestId: quest_ramonts_hungerpotion_2
+        isUnlocked: 1
+    - rid: 1115517637186027542
+      type: {class: QuestOngoingRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_ramonts_hungerpotion_2
+        isOngoing: 0
+    - rid: 1115517637186027543
+      type: {class: QuestCompletionRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_ramonts_hungerpotion_2
+        isCompleted: 0
+    - rid: 1115517637186027544
+      type: {class: QuestCompletionRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_ramonts_hungerpotion
+        isCompleted: 1
+    - rid: 1115517637186027545
+      type: {class: QuestUnlockedRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        unlockedQuestId: quest_violette_sleeppotion_2
+        isUnlocked: 1
+    - rid: 1115517637186027546
+      type: {class: QuestOngoingRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_violette_sleeppotion_2
+        isOngoing: 0
+    - rid: 1115517637186027547
+      type: {class: QuestCompletionRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_violette_sleeppotion_2
+        isCompleted: 0
+    - rid: 1115517637186027548
+      type: {class: QuestCompletionRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_violette_sleeppotion
+        isCompleted: 1
+    - rid: 1115517637186027549
+      type: {class: QuestUnlockedRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        unlockedQuestId: quest_sven_luckpotion_2
+        isUnlocked: 1
+    - rid: 1115517637186027550
+      type: {class: QuestOngoingRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_sven_luckpotion_2
+        isOngoing: 0
+    - rid: 1115517637186027551
+      type: {class: QuestCompletionRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_sven_luckpotion_2
+        isCompleted: 0
+    - rid: 1115517637186027552
+      type: {class: QuestCompletionRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        requiredQuestId: quest_sven_luckpotion
+        isCompleted: 1
     - rid: 5999243491663675397
       type: {class: QuestUnlockedRequirement, ns: , asm: Assembly-CSharp}
       data:

@@ -53,7 +53,21 @@ MonoBehaviour:
   - sname: MouseHover
     clip: {fileID: 8300000, guid: f3002f7d278344d4ba92e4353ecb2585, type: 3}
   - sname: PickUp
-    clip: {fileID: 8300000, guid: e637f4e68789c404d96955018b347ab3, type: 3}
+    clip: {fileID: 8300000, guid: d771a94f1e8ae69439798431f0b915b4, type: 3}
+  - sname: HerbSelect
+    clip: {fileID: 8300000, guid: 5159c6488f945a44c8b1547e5cf3d880, type: 3}
+  - sname: Chain
+    clip: {fileID: 8300000, guid: ef379baef63320c4dac0b34d3df31732, type: 3}
+  - sname: IntenseBoiling
+    clip: {fileID: 8300000, guid: de39fc4e2b03d5648b88927359d4a09f, type: 3}
+  - sname: PotionSuccess
+    clip: {fileID: 8300000, guid: 956f415523cc0bf4384c4a27b186a14b, type: 3}
+  - sname: PotionFail
+    clip: {fileID: 8300000, guid: 14bd7eafa815cdb4fae0812cace41dfe, type: 3}
+  - sname: WoodFootstep
+    clip: {fileID: 8300000, guid: af809a5169b835e49b785285ee5dfa49, type: 3}
+  - sname: DirtFootstep
+    clip: {fileID: 8300000, guid: e4651762e7fa6d944b930ec71a5fb514, type: 3}
   mixer: {fileID: 24100000, guid: c9ef8e8ae3caadf4b9e649663e9367c2, type: 2}
   bgmSourceA: {fileID: 4357190896315327549}
   bgmSourceB: {fileID: 7072061399187101781}

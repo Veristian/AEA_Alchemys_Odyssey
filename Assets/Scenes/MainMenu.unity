@@ -453,7 +453,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5599478c63bcf246a047514c7700d38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgm01: {fileID: 0}
+  defaultVolume: 0.118
+  bgm01: {fileID: 8300000, guid: f9696a815f7d17a459efc09a76440b24, type: 3}
   bgm02: {fileID: 0}
 --- !u!4 &122699285
 Transform:
@@ -477,7 +478,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122699283}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 3767164692492704530, guid: c9ef8e8ae3caadf4b9e649663e9367c2, type: 2}
   m_audioClip: {fileID: 8300000, guid: f9696a815f7d17a459efc09a76440b24, type: 3}

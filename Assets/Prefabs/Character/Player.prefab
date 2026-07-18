@@ -131,7 +131,7 @@ MonoBehaviour:
   IiPanel: {fileID: 4647640133385688422}
   iIndicators:
   - name: Collect
-    image: {fileID: 21300000, guid: 03d19050f852d614dbe37e9a130a22e9, type: 3}
+    image: {fileID: 21300000, guid: 2934e6fb7665eca4ba118735fbc4a1f3, type: 3}
   - name: Sleep
     image: {fileID: 21300000, guid: b63e9c6cc4d853a40b3b3c8495cd740e, type: 3}
   - name: Enter

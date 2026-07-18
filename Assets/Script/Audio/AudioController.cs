@@ -30,7 +30,7 @@ public class AudioController : MonoBehaviour
     private AudioSource nextSource;
     private bool usingDualBGM = false;
     private bool usingSecondArea = false;
-
+    private float defaultVolume;
     Coroutine fadeRoutine;
 
     private void Awake()
@@ -59,7 +59,7 @@ public class AudioController : MonoBehaviour
     {
         
         music = FindFirstObjectByType<SceneMusic>();
-
+        defaultVolume = music.defaultVolume;
         if (music != null)
         {
             if (music.bgm02 != null)
@@ -159,11 +159,11 @@ public class AudioController : MonoBehaviour
             float t = time / fadeDuration;
 
             //currentSource.volume = Mathf.Lerp(1, 0, t);
-            currentSource.volume = Mathf.Lerp(0, 1, t);
+            currentSource.volume = Mathf.Lerp(0, defaultVolume, t);
 
             yield return null;
         }
-        currentSource.volume = 1f;
+        currentSource.volume = defaultVolume;
     }
 
     public void FadeOutCurrentBGM()
@@ -242,13 +242,13 @@ public class AudioController : MonoBehaviour
             float percent = t / fadeDuration;
 
             fadeOut.volume = Mathf.Lerp(outStart, 0, percent);
-            fadeIn.volume = Mathf.Lerp(inStart, 1, percent);
+            fadeIn.volume = Mathf.Lerp(inStart, defaultVolume, percent);
 
             yield return null;
         }
 
         fadeOut.volume = 0;
-        fadeIn.volume = 1;
+        fadeIn.volume = defaultVolume;
 
         currentSource = fadeIn;
         nextSource = fadeOut;
@@ -301,13 +301,13 @@ public class AudioController : MonoBehaviour
             float t = time / fadeDuration;
 
             currentSource.volume = Mathf.Lerp(currentStart, 0f, t);
-            nextSource.volume = Mathf.Lerp(nextStart, 1f, t);
+            nextSource.volume = Mathf.Lerp(nextStart, defaultVolume, t);
 
             yield return null;
         }
 
         currentSource.volume = 0f;
-        nextSource.volume = 1f;
+        nextSource.volume = defaultVolume;
 
         AudioSource temp = currentSource;
         currentSource = nextSource;

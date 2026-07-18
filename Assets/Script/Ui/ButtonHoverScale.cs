@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class ButtonHoverScale : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    [SerializeField] private float hoverScale = 1.2f;
+    [SerializeField] private float hoverScale = 1.1f;
     [SerializeField] private float duration = 0.15f;
 
     private Vector3 originalScale;

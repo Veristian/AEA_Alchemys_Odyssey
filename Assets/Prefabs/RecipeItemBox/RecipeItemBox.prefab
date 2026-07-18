@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 4844291874352568547}
   - component: {fileID: 6736728735610443949}
   - component: {fileID: 9008883863368376206}
+  - component: {fileID: 2581078617802026403}
   m_Layer: 5
   m_Name: RecipeItemBox
   m_TagString: Untagged
@@ -416,6 +417,20 @@ MonoBehaviour:
     targetPotion: {fileID: 0}
     targetPotionId: 
     isUnlocked: 0
+--- !u!114 &2581078617802026403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4528271562127227136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1901a453bc8096e4fb915ec5dfea963c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.1
+  duration: 0.15
 --- !u!1 &8162217160539717743
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,7 +29,8 @@ public class AudioController : MonoBehaviour
     private AudioSource currentSource;
     private AudioSource nextSource;
     private bool usingDualBGM = false;
-    
+    private bool usingSecondArea = false;
+
     Coroutine fadeRoutine;
 
     private void Awake()
@@ -206,6 +207,53 @@ public class AudioController : MonoBehaviour
 
         currentSource = bgmSourceA;
         nextSource = bgmSourceB;
+    }
+
+    public void SwitchArea(bool secondArea)
+    {
+        if (!usingDualBGM)
+            return;
+
+        if (usingSecondArea == secondArea)
+            return;
+
+        usingSecondArea = secondArea;
+
+        if (fadeRoutine != null)
+            StopCoroutine(fadeRoutine);
+
+        fadeRoutine = StartCoroutine(FadeTo(secondArea));
+    }
+
+    IEnumerator FadeTo(bool secondArea)
+    {
+        AudioSource fadeOut = secondArea ? bgmSourceA : bgmSourceB;
+        AudioSource fadeIn = secondArea ? bgmSourceB : bgmSourceA;
+
+        float outStart = fadeOut.volume;
+        float inStart = fadeIn.volume;
+
+        float t = 0;
+
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+
+            float percent = t / fadeDuration;
+
+            fadeOut.volume = Mathf.Lerp(outStart, 0, percent);
+            fadeIn.volume = Mathf.Lerp(inStart, 1, percent);
+
+            yield return null;
+        }
+
+        fadeOut.volume = 0;
+        fadeIn.volume = 1;
+
+        currentSource = fadeIn;
+        nextSource = fadeOut;
+
+        fadeRoutine = null;
     }
 
     //IEnumerator CrossFade(AudioClip clip)

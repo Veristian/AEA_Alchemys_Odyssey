@@ -1120,7 +1120,7 @@ MonoBehaviour:
     character: 1
   - sprite: {fileID: 21300000, guid: 81e392aaee45d3640ad30bfc19931bee, type: 3}
     character: 2
-  - sprite: {fileID: 21300000, guid: ee158f323737863419607e239010fbfd, type: 3}
+  - sprite: {fileID: 21300000, guid: 169ad63c3269faf40af2f204fe16e8aa, type: 3}
     character: 4
   - sprite: {fileID: 21300000, guid: f853ef1738867484d81b28deafd19d1a, type: 3}
     character: 5
@@ -1584,7 +1584,7 @@ MonoBehaviour:
       a solution to prevent him from losing his lucky spoon again. Make a Luck Potion
       for him to negate his bad luck. It is said that a herb that is connected to
       luck grows near the lighthouse.
-    requestImage: {fileID: 0}
+    requestImage: {fileID: 21300000, guid: 0ccc9f6d1387b0c42863be10693eac45, type: 3}
     questData: {fileID: 11400000, guid: 334fb8f6eb3ca264c9898dbb9d178cb8, type: 2}
     followUpNewsId: local_sven_luckpotion
     requirementsToBeShown:

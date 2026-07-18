@@ -323,7 +323,7 @@ public class PotionManager : Singleton<PotionManager>
         canvas.SetActive(false);
         playArea.gameObject.SetActive(false);
         potionMakingCamera.gameObject.SetActive(false);
-        
+        AudioController.Instance.SwitchArea(false);
 
         //activate camera and other UI
         if (defaultCamera) defaultCamera.gameObject.SetActive(true);
@@ -346,7 +346,8 @@ public class PotionManager : Singleton<PotionManager>
         //deactivate camera and other UI
         if (defaultCamera) defaultCamera.gameObject.SetActive(false);
         if (UiCanvasHUD) UiCanvasHUD.gameObject.SetActive(false);
-
+        
+        AudioController.Instance.SwitchArea(true);
         InputManager.Instance.canInteract = false;
         InputManager.Instance.canMove = false;
         InputManager.Instance.canLook = false;

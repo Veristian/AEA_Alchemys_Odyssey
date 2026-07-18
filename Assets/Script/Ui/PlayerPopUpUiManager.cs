@@ -167,6 +167,13 @@ public class PlayerPopUpUiManager : MonoBehaviour
 
     public void OpenGameStore()
     {
+        CloseAllPopups();
+        OpenPopup(gameStorePanel);
+        //Debug.Log("OpenTheFuckingStore");
+    }
+
+    public void CloseGameStore()
+    {
         OpenPopup(gameStorePanel);
     }
 
@@ -190,7 +197,7 @@ public class PlayerPopUpUiManager : MonoBehaviour
         }
         if (GameStoreCloseBtn != null)
         {
-            GameStoreCloseBtn.onClick.AddListener(OpenGameStore);
+            GameStoreCloseBtn.onClick.AddListener(CloseGameStore);
         }
 
     }

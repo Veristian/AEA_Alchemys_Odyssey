@@ -26,6 +26,11 @@ public class Herb : MonoBehaviour, IInteractable
         GetComponent<Collider>().isTrigger = true;
 
         LoadState();
+
+        if (collectedEffect == null)
+        {
+            collectedEffect = GetComponentInChildren<ParticleSystem>(true);
+        }
     }
 
     private void OnEnable()

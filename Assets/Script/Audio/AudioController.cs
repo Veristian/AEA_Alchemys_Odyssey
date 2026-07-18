@@ -59,9 +59,10 @@ public class AudioController : MonoBehaviour
     {
         
         music = FindFirstObjectByType<SceneMusic>();
-        defaultVolume = music.defaultVolume;
+        
         if (music != null)
         {
+            defaultVolume = music.defaultVolume;
             if (music.bgm02 != null)
             {
                 PlayBothBGM();

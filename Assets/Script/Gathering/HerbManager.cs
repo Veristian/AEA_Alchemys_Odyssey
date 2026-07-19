@@ -36,10 +36,10 @@ public class HerbManager : Singleton<HerbManager>
         DontDestroyOnLoad(gameObject);
     }
 
-    private void Start()
-    {
-        Load();
-    }
+    // private void Start()
+    // {
+    //     Load();
+    // }
 
     private void OnEnable()
     {
@@ -100,7 +100,7 @@ public class HerbManager : Singleton<HerbManager>
 
     private void OnSceneUnloading(Scene scene)
     {
-        Save();
+        // Save();
     }
 
     public void Save()

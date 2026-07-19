@@ -52,6 +52,7 @@ public class DataManager : Singleton<DataManager>
         InventoryManager.Instance.Load();
         PlayerDataManager.Instance.Load();
         QuestRuntimeManager.Instance.Load();
+        HerbManager.Instance.Load();
         IsGameLoaded = true;
         OnGameLoaded?.Invoke();
     }
@@ -61,6 +62,7 @@ public class DataManager : Singleton<DataManager>
         InventoryManager.Instance.Save();
         PlayerDataManager.Instance.Save();
         QuestRuntimeManager.Instance.Save();
+        HerbManager.Instance.Save();
         OnGameSaved?.Invoke();
     }
 

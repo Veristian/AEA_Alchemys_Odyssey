@@ -27,7 +27,7 @@ MonoBehaviour:
     goldReward: 200
   isMainQuest: 0
   isRepeatable: 1
-  storyText: {fileID: 0}
+  storyText: {fileID: 4900000, guid: 1e4c2d64611badc44b347a3840965f67, type: 3}
   references:
     version: 2
     RefIds:

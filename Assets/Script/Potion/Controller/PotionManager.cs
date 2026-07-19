@@ -363,6 +363,7 @@ public class PotionManager : Singleton<PotionManager>
     // brewing will fail if both curves dont match
     public void BrewPotion()
     {
+        AudioController.Instance.PlaySFX("IntenseBoiling");
         if (CheckPotionBetweenGuides())
         {
             Debug.Log("Potion brewed successfully!");

@@ -174,6 +174,14 @@ public class PotionMakingUi : MonoBehaviour
 
     private void OpenResultPanel()
     {
+        if (ResultText.text == "SUCCESS")
+        {
+            AudioController.Instance.PlaySFX("PotionSuccess");
+        }
+        else
+        {
+            AudioController.Instance.PlaySFX("PotionFail");
+        }
         //ResultDisplayGO.SetActive(true);
         UITransitionManager.Instance.FadeIn(ResultDisplayGO.gameObject);
         Animator ResultAnim = ResultDisplayGO.GetComponent<Animator>();
@@ -227,6 +235,7 @@ public class PotionMakingUi : MonoBehaviour
         Animator CauldronAnim = CauldronGO.GetComponent<Animator>();
         CauldronAnim.ResetTrigger("StartAnim");
         OpenResultPanel();
+
     }
     public void CauldronResetAnimCompleted()
     {

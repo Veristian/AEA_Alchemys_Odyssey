@@ -76,7 +76,7 @@ public class IngredientHouseItem : MonoBehaviour, IPointerDownHandler, IPointerE
         
         InputManager.Instance.AssignThisAsGrabbable(CreateGrabbable());
         IncreaseObjTaken();
-        
+        AudioController.Instance.PlaySFX("HerbSelect");
     }
 
     private GameObject CreateGrabbable()

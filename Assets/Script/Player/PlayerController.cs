@@ -30,7 +30,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private float IdleWait = 10f;
     [SerializeField] private float speedThrehold = 2f; // Adjust as needed
-
+    [Header("Audio")]
+    [SerializeField] private string footstepSound = "DirtFootstep";
 
 
     private Coroutine idleRoutine;
@@ -171,5 +172,10 @@ public class PlayerController : MonoBehaviour
     bool isMoving()
     {
         return GetCurrentSpeed() > speedThrehold; // Adjust threshold as needed
+    }
+
+    public void PlayFootstepSound()
+    {
+        AudioController.Instance.PlaySFX(footstepSound);
     }
 }

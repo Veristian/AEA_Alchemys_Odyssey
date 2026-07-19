@@ -30,9 +30,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private float IdleWait = 10f;
     [SerializeField] private float speedThrehold = 2f; // Adjust as needed
-    [Header("Audio")]
-    [SerializeField] private string footstepSound = "DirtFootstep";
-
+    AudioSource audioSource;
 
     private Coroutine idleRoutine;
 
@@ -41,9 +39,52 @@ public class PlayerController : MonoBehaviour
     private bool readyToJump = true;
     private Vector3 moveDirection;
 
+    [Header("Footsteps")]
+    [SerializeField] private AudioSource footstepSource;
+    [SerializeField] private float minPitch = 0.8f;
+    [SerializeField] private float maxPitch = 1.3f;
+    [SerializeField] private float volumeLerpSpeed = 10f;
+    [SerializeField] private float pitchLerpSpeed = 10f;
+
+    // Your existing variables
+
+
+    private void UpdateFootsteps()
+    {
+        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        float speed = flatVel.magnitude;
+
+        // Speed normalized from 0 to moveSpeed
+        float normalizedSpeed = Mathf.Clamp01(speed / moveSpeed);
+
+        // Play only when moving
+        if (normalizedSpeed > 0.05f)
+        {
+            if (!footstepSource.isPlaying)
+                footstepSource.Play();
+        }
+        else
+        {
+            if (footstepSource.isPlaying)
+                footstepSource.Pause();
+        }
+
+        // Smoothly adjust volume and pitch
+        footstepSource.volume = Mathf.Lerp(
+            footstepSource.volume,
+            normalizedSpeed,
+            Time.deltaTime * volumeLerpSpeed);
+
+        footstepSource.pitch = Mathf.Lerp(
+            footstepSource.pitch,
+            Mathf.Lerp(minPitch, maxPitch, normalizedSpeed),
+            Time.deltaTime * pitchLerpSpeed);
+    }
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
         rb.freezeRotation = true;
 
         if (inputManager == null)
@@ -70,6 +111,8 @@ public class PlayerController : MonoBehaviour
 
         // Handle drag
         rb.drag = grounded ? groundDrag : 0;
+
+        UpdateFootsteps();
 
     }
 
@@ -174,8 +217,4 @@ public class PlayerController : MonoBehaviour
         return GetCurrentSpeed() > speedThrehold; // Adjust threshold as needed
     }
 
-    public void PlayFootstepSound()
-    {
-        AudioController.Instance.PlaySFX(footstepSound);
-    }
 }

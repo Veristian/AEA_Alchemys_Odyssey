@@ -3565,7 +3565,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 255593169}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.47185794, y: -0.000000021454222, z: 0.0000000114819505, w: 0.88167465}
+  m_LocalRotation: {x: 0.47185794, y: 0.000000021454227, z: -0.000000011481954, w: 0.88167465}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4540,7 +4540,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306333329}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3921383, y: 0.000000027415345, z: -0.000000011686633, w: 0.91990626}
+  m_LocalRotation: {x: 0.3921383, y: -0.000000027415345, z: 0.000000011686633, w: 0.91990626}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -24671,7 +24671,6 @@ GameObject:
   m_Component:
   - component: {fileID: 988736371}
   - component: {fileID: 988736375}
-  - component: {fileID: 988736374}
   - component: {fileID: 988736373}
   - component: {fileID: 988736372}
   - component: {fileID: 988736376}
@@ -24750,14 +24749,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!81 &988736374
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 988736370}
-  m_Enabled: 0
 --- !u!20 &988736375
 Camera:
   m_ObjectHideFlags: 0
@@ -29141,7 +29132,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1384548763}
   - component: {fileID: 1384548760}
-  - component: {fileID: 1384548762}
   - component: {fileID: 1384548761}
   m_Layer: 0
   m_Name: PotionMakingCamera
@@ -29245,14 +29235,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!81 &1384548762
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1384548759}
-  m_Enabled: 1
 --- !u!4 &1384548763
 Transform:
   m_ObjectHideFlags: 0
@@ -42736,7 +42718,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-144016
+  m_Name: pb_Mesh-506514
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -45358,6 +45340,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8753944730400673989, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: af809a5169b835e49b785285ee5dfa49, type: 3}
     - target: {fileID: 9080607892106187441, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
       propertyPath: radius
       value: 5.96

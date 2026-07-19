@@ -4066,6 +4066,11 @@ MonoBehaviour:
   animator: {fileID: 0}
   IdleWait: 10
   speedThrehold: 2
+  footstepSource: {fileID: 0}
+  minPitch: 0.8
+  maxPitch: 1.3
+  volumeLerpSpeed: 10
+  pitchLerpSpeed: 10
 --- !u!54 &280518532
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19398,7 +19403,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1393936035}
   - component: {fileID: 1393936040}
-  - component: {fileID: 1393936039}
   - component: {fileID: 1393936038}
   - component: {fileID: 1393936037}
   - component: {fileID: 1393936036}
@@ -19521,14 +19525,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!81 &1393936039
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1393936034}
-  m_Enabled: 1
 --- !u!20 &1393936040
 Camera:
   m_ObjectHideFlags: 0

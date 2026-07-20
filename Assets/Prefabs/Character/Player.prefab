@@ -99,7 +99,7 @@ MonoBehaviour:
   speedThrehold: 2
   footstepSource: {fileID: 8753944730400673989}
   minPitch: 1
-  maxPitch: 2
+  maxPitch: 1
   volumeLerpSpeed: 10
   pitchLerpSpeed: 10
 --- !u!114 &9080607892106187441

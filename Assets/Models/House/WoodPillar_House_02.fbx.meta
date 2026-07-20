@@ -1,11 +1,16 @@
 fileFormatVersion: 2
-guid: dc3a7a0b9247b9449a5b413276377a44
+guid: 722dea751a167354d8a468ae09601e44
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pillar
+    second: {fileID: 2100000, guid: 73e22ad63d9154c4f8cdaa17be55170c, type: 2}
   materials:
-    materialImportMode: 2
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1

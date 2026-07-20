@@ -94,7 +94,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 885560a546c6250489ef8edc5797f496, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: f609fdafb30a8154ab7562318790853d, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 66d0eea77f9d9d24288210b60597b7eb, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -54679,7 +54679,7 @@ MonoBehaviour:
   serializedScenarios:
   - scenario: Default
     data:
-      sceneHash: 1860756935
+      sceneHash: -957442620
       cellDataAsset: {fileID: 4900000, guid: 56f6e89d9a0da4d4f96706d9b153e39c, type: 3}
       cellOptionalDataAsset: {fileID: 4900000, guid: 0453783a94946844ab9ad7fdaa936c6c, type: 3}
 --- !u!4 &2026395147

@@ -21,7 +21,7 @@ public class NPCTrigger : MonoBehaviour, IInteractable
     {
         get
         {
-            return NPCDefaultDialogue != null || GetCharacterQuest(true).Count != 0;
+            return !DialogueManager.Instance.dialogueActive && (NPCDefaultDialogue != null || GetCharacterQuest(true).Count != 0)  ;
         }
     }
     // bool playerInside;
@@ -44,7 +44,7 @@ public class NPCTrigger : MonoBehaviour, IInteractable
     //trigger check
     private void StartConversation()
     {
-        
+        if (DialogueManager.Instance.dialogueActive) return;
         List<PlayerQuestData> completedQuest = GetCharacterQuest(true);
         if (completedQuest == null || completedQuest.Count == 0)
         {

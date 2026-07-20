@@ -127,7 +127,7 @@ public class DialogueManager : Singleton<DialogueManager>
     {
         dialogueActive = false;
         //dialoguePanel.SetActive(false);
-        PlayerPopUpUiManager.Instance.OpenDialog();
+        PlayerPopUpUiManager.Instance.CloseAllPopups();
 
         SetPlayerControl(true);
     }
@@ -176,10 +176,7 @@ public class DialogueManager : Singleton<DialogueManager>
     // ================================
     void SetPlayerControl(bool enabled)
     {
-        InputManager.Instance.canMove = enabled;
-        InputManager.Instance.canLook = enabled;
-        InputManager.Instance.canInteract = enabled;
-        InputManager.Instance.canUiPopup = enabled;
+        InputManager.Instance.canTakeInputs = enabled;
 
     }
 

@@ -19,7 +19,7 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody rb;
 
-    private void FixedUpdate()
+    private void Update()
     {
         CheckInteractable();
         if (InputManager.Instance.InteractWasPressed)

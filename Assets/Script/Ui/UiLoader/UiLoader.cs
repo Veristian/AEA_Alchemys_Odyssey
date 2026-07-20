@@ -275,7 +275,7 @@ public class UiLoader : Singleton<UiLoader>
             DisplayEmptyQuest();
         }
 
-        if (QuestRuntimeManager.Instance.TrackedQuest != null)
+        if (QuestRuntimeManager.Instance.TrackedQuest != null && QuestRuntimeManager.Instance.TrackedQuest.questData != null)
         {
             DisplayQuestData(QuestRuntimeManager.Instance.TrackedQuest);
         }

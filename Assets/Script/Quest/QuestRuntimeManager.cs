@@ -286,6 +286,7 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
     public void SubmitQuest(string questId)
     {
         PlayerQuestData playerQuestData = IdToPlayerQuestData(questId);
+        if (playerQuestData == null) return;
         //check completion
         if (!playerQuestData.isUnlocked || !playerQuestData.isOnGoing || playerQuestData.isCompleted) return;
         if (!playerQuestData.questData.requirementsToComplete.SubmitAll()) return;

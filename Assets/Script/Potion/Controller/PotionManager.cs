@@ -395,7 +395,7 @@ public class PotionManager : Singleton<PotionManager>
             }
             else
             {
-                QuestRuntimeManager.Instance.SubmitQuest(completedQuest[0].questId);
+                QuestRuntimeManager.Instance.SubmitQuest(completedQuest[0]);
             }
         }
         else

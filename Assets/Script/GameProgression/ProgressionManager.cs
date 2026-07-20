@@ -8,6 +8,7 @@ public class Progression
 {
     public RequirementList requirementList;
     public string unlockId;
+    public bool trackQuestChanges = true;
 }
 //used to enable herbs or furniture on certain days, or after certain quests are completed or bought.
 public class ProgressionManager : Singleton<ProgressionManager>
@@ -29,7 +30,7 @@ public class ProgressionManager : Singleton<ProgressionManager>
     void OnEnable()
     {
         if (QuestRuntimeManager.Instance != null)
-            QuestRuntimeManager.Instance.OnQuestListUpdated += UpdateProgress;
+            QuestRuntimeManager.Instance.OnQuestListUpdated += HandleQuestListUpdate;
         if (DayManager.Instance != null)
             DayManager.Instance.OnDayChanged += HandleDayChanged;
         // SceneManager.sceneLoaded += (Scene, LoadSceneMode) => UpdateProgress();
@@ -38,7 +39,7 @@ public class ProgressionManager : Singleton<ProgressionManager>
     void OnDisable()
     {
         if (QuestRuntimeManager.Instance != null)
-            QuestRuntimeManager.Instance.OnQuestListUpdated -= UpdateProgress;
+            QuestRuntimeManager.Instance.OnQuestListUpdated -= HandleQuestListUpdate;
         if (DayManager.Instance != null)
             DayManager.Instance.OnDayChanged -= HandleDayChanged;
         // SceneManager.sceneLoaded -= (Scene, LoadSceneMode) => UpdateProgress();
@@ -52,6 +53,17 @@ public class ProgressionManager : Singleton<ProgressionManager>
     {
         foreach (Progression progress in progressions)
         {
+            if (progress.requirementList.AreAllMet())
+            {
+                PlayerDataManager.Instance.SetUnlock(progress.unlockId);
+            }
+        }
+    }
+    private void HandleQuestListUpdate()
+    {
+        foreach (Progression progress in progressions)
+        {
+            if (!progress.trackQuestChanges) return;
             if (progress.requirementList.AreAllMet())
             {
                 PlayerDataManager.Instance.SetUnlock(progress.unlockId);

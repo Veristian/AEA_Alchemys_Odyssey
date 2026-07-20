@@ -49,4 +49,12 @@ public class UnlockManager : Singleton<UnlockManager>
             PlayerDataManager.Instance.InitializeUnlockedObjects();
         }
     }
+    public void UnlockOverride(string id)
+    {
+        PlayerDataManager.Instance.SetUnlockOverride(id, true);
+    }
+    public void LockOverride(string id)
+    {
+        PlayerDataManager.Instance.SetUnlockOverride(id, false);
+    }
 }

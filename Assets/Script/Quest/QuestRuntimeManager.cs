@@ -24,6 +24,7 @@ public class PlayerQuestData
         {
             questData = DataManager.Instance.questDatas
                 .Find(data => data.questId == questId);
+
         }
     }
 }
@@ -259,7 +260,7 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
     }
     public PlayerQuestData IdToPlayerQuestData(string questId)
     {
-        return playerQuestsList.playerQuests.FirstOrDefault(q => q.questId == questId);
+        return playerQuestsList.playerQuests.FirstOrDefault(q => q.questData.questId == questId);
     }
 
     public void SetTrackedQuest(PlayerQuestData questData)
@@ -317,5 +318,7 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
             return;
 
         MarkQuestAsOnGoing(playerQuestData);
+        UiLoader.Instance.displayedQuestData = playerQuestData;
+        UiLoader.Instance.TrackQuest();
     }
 }

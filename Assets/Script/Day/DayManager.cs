@@ -171,7 +171,7 @@ public class DayManager : Singleton<DayManager>
         }
 
         //open UI
-        PlayerPopUpUiManager.Instance.OpenDailyTidals();
+        PlayerPopUpUiManager.Instance.ForceOpenDailyTidals();
         UiLoader.Instance.CallOpenNewsEvent();
         //accept quests
         foreach (var request in currentLocalRequest)

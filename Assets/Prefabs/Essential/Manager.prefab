@@ -495,30 +495,37 @@ MonoBehaviour:
       requirements:
       - rid: 1115517488788668479
     unlockId: StartUpActivator
+    trackQuestChanges: 1
   - requirementList:
       requirements:
       - rid: 1115517488788668480
     unlockId: DayOneActivator
+    trackQuestChanges: 0
   - requirementList:
       requirements:
       - rid: 1115517488788668481
     unlockId: DayTwoActivator
+    trackQuestChanges: 0
   - requirementList:
       requirements:
       - rid: 1115517542344163366
     unlockId: DayOneHerbs
+    trackQuestChanges: 1
   - requirementList:
       requirements:
       - rid: 1115517542344163367
     unlockId: DayTwoHerbs
+    trackQuestChanges: 1
   - requirementList:
       requirements:
       - rid: 1115517542344163368
     unlockId: DayThreeHerbs
+    trackQuestChanges: 1
   - requirementList:
       requirements:
       - rid: 1115517542344163376
     unlockId: ViewNews
+    trackQuestChanges: 1
   references:
     version: 2
     RefIds:

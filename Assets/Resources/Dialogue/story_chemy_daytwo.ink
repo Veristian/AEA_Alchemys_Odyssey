@@ -41,6 +41,6 @@ Bye!
 
 # speaker: Chemy
 I should try help out around town. Let's see what's in today's paper...
+# func: viewnews
 
-#func: viewnews
 -> END

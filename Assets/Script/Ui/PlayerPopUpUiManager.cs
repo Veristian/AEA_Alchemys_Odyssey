@@ -160,6 +160,12 @@ public class PlayerPopUpUiManager : MonoBehaviour
         OpenPopup(dialogPanel);
     }
 
+    public void ForceOpenDailyTidals()
+    {
+        CloseAllPopups();
+        OpenPopup(dailyTidalsPanel);
+    }
+
     public void OpenDailyTidals()
     {
         OpenPopup(dailyTidalsPanel);

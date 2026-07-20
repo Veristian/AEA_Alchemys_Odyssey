@@ -403,6 +403,12 @@ public class PotionManager : Singleton<PotionManager>
             Debug.Log("Potion brewing failed. The potion graph does not match the guide graphs.");
             //note to self: add failure logic here
             PotionMakingUi.Instance.ResultDisplaySet(false, null,null);
+            foreach (StoredData ingredient in currentActivePotionIngredients)
+            {
+                InventoryManager.Instance.SubtractIngredient(ingredient.ingredientData);
+            }
+            ClearPotion();
+            PotionHouse.Instance.UpdatePotionDisplay();
         }
     }
     // adds an ingredient to the active potion and updates the potion graphs to reflect the new ingredient. This method will be called when the player adds an ingredient to the potion. Will reject potion if not used for the same questline

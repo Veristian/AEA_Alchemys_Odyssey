@@ -70,6 +70,7 @@ public class DialogueManager : Singleton<DialogueManager>
     }
     public void StartDialogue(Story story, string knot = null)
     {
+        if (story == null) return;
         this.story = story;
         Debug.Log(story);
         if (!string.IsNullOrEmpty(knot))
@@ -98,7 +99,7 @@ public class DialogueManager : Singleton<DialogueManager>
     public void ContinueStory()
     {
         if (story == null) return;
-
+        
         if (!story.canContinue)
         {
             EndDialogue();
@@ -118,6 +119,7 @@ public class DialogueManager : Singleton<DialogueManager>
             return;
         }
         currentLineCoroutine = StartCoroutine(TypeLine(line));
+        SetPlayerControl(false);
     }
 
     // ================================
@@ -176,8 +178,21 @@ public class DialogueManager : Singleton<DialogueManager>
     // ================================
     void SetPlayerControl(bool enabled)
     {
-        InputManager.Instance.canTakeInputs = enabled;
-
+        if (enabled) InputManager.Instance.canTakeInputs = true;
+        InputManager.Instance.canInteract = enabled;
+        InputManager.Instance.canLook = enabled;
+        InputManager.Instance.canMove = enabled;
+        InputManager.Instance.canUiPopup = enabled;
+        if (enabled)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 
     // ================================

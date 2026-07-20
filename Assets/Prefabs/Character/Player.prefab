@@ -92,6 +92,7 @@ MonoBehaviour:
   inputManager: {fileID: 0}
   orientation: {fileID: 6750697374387994665}
   cameraTarget: {fileID: 7457280867237863269}
+  chemyAnimatedObj: {fileID: 7457280867237863269}
   walkSpeed: 0
   sprintSpeed: 0
   animator: {fileID: 3575217796440278303}
@@ -181,7 +182,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -9002316100534616981, guid: c9ef8e8ae3caadf4b9e649663e9367c2, type: 2}
-  m_audioClip: {fileID: 8300000, guid: e4651762e7fa6d944b930ec71a5fb514, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 772b589752905a84e9ff5c0b8ab26c2b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1

@@ -273,6 +273,9 @@ public class DialogueManager : Singleton<DialogueManager>
             case "viewshop":
                 PlayerPopUpUiManager.Instance.OpenGameStore();
                 break;
+            case "playsfx":
+                AudioController.Instance.PlaySFX(parameter);
+                break;
 
         }
     }

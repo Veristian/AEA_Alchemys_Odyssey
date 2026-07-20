@@ -67,7 +67,11 @@ MonoBehaviour:
   - sname: WoodFootstep
     clip: {fileID: 8300000, guid: af809a5169b835e49b785285ee5dfa49, type: 3}
   - sname: DirtFootstep
+    clip: {fileID: 8300000, guid: 522684f9dd685754ba44d4a6e29a12f0, type: 3}
+  - sname: Coin
     clip: {fileID: 8300000, guid: e4651762e7fa6d944b930ec71a5fb514, type: 3}
+  - sname: Splash
+    clip: {fileID: 0}
   mixer: {fileID: 24100000, guid: c9ef8e8ae3caadf4b9e649663e9367c2, type: 2}
   bgmSourceA: {fileID: 4357190896315327549}
   bgmSourceB: {fileID: 7072061399187101781}

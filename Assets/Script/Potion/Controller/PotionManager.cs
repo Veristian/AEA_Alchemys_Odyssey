@@ -289,6 +289,7 @@ public class PotionManager : Singleton<PotionManager>
         currentActivePotionIngredients.Add(new StoredData(newIngredient, contactPoint));
         AddPotionGraphCurves(AdjustCurveToContactPoint(newIngredient, contactPoint)); 
         potionGraph.Splash(contactPoint, splashForce);
+        AudioController.Instance.PlaySFX("Splash");
     }
     
     

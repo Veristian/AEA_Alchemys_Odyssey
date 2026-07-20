@@ -88,6 +88,7 @@ public class AudioController : MonoBehaviour
         Sound s = Array.Find(SfxClip, x => x.sname == name);
         if (s != null)
         {
+            if (s.clip == null) return;
             sfxSource.PlayOneShot(s.clip);
         }
         else

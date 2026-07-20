@@ -378,6 +378,7 @@ public class UiLoader : Singleton<UiLoader>
             {
                 PlayerDataManager.Instance.SetUnlock(displayedShopItemData.itemGroupId, true);
                 LoadShopData(); // Refresh the shop display after purchase
+                AudioController.Instance.PlaySFX("Coin");
             }
             else
             {

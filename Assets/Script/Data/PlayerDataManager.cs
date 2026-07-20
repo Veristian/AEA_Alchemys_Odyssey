@@ -236,7 +236,7 @@ public class PlayerDataManager : Singleton<PlayerDataManager>
     }
     public bool SubtractGold(int gold)
     {
-        if (this.gold > gold)
+        if (this.gold >= gold)
         {
             this.gold -= gold;
             return true;

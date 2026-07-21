@@ -78,7 +78,7 @@ MonoBehaviour:
   bgmSourceA: {fileID: 4357190896315327549}
   bgmSourceB: {fileID: 7072061399187101781}
   sfxSource: {fileID: 7894949048815689935}
-  fadeDuration: -9.71
+  fadeDuration: 4
 --- !u!1 &753592955494184610
 GameObject:
   m_ObjectHideFlags: 0

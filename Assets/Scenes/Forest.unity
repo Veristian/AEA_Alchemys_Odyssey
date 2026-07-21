@@ -4675,42 +4675,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 6036164488870809613, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
-      propertyPath: SfxClip.Array.size
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 6036164488870809613, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
-      propertyPath: SfxClip.Array.data[8].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: d4f23defa999e4a48a75485772d90d9f, type: 3}
-    - target: {fileID: 6036164488870809613, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
-      propertyPath: SfxClip.Array.data[9].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 70b6c6d28fd362f4fa777ac5ac60c893, type: 3}
-    - target: {fileID: 6036164488870809613, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
-      propertyPath: SfxClip.Array.data[10].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 3b402bbb5c0ba3747ba18883c55fbe0d, type: 3}
-    - target: {fileID: 6036164488870809613, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
-      propertyPath: SfxClip.Array.data[11].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 9ad849c4e7ae37e4b8c01140153bed2d, type: 3}
-    - target: {fileID: 6036164488870809613, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
-      propertyPath: SfxClip.Array.data[12].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 172c9ccd772f9024cb76bb4244fa2089, type: 3}
-    - target: {fileID: 6036164488870809613, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
-      propertyPath: SfxClip.Array.data[10].sname
-      value: GrassFootstep
-      objectReference: {fileID: 0}
-    - target: {fileID: 6036164488870809613, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
-      propertyPath: SfxClip.Array.data[11].sname
-      value: Coin
-      objectReference: {fileID: 0}
-    - target: {fileID: 6036164488870809613, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
-      propertyPath: SfxClip.Array.data[12].sname
-      value: Splash
-      objectReference: {fileID: 0}
     - target: {fileID: 6982703046419081174, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

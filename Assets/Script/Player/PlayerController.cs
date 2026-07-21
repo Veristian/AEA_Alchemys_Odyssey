@@ -127,9 +127,17 @@ public class PlayerController : MonoBehaviour
         float CurrentSpeed = rb.velocity.magnitude;
         animator.SetFloat("Speed", CurrentSpeed);  
         
+        if (chemyAnimatedObj.localPosition.x > 0.07f || chemyAnimatedObj.localPosition.x < -0.07f)
+        {
+            chemyAnimatedObj.localPosition = Vector3.Lerp(chemyAnimatedObj.localPosition, new Vector3(0, chemyAnimatedObj.localPosition.y, chemyAnimatedObj.localPosition.z), Time.fixedDeltaTime);
+        }
         if (chemyAnimatedObj.localPosition.y > 0.07f || chemyAnimatedObj.localPosition.y < -0.07f)
         {
             chemyAnimatedObj.localPosition = Vector3.Lerp(chemyAnimatedObj.localPosition, new Vector3(chemyAnimatedObj.localPosition.x, 0, chemyAnimatedObj.localPosition.z), Time.fixedDeltaTime);
+        }
+        if (chemyAnimatedObj.localPosition.z > 0.07f || chemyAnimatedObj.localPosition.z < -0.07f)
+        {
+            chemyAnimatedObj.localPosition = Vector3.Lerp(chemyAnimatedObj.localPosition, new Vector3(chemyAnimatedObj.localPosition.x, chemyAnimatedObj.localPosition.y, 0), Time.fixedDeltaTime);
         }
     }
 

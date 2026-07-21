@@ -65,9 +65,11 @@ MonoBehaviour:
   - sname: PotionFail
     clip: {fileID: 8300000, guid: 14bd7eafa815cdb4fae0812cace41dfe, type: 3}
   - sname: WoodFootstep
-    clip: {fileID: 8300000, guid: af809a5169b835e49b785285ee5dfa49, type: 3}
+    clip: {fileID: 8300000, guid: d4f23defa999e4a48a75485772d90d9f, type: 3}
   - sname: DirtFootstep
-    clip: {fileID: 8300000, guid: 522684f9dd685754ba44d4a6e29a12f0, type: 3}
+    clip: {fileID: 8300000, guid: 70b6c6d28fd362f4fa777ac5ac60c893, type: 3}
+  - sname: GrassFootstep
+    clip: {fileID: 8300000, guid: 3b402bbb5c0ba3747ba18883c55fbe0d, type: 3}
   - sname: Coin
     clip: {fileID: 8300000, guid: 9ad849c4e7ae37e4b8c01140153bed2d, type: 3}
   - sname: Splash
@@ -76,7 +78,7 @@ MonoBehaviour:
   bgmSourceA: {fileID: 4357190896315327549}
   bgmSourceB: {fileID: 7072061399187101781}
   sfxSource: {fileID: 7894949048815689935}
-  fadeDuration: 4
+  fadeDuration: -9.71
 --- !u!1 &753592955494184610
 GameObject:
   m_ObjectHideFlags: 0

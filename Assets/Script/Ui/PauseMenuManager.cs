@@ -8,6 +8,7 @@ public class PauseMenuManager : MonoBehaviour
     [Header("Panels")]
     [SerializeField] GameObject MainPanel;
     [SerializeField] GameObject SettingPanel;
+    [SerializeField] GameObject CreditPanel;
 
     [Header("Buttons")]
     [SerializeField] Button ResumeBtn;
@@ -15,6 +16,7 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] Button SettingReturnBtn;
     [SerializeField] Button CreditBtn;
     [SerializeField] Button ExitBtn;
+    [SerializeField] Button CreditReturnBtn;
 
     [Header("VolumeSliders")]
     [SerializeField] Slider MasterSlider;
@@ -39,6 +41,7 @@ public class PauseMenuManager : MonoBehaviour
     {
         MainPanel.SetActive(true);
         SettingPanel.SetActive(false);
+        CreditPanel.SetActive(false);
     }
 
     private void SliderSetup()
@@ -53,10 +56,24 @@ public class PauseMenuManager : MonoBehaviour
         SettingBtn.onClick.AddListener(OpenSetting);
         SettingReturnBtn.onClick.AddListener(OpenMainPanel);
         ExitBtn.onClick.AddListener(ReturnToMM);
+        CreditBtn.onClick.AddListener(CreditOpen);
+        CreditReturnBtn.onClick.AddListener(CreditReturn);
     }
 
     private void ReturnToMM()
     {
         SceneLoadingManager.Instance.LoadScene("MainMenu");
+    }
+
+    private void CreditOpen()
+    {
+        MainPanel.SetActive(false);
+        CreditPanel.SetActive(true);
+    }
+
+    private void CreditReturn()
+    {
+        MainPanel.SetActive(true);
+        CreditPanel.SetActive(false);
     }
 }

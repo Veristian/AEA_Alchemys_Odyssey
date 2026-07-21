@@ -105,6 +105,8 @@ public class Herb : MonoBehaviour, IInteractable
 #if UNITY_EDITOR
     private void OnValidate()
     {
+        if (Application.isPlaying)
+            return;
         // Don't assign IDs to the prefab asset itself
         if (PrefabUtility.IsPartOfPrefabAsset(gameObject))
             return;

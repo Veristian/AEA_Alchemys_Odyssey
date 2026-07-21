@@ -9,6 +9,7 @@ public class PickupPopupManager : Singleton<PickupPopupManager>
     [Header("References")]
     [SerializeField] private RectTransform popupContainer;
     [SerializeField] private PickupPopupUI popupPrefab;
+    [SerializeField] private Sprite CoinSprite;
 
     [Header("Settings")]
     [SerializeField] private int maxPopups = 3;
@@ -34,6 +35,27 @@ public class PickupPopupManager : Singleton<PickupPopupManager>
 
         newPopup.Setup(IngData.ingredientSprite, IngData.name);
 
+        activePopups.Insert(0, newPopup);  //this make the new stack infront of old
+
+        if (activePopups.Count > maxPopups)
+        {
+            PickupPopupUI lastPopup = activePopups[^1];
+            activePopups.RemoveAt(activePopups.Count - 1);
+            lastPopup.Close();
+        }
+
+        UpdatePopupPositions();
+        StartCoroutine(RemoveAfterDelay(newPopup));
+    }
+
+    public void ShowCoinReward(int amount)
+    {
+        if (amount <= 0)
+        {
+            return;
+        }
+        PickupPopupUI newPopup = Instantiate(popupPrefab, popupContainer);
+        newPopup.SetupCoin(CoinSprite, "Coins", amount);
         activePopups.Insert(0, newPopup);  //this make the new stack infront of old
 
         if (activePopups.Count > maxPopups)

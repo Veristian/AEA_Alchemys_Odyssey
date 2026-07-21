@@ -29,6 +29,16 @@ public class PickupPopupUI : MonoBehaviour
 
         UITransitionManager.Instance.FadeIn(gameObject);
     }
+    public void SetupCoin(Sprite icon, string text, int amount)
+    {
+        itemIcon.sprite = icon;
+        itemText.text = text;
+        itemDes .text = "x"+amount;
+        //canvasGroup.alpha = 0f;
+        //rectTransform.localScale = Vector3.one * 0.9f;
+
+        UITransitionManager.Instance.FadeIn(gameObject);
+    }
 
     public void Setup()
     {

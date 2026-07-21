@@ -21,7 +21,7 @@ public class NPCTrigger : MonoBehaviour, IInteractable
     {
         get
         {
-            return NPCDefaultDialogue != null || GetCharacterQuest(true).Count != 0;
+            return !DialogueManager.Instance.dialogueActive && (NPCDefaultDialogue != null || GetCharacterQuest(true).Count != 0)  ;
         }
     }
     // bool playerInside;
@@ -32,11 +32,11 @@ public class NPCTrigger : MonoBehaviour, IInteractable
     }
 
     //check quest
-    private List<PlayerQuestData> GetCharacterQuest()
+    public List<PlayerQuestData> GetCharacterQuest()
     {
         return QuestRuntimeManager.Instance.GetOngoingQuests().FindAll(q => q.questData.submissionCharacter == character);
     }
-    private List<PlayerQuestData> GetCharacterQuest(bool completed)
+    public List<PlayerQuestData> GetCharacterQuest(bool completed)
     {
         return QuestRuntimeManager.Instance.GetOngoingQuests().FindAll(q => q.questData.submissionCharacter == character).FindAll(q => q.questData.requirementsToComplete.AreAllMet());
     }
@@ -44,14 +44,16 @@ public class NPCTrigger : MonoBehaviour, IInteractable
     //trigger check
     private void StartConversation()
     {
-        
+        if (DialogueManager.Instance.dialogueActive) return;
         List<PlayerQuestData> completedQuest = GetCharacterQuest(true);
         if (completedQuest == null || completedQuest.Count == 0)
         {
+            Debug.Log("Found no quest, defaulting to dialogue");
             DialogueManager.Instance.StartDialogue(DialogueManager.GetStory(NPCDefaultDialogue));
         }
         else
         {
+            Debug.Log("Found " + completedQuest.Count + " completed quests");
             DialogueManager.Instance.StartDialogue(completedQuest[0].questData.story);
         }
         if (isOneTime) interactCollider.enabled = false;

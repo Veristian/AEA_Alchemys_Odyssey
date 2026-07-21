@@ -7,6 +7,8 @@ public class StartManager : MonoBehaviour
     bool started;
     public void OnPressStart()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         if (started)
         {
             SceneLoadingManager.Instance.LoadScene("ChemyHouse");

@@ -168,6 +168,34 @@ public class PlayerDataManager : Singleton<PlayerDataManager>
         }
         
     }
+    public void SetUnlockOverride(string id, bool unlocked = true)
+    {
+        UnlockData unlockData = gameObjectUnlocks.unlockData.Find(g => g.itemGroupId == id);
+        if (unlockData == null) 
+        {
+            Debug.LogWarning($"UnlockData with id {id} not found in gameObjectUnlocks.");
+ 
+            unlockData = new UnlockData
+            {
+                itemGroupId = id,
+                isUnlocked = unlocked
+            };
+            gameObjectUnlocks.unlockData.Add(unlockData);                
+            if (UnlockManager.Instance != null && unlocked)
+            {
+                UnlockManager.Instance.UnlockObject(unlockData.itemGroupId);
+            }                    
+            return;
+            
+        }
+        unlockData.isUnlocked = unlocked;
+        if (UnlockManager.Instance != null && unlocked)
+        {
+            UnlockManager.Instance.UnlockObject(unlockData.itemGroupId);
+        }
+        
+    }
+
 
     public void SetUnlock(string id, bool unlocked = true)
     {
@@ -208,7 +236,7 @@ public class PlayerDataManager : Singleton<PlayerDataManager>
     }
     public bool SubtractGold(int gold)
     {
-        if (this.gold > gold)
+        if (this.gold >= gold)
         {
             this.gold -= gold;
             return true;

@@ -65,9 +65,15 @@ MonoBehaviour:
   - sname: PotionFail
     clip: {fileID: 8300000, guid: 14bd7eafa815cdb4fae0812cace41dfe, type: 3}
   - sname: WoodFootstep
-    clip: {fileID: 8300000, guid: af809a5169b835e49b785285ee5dfa49, type: 3}
+    clip: {fileID: 8300000, guid: d4f23defa999e4a48a75485772d90d9f, type: 3}
   - sname: DirtFootstep
-    clip: {fileID: 8300000, guid: e4651762e7fa6d944b930ec71a5fb514, type: 3}
+    clip: {fileID: 8300000, guid: 70b6c6d28fd362f4fa777ac5ac60c893, type: 3}
+  - sname: GrassFootstep
+    clip: {fileID: 8300000, guid: 3b402bbb5c0ba3747ba18883c55fbe0d, type: 3}
+  - sname: Coin
+    clip: {fileID: 8300000, guid: 9ad849c4e7ae37e4b8c01140153bed2d, type: 3}
+  - sname: Splash
+    clip: {fileID: 8300000, guid: 4336e3e406727f64fb81ac3a967073c4, type: 3}
   mixer: {fileID: 24100000, guid: c9ef8e8ae3caadf4b9e649663e9367c2, type: 2}
   bgmSourceA: {fileID: 4357190896315327549}
   bgmSourceB: {fileID: 7072061399187101781}
@@ -491,30 +497,37 @@ MonoBehaviour:
       requirements:
       - rid: 1115517488788668479
     unlockId: StartUpActivator
+    trackQuestChanges: 1
   - requirementList:
       requirements:
       - rid: 1115517488788668480
     unlockId: DayOneActivator
+    trackQuestChanges: 0
   - requirementList:
       requirements:
       - rid: 1115517488788668481
     unlockId: DayTwoActivator
+    trackQuestChanges: 0
   - requirementList:
       requirements:
       - rid: 1115517542344163366
     unlockId: DayOneHerbs
+    trackQuestChanges: 1
   - requirementList:
       requirements:
       - rid: 1115517542344163367
     unlockId: DayTwoHerbs
+    trackQuestChanges: 1
   - requirementList:
       requirements:
       - rid: 1115517542344163368
     unlockId: DayThreeHerbs
+    trackQuestChanges: 1
   - requirementList:
       requirements:
       - rid: 1115517542344163376
     unlockId: ViewNews
+    trackQuestChanges: 1
   references:
     version: 2
     RefIds:

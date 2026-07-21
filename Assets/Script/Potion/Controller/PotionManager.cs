@@ -289,6 +289,7 @@ public class PotionManager : Singleton<PotionManager>
         currentActivePotionIngredients.Add(new StoredData(newIngredient, contactPoint));
         AddPotionGraphCurves(AdjustCurveToContactPoint(newIngredient, contactPoint)); 
         potionGraph.Splash(contactPoint, splashForce);
+        AudioController.Instance.PlaySFX("Splash");
     }
     
     
@@ -354,6 +355,8 @@ public class PotionManager : Singleton<PotionManager>
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        PotionHouse.Instance.UpdatePotionDisplay();
     }
     public void AssignPotionTarget(PotionData potionData)
     {
@@ -382,7 +385,6 @@ public class PotionManager : Singleton<PotionManager>
                 InventoryManager.Instance.SubtractIngredient(ingredient.ingredientData);
             }
             ClearPotion();
-            PotionHouse.Instance.UpdatePotionDisplay();
 
             //update quest if potion is for Chemy
 
@@ -394,14 +396,21 @@ public class PotionManager : Singleton<PotionManager>
             }
             else
             {
-                QuestRuntimeManager.Instance.SubmitQuest(completedQuest[0].questId);
+                QuestRuntimeManager.Instance.SubmitQuest(completedQuest[0]);
             }
+            PotionHouse.Instance.UpdatePotionDisplay();
         }
         else
         {
             Debug.Log("Potion brewing failed. The potion graph does not match the guide graphs.");
             //note to self: add failure logic here
             PotionMakingUi.Instance.ResultDisplaySet(false, null,null);
+            foreach (StoredData ingredient in currentActivePotionIngredients)
+            {
+                InventoryManager.Instance.SubtractIngredient(ingredient.ingredientData);
+            }
+            ClearPotion();
+            PotionHouse.Instance.UpdatePotionDisplay();
         }
     }
     // adds an ingredient to the active potion and updates the potion graphs to reflect the new ingredient. This method will be called when the player adds an ingredient to the potion. Will reject potion if not used for the same questline

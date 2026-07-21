@@ -5,25 +5,19 @@ Welcome to Wavecrest! You must be Chemy from the Alchemist Association, yes?
 That's me! It's nice to finally be here.
 
 # speaker: Tidus
-Ohoho, Greetings to you Little Missy. My name is Tidus, but don't let my chubbiness fool you yet because in truth I am the mayor of Wavecrest. 
+Ohoho, Greetings to you Lass. My name is Tidus and I am the mayor of Wavecrest. 
 
 # speaker: Tidus
-Anyway, the Alchemist Association sent me a letter saying you'd be staying on A'ea for a while.
+The Alchemist Association sent me a letter saying you'd be staying on A'ea for a while.
+
+# speaker: Chemy
+Yes! I'll be studying the local flora and fauna. I'm so excited to explore Wavecrest! 
 
 # speaker: Tidus
-Studying local flora and fauna, yes? Hmm, yes indeed yes quite the commendable one you are, Little Missy. Quite the character I must say to be extracting mana this young. I was bald at that age, you know? So, how about you tell me some stories of your own later?
+Ohoho! Do tell me about some stories of the outside from time to time.
 
 # speaker: Chemy
-E- eh? Bald? Wait, Mr. Tidus, focus! Uhm, first off, 'Yes!' I'll be studying the local flora and fauna, since the mana concentration here is so high there should be plenty of interesting discoveries here. I'm so excited!
-
-# speaker: Chemy
-Second, 'You're lying!' you aren't bald, I see your black hair right there!
-
-# speaker: Tidus
-Hahaha, indeed its true, I do have hair. Sorr' 'bout that, the thought came to my mind and I thought it'd be funny to say, Nyehaha. So, 'Third'?
-
-# speaker: Chemy
-Third... 'Sure' I'll be happy to share some stories with you Mr. Tidus! I'm looking forward to making new stories here in A'ea too.
+Sure! I'll be happy to share some stories with you Mr. Tidus! I'm looking forward to making new stories here in A'ea too.
 
 # speaker: Tidus
 I'll get to tourin' quick now.
@@ -51,7 +45,7 @@ Over here, this is the post office, Poshe practically lives there.
 This here is Mr. Ramonts' Inn. Cozy place here, I was going to place you right here, but I found a better place for you.
 
 # speaker: Tidus
-Your new abode is just outside town, near Breezewood Forest. Perfect place for you Little Missy. 
+Your new abode is just outside town, near Breezewood Forest. Perfect place for you, Lass. 
 
 #func: teleport@-105.637032,348.313568,-369.94693
 #func: setlook@-157.201
@@ -65,10 +59,10 @@ It's a modest little cottage, but it has everything you'll need. The previous al
 It's wonderful! Thank you for preparing everything.
 
 # speaker: Tidus
-Don't mind, don't mind. Least I could do really.
+Don't mind it. Least I could do really.
 
 # speaker: Tidus
-Get some rest, I'm sure the ride was a squiggly whoozy.
+Get some rest, I'm sure the ride was a bumpy one.
 
 # speaker: Chemy
 I will. Thank you, Mayor Tidus.

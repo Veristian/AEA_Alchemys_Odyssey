@@ -1,5 +1,5 @@
+using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public InputManager inputManager;
     public Transform orientation;
     public Transform cameraTarget;
+    public Transform chemyAnimatedObj;
 
 
     [HideInInspector] public float walkSpeed;
@@ -114,6 +115,8 @@ public class PlayerController : MonoBehaviour
 
         UpdateFootsteps();
 
+        
+
     }
 
     private void FixedUpdate()
@@ -121,10 +124,13 @@ public class PlayerController : MonoBehaviour
         MovePlayer();
 
 
-       float CurrentSpeed = rb.velocity.magnitude;
-       animator.SetFloat("Speed", CurrentSpeed);  
-
+        float CurrentSpeed = rb.velocity.magnitude;
+        animator.SetFloat("Speed", CurrentSpeed);  
         
+        if (chemyAnimatedObj.localPosition.y > 0.07f || chemyAnimatedObj.localPosition.y < -0.07f)
+        {
+            chemyAnimatedObj.localPosition = Vector3.Lerp(chemyAnimatedObj.localPosition, new Vector3(chemyAnimatedObj.localPosition.x, 0, chemyAnimatedObj.localPosition.z), Time.fixedDeltaTime);
+        }
     }
 
     private void MyInput()
@@ -192,7 +198,7 @@ public class PlayerController : MonoBehaviour
 
             // Choose a random number. 
 
-            int randomNumber = Random.Range(1, 3);
+            int randomNumber = UnityEngine.Random.Range(1, 3);
 
             // Perform actions based on the chosen number
             if (randomNumber == 1)

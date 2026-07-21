@@ -137,13 +137,25 @@ public class DayManager : Singleton<DayManager>
             .Take(3)
             .Concat(sideQuests.Take(Mathf.Max(0, 3 - mainQuests.Count)))
             .ToList();
-        // currentLocalRequest = ActiveLocalRequests
-        //     .OrderBy(x => UnityEngine.Random.value)
-        //     .Take(Mathf.Min(3, ActiveLocalRequests.Count))
-        //     .ToList();
         currentLocalNews = ActiveLocalNews.Count > 0 ? ActiveLocalNews[UnityEngine.Random.Range(0, ActiveLocalNews.Count)] : null;
 
+        var oneTimeNews = ActiveLocalNews
+        .Where(x => !x.canAlwaysShow)
+        .ToList();
 
+        if (oneTimeNews.Count > 0)
+        {
+            currentLocalNews = oneTimeNews[UnityEngine.Random.Range(0, oneTimeNews.Count)];
+
+            // Remove it so it can't be selected again
+            ActiveLocalNews.Remove(currentLocalNews);
+        }
+        else
+        {
+            currentLocalNews = ActiveLocalNews.Count > 0
+                ? ActiveLocalNews[UnityEngine.Random.Range(0, ActiveLocalNews.Count)]
+                : null;
+        }
     }
 
     public void SetShowLocalNews(QuestData questData, bool ignoreHasBeenShown)
@@ -171,7 +183,7 @@ public class DayManager : Singleton<DayManager>
         }
 
         //open UI
-        PlayerPopUpUiManager.Instance.OpenDailyTidals();
+        PlayerPopUpUiManager.Instance.ForceOpenDailyTidals();
         UiLoader.Instance.CallOpenNewsEvent();
         //accept quests
         foreach (var request in currentLocalRequest)

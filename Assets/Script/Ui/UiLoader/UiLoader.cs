@@ -275,6 +275,11 @@ public class UiLoader : Singleton<UiLoader>
             DisplayEmptyQuest();
         }
 
+        if (QuestRuntimeManager.Instance.TrackedQuest != null && QuestRuntimeManager.Instance.TrackedQuest.questData != null)
+        {
+            DisplayQuestData(QuestRuntimeManager.Instance.TrackedQuest);
+        }
+
     }
 
     public void DisplayQuestData(PlayerQuestData questData)
@@ -378,6 +383,7 @@ public class UiLoader : Singleton<UiLoader>
             {
                 PlayerDataManager.Instance.SetUnlock(displayedShopItemData.itemGroupId, true);
                 LoadShopData(); // Refresh the shop display after purchase
+                AudioController.Instance.PlaySFX("Coin");
             }
             else
             {

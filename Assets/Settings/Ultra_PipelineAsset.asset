@@ -126,10 +126,10 @@ MonoBehaviour:
     bakingSets:
     - {fileID: 11400000, guid: 04f6eeb6ee8b4bd4fb081bcfd3cabfa8, type: 2}
     - {fileID: 11400000, guid: 4f868afc42ac6654cb30904cc5c7fe62, type: 2}
-    - {fileID: 11400000, guid: b66f8762504d9344a84906a455405f8d, type: 2}
     - {fileID: 11400000, guid: 0b43fafdaace7a14ea7e448833190dc1, type: 2}
     - {fileID: 11400000, guid: 56ff3bd71a516404680f0ad371d4d7e2, type: 2}
     - {fileID: 11400000, guid: a5a5a1b3946846b4f836a9e88c9562aa, type: 2}
+    - {fileID: 11400000, guid: b66f8762504d9344a84906a455405f8d, type: 2}
     m_LightingScenario: Default
   m_PrefilteringModeMainLightShadows: 3
   m_PrefilteringModeAdditionalLight: 3

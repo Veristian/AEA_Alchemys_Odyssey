@@ -416,7 +416,7 @@ public class UiLoader : Singleton<UiLoader>
             Destroy(child.gameObject);
         }
 
-        foreach (LocalRequest localRequest in DayManager.Instance.ActiveLocalRequests)
+        foreach (LocalRequest localRequest in DayManager.Instance.currentLocalRequest)
         {
             GameObject newsRequestItem = Instantiate(newsRequestPrefab, newsRequestContainer);
             DailyTaskDisplay dailyTaskDisplay = newsRequestItem.GetComponent<DailyTaskDisplay>();

@@ -529,6 +529,11 @@ MonoBehaviour:
       - rid: 1115517542344163376
     unlockId: ViewNews
     trackQuestChanges: 1
+  - requirementList:
+      requirements:
+      - rid: 1115517699548250143
+    unlockId: newspaper
+    trackQuestChanges: 1
   references:
     version: 2
     RefIds:
@@ -557,6 +562,10 @@ MonoBehaviour:
       data:
         minimumDaysPassed: 3
     - rid: 1115517542344163376
+      type: {class: DaysRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        minimumDaysPassed: 2
+    - rid: 1115517699548250143
       type: {class: DaysRequirement, ns: , asm: Assembly-CSharp}
       data:
         minimumDaysPassed: 2

@@ -355,6 +355,8 @@ public class PotionManager : Singleton<PotionManager>
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        PotionHouse.Instance.UpdatePotionDisplay();
     }
     public void AssignPotionTarget(PotionData potionData)
     {
@@ -383,7 +385,6 @@ public class PotionManager : Singleton<PotionManager>
                 InventoryManager.Instance.SubtractIngredient(ingredient.ingredientData);
             }
             ClearPotion();
-            PotionHouse.Instance.UpdatePotionDisplay();
 
             //update quest if potion is for Chemy
 
@@ -397,6 +398,7 @@ public class PotionManager : Singleton<PotionManager>
             {
                 QuestRuntimeManager.Instance.SubmitQuest(completedQuest[0]);
             }
+            PotionHouse.Instance.UpdatePotionDisplay();
         }
         else
         {

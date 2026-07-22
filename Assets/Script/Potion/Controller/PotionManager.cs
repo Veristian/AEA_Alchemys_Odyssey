@@ -242,16 +242,18 @@ public class PotionManager : Singleton<PotionManager>
     // sets the active potion and updates the guide graph to show the ingredients of the new potion.
     private void SetActivePotionTarget(PotionData newPotion)
     {
-        activePotionTarget = newPotion;
-        activePotionIngredientsTarget = new List<StoredData>(activePotionTarget.ingredients);
-        UpdateGuideGraph(newPotion);
-
-        if (activePotionTarget == null)
+        if (newPotion == null)
         {
+            activePotionTarget = newPotion;
+            activePotionIngredientsTarget.Clear();
+            UpdateGuideGraph(newPotion);
             potionNameText.text = "";
             potionDetailText.text = "";
             return;
         }
+        activePotionTarget = newPotion;
+        activePotionIngredientsTarget = new List<StoredData>(activePotionTarget.ingredients);
+        UpdateGuideGraph(newPotion);
 
         if (potionNameText == null || potionDetailText == null)
         {
@@ -436,6 +438,7 @@ public class PotionManager : Singleton<PotionManager>
         .Select(s => s.ingredientData)
         .ToList() ?? new List<IngredientData>(), returnIngredient: true, forceReturnAll: true);
         currentActivePotionIngredients.Clear();
+        heatSlider.value = 0.5f;
         ClearPotionGraph();
     }
 

@@ -110,11 +110,15 @@ MonoBehaviour:
       bounds:
         m_Center: {x: -81, y: 364.5, z: -243}
         m_Extent: {x: 81, y: 40.5, z: 81}
+    - sceneGUID: 941abf77aa6c02a42ada47ab68469c67
+      bounds:
+        m_Center: {x: -81, y: 364.5, z: -243}
+        m_Extent: {x: 81, y: 40.5, z: 81}
     serializedHasVolumes:
     - sceneGUID: 43ff25c0919e0f443b8e6dea98680d56
       hasProbeVolumes: 0
     - sceneGUID: 679cb4d3be086204fa527fad12c5d49e
-      hasProbeVolumes: 1
+      hasProbeVolumes: 0
     - sceneGUID: 1dfdc32682a0d5a4cbee795df29e43c3
       hasProbeVolumes: 0
     - sceneGUID: c292be1c25495b6408e9f97ed237973b
@@ -122,6 +126,8 @@ MonoBehaviour:
     - sceneGUID: 194eef0abba6fed4aafe3952942aef03
       hasProbeVolumes: 0
     - sceneGUID: 3634af443ffc99c4c8a4da79aaac2184
+      hasProbeVolumes: 0
+    - sceneGUID: 941abf77aa6c02a42ada47ab68469c67
       hasProbeVolumes: 1
     bakingSets:
     - {fileID: 11400000, guid: 04f6eeb6ee8b4bd4fb081bcfd3cabfa8, type: 2}

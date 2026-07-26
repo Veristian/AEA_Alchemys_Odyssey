@@ -6311,7 +6311,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306333329}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3921383, y: -1.4918069e-15, z: 1.3931551e-15, w: 0.9199063}
+  m_LocalRotation: {x: 0.3921383, y: -0.000000027415345, z: 0.000000011686633, w: 0.91990626}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13766,11 +13766,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.4678586, y: 0.89562565, z: 2.6260607}
   m_Center: {x: 0.0000076293945, y: 0.4406496, z: 0.0000019073486}
---- !u!4 &710787472 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7457280867237863269, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
-  m_PrefabInstance: {fileID: 2145988137}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &733000791
 GameObject:
   m_ObjectHideFlags: 0
@@ -29891,7 +29886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientation: {fileID: 1950188995}
-  playerObj: {fileID: 710787472}
+  playerObj: {fileID: 2145988138}
   player: {fileID: 1283900413}
   inputManager: {fileID: 0}
   rotationSpeed: 12
@@ -37365,7 +37360,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-732404
+  m_Name: pb_Mesh-62180
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -44806,8 +44801,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 710787472}
-  m_Follow: {fileID: 710787472}
+  m_LookAt: {fileID: 2145988138}
+  m_Follow: {fileID: 2145988138}
   m_CommonLens: 1
   m_Lens:
     FieldOfView: 60
@@ -54165,7 +54160,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-732846
+  m_Name: pb_Mesh-60656
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -54375,7 +54370,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 11
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 710787472}
+  m_LookAt: {fileID: 2145988138}
   m_Follow: {fileID: 384097439}
   m_Lens:
     FieldOfView: 60.000004
@@ -57179,6 +57174,22 @@ PrefabInstance:
       propertyPath: footstepSound
       value: WoodFootstep
       objectReference: {fileID: 0}
+    - target: {fileID: 6401591725075934989, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401591725075934989, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401591725075934989, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401591725075934989, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6465160824004031017, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.9912398
@@ -57287,6 +57298,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1283900414}
   m_SourcePrefab: {fileID: 100100000, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
+--- !u!4 &2145988138 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6401591725075934989, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
+  m_PrefabInstance: {fileID: 2145988137}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2146526615
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -223,6 +223,8 @@ public class DialogueManager : Singleton<DialogueManager>
                     else
                     {
                         rightSpeakerNameText.text = value;
+                        if (value == "None")
+                            rightSpeakerNameText.text = "";
                     }
                     break;
 

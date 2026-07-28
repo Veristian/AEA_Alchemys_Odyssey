@@ -1165,6 +1165,8 @@ MonoBehaviour:
     character: 6
   - sprite: {fileID: 21300000, guid: 170530e41c892a249b9bd1d277287840, type: 3}
     character: 7
+  - sprite: {fileID: 0}
+    character: 0
   textSpeed: 0.02
   fadeDuration: 0.3
 --- !u!1 &6378966838399308029
@@ -2188,10 +2190,11 @@ MonoBehaviour:
   canTakeInputs: 1
   canPause: 1
   canMove: 1
-  canLook: 1
   canInteract: 1
   canUiPopup: 1
+  _canLook: 1
   playerInput: {fileID: 4819959703283942306}
+  cameraInputProvider: {fileID: 0}
   Movement: {x: 0, y: 0}
   Look: {x: 0, y: 0}
   Scroll: {x: 0, y: 0}

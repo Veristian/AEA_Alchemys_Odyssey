@@ -343,6 +343,8 @@ public class ParticleGuide : Singleton<ParticleGuide>
         currentPath.Clear();
 
         ClearParticles();
+
+        ShowAllDestinations();
     }
 
     private void ClearParticles()
@@ -375,7 +377,6 @@ public class ParticleGuide : Singleton<ParticleGuide>
 
     public void FindDestinationWithName(string name)
     {
-        Debug.Log("Name is " + name);
         if (name == "None")
         {
             HideGuide();
@@ -385,9 +386,12 @@ public class ParticleGuide : Singleton<ParticleGuide>
         {
             if (destination.name == name)
             {
-                GuideTo(
-                    destination.destinationObject.transform
-                );
+                HideAllDestinations();
+
+                // Show only the selected destination
+                destination.destinationObject.SetActive(true);
+
+                GuideTo(destination.destinationObject.transform);
 
                 return;
             }
@@ -396,5 +400,27 @@ public class ParticleGuide : Singleton<ParticleGuide>
         Debug.LogWarning(
             "Destination not found: " + name
         );
+    }
+
+    private void HideAllDestinations()
+    {
+        foreach (Destination destination in destinations)
+        {
+            if (destination.destinationObject != null)
+            {
+                destination.destinationObject.SetActive(false);
+            }
+        }
+    }
+
+    private void ShowAllDestinations()
+    {
+        foreach (Destination destination in destinations)
+        {
+            if (destination.destinationObject != null)
+            {
+                destination.destinationObject.SetActive(true);
+            }
+        }
     }
 }

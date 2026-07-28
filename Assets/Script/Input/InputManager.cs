@@ -10,7 +10,18 @@ public class InputManager : Singleton<InputManager>
 {
     [Header("Input Settings")]
     //bool
-    public bool canTakeInputs = true;
+    [SerializeField] bool _canTakeInputs = true;
+    public bool canTakeInputs
+    {
+        get => _canTakeInputs;
+        set
+        {
+            if (_canTakeInputs == value) return;
+
+            _canTakeInputs = value;
+            UpdateCameraLookState();
+        }
+    }
     public bool canPause = true;
     public bool canMove = true;
     public bool canInteract = true;
@@ -254,7 +265,7 @@ public class InputManager : Singleton<InputManager>
     public void UpdateCameraLookState()
     {
         if (cameraInputProvider != null)
-            cameraInputProvider.enabled = _canLook;
+            cameraInputProvider.enabled = _canLook && _canTakeInputs;
     }
 
 

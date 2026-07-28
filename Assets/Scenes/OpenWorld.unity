@@ -39259,7 +39259,6 @@ MonoBehaviour:
   inputManager: {fileID: 0}
   rotationSpeed: 12
   thirdPersonCam: {fileID: 1400372848}
-  directionChangeThreshold: 0.1
 --- !u!114 &1400372854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40158,6 +40157,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1778768563184517459, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: cameraInputProvider
+      value: 
+      objectReference: {fileID: 1943087011}
     - target: {fileID: 1796667619697630956, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

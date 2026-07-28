@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 [RequireComponent(typeof(PlayerInput))]
 public class InputManager : Singleton<InputManager>
@@ -12,13 +13,28 @@ public class InputManager : Singleton<InputManager>
     public bool canTakeInputs = true;
     public bool canPause = true;
     public bool canMove = true;
-    public bool canLook = true;
     public bool canInteract = true;
     public bool canUiPopup = true;
+    [SerializeField]
+    private bool _canLook = true;
+
+    public bool canLook
+    {
+        get => _canLook;
+        set
+        {
+            if (_canLook == value) return;
+
+            _canLook = value;
+            UpdateCameraLookState();
+        }
+    }
     
     [Header("References")]
     //ref
     public PlayerInput playerInput;
+    [Header("Camera")]
+    public CinemachineInputProvider cameraInputProvider;
     [Header("Input Values")]
     //inputs
     [ReadOnly] public Vector2 Movement;
@@ -85,7 +101,7 @@ public class InputManager : Singleton<InputManager>
         _journalAction = playerInput.actions["Journal"];
         mainCamera = Camera.main ?? FindFirstObjectByType<Camera>();
         
-
+        UpdateCameraLookState();
     }
 
     private void Update()
@@ -234,6 +250,11 @@ public class InputManager : Singleton<InputManager>
             assignedGrabbedObject = null;
         }
 
+    }
+    public void UpdateCameraLookState()
+    {
+        if (cameraInputProvider != null)
+            cameraInputProvider.enabled = _canLook;
     }
 
 

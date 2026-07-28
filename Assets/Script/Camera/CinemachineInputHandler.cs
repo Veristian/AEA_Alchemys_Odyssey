@@ -13,15 +13,23 @@ public class CinemachineInputHandler : MonoBehaviour
 
     [Header("Camera Styles")]
     public GameObject thirdPersonCam;    // Cinemachine Virtual Cam 
-    private Vector3 lastInputDir = Vector3.zero;
-    [SerializeField, Range(0f,1f)] private float directionChangeThreshold = 0.1f; 
+    private Vector2 lastInputDir = Vector3.zero;
+    // [SerializeField, Range(0f,1f)] private float directionChangeThreshold = 0.1f; 
+    bool usingThirdPerson;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         inputManager = InputManager.Instance;
-
+        
+        var trigger = FindAnyObjectByType<WhilePivotTrigger>();
+        if (trigger == null)
+        {
+            usingThirdPerson = true;
+        }
+        else
+            usingThirdPerson = false;
     }
 
     private void Update()
@@ -36,7 +44,7 @@ public class CinemachineInputHandler : MonoBehaviour
     private void HandleOrientation()
     {
         Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
-        if (Vector2.Dot(InputManager.Instance.Movement, lastInputDir) <  (1 - directionChangeThreshold) || Vector3.Dot(orientation.forward, viewDir.normalized) > (1 - directionChangeThreshold))
+        if (inputManager.Movement != lastInputDir || usingThirdPerson)
         {
             orientation.forward = viewDir.normalized;       
         }

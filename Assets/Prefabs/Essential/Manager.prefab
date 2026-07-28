@@ -416,7 +416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupContainer: {fileID: 8354054381399325693}
   popupPrefab: {fileID: 8993403073093976266}
-  CoinSprite: {fileID: 0}
+  CoinSprite: {fileID: 21300000, guid: 3dad3139725b24645a8fdba1e6c430b8, type: 3}
   maxPopups: 4
   popupDuration: 3
   moveSpeed: 12
@@ -2187,7 +2187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c96667a4e9d11419cd6bc78a37275d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canTakeInputs: 1
+  _canTakeInputs: 1
   canPause: 1
   canMove: 1
   canInteract: 1

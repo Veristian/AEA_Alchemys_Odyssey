@@ -104,8 +104,8 @@ MonoBehaviour:
         m_Extent: {x: 526.5, y: 40.5, z: 526.5}
     - sceneGUID: 194eef0abba6fed4aafe3952942aef03
       bounds:
-        m_Center: {x: -202.5, y: 364.5, z: -40.5}
-        m_Extent: {x: 526.5, y: 40.5, z: 526.5}
+        m_Center: {x: -202.5, y: 405, z: -81}
+        m_Extent: {x: 526.5, y: 162, z: 567}
     - sceneGUID: 3634af443ffc99c4c8a4da79aaac2184
       bounds:
         m_Center: {x: -81, y: 364.5, z: -243}

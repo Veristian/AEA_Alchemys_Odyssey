@@ -54,7 +54,7 @@ public class IngredientHouseItem : MonoBehaviour, IPointerDownHandler, IPointerE
         
     }
 
-    private void UpdateDisplay()
+    public void UpdateDisplay()
     {
         amountText.text = displayedObjectAmount.ToString();
 

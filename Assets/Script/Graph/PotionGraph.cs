@@ -226,6 +226,7 @@ public class PotionGraph : MonoBehaviour
         
         currentPoints[index-1].z += force;
     }
+
 #endregion
 
 

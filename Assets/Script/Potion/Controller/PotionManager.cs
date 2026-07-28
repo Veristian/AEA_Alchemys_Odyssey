@@ -568,6 +568,33 @@ public class PotionManager : Singleton<PotionManager>
         }
     }
 
+
+    //undo
+
+    public void UndoLastIngredient()
+    {
+        if (currentActivePotionIngredients.Count == 0)
+            return;
+
+        // Get the last ingredient
+        StoredData last = currentActivePotionIngredients[^1];
+
+        // Remove it from the list
+        currentActivePotionIngredients.RemoveAt(currentActivePotionIngredients.Count - 1);
+
+        // Remove its curve
+        potionGraph.RemoveLastCurve();
+
+        // Return the ingredient to the player
+        IngredientHouse.Instance.UpdateIngredientsHousesObjTaken(
+            new List<IngredientData> { last.ingredientData },
+            returnIngredient: true
+        );
+
+    }
+
+
+
     
 #endregion
 }

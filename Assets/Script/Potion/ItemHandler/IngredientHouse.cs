@@ -83,11 +83,13 @@ public class IngredientHouse : Singleton<IngredientHouse>
                     {
                         houseItem.objTaken -= removeCount;
                     }
+                    houseItem.UpdateDisplay();
                     houseItem.gameObject.SetActive(true);
                 }
                 else
                 {
                     houseItem.objTaken += removeCount;
+                    houseItem.UpdateDisplay();
                     if (houseItem.objTaken >= houseItem.Ingredient.amount)
                     {
                         houseItem.gameObject.SetActive(false);

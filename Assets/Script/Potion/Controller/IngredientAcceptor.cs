@@ -7,8 +7,11 @@ public class IngredientAcceptor : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (InputManager.Instance.isGrabbing) return;
         PotionIngredientObject ingredient = collision.GetComponentInParent<PotionIngredientObject>();
+        if (InputManager.Instance.isGrabbing)
+        {
+            if (InputManager.Instance.assignedGrabbedObject.gameObject == ingredient.gameObject) return;
+        }
 
         if (ingredient != null)
         {

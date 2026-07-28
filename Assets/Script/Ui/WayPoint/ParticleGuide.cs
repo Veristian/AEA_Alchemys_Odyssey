@@ -2,11 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParticleGuide : MonoBehaviour
+public class ParticleGuide : Singleton<ParticleGuide>
 {
+    [System.Serializable]
+    public class Destination
+    {
+        public string name;
+        public GameObject destinationObject;
+    }
+
     [Header("References")]
     [SerializeField] private Transform player;
     [SerializeField] private ParticleSystem particlePrefab;
+    [SerializeField] private Destination[] destinations;
     private Coroutine particlePathCoroutine;
 
     [Header("Particle Settings")]
@@ -363,5 +371,30 @@ public class ParticleGuide : MonoBehaviour
     private void OnDestroy()
     {
         ClearParticles();
+    }
+
+    public void FindDestinationWithName(string name)
+    {
+        Debug.Log("Name is " + name);
+        if (name == "None")
+        {
+            HideGuide();
+            return;
+        }
+        foreach (Destination destination in destinations)
+        {
+            if (destination.name == name)
+            {
+                GuideTo(
+                    destination.destinationObject.transform
+                );
+
+                return;
+            }
+        }
+
+        Debug.LogWarning(
+            "Destination not found: " + name
+        );
     }
 }

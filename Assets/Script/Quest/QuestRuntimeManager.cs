@@ -282,6 +282,7 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
         PlayerDataManager.Instance.AddGold(playerQuestData.questData.questActions.goldReward);
 
         if (UiLoader.Instance.displayedQuestData == playerQuestData) UiLoader.Instance.UnTrackQuest();
+        
     }
     public void SubmitQuest(string questId)
     {
@@ -294,6 +295,7 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
         MarkQuestAsCompleted(playerQuestData);
         //reward player
         PlayerDataManager.Instance.AddGold(playerQuestData.questData.questActions.goldReward);
+        if (UiLoader.Instance.displayedQuestData == playerQuestData) UiLoader.Instance.UnTrackQuest();
     }
 #endregion
 

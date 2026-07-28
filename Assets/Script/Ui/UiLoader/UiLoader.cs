@@ -293,12 +293,16 @@ public class UiLoader : Singleton<UiLoader>
 
     public void TrackQuest()
     {
-        if (displayedQuestData != null)
+        if (displayedQuestData.questData != null)
         {
             QuestRuntimeManager.Instance.SetTrackedQuest(displayedQuestData);
             trackedQuestPanel.SetActive(true);
             trackedQuestName.text = displayedQuestData.questData.questName;
             trackedQuestDescription.text = displayedQuestData.questData.questDescription;
+            if (ParticleGuide.Instance != null)
+            {
+                ParticleGuide.Instance.FindDestinationWithName(displayedQuestData.questData.submissionCharacter.ToString());
+            }
         }
     }
     public void UnTrackQuest()
@@ -307,7 +311,10 @@ public class UiLoader : Singleton<UiLoader>
         trackedQuestPanel.SetActive(false);
         trackedQuestName.text = "";
         trackedQuestDescription.text = "";
-        
+        if (ParticleGuide.Instance != null)
+        {
+            ParticleGuide.Instance.HideGuide();
+        }
     }
 
     private void DisplayEmptyQuest()

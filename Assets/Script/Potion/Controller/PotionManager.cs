@@ -359,6 +359,8 @@ public class PotionManager : Singleton<PotionManager>
         Cursor.visible = true;
 
         PotionHouse.Instance.UpdatePotionDisplay();
+        IngredientHouse.Instance.SetupIngredients();
+
     }
     public void AssignPotionTarget(PotionData potionData)
     {

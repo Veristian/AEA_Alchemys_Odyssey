@@ -25,7 +25,7 @@ public class IngredientHouse : Singleton<IngredientHouse>
             DataManager.Instance.OnGameLoaded -= SetupIngredients;
     }
 
-    private void SetupIngredients()
+    public void SetupIngredients()
     {
         if (contentTransform == null)
         {

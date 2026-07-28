@@ -40,6 +40,7 @@ public class RecipeHouse : Singleton<RecipeHouse>
             Destroy(child.gameObject);
         }
         recipeHouseItems.Clear();
+        RecipeAmount = 0;
         foreach (Recipe recipe in PlayerDataManager.Instance.RecipeList.recipes)
         {
             if (recipe.targetPotion.potionId == "Null_Potion")

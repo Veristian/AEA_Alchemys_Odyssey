@@ -8732,7 +8732,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'd ad ad  asd as da daD Awd aD ad sad AW Da DSd wa '
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d0ae50fc293931545a68b2ac4a828cc5, type: 2}
   m_sharedMaterial: {fileID: -1166363021310181650, guid: d0ae50fc293931545a68b2ac4a828cc5, type: 2}
@@ -22285,7 +22285,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: None
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d0ae50fc293931545a68b2ac4a828cc5, type: 2}
   m_sharedMaterial: {fileID: -1166363021310181650, guid: d0ae50fc293931545a68b2ac4a828cc5, type: 2}

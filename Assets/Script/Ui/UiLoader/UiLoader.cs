@@ -86,6 +86,7 @@ public class UiLoader : Singleton<UiLoader>
         trackedQuestPanel?.SetActive(false);
         DisplayDay(DayManager.Instance.Day);
         LoadShopData();
+        LoadQuestData();
     }
     private void OnEnable()
     {
@@ -196,6 +197,9 @@ public class UiLoader : Singleton<UiLoader>
             JournalDisplay journalDisplay = potionItem.GetComponent<JournalDisplay>();
             journalDisplay.InitPotionDisplay(potionData);
         }
+
+
+
             
     }
 
@@ -278,6 +282,7 @@ public class UiLoader : Singleton<UiLoader>
         if (QuestRuntimeManager.Instance.TrackedQuest != null && QuestRuntimeManager.Instance.TrackedQuest.questData != null)
         {
             DisplayQuestData(QuestRuntimeManager.Instance.TrackedQuest);
+            TrackQuest();
         }
 
     }

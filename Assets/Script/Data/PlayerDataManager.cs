@@ -233,6 +233,7 @@ public class PlayerDataManager : Singleton<PlayerDataManager>
     public void AddGold(int gold)
     {
         this.gold += gold;
+        PickupPopupManager.Instance.ShowCoinReward(gold);
     }
     public bool SubtractGold(int gold)
     {

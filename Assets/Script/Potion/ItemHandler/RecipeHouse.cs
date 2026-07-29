@@ -65,7 +65,7 @@ public class RecipeHouse : Singleton<RecipeHouse>
             RecipeAmount++;
                
         }
-        int TotalPotionLength = DataManager.Instance.potionDatas.Count - 1;
+        int TotalPotionLength = DataManager.Instance.potionDatas.Count;
         RecipeAmountText.text = RecipeAmount.ToString() + "/" + TotalPotionLength;
     }
 

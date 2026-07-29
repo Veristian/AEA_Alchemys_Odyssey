@@ -132,6 +132,11 @@ public class DialogueManager : Singleton<DialogueManager>
         PlayerPopUpUiManager.Instance.CloseAllPopups();
 
         SetPlayerControl(true);
+
+        if (PlayerPopUpUiManager.Instance != null)
+        {
+            PlayerPopUpUiManager.Instance.QuestResultChecker();
+        }
     }
 
     // ================================

@@ -283,6 +283,10 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
 
         if (UiLoader.Instance.displayedQuestData == playerQuestData) UiLoader.Instance.UnTrackQuest();
         
+        if (PlayerPopUpUiManager.Instance != null)
+        {
+            PlayerPopUpUiManager.Instance.QuestResultSetup(playerQuestData.questData.questName, playerQuestData.questData.questActions.goldReward);
+        }
     }
     public void SubmitQuest(string questId)
     {
@@ -296,6 +300,11 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
         //reward player
         PlayerDataManager.Instance.AddGold(playerQuestData.questData.questActions.goldReward);
         if (UiLoader.Instance.displayedQuestData == playerQuestData) UiLoader.Instance.UnTrackQuest();
+
+        if (PlayerPopUpUiManager.Instance != null)
+        {
+            PlayerPopUpUiManager.Instance.QuestResultSetup(playerQuestData.questData.questName, playerQuestData.questData.questActions.goldReward);
+        }
     }
 #endregion
 

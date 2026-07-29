@@ -135,6 +135,11 @@ public class DialogueManager : Singleton<DialogueManager>
 
         SetPlayerControl(true);
         isSkipping = false;
+
+        if (PlayerPopUpUiManager.Instance != null)
+        {
+            PlayerPopUpUiManager.Instance.QuestResultChecker();
+        }
     }
 
     // ================================

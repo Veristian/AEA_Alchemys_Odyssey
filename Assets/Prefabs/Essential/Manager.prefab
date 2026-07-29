@@ -397,6 +397,7 @@ MonoBehaviour:
   dailyTidalsPanel: {fileID: 6747434029583911112}
   gameStorePanel: {fileID: 597566503529007705}
   tutorialPanel: {fileID: 7749526371430719220}
+  questResultPanel: {fileID: 9063374006138776977}
   JournalCloseBtn: {fileID: 6080820996860698865}
   InventoryCloseBtn: {fileID: 5632452113436301098}
   PauseMenuCloseBtn: {fileID: 1131508274133475077}
@@ -404,6 +405,8 @@ MonoBehaviour:
   GameStoreCloseBtn: {fileID: 6816120874483180616}
   TutorialCloseBtn: {fileID: 2937875305469568169}
   PlayerHUD: {fileID: 6700309536345766601}
+  questResultQuestName: {fileID: 1591166950959982116}
+  questResultQUestReward: {fileID: 3074656014615794235}
 --- !u!114 &2934891651131802162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3168,6 +3171,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1591166950959982116 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6388792765068994164, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
+  m_PrefabInstance: {fileID: 5673823884265799760}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2937875305469568169 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7383676623015224569, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
@@ -3177,6 +3191,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3074656014615794235 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7211995387446104683, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
+  m_PrefabInstance: {fileID: 5673823884265799760}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &3472511733449212519 stripped
@@ -3380,3 +3405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1341da6bba8c5ef469787c02f3ccc402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &9063374006138776977 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3709534947399396801, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
+  m_PrefabInstance: {fileID: 5673823884265799760}
+  m_PrefabAsset: {fileID: 0}

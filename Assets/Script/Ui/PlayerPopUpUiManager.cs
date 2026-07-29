@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.Properties;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -23,6 +25,7 @@ public class PlayerPopUpUiManager : MonoBehaviour
     [SerializeField] private GameObject dailyTidalsPanel;
     [SerializeField] private GameObject gameStorePanel;
     [SerializeField] private GameObject tutorialPanel;
+    [SerializeField] private GameObject questResultPanel;
 
     [Header("CloseBtns")]
     [SerializeField] private Button JournalCloseBtn;
@@ -34,6 +37,11 @@ public class PlayerPopUpUiManager : MonoBehaviour
 
     [Header("UiCategory")]
     [SerializeField] private GameObject PlayerHUD;
+
+    [Header("QuestResultReference")]
+    [SerializeField] private TextMeshProUGUI questResultQuestName;
+    [SerializeField] private TextMeshProUGUI questResultQUestReward;
+    private bool isQuestCompleteHolding = false;
 
     
 
@@ -242,6 +250,32 @@ public class PlayerPopUpUiManager : MonoBehaviour
     public void CloseTutorialPanel()
     {
         UITransitionManager.Instance.FadeOut(tutorialPanel);
+    }
+
+    public void OpenQuestResultPanel()
+    {
+        questResultPanel.SetActive(true);
+        isQuestCompleteHolding = false;
+    }
+
+    public void CloseQuestResultPanel()
+    {
+        UITransitionManager.Instance.FadeOut(questResultPanel);
+    }
+
+    public void QuestResultSetup(string name, int amount)
+    {
+        questResultQuestName.text = name;
+        questResultQUestReward.text = "Reward: " + amount + " Coins";
+        isQuestCompleteHolding = true;
+    }
+
+    public void QuestResultChecker()
+    {
+        if (isQuestCompleteHolding)
+        {
+            OpenQuestResultPanel();
+        }
     }
    
 }

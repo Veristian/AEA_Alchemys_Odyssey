@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,6 +22,16 @@ public class DialogUiManager : Singleton<DialogUiManager>
     [SerializeField] private Color ActiveColor = Color.white;
     [SerializeField] private Color InActiveColor = Color.gray;
 
+    [Header("Buttons")]
+    [SerializeField] private Button skipBtn;
+
+    private void Start()
+    {
+        if (skipBtn != null)
+        {
+            skipBtn.onClick.AddListener(SkipDialogueTrigger);
+        }
+    }
     public void MainCharacterSpeak()
     {
         SetSpeaker(
@@ -60,4 +68,10 @@ public class DialogUiManager : Singleton<DialogUiManager>
         activeBox.anchoredPosition = Vector2.zero;
         inactiveBox.anchoredPosition = Vector2.zero;
     }
+
+    private void SkipDialogueTrigger()
+    {
+        DialogueManager.Instance.SkipDialogue();
+    }
+
 }

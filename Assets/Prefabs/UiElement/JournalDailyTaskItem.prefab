@@ -210,10 +210,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mr.dhasjda sdasd sahdgas hgjhs sah s
+  m_text: 'Mr.dhasjda : sdasd sahdgas hgjhs sah s'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3ddeec4cd6f1f064685ea95894a3e012, type: 2}
-  m_sharedMaterial: {fileID: -5864111023828156964, guid: 3ddeec4cd6f1f064685ea95894a3e012, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4404835a3819d4745ab48c19d8c4551c, type: 2}
+  m_sharedMaterial: {fileID: -4321916364237304244, guid: 4404835a3819d4745ab48c19d8c4551c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

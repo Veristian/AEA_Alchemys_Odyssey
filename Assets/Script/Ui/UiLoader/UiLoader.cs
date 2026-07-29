@@ -76,6 +76,8 @@ public class UiLoader : Singleton<UiLoader>
     [SerializeField] private TextMeshProUGUI localNewsText;
     [SerializeField] private TextMeshProUGUI localNewsDescription;
     [SerializeField] private Image localNewsImage;
+    [SerializeField] private TextMeshProUGUI newsDayText;
+    [SerializeField] private TextMeshProUGUI newsVolText;
 
     [Header("News/Load")]
     [SerializeField] private Transform newsRequestContainer;
@@ -476,6 +478,8 @@ public class UiLoader : Singleton<UiLoader>
         newsHeadlineText.text = DayManager.Instance.currentHeadline.headlineText;
         newsHeadlineDescription.text = DayManager.Instance.currentHeadline.headlineDescription;
         newsHeadlineImage.sprite = DayManager.Instance.currentHeadline.headlineImage;
+        newsDayText.text = "Day " + DayManager.Instance.Day.ToString();
+        newsVolText.text = "Vol." + DayManager.Instance.Day.ToString();
 
         localNewsText.text = DayManager.Instance.currentLocalNews.newsText;
         localNewsDescription.text = DayManager.Instance.currentLocalNews.newsDescription;

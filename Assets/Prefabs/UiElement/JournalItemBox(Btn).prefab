@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3908224341569262853}
   - component: {fileID: 4589703351845440356}
   - component: {fileID: -6514944734471207578}
+  - component: {fileID: 3836646109890794059}
   m_Layer: 5
   m_Name: JournalItemBox(Btn)
   m_TagString: Untagged
@@ -134,3 +135,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemImage: {fileID: 3908224341569262853}
+--- !u!114 &3836646109890794059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893104686480014010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1901a453bc8096e4fb915ec5dfea963c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.2
+  duration: 0.15

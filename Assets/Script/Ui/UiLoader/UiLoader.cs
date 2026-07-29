@@ -253,6 +253,8 @@ public class UiLoader : Singleton<UiLoader>
         goldIcon.SetActive(false);
         goldRewardAmount.text = "";
         bool hasQuest = false;
+        bool hasSubQuest = false;
+        bool hasMainQuest = false;  
 
         foreach (PlayerQuestData questData in QuestRuntimeManager.Instance.PlayerQuestsList.playerQuests)
         {
@@ -273,6 +275,11 @@ public class UiLoader : Singleton<UiLoader>
             if (questData.questData.isRepeatable)
             {
                 questItem.transform.SetParent(subQuestContainer);
+                hasSubQuest = true;
+            }
+            else
+            {
+                hasMainQuest = true;
             }
             questDisplay.Initialize(questData);
         }
@@ -280,6 +287,14 @@ public class UiLoader : Singleton<UiLoader>
         {
             Debug.Log("No ongoing quests.");
             DisplayEmptyQuest();
+        }
+        if (hasQuest && !hasSubQuest)
+        {
+            DisplayEmptyQuestInSub();
+        }
+        if (hasQuest && !hasMainQuest)
+        {
+            DisplayEmptyQuestInMain();
         }
 
         if (QuestRuntimeManager.Instance.TrackedQuest != null && QuestRuntimeManager.Instance.TrackedQuest.questData != null)
@@ -336,6 +351,14 @@ public class UiLoader : Singleton<UiLoader>
     {
         Instantiate(questEmptyPrefab, mainQuestContainer);
         Instantiate(questEmptyPrefab, subQuestContainer);
+    }
+    private void DisplayEmptyQuestInSub()
+    {
+        Instantiate(questEmptyPrefab, subQuestContainer);
+    }
+    private void DisplayEmptyQuestInMain()
+    {
+        Instantiate(questEmptyPrefab, mainQuestContainer);
     }
 
     private void CheckTrackingQuest()

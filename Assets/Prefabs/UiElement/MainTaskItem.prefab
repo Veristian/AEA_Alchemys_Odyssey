@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8977625412424078491}
   - component: {fileID: 6735416375482601322}
   - component: {fileID: 5576105832505201777}
+  - component: {fileID: 8858074545421608824}
   m_Layer: 5
   m_Name: MainTaskItem
   m_TagString: Untagged
@@ -158,6 +159,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questName: {fileID: 5003519843681611881}
+--- !u!114 &8858074545421608824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5445225964478593423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1901a453bc8096e4fb915ec5dfea963c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.1
+  duration: 0.15
 --- !u!1 &7107291054016677362
 GameObject:
   m_ObjectHideFlags: 0

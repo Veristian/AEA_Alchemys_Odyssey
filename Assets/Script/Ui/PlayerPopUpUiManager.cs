@@ -22,6 +22,7 @@ public class PlayerPopUpUiManager : MonoBehaviour
     [SerializeField] private GameObject dialogPanel;
     [SerializeField] private GameObject dailyTidalsPanel;
     [SerializeField] private GameObject gameStorePanel;
+    [SerializeField] private GameObject tutorialPanel;
 
     [Header("CloseBtns")]
     [SerializeField] private Button JournalCloseBtn;
@@ -29,6 +30,7 @@ public class PlayerPopUpUiManager : MonoBehaviour
     [SerializeField] private Button PauseMenuCloseBtn;
     [SerializeField] private Button DailyTidalCloseBtn;
     [SerializeField] private Button GameStoreCloseBtn;
+    [SerializeField] private Button TutorialCloseBtn;
 
     [Header("UiCategory")]
     [SerializeField] private GameObject PlayerHUD;
@@ -131,6 +133,7 @@ public class PlayerPopUpUiManager : MonoBehaviour
         pauseMenuPanel.SetActive(false);
         dialogPanel.SetActive(false);
         dailyTidalsPanel.SetActive(false);
+        tutorialPanel.SetActive(false);
 
         currentPopup = null;
 
@@ -205,6 +208,10 @@ public class PlayerPopUpUiManager : MonoBehaviour
         {
             GameStoreCloseBtn.onClick.AddListener(CloseGameStore);
         }
+        if (TutorialCloseBtn != null)
+        {
+            TutorialCloseBtn.onClick.AddListener(CloseTutorialPanel);
+        }
 
     }
 
@@ -227,5 +234,14 @@ public class PlayerPopUpUiManager : MonoBehaviour
         Cursor.visible = false;
     }
 
+    public void OpenTutorialPanel()
+    {
+        UITransitionManager.Instance.FadeIn(tutorialPanel);
+    }
+
+    public void CloseTutorialPanel()
+    {
+        UITransitionManager.Instance.FadeOut(tutorialPanel);
+    }
    
 }

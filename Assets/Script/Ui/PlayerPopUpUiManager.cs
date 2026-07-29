@@ -42,6 +42,7 @@ public class PlayerPopUpUiManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI questResultQuestName;
     [SerializeField] private TextMeshProUGUI questResultQUestReward;
     private bool isQuestCompleteHolding = false;
+    public bool isInPCrafting = false;
 
     
 
@@ -89,8 +90,17 @@ public class PlayerPopUpUiManager : MonoBehaviour
             InputManager.Instance.EnableInputs();
             //InputManager.Instance.canMove = true;
             //InputManager.Instance.canLook = true;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            if (isInPCrafting)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            
             return;
         }
         if (isPopUpOpened)

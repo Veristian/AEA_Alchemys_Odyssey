@@ -334,9 +334,15 @@ public class PotionManager : Singleton<PotionManager>
         InputManager.Instance.canInteract = true;
         InputManager.Instance.canMove = true;
         InputManager.Instance.canLook = true;
+        InputManager.Instance.canUiPopup = true;
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        if (PlayerPopUpUiManager.Instance != null)
+        {
+            PlayerPopUpUiManager.Instance.isInPCrafting = false;
+        }
     }
 
     public void ActivatePotionInterface()
@@ -354,12 +360,18 @@ public class PotionManager : Singleton<PotionManager>
         InputManager.Instance.canInteract = false;
         InputManager.Instance.canMove = false;
         InputManager.Instance.canLook = false;
+        InputManager.Instance.canUiPopup= false;
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
         PotionHouse.Instance.UpdatePotionDisplay();
         IngredientHouse.Instance.SetupIngredients();
+
+        if (PlayerPopUpUiManager.Instance != null)
+        {
+            PlayerPopUpUiManager.Instance.isInPCrafting = true;
+        }
 
     }
     public void AssignPotionTarget(PotionData potionData)

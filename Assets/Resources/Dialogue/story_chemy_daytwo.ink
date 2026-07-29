@@ -5,7 +5,7 @@ Helloooo there's mail for Chemy!
 # speaker: Chemy
 Mmm... coming...
 
-# func: teleport@-57.9275093,365.427765,-260.37915
+# func: teleport@InteriorHouseSpawn
 # speaker: Poshe
 Good morning! You must be Chemy, the new alchemist!
 

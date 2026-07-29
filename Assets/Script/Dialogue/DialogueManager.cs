@@ -39,6 +39,8 @@ public class DialogueManager : Singleton<DialogueManager>
     public bool isTyping { get; private set; }
     public bool dialogueActive { get; private set; }
 
+    public bool isSkipping { get; private set; }
+
     public static TextAsset GetInkJSON(string name)
     {
         TextAsset inkJSON = Resources.Load<TextAsset>(DialogueResourcePath + name);
@@ -132,6 +134,7 @@ public class DialogueManager : Singleton<DialogueManager>
         PlayerPopUpUiManager.Instance.CloseAllPopups();
 
         SetPlayerControl(true);
+        isSkipping = false;
     }
 
     // ================================
@@ -158,7 +161,7 @@ public class DialogueManager : Singleton<DialogueManager>
     {
         if (!dialogueActive) return;
 
-        if (InputManager.Instance.MouseLeftWasReleased)
+        if (InputManager.Instance.MouseLeftWasReleased || isSkipping)
         {
             if (isTyping)
             {
@@ -385,6 +388,11 @@ public class DialogueManager : Singleton<DialogueManager>
 
         //     StartCoroutine(FadeIn(target));
         // }
+    }
+
+    public void SkipDialogue()
+    {
+        isSkipping = true;
     }
     // // ================================
     // // 🔹 FADE IN

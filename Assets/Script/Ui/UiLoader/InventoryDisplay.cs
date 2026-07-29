@@ -22,7 +22,7 @@ public class InventoryDisplay : MonoBehaviour
     {
         this.potionInventoryData = potionInventoryData;
         itemImage.sprite = potionInventoryData.potionData.potionSprite;
-        itemAmountText.text = null; // no amounts
+        itemAmountText.text = "1"; // no amounts
     }
 
     private void OnEnable()

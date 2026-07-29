@@ -43768,7 +43768,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh489920
+  m_Name: pb_Mesh50766
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -44993,6 +44993,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4037717408291097329, guid: 3b38a90c95773bd43a3bed1891e35a40, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a7c9634257a78114cbd1268d97942e9a, type: 3}
     - target: {fileID: 5048214357860557469, guid: 3b38a90c95773bd43a3bed1891e35a40, type: 3}
       propertyPath: m_Camera
       value: 
@@ -45144,6 +45148,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4037717408291097329, guid: 3b38a90c95773bd43a3bed1891e35a40, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e4fd39ecbe17f854a879cfd63e0af5b7, type: 3}
     - target: {fileID: 5048214357860557469, guid: 3b38a90c95773bd43a3bed1891e35a40, type: 3}
       propertyPath: m_Camera
       value: 
@@ -45277,7 +45285,15 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: d0ae50fc293931545a68b2ac4a828cc5, type: 2}
     - target: {fileID: 2520084870347355457, guid: 3b38a90c95773bd43a3bed1891e35a40, type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3109229923270252926, guid: 3b38a90c95773bd43a3bed1891e35a40, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3109229923270252926, guid: 3b38a90c95773bd43a3bed1891e35a40, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 3788977802733704553, guid: 3b38a90c95773bd43a3bed1891e35a40, type: 3}
       propertyPath: m_text
@@ -45289,8 +45305,12 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: d0ae50fc293931545a68b2ac4a828cc5, type: 2}
     - target: {fileID: 3788977802733704553, guid: 3b38a90c95773bd43a3bed1891e35a40, type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4037717408291097329, guid: 3b38a90c95773bd43a3bed1891e35a40, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f6fbd698736367645b0cc056ebae182e, type: 3}
     - target: {fileID: 5048214357860557469, guid: 3b38a90c95773bd43a3bed1891e35a40, type: 3}
       propertyPath: m_Camera
       value: 
@@ -55323,6 +55343,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4037717408291097329, guid: 3b38a90c95773bd43a3bed1891e35a40, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a24c73fdee598ad4ca987308f277cb66, type: 3}
     - target: {fileID: 5048214357860557469, guid: 3b38a90c95773bd43a3bed1891e35a40, type: 3}
       propertyPath: m_Camera
       value: 

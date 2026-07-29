@@ -50,7 +50,10 @@ public class UiLoader : Singleton<UiLoader>
     [SerializeField] private TextMeshProUGUI trackedQuestName;
     [SerializeField] private TextMeshProUGUI trackedQuestDescription;
     [SerializeField] private GameObject trackedQuestPanel;
+    [SerializeField] private TextMeshProUGUI questTrackButtonText;
     public PlayerQuestData displayedQuestData;
+    private PlayerQuestData currentTrackedQuest;
+    private bool isTracking =false;
 
     [Header("Shop")]
     [Header("Shop/Load")]
@@ -294,6 +297,7 @@ public class UiLoader : Singleton<UiLoader>
         questDescription.text = displayedQuestData.questData.questDescription;
         goldIcon.SetActive(true);
         goldRewardAmount.text = displayedQuestData.questData.questActions.goldReward.ToString();
+        CheckTrackingQuest();
     }
 
     public void TrackQuest()
@@ -308,6 +312,9 @@ public class UiLoader : Singleton<UiLoader>
             {
                 ParticleGuide.Instance.FindDestinationWithName(displayedQuestData.questData.submissionCharacter.ToString());
             }
+            currentTrackedQuest = displayedQuestData;
+
+            CheckTrackingQuest();
         }
     }
     public void UnTrackQuest()
@@ -320,6 +327,9 @@ public class UiLoader : Singleton<UiLoader>
         {
             ParticleGuide.Instance.HideGuide();
         }
+
+        currentTrackedQuest = null;
+        CheckTrackingQuest();
     }
 
     private void DisplayEmptyQuest()
@@ -328,11 +338,37 @@ public class UiLoader : Singleton<UiLoader>
         Instantiate(questEmptyPrefab, subQuestContainer);
     }
 
-    
-#endregion
+    private void CheckTrackingQuest()
+    {
+        if (currentTrackedQuest == displayedQuestData)
+        {
+            isTracking = true;
+            questTrackButtonText.text = ("Untrack");
+        }
+        else
+        {
+            isTracking = false;
+            questTrackButtonText.text = ("Track");
+        }
+    }
 
-#region Shop
-    
+    public void TrackButtonToogle()
+    {
+        if (!isTracking)
+        {
+            TrackQuest();
+        }
+        else
+        {
+            UnTrackQuest();
+        }
+    }
+
+
+    #endregion
+
+    #region Shop
+
     public void CallOpenShopEvent()
     {
         OnShopOpen?.Invoke();

@@ -21349,6 +21349,22 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6465160824004031017, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.8001212
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465160824004031017, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.8001212
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465160824004031017, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.8001212
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465160824004031017, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.51
+      objectReference: {fileID: 0}
     - target: {fileID: 6539077205983189526, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -32191,7 +32207,6 @@ MonoBehaviour:
   inputManager: {fileID: 0}
   rotationSpeed: 12
   thirdPersonCam: {fileID: 1393936034}
-  directionChangeThreshold: 0.1
 --- !u!114 &1393936038
 MonoBehaviour:
   m_ObjectHideFlags: 0

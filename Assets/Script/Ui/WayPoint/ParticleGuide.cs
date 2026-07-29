@@ -106,6 +106,7 @@ public class ParticleGuide : Singleton<ParticleGuide>
 
         updateTimer = 0f;
 
+        CleanParticleRoutine();
         UpdateGuidePath();
     }
 
@@ -185,12 +186,22 @@ public class ParticleGuide : Singleton<ParticleGuide>
             StopCoroutine(particlePathCoroutine);
         }
 
-        ClearParticles();
+        //ClearParticles();
 
         particlePathCoroutine =
             StartCoroutine(
                 SpawnParticlePath()
             );
+    }
+
+    private void CleanParticleRoutine()
+    {
+        if (particlePathCoroutine != null)
+        {
+            StopCoroutine(particlePathCoroutine);
+        }
+
+        ClearParticles();
     }
 
     private IEnumerator SpawnParticlePath()

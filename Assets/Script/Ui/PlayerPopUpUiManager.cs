@@ -193,11 +193,13 @@ public class PlayerPopUpUiManager : MonoBehaviour
     {
         CloseAllPopups();
         OpenPopup(dailyTidalsPanel);
+        AudioController.Instance.PlaySFX("Paper");
     }
 
     public void OpenDailyTidals()
     {
         OpenPopup(dailyTidalsPanel);
+        //AudioController.Instance.PlaySFX("Paper");
     }
 
     public void OpenGameStore()
@@ -273,6 +275,7 @@ public class PlayerPopUpUiManager : MonoBehaviour
     public void OpenQuestResultPanel()
     {
         questResultPanel.SetActive(true);
+        AudioController.Instance.PlaySFX("MissionComplete");
         isQuestCompleteHolding = false;
     }
 

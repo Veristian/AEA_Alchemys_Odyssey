@@ -18,12 +18,20 @@ public class PlayerInteractIndicator : Singleton<PlayerInteractIndicator>
     private bool isShowing = false;
     // Start is called before the first frame update
 
+    private void Start()
+    {
+        if (IiPanel != null)
+        {
+            IiPanel.SetActive(false);
+        }
+    }
+
     public void interactableIndicatorChecker(string text)
     {
         if (string.IsNullOrEmpty(text))
         {
             if (!isShowing) return;
-            Debug.Log("CallHide");
+            //Debug.Log("CallHide");
             isShowing = false;
             UITransitionManager.Instance.FadeOut(IiPanel);
             return;
@@ -35,7 +43,7 @@ public class PlayerInteractIndicator : Singleton<PlayerInteractIndicator>
         {
             indicatorImage.sprite = indicator.image;
             if (isShowing) return;
-            Debug.Log("CallShow");
+            //Debug.Log("CallShow");
             isShowing = true;
             UITransitionManager.Instance.FadeIn(IiPanel);
         }
@@ -43,7 +51,7 @@ public class PlayerInteractIndicator : Singleton<PlayerInteractIndicator>
         {
             Debug.LogWarning($"No indicator found for '{text}'");
             if (!isShowing) return;
-            Debug.Log("CallHide");
+            //Debug.Log("CallHide");
             isShowing= false;
             UITransitionManager.Instance.FadeOut(IiPanel);
         }

@@ -83,7 +83,7 @@ public class Herb : MonoBehaviour, IInteractable
         {
             InventoryManager.Instance.AddIngredient(ingredientData);
 
-            PickupPopupManager.Instance?.ShowPickup(ingredientData);
+            
 
             if (collectedEffect != null)
                 collectedEffect.Play();

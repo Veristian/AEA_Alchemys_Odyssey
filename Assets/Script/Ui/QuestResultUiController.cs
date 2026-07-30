@@ -18,5 +18,6 @@ public class QuestResultUiController : MonoBehaviour
         animator.ResetTrigger("Start");
         gameObject.SetActive(false);
     }
+
     
 }

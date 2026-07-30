@@ -77,7 +77,9 @@ MonoBehaviour:
   - sname: Paper
     clip: {fileID: 8300000, guid: a77ef2aaa8c249948919dbcd106f6ee1, type: 3}
   - sname: MissionComplete
-    clip: {fileID: 8300000, guid: 578a162fb871f724dbbcee2867f7ed8c, type: 3}
+    clip: {fileID: 8300000, guid: 3230026663743f14397cfdeb26f5326b, type: 3}
+  - sname: Sleep
+    clip: {fileID: 8300000, guid: 3230026663743f14397cfdeb26f5326b, type: 3}
   mixer: {fileID: 24100000, guid: c9ef8e8ae3caadf4b9e649663e9367c2, type: 2}
   bgmSourceA: {fileID: 4357190896315327549}
   bgmSourceB: {fileID: 7072061399187101781}

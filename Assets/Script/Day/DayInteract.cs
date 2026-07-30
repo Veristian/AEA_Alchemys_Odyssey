@@ -14,6 +14,7 @@ public class DayInteract : MonoBehaviour
     {
         if (isSaving) yield break;
         isSaving = true;
+        AudioController.Instance.PlaySFX("Sleep");
         InputManager.Instance.DisableInputs();
         UITransitionManager.Instance.FadeIn(SceneLoadingManager.Instance.loadingScreen, 1f);
         yield return new WaitForSeconds(2f);

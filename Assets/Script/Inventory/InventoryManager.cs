@@ -153,6 +153,7 @@ public class InventoryManager : Singleton<InventoryManager>
         if (ingredientInventoryList.ingredientsList == null)
             ingredientInventoryList.ingredientsList = new List<IngredientInventoryData>();
 
+        PickupPopupManager.Instance?.ShowPickup(ingredientData);
         var existing = ingredientInventoryList.ingredientsList
             .Find(i => i.ingredientData == ingredientData);
 

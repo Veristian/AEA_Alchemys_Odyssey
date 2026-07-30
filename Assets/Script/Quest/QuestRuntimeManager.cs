@@ -335,4 +335,13 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
         UiLoader.Instance.displayedQuestData = playerQuestData;
         UiLoader.Instance.TrackQuest();
     }
+
+    public bool IsAnyMainQuestOngoing()
+    {
+        return playerQuestsList.playerQuests.Any(q =>
+            q.isOnGoing &&
+            q.questData != null &&
+            q.questData.isMainQuest
+        );
+    }
 }

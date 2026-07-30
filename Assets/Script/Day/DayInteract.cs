@@ -7,6 +7,7 @@ public class DayInteract : MonoBehaviour
     bool isSaving;
     public void Sleep()
     {
+        if (QuestRuntimeManager.Instance.IsAnyMainQuestOngoing()) return;
         StartCoroutine(SleepRoutine());
     }
 

@@ -16,7 +16,9 @@ MonoBehaviour:
   questId: quest_violette_sleeppotion
   questName: Passionate Reading
   questDescription: Deliver a Sleep Potion to Violette
-  submissionCharacter: 2
+  questFullDescription: "Brew a Sleep Potion for Violette\n\u2193\nDeliver the potion
+    to Violette's Library"
+  submissionCharacter: 0
   requirementsToUnlock:
     requirements:
     - rid: 5999243469903888400

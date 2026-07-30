@@ -16,7 +16,9 @@ MonoBehaviour:
   questId: quest_kenneth_swiftpotion_2
   questName: Hard at Work Kenneth?
   questDescription: Deliver a Swift Potion to Kenneth
-  submissionCharacter: 3
+  questFullDescription: "Brew a Swift Potion for Kenneth\n\u2193\nDeliver the potion
+    to Kenneth's Farm House"
+  submissionCharacter: 0
   requirementsToUnlock:
     requirements:
     - rid: 1115517637186027524
@@ -27,7 +29,7 @@ MonoBehaviour:
     goldReward: 200
   isMainQuest: 0
   isRepeatable: 1
-  storyText: {fileID: 0}
+  storyText: {fileID: 4900000, guid: 73883d21693bea64b976af92a1edefbd, type: 3}
   references:
     version: 2
     RefIds:

@@ -16,7 +16,9 @@ MonoBehaviour:
   questId: quest_sven_luckpotion_2
   questName: Unlucky Sven
   questDescription: Deliver a Luck Potion to Sven
-  submissionCharacter: 4
+  questFullDescription: "Brew a Luck Potion for Old Man Sven\n\u2193\nDeliver the
+    potion to Old Man Sven's Lighthouse"
+  submissionCharacter: 0
   requirementsToUnlock:
     requirements:
     - rid: 1115517637186027526

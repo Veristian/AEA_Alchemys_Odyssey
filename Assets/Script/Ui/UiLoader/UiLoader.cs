@@ -332,7 +332,7 @@ public class UiLoader : Singleton<UiLoader>
     {
         displayedQuestData = questData;
         questName.text = displayedQuestData.questData.questName;
-        questDescription.text = displayedQuestData.questData.questDescription;
+        questDescription.text = displayedQuestData.questData.questFullDescription;
         goldIcon.SetActive(true);
         goldRewardAmount.text = displayedQuestData.questData.questActions.goldReward.ToString();
         CheckTrackingQuest();

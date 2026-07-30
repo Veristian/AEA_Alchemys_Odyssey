@@ -19,7 +19,8 @@ MonoBehaviour:
   ingredient2DObjectPrefab: {fileID: 1171091932301145056, guid: 6a93a5ffc04272545adc990358e3390e, type: 3}
   ingredientSprite: {fileID: 21300000, guid: 248b181816a6fdd4a85542fce2a14b9d, type: 3}
   description: A flower with a spinning spiral as its petal. it use its spinning
-    petal to make its predator confuse to protect itself.
+    petal to make its predator confuse to protect itself. Usually used in making
+    Nausea Relief Potion.
   ingredientCurve:
     serializedVersion: 2
     m_Curve:

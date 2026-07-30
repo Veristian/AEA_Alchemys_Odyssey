@@ -8553,7 +8553,7 @@ GameObject:
   - component: {fileID: 440034745}
   - component: {fileID: 440034744}
   m_Layer: 0
-  m_Name: InteriorHouseSpawn (1)
+  m_Name: 'InteriorHouseSpawn '
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -8627,7 +8627,7 @@ Transform:
   m_GameObject: {fileID: 440034743}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -55.01, y: 369.41, z: -255.71786}
+  m_LocalPosition: {x: -55.01, y: 368.76, z: -255.71786}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

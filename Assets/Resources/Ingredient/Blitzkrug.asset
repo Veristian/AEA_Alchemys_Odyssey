@@ -18,10 +18,10 @@ MonoBehaviour:
   ingredientName: Blitzkrug
   ingredient2DObjectPrefab: {fileID: 1171091932301145056, guid: 3d73e05b7d715ff4e830bdebbd22809f, type: 3}
   ingredientSprite: {fileID: 21300000, guid: 5a1b733d35021444493af3a83b2c5c34, type: 3}
-  description: 'A carnivores plant that resides in the Breezewood forest . Its attract
+  description: A carnivores plant that resides in the Breezewood forest . Its attract
     bugs into its pitcher-like interior and dissolve it slowly. Due to its inability
     to dissolve certain substance, the digestive substance in the plant have high
-    content of adrenaline. '
+    content of adrenaline. Usually used in making Swift Potion.
   ingredientCurve:
     serializedVersion: 2
     m_Curve:

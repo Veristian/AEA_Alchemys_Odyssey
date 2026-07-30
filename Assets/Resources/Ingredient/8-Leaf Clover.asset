@@ -20,7 +20,8 @@ MonoBehaviour:
   ingredientSprite: {fileID: 21300000, guid: 03d19050f852d614dbe37e9a130a22e9, type: 3}
   description: A plant that associate with good luck. It is believe that luck is
     also a characteristic that can be inherited by mana.The 8-leaf clover is said
-    to be lucky due to its ability to absorb luck through mana from its surrounding.
+    to be lucky due to its ability to absorb luck through mana from its surrounding.Usually
+    used in making Luck Potion.
   ingredientCurve:
     serializedVersion: 2
     m_Curve:

@@ -81,6 +81,7 @@ public class TeleportTrigger : MonoBehaviour, IInteractable
 
     [Tooltip("Name of the Empty GameObject in the target scene to spawn at")]
     [SerializeField] private string spawnPointName = "PlayerSpawnPoint";
+    private bool isCanvasShowed;
 
 
     private void Awake()
@@ -111,20 +112,38 @@ public class TeleportTrigger : MonoBehaviour, IInteractable
         isInteractable = false;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!other.CompareTag("Player"))
-            return;
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (!other.CompareTag("Player"))
+    //        return;
 
+    //    if (overlayCanvas != null)
+    //        UITransitionManager.Instance.FadeIn(overlayCanvas);
+    //}
+
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (!other.CompareTag("Player"))
+    //        return;
+
+    //    if (overlayCanvas != null)
+    //        UITransitionManager.Instance.FadeOut(overlayCanvas);
+    //}
+
+    public void ShowCanvas()
+    {
+        if (isCanvasShowed) return;
+        isCanvasShowed = true;
+        //Debug.Log("CallingShow");
         if (overlayCanvas != null)
             UITransitionManager.Instance.FadeIn(overlayCanvas);
     }
 
-    private void OnTriggerExit(Collider other)
+    public void HideCanvas()
     {
-        if (!other.CompareTag("Player"))
-            return;
-
+        if (!isCanvasShowed) return;
+        isCanvasShowed = false;
+        //Debug.Log("CallingHide");
         if (overlayCanvas != null)
             UITransitionManager.Instance.FadeOut(overlayCanvas);
     }

@@ -15,12 +15,16 @@ public class PlayerInteractIndicator : Singleton<PlayerInteractIndicator>
     [SerializeField] private GameObject IiPanel;
     [SerializeField] private InteractIndicator[] iIndicators;
     [SerializeField] private Image indicatorImage;
+    private bool isShowing = false;
     // Start is called before the first frame update
 
     public void interactableIndicatorChecker(string text)
     {
         if (string.IsNullOrEmpty(text))
         {
+            if (!isShowing) return;
+            Debug.Log("CallHide");
+            isShowing = false;
             UITransitionManager.Instance.FadeOut(IiPanel);
             return;
         }
@@ -30,11 +34,17 @@ public class PlayerInteractIndicator : Singleton<PlayerInteractIndicator>
         if (indicator != null)
         {
             indicatorImage.sprite = indicator.image;
+            if (isShowing) return;
+            Debug.Log("CallShow");
+            isShowing = true;
             UITransitionManager.Instance.FadeIn(IiPanel);
         }
         else
         {
             Debug.LogWarning($"No indicator found for '{text}'");
+            if (!isShowing) return;
+            Debug.Log("CallHide");
+            isShowing= false;
             UITransitionManager.Instance.FadeOut(IiPanel);
         }
     }

@@ -18,6 +18,7 @@ public class PlayerInteractor : MonoBehaviour
     public string interactText;
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody rb;
+    private TeleportTrigger tg;
 
     private void Update()
     {
@@ -38,6 +39,10 @@ public class PlayerInteractor : MonoBehaviour
         {
             interactText = null;
             interactable = null;
+            if (tg != null)
+            {
+                tg.HideCanvas();
+            }
             PlayerInteractIndicator.Instance.interactableIndicatorChecker(interactText);
         }
 
@@ -57,6 +62,24 @@ public class PlayerInteractor : MonoBehaviour
                 closest = col;
                 interactable = candidate;
                 interactText = candidate.text;
+                TeleportTrigger tg2 = col.gameObject.GetComponent<TeleportTrigger>();
+                if (tg2 != null)
+                {
+                    if (tg2 != tg && tg != null)
+                    {
+                        tg.HideCanvas();
+                        tg = tg2;
+                    }
+                    else
+                    {
+                        tg = tg2;
+                        tg.ShowCanvas();
+                    }
+                }
+                else
+                {
+                    tg = null;
+                }
                 PlayerInteractIndicator.Instance.interactableIndicatorChecker(interactText);
             }
         }

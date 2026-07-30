@@ -40,6 +40,7 @@ Transform:
   - {fileID: 6750697374387994665}
   - {fileID: 7457280867237863269}
   - {fileID: 6401591725075934989}
+  - {fileID: 7227200068545654908}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &5660296130960352470
@@ -92,11 +93,11 @@ MonoBehaviour:
     m_Bits: 1
   inputManager: {fileID: 0}
   orientation: {fileID: 6750697374387994665}
-  cameraTarget: {fileID: 6401591725075934989}
-  chemyAnimatedObj: {fileID: 6401591725075934989}
+  cameraTarget: {fileID: 7227200068545654908}
+  chemyAnimatedObj: {fileID: 7227200068545654908}
   walkSpeed: 0
   sprintSpeed: 0
-  animator: {fileID: 2155007976252023061}
+  animator: {fileID: 3651294494234143238}
   IdleWait: 10
   speedThrehold: 2
   footstepSource: {fileID: 8753944730400673989}
@@ -123,7 +124,7 @@ MonoBehaviour:
     m_Bits: 512
   drawDebug: 1
   interactText: 
-  animator: {fileID: 2155007976252023061}
+  animator: {fileID: 3651294494234143238}
   rb: {fileID: 5660296130960352470}
 --- !u!114 &8264872567991911074
 MonoBehaviour:
@@ -604,6 +605,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chemy Animated Y Foward
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 01b50b199b66645438d419d58d472735, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -717,4 +722,75 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d81901d50fdb02c49aae93ba060dbf3f, type: 3}
   m_PrefabInstance: {fileID: 6987101782387914894}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7189598054845699991
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6539077205983189526}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 9f90c33e417ae4b42b0a9f268ffec53a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9f90c33e417ae4b42b0a9f268ffec53a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9f90c33e417ae4b42b0a9f268ffec53a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9f90c33e417ae4b42b0a9f268ffec53a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9f90c33e417ae4b42b0a9f268ffec53a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9f90c33e417ae4b42b0a9f268ffec53a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9f90c33e417ae4b42b0a9f268ffec53a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9f90c33e417ae4b42b0a9f268ffec53a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9f90c33e417ae4b42b0a9f268ffec53a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9f90c33e417ae4b42b0a9f268ffec53a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9f90c33e417ae4b42b0a9f268ffec53a, type: 3}
+      propertyPath: m_Name
+      value: Chemy Animated -Y Foward
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 9f90c33e417ae4b42b0a9f268ffec53a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 605b294d5943de842876756eac4c5010, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9f90c33e417ae4b42b0a9f268ffec53a, type: 3}
+--- !u!95 &3651294494234143238 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 9f90c33e417ae4b42b0a9f268ffec53a, type: 3}
+  m_PrefabInstance: {fileID: 7189598054845699991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7227200068545654908 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9f90c33e417ae4b42b0a9f268ffec53a, type: 3}
+  m_PrefabInstance: {fileID: 7189598054845699991}
   m_PrefabAsset: {fileID: 0}

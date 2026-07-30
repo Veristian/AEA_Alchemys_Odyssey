@@ -4291,7 +4291,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 11
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 906425109}
+  m_LookAt: {fileID: 1546129138}
   m_Follow: {fileID: 1163629016}
   m_Lens:
     FieldOfView: 60.000004
@@ -21429,16 +21429,29 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 3.83
       objectReference: {fileID: 0}
+    - target: {fileID: 7227200068545654908, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227200068545654908, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227200068545654908, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227200068545654908, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6024925067128567223, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
+    - {fileID: 7797496618730112479, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
---- !u!4 &906425109 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6401591725075934989, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
-  m_PrefabInstance: {fileID: 906425108}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &906654354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32202,8 +32215,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientation: {fileID: 1859362452}
-  playerObj: {fileID: 906425109}
-  player: {fileID: 906425109}
+  playerObj: {fileID: 1546129138}
+  player: {fileID: 1546129138}
   inputManager: {fileID: 0}
   rotationSpeed: 12
   thirdPersonCam: {fileID: 1393936034}
@@ -34863,6 +34876,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 222.103, y: 64.31224, z: 387.1888}
   m_Center: {x: -2.1892853, y: 0.7474518, z: 199.72871}
+--- !u!4 &1546129138 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7227200068545654908, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
+  m_PrefabInstance: {fileID: 906425108}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1549403532
 PrefabInstance:
   m_ObjectHideFlags: 0

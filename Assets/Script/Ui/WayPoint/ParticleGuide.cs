@@ -401,8 +401,12 @@ public class ParticleGuide : Singleton<ParticleGuide>
 
                 // Show only the selected destination
                 destination.destinationObject.SetActive(true);
+                
 
                 GuideTo(destination.destinationObject.transform);
+                Marker marker = destination.destinationObject.GetComponent<Marker>();
+
+                marker.SetTracking(true);   
 
                 return;
             }
@@ -431,6 +435,9 @@ public class ParticleGuide : Singleton<ParticleGuide>
             if (destination.destinationObject != null)
             {
                 destination.destinationObject.SetActive(true);
+                Marker marker = destination.destinationObject.GetComponent<Marker>();
+
+                marker.SetTracking(false);
             }
         }
     }

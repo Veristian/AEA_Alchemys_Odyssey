@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 [RequireComponent(typeof(BoxCollider))]
 public class NPCTrigger : MonoBehaviour, IInteractable
@@ -9,6 +10,7 @@ public class NPCTrigger : MonoBehaviour, IInteractable
     [SerializeField] private SubmissionCharacter character;
     private BoxCollider interactCollider;
     [SerializeField] private bool isOneTime = false;
+    [SerializeField] private Marker marker;
 
     public string text
     {
@@ -29,6 +31,12 @@ public class NPCTrigger : MonoBehaviour, IInteractable
     {
         interactCollider = GetComponent<BoxCollider>();
         interactCollider.isTrigger = true;
+        //UpdateMarker();
+    }
+
+    private void Start()
+    {
+        UpdateMarker();
     }
 
     //check quest
@@ -57,6 +65,7 @@ public class NPCTrigger : MonoBehaviour, IInteractable
             DialogueManager.Instance.StartDialogue(completedQuest[0].questData.story);
         }
         if (isOneTime) interactCollider.enabled = false;
+        UpdateMarker();
     }
 
 
@@ -87,6 +96,14 @@ public class NPCTrigger : MonoBehaviour, IInteractable
     public void Interact(GameObject interactor)
     {
         StartConversation();
+    }
+
+    private void UpdateMarker()
+    {
+        if (marker == null)
+            return;
+
+        marker.SetInteractable(interactable);
     }
 
 }

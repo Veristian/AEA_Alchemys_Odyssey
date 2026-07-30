@@ -508,4 +508,11 @@ public class UiLoader : Singleton<UiLoader>
     //     }
     // }
 #endregion
+
+#region Tutorial
+    //OnButtonNext
+    //OnButtonPrev
+    //OnClose
+    //OnOpen
+#endregion
 }

@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 7f;
     public float groundDrag = 6f;
     public float airMultiplier = 0.5f;
+    public float gravityMultiplier = 2.5f;
 
     [Header("Jump")]
     public float jumpForce = 12f;
@@ -122,7 +123,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer();
-
+        ApplyExtraGravity();
 
         float CurrentSpeed = rb.velocity.magnitude;
         animator.SetFloat("Speed", CurrentSpeed);  
@@ -231,4 +232,12 @@ public class PlayerController : MonoBehaviour
         return GetCurrentSpeed() > speedThrehold; // Adjust threshold as needed
     }
 
+    private void ApplyExtraGravity()
+    {
+        if (!grounded)
+        {
+            // Extra downward force so the player falls faster than Unity’s default gravity
+            rb.AddForce(Physics.gravity * (gravityMultiplier - 1f), ForceMode.Acceleration);
+        }
+    }
 }

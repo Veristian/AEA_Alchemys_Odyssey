@@ -3306,6 +3306,7 @@ MonoBehaviour:
   moveSpeed: 6
   groundDrag: 6
   airMultiplier: 0.5
+  gravityMultiplier: 2.5
   jumpForce: 6
   jumpCooldown: 0.3
   playerHeight: 3
@@ -33302,7 +33303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5815973415517038315, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
       propertyPath: playerHeight
-      value: 0
+      value: 4.26
       objectReference: {fileID: 0}
     - target: {fileID: 6401591725075934989, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
       propertyPath: m_LocalScale.x

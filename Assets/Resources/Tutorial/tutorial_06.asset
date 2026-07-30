@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225d9ba1d6472414ca12190972df08df, type: 3}
+  m_Name: tutorial_06
+  m_EditorClassIdentifier: 
+  loadState: 0
+  questId: 
+  tutorialId: 
+  tutorialSlides:
+  - tutorialTitle: Daily Tidals
+    tutorialVideo: {fileID: 32900000, guid: b96e8ab96cd998f4783cd22a6a59e94d, type: 3}
+    tutorialDescription: Daily Tidals is the local newspaper. Here you can learn
+      more about whats happening in the island and the town.
+  - tutorialTitle: Daily Tidals
+    tutorialVideo: {fileID: 32900000, guid: a2b6d1fd124223642afc6edaa8fd999b, type: 3}
+    tutorialDescription: In the Local Request section, you can read up on available
+      quests to partake on that day. These quests can also be view on the quest log
+      section in your journal.
+  - tutorialTitle: Daily Tidals
+    tutorialVideo: {fileID: 32900000, guid: 55745a808980cad44ad49d0599fc436a, type: 3}
+    tutorialDescription: You can interact with the newspaper on the stand next to
+      your house door to re-read the newspaper.

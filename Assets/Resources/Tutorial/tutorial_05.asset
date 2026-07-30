@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225d9ba1d6472414ca12190972df08df, type: 3}
+  m_Name: tutorial_05
+  m_EditorClassIdentifier: 
+  loadState: 0
+  questId: 
+  tutorialId: 
+  tutorialSlides:
+  - tutorialTitle: Potion Brewing
+    tutorialVideo: {fileID: 32900000, guid: 1c013c3d6c44a634fa5fbb168191522b, type: 3}
+    tutorialDescription: Ready to make some potions? this will be where all the potion
+      brewing happens. first of all, open the recipe list on the bottom left of the
+      screen and choose a recipe to brew.
+  - tutorialTitle: Potion Brewing
+    tutorialVideo: {fileID: 32900000, guid: 4771a5bd2b281fd4ca552e0ea0804771, type: 3}
+    tutorialDescription: To successfully brew a potion, you must get the water surface
+      to match the shape of the guideline of the selected potion recipe.
+  - tutorialTitle: Potion Brewing
+    tutorialVideo: {fileID: 32900000, guid: 8720fa6f043492a48a6454c6bee1cb3f, type: 3}
+    tutorialDescription: You can adjust the height of the water surface by pulling
+      the chains on the side up or down.
+  - tutorialTitle: Potion Brewing
+    tutorialVideo: {fileID: 32900000, guid: 3b793574d5569844bb87c8fc44e9b10d, type: 3}
+    tutorialDescription: By hovering your cursor on a herb, it will show how they
+      will effect the water surface when added into the cauldron. Potions requires
+      more the one herb to brew.
+  - tutorialTitle: Potion Brewing
+    tutorialVideo: {fileID: 32900000, guid: 490d64adf507df642969ea3e9b6971d6, type: 3}
+    tutorialDescription: By holding left click on the herbs you can drag and move
+      it around. Releasing the left click will drop the herbs, dropping it anywhere
+      outside the cauldron will return it to your inventory.
+  - tutorialTitle: Potion Brewing
+    tutorialVideo: {fileID: 32900000, guid: 03539e0eb11bb4542a65d57a5a0b3845, type: 3}
+    tutorialDescription: Dropping the herbs into the cauldron will change the water
+      surface, where you drop the herbs effect the shape as well so keep it in mind.
+  - tutorialTitle: Potion Brewing
+    tutorialVideo: {fileID: 32900000, guid: db5d7b48823337f40834699be1d5dc20, type: 3}
+    tutorialDescription: Each potion recipe have their main herb, these herb will
+      always be drop in the middle of the cauldron. You can learn which herb is the
+      main ingredient of which potion in your journal.
+  - tutorialTitle: Potion Brewing
+    tutorialVideo: {fileID: 32900000, guid: ef910d742b550374eb5db5492f06bf99, type: 3}
+    tutorialDescription: 'If you ever made a mistake, click the Redo button on the
+      middle left of the screen. This will refund the herb used back into your inventory. '
+  - tutorialTitle: Potion Brewing
+    tutorialVideo: {fileID: 32900000, guid: 7c6aff99aae73e1408efcdc20d813948, type: 3}
+    tutorialDescription: The undo button on the bottom left will restart the brewing
+      process and refund all of the herbs used back into the inventory.
+  - tutorialTitle: Potion Brewing
+    tutorialVideo: {fileID: 32900000, guid: 669b90bc2b9547f4b815c3a418a15d7b, type: 3}
+    tutorialDescription: 'Once your water surface match with the recipe guideline,
+      press the brew button to finally brew your potion. TIp: all potions require
+      a minimum of 2 herbs.'
+  - tutorialTitle: Potion Brewing
+    tutorialVideo: {fileID: 32900000, guid: b9dfe6b2e17189546adc23485c392c72, type: 3}
+    tutorialDescription: If you ever get confuse you can press the Question Mark
+      label in the journal to re-read this tutorial. Good luck brewing alchemist
+      !

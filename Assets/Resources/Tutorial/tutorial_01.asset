@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225d9ba1d6472414ca12190972df08df, type: 3}
+  m_Name: tutorial_01
+  m_EditorClassIdentifier: 
+  loadState: 0
+  questId: 
+  tutorialId: 
+  tutorialSlides:
+  - tutorialTitle: "Welcome to A\u2019ea"
+    tutorialVideo: {fileID: 32900000, guid: 4d26d591a39287f429b1b812bb30c2a8, type: 3}
+    tutorialDescription: Ready to start your adventure? You can move Chemy around
+      with the WASD Key.
+  - tutorialTitle: "Welcome to A\u2019ea"
+    tutorialVideo: {fileID: 32900000, guid: a0aae97a9558d2842a19a869ce110757, type: 3}
+    tutorialDescription: In some maps you can use your mouse to move the camera.
+  - tutorialTitle: "Welcome to A\u2019ea"
+    tutorialVideo: {fileID: 32900000, guid: 1db2a4bcff447ed498aa2d14c08266c8, type: 3}
+    tutorialDescription: "Pressing \u201CJ\u201D wil open up your journal. Here you
+      can read more about specific herbs and potions."
+  - tutorialTitle: "Welcome to A\u2019ea"
+    tutorialVideo: {fileID: 32900000, guid: 38e46cae0766fca4a835ef73688765aa, type: 3}
+    tutorialDescription: Pressing the Star label on the side of the journal will
+      open up your quest log. Here you can find available quest and their details.
+      Clicking the track button will pin the quest in your main HUD.
+  - tutorialTitle: "Welcome to A\u2019ea"
+    tutorialVideo: {fileID: 32900000, guid: b9dfe6b2e17189546adc23485c392c72, type: 3}
+    tutorialDescription: Pressing the Question Mark label on the side of the journal
+      will open up the tutorial page. Here, you can review all of the tutorial you
+      have seen if you ever get confuse.
+  - tutorialTitle: "Welcome to A\u2019ea"
+    tutorialVideo: {fileID: 32900000, guid: 5495bdb2854ac664cac0dcaab9913b86, type: 3}
+    tutorialDescription: Pressing the Magnifying Glass label on the side of the journal
+      will return you to the glossary.
+  - tutorialTitle: "Welcome to A\u2019ea"
+    tutorialVideo: {fileID: 32900000, guid: 96e7325700c31874fbb87528475eee49, type: 3}
+    tutorialDescription: "When you are near an intractable object, a bubble will
+      appear next to Chemy. Pressing \u201CE\u201D will allow you to interact with
+      it."
+  - tutorialTitle: "Welcome to A\u2019ea"
+    tutorialVideo: {fileID: 32900000, guid: 2eee8bc70fbf3e04790ee780c20a0ac5, type: 3}
+    tutorialDescription: "Press \u201CEsc\u201D will bring out the pause menu. You
+      can change the settings, read the credits and exit to main menu from this menu."

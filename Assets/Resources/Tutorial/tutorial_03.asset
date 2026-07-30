@@ -10,7 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 225d9ba1d6472414ca12190972df08df, type: 3}
-  m_Name: TestTutorial
+  m_Name: tutorial_03
   m_EditorClassIdentifier: 
-  loadState: 2
+  loadState: 0
   questId: 
+  tutorialId: 
+  tutorialSlides:
+  - tutorialTitle: Inventory
+    tutorialVideo: {fileID: 32900000, guid: 18938f1aa5f4bf64fa9b2e45322be899, type: 3}
+    tutorialDescription: Pressing Tab will open up your inventory. Here you can see
+      the herbs and potion you have and how much Wavecrest Coins you own.

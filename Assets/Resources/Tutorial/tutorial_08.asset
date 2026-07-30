@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225d9ba1d6472414ca12190972df08df, type: 3}
+  m_Name: tutorial_08
+  m_EditorClassIdentifier: 
+  loadState: 0
+  questId: 
+  tutorialId: 
+  tutorialSlides:
+  - tutorialTitle: Quest Rewards
+    tutorialVideo: {fileID: 32900000, guid: bf18aa30c4cbba3448a3f143cd134eec, type: 3}
+    tutorialDescription: Congratulations on delivering your first potion! After completing
+      a quest you will earn Wavecrest coins which you can find in your inventory.
+  - tutorialTitle: Quest Rewards
+    tutorialVideo: {fileID: 32900000, guid: 8ce99ceb90afcc044aaaf6b7dd2ef23e, type: 3}
+    tutorialDescription: "These coins can be use at the Mayor\u2019s house to trade
+      for furniture. Be sure to visit him and decorate your home into a cozy abode."

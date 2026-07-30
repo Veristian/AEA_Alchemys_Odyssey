@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225d9ba1d6472414ca12190972df08df, type: 3}
+  m_Name: tutorial_04
+  m_EditorClassIdentifier: 
+  loadState: 0
+  questId: 
+  tutorialId: 
+  tutorialSlides:
+  - tutorialTitle: "Chemy\u2019s House"
+    tutorialVideo: {fileID: 32900000, guid: c9e33171f3b7f1141ad589f069566219, type: 3}
+    tutorialDescription: Welcome to your new home, Here you can interact with the
+      cauldron and the bed. Interacting with the couldron will open up the potion
+      crafting menu.
+  - tutorialTitle: "Chemy\u2019s House"
+    tutorialVideo: {fileID: 32900000, guid: 22ed3fe0a7b333b4a9ae27b0403fadc5, type: 3}
+    tutorialDescription: Interacting with the bed will foward the day. You can only
+      do this when all of the main tasks are completed.

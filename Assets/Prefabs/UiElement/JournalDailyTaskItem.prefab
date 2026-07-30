@@ -212,8 +212,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Mr.dhasjda : sdasd sahdgas hgjhs sah s'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4404835a3819d4745ab48c19d8c4551c, type: 2}
-  m_sharedMaterial: {fileID: -4321916364237304244, guid: 4404835a3819d4745ab48c19d8c4551c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6b85c062f7436f243b4f2941c73209c0, type: 2}
+  m_sharedMaterial: {fileID: -4264887997277447850, guid: 6b85c062f7436f243b4f2941c73209c0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: -10
+  m_lineSpacing: -20
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -402,8 +402,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.000061035156, y: -123.81227}
-  m_SizeDelta: {x: 452.63, y: 123.8146}
+  m_AnchoredPosition: {x: 0.000061035156, y: -117.13398}
+  m_SizeDelta: {x: 452.63, y: 117.1363}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &338792134314141793
 CanvasRenderer:
@@ -436,8 +436,8 @@ MonoBehaviour:
   m_text: da dasdaw dasdaw d d ad AD AWD AD ASDwa da Sd d AD ADs d DSAD wa SD waD
     Ads a da d asda
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9bad3999bf00005438738d202a670829, type: 2}
-  m_sharedMaterial: {fileID: -4499236694222547767, guid: 9bad3999bf00005438738d202a670829, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ef4b9ebb38fce044c963eb0f29a34dc1, type: 2}
+  m_sharedMaterial: {fileID: 1948962128766239878, guid: ef4b9ebb38fce044c963eb0f29a34dc1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -461,7 +461,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.65
+  m_fontSize: 30
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -472,8 +472,8 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: -10
+  m_wordSpacing: 40
+  m_lineSpacing: -20
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0

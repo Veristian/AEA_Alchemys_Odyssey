@@ -2511,14 +2511,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8132980593852843434}
     m_Modifications:
-    - target: {fileID: 51990050332292468, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 30.557
-      objectReference: {fileID: 0}
-    - target: {fileID: 51990050332292468, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.90014654
-      objectReference: {fileID: 0}
     - target: {fileID: 317461572785000576, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
       propertyPath: m_SizeDelta.x
       value: 47.137695
@@ -2683,14 +2675,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -16
       objectReference: {fileID: 0}
-    - target: {fileID: 2672263611563135061, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 463.63
-      objectReference: {fileID: 0}
-    - target: {fileID: 2672263611563135061, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -208.09
-      objectReference: {fileID: 0}
     - target: {fileID: 2681508679796924068, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2802,26 +2786,6 @@ PrefabInstance:
     - target: {fileID: 3505070504521261642, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -16
-      objectReference: {fileID: 0}
-    - target: {fileID: 3643500942713123565, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_text
-      value: Marcel :Trading Company Opening Up Outpost
-      objectReference: {fileID: 0}
-    - target: {fileID: 3643500942713123565, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_fontSize
-      value: 73.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3643500942713123565, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 4404835a3819d4745ab48c19d8c4551c, type: 2}
-    - target: {fileID: 3643500942713123565, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -4321916364237304244, guid: 4404835a3819d4745ab48c19d8c4551c, type: 2}
-    - target: {fileID: 3643500942713123565, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3873264372666821653, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3111,26 +3075,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
-    - target: {fileID: 5794785916387840366, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_text
-      value: Vol.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5794785916387840366, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_fontSize
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5794785916387840366, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_fontStyle
-      value: 33
-      objectReference: {fileID: 0}
-    - target: {fileID: 5794785916387840366, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5794785916387840366, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 512
-      objectReference: {fileID: 0}
     - target: {fileID: 6018410975639375212, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -3207,55 +3151,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6327607758860496335, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
       propertyPath: m_text
-      value: 'HeadLines : this is dsak askdhsakdhkjahdjshahsg djhasgdajs dasdjhasgdasjhghgjhg'
+      value: 'Headline: The Marcel Trading Company Opening Up Outpost are coming
+        to conchauijchaksd adad ad asdaksdaks'
       objectReference: {fileID: 0}
     - target: {fileID: 6327607758860496335, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
       propertyPath: m_fontSize
-      value: 69
-      objectReference: {fileID: 0}
-    - target: {fileID: 6327607758860496335, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 4404835a3819d4745ab48c19d8c4551c, type: 2}
-    - target: {fileID: 6327607758860496335, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_fontSizeMin
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 6327607758860496335, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_wordSpacing
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6327607758860496335, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_enableKerning
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6327607758860496335, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -4321916364237304244, guid: 4404835a3819d4745ab48c19d8c4551c, type: 2}
-    - target: {fileID: 6327607758860496335, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_charWidthMaxAdj
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6327607758860496335, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: checkPaddingRequired
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6327607758860496335, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_enableExtraPadding
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6327607758860496335, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_wordWrappingRatios
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6327607758860496335, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6327607758860496335, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
+      value: 64.5
       objectReference: {fileID: 0}
     - target: {fileID: 6382469071420093698, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3304,34 +3205,6 @@ PrefabInstance:
     - target: {fileID: 6583435843349799170, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -50
-      objectReference: {fileID: 0}
-    - target: {fileID: 6719950747916096464, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_text
-      value: Day 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6719950747916096464, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_fontSize
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 6719950747916096464, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_fontStyle
-      value: 33
-      objectReference: {fileID: 0}
-    - target: {fileID: 6719950747916096464, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 6719950747916096464, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 6725533642801734566, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 30.557
-      objectReference: {fileID: 0}
-    - target: {fileID: 6725533642801734566, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 6768575719548960141, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3443,11 +3316,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7859539414823977297, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7859539414823977297, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7859539414823977297, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
       propertyPath: m_SizeDelta.y

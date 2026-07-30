@@ -1295,7 +1295,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 267655310}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3576326, y: 0.000000016068393, z: -0.0000000061535617, w: 0.9338624}
+  m_LocalRotation: {x: 0.3576326, y: -0.00000001606839, z: 0.000000006153561, w: 0.9338624}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5194,7 +5194,7 @@ PrefabInstance:
     - target: {fileID: 4108153209552783754, guid: 62125e9f1f041a94098544cfe80e3242, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 96dc70f700b751a468f443cd78345fdb, type: 2}
+      objectReference: {fileID: 2100000, guid: 8c9d1f6ccc0827f4db90196352d67432, type: 2}
     - target: {fileID: 6783435317237245845, guid: 62125e9f1f041a94098544cfe80e3242, type: 3}
       propertyPath: m_Name
       value: 'Forest Marker '
@@ -6451,7 +6451,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-215276
+  m_Name: pb_Mesh-674514
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2

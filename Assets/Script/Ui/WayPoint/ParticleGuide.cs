@@ -229,9 +229,9 @@ public class ParticleGuide : Singleton<ParticleGuide>
         }
 
         // Add destination
-        pathPoints.Add(
-            currentDestination.position
-        );
+        //pathPoints.Add(
+        //    currentDestination.position
+        //);
 
         // Spawn particles one by one
         for (int i = 0;

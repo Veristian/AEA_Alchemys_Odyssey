@@ -173,7 +173,15 @@ public class PlayerPopUpUiManager : MonoBehaviour
 
     public void OpenPauseMenu()
     {
-        OpenPopup(pauseMenuPanel);
+        if (isPopUpOpened && InputManager.Instance.canUiPopup == true)
+        {
+            OpenPopup(currentPopup);
+        }
+        else
+        {
+            OpenPopup(pauseMenuPanel);
+        }
+        
     }
 
     public void OpenDialog()

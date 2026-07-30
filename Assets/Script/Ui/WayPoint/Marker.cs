@@ -28,7 +28,7 @@ public class Marker : MonoBehaviour
         {
             float wave = Mathf.Sin(Time.time * 6f);
 
-            transform.localPosition = startPos + Vector3.up * wave * 0.5f;
+            transform.localPosition = startPos + Vector3.up * wave * 0.7f;
 
             float scale = 1.5f + wave * 0.08f;
             transform.localScale = Vector3.one * scale;

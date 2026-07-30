@@ -15,7 +15,11 @@ MonoBehaviour:
   loadState: 0
   questId: quest_tidus_jumppotion
   questName: Runaway Hatter
-  questDescription: Deliver a Jump Potion to The Mayor. Mr Tidus.
+  questDescription: 'Deliver a Jump Potion to The Mayor. Mr Tidus
+
+
+    View Full
+    Description in Journal'
   questFullDescription: "Brew a Jump Potion for Tidus\n\u2193\nDeliver the potion
     to the Mayor House"
   submissionCharacter: 0

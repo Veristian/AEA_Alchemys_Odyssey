@@ -15,7 +15,11 @@ MonoBehaviour:
   loadState: 0
   questId: quest_violette_sleeppotion_2
   questName: Passionate Reading
-  questDescription: Deliver a Sleep Potion to Violette
+  questDescription: 'Deliver a Sleep Potion to Violette
+
+
+    View Full Description
+    in Journal'
   questFullDescription: "Brew a Sleep Potion for Violette\n\u2193\nDeliver the potion
     to Violette's Library"
   submissionCharacter: 0

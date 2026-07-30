@@ -15,7 +15,10 @@ MonoBehaviour:
   loadState: 0
   questId: quest_chemy_nauseareliefpotion
   questName: I'm Dizzy...
-  questDescription: Make a Nausea Relief Potion
+  questDescription: 'Make a Nausea Relief Potion
+
+
+    View Full Description in Journal'
   questFullDescription: "Go to Breezewood Forest\n\u2193\nPickup some herbs\n\u2193\nGo
     to your new home\n\u2193\nBrew a Nausea Relief Potion at the Cauldron"
   submissionCharacter: 0

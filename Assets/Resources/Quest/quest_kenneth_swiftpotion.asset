@@ -15,7 +15,11 @@ MonoBehaviour:
   loadState: 0
   questId: quest_kenneth_swiftpotion
   questName: Hard at Work Kenneth?
-  questDescription: Deliver a Swift Potion to Kenneth
+  questDescription: 'Deliver a Swift Potion to Kenneth
+
+
+    View Full Description
+    in Journal'
   questFullDescription: "Brew a Swift Potion for Kenneth\n\u2193\nDeliver the potion
     to Kenneth's Farm House"
   submissionCharacter: 0

@@ -32,6 +32,8 @@ public class AudioController : MonoBehaviour
     private bool usingSecondArea = false;
     private float defaultVolume;
     Coroutine fadeRoutine;
+    private Coroutine sfxFadeRoutine;
+    private bool canSfx;
 
     private void Awake()
     {
@@ -57,7 +59,7 @@ public class AudioController : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        
+        canSfx = true;
         music = FindFirstObjectByType<SceneMusic>();
         
         if (music != null)
@@ -77,6 +79,8 @@ public class AudioController : MonoBehaviour
         {
             Debug.LogWarning("Pls Add MusicSource for the Scene");
         }
+
+        //sfxSource.volume = 1f;
     }
     private void Start()
     {
@@ -85,6 +89,10 @@ public class AudioController : MonoBehaviour
 
     public void PlaySFX(string name)
     {
+        if (!canSfx)
+        {
+            return;
+        }
         Sound s = Array.Find(SfxClip, x => x.sname == name);
         if (s != null)
         {
@@ -168,12 +176,26 @@ public class AudioController : MonoBehaviour
         currentSource.volume = defaultVolume;
     }
 
+    public void FadeBothBgmSfx()
+    {
+        FadeOutCurrentBGM();
+        PauseSfxCalling();
+    }
+
     public void FadeOutCurrentBGM()
     {
         if (fadeRoutine != null)
             StopCoroutine(fadeRoutine);
         fadeRoutine = StartCoroutine(FadeOutBGM());
     }
+
+    public void PauseSfxCalling()
+    {
+        mixer.SetFloat("SFXVolume", Mathf.Log10(0.0001f) * 20);
+        canSfx = false;
+    }
+
+
 
 
     IEnumerator FadeOutBGM()

@@ -35,7 +35,8 @@ public class SceneLoadingManager : Singleton<SceneLoadingManager>
     {
         InputManager.Instance.DisableInputs();
         UITransitionManager.Instance.FadeIn(loadingScreen);
-        AudioController.Instance.FadeOutCurrentBGM();
+        AudioController.Instance.FadeBothBgmSfx();
+        
         //loadingScreen.SetActive(true);
         yield return new WaitForSeconds(.3f);
         float timer = 0f;

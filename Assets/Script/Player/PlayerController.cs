@@ -162,6 +162,13 @@ public class PlayerController : MonoBehaviour
         // Calculate movement direction relative to orientation (camera forward)
         moveDirection = orientation.forward * moveInput.y + orientation.right * moveInput.x;
 
+        if (moveInput.magnitude < 0.1f)
+        {
+            // Strong deceleration when no input
+            Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+            rb.AddForce(-flatVel * 15f, ForceMode.Acceleration); // higher number = faster stop
+            return;
+        }
         if (grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
         else

@@ -195,6 +195,8 @@ public class PotionMakingUi : MonoBehaviour
         Animator CauldronAnim = CauldronGO.GetComponent<Animator>();
         CauldronAnim.enabled = false;
         CauldronAnim.enabled = true;
+
+        PlayerPopUpUiManager.Instance.QuestResultChecker();
     }
 
     public void ResultDisplaySet(bool result, Sprite PotionImage, string ItemName)

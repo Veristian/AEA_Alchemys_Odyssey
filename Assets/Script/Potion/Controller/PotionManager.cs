@@ -346,6 +346,19 @@ public class PotionManager : Singleton<PotionManager>
 
         if (InventoryManager.Instance.CheckPotionExists(DataManager.Instance.potionDatas.Find(p => p.potionId == "Swift_Potion" || p.potionId == "Jump_Potion"), null).exist)
             FirstTimeTrigger.TryActivate("t7");
+        PlayerQuestData questToSubmit = QuestRuntimeManager.Instance
+            .GetOngoingQuests()
+            .Find(q =>
+                q.questData.submissionCharacter == SubmissionCharacter.None &&
+                q.questData.requirementsToComplete.AreAllMet()
+            );
+
+        if (questToSubmit != null)
+        {
+            QuestRuntimeManager.Instance.SubmitQuest(questToSubmit);
+        }
+
+        ClearPotion();
     }
 
     public void ActivatePotionInterface()
@@ -409,16 +422,7 @@ public class PotionManager : Singleton<PotionManager>
 
             //update quest if potion is for Chemy
 
-            List<PlayerQuestData> completedQuest = QuestRuntimeManager.Instance.GetOngoingQuests().FindAll(q => q.questData.submissionCharacter == SubmissionCharacter.Chemy).FindAll(q => q.questData.requirementsToComplete.AreAllMet());
 
-            if (completedQuest == null || completedQuest.Count == 0)
-            {
-                
-            }
-            else
-            {
-                QuestRuntimeManager.Instance.SubmitQuest(completedQuest[0]);
-            }
             PotionHouse.Instance.UpdatePotionDisplay();
         }
         else

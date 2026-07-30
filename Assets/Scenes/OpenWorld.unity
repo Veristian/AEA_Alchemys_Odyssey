@@ -28777,7 +28777,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 842043815}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3582638, y: -0.000000022718257, z: 0.000000008717814, w: 0.93362045}
+  m_LocalRotation: {x: 0.3582638, y: 0.00000002271824, z: -0.000000008717809, w: 0.93362045}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -41517,7 +41517,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400372848}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.35826382, y: -0.00000003592071, z: 0.000000013784071, w: 0.93362045}
+  m_LocalRotation: {x: 0.35826382, y: 0.0000000359207, z: -0.000000013784067, w: 0.93362045}
   m_LocalPosition: {x: -36.395164, y: 73.12787, z: -185.79999}
   m_LocalScale: {x: 1.0019664, y: 1.0019665, z: 1.0019665}
   m_ConstrainProportionsScale: 0
@@ -47159,7 +47159,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh382414
+  m_Name: pb_Mesh700732
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -50820,7 +50820,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841457771}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.30403668, y: -0.000000016391839, z: 0.000000005231371, w: 0.9526604}
+  m_LocalRotation: {x: 0.30403668, y: 0.000000016391834, z: -0.00000000523137, w: 0.9526604}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -60098,7 +60098,7 @@ MonoBehaviour:
   isInteractable: 1
   overlayCanvas: {fileID: 1006423214527963879}
   targetSceneName: ChemyHouse
-  spawnPointName: InteriorHouseSpawn
+  spawnPointName: 'InteriorHouseSpawn '
 --- !u!135 &2011150207
 SphereCollider:
   m_ObjectHideFlags: 0

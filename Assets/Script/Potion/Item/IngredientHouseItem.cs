@@ -63,6 +63,11 @@ public class IngredientHouseItem : MonoBehaviour, IPointerDownHandler, IPointerE
             ItemImage.sprite = ingredient.ingredientData.ingredientSprite;
             if (displayedObjectAmount <= 0)
             {
+                if (IngredientCurveDisplay.Instance.ingredientInventoryData == ingredient)
+                {
+                    IngredientCurveDisplay.Instance.ingredientInventoryData = null;
+                    IngredientCurveDisplay.Instance.SetVisibility(false);
+                }
                 gameObject.SetActive(false);
             }
 

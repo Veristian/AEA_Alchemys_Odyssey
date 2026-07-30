@@ -20,7 +20,7 @@ MonoBehaviour:
   ingredientSprite: {fileID: 21300000, guid: 531e168254160004a83a82d3374051a0, type: 3}
   description: "A ginger with an internode that looks like the face of a hippo. This
     herb\u2019s  inner temperature is very high, it usually found in shallow body
-    of water to regulate its own temperature.Usually used in making Hunger Potion."
+    of water to regulate its own temperature. Usually used in making Hunger Potion."
   ingredientCurve:
     serializedVersion: 2
     m_Curve:

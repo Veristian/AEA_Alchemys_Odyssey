@@ -20,7 +20,7 @@ MonoBehaviour:
   ingredientSprite: {fileID: 21300000, guid: 1d5b0d628c7f168449178c61d76c7bf9, type: 3}
   description: A species of mushroom that grows in the Breezewood Forest. It protects
     itself with its spring-like cap which can bounce any incoming threat away from
-    it.Usually used in making Jump  Potion.
+    it. Usually used in making Jump  Potion.
   ingredientCurve:
     serializedVersion: 2
     m_Curve:

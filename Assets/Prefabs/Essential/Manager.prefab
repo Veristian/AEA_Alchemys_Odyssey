@@ -1547,11 +1547,11 @@ MonoBehaviour:
       - rid: 1115517454946664451
   - headlineText: 'Main Headline: Marcel Trading Company Opening Up Outpost'
     headlineDescription: "After the scouting process concluded yesterday, Marcel
-      Trading Company decides to stay in A\u2019ea decides to stay in A\u2019ea for
-      a while. They plan to open up outpost across the island to extract the resources
-      and commercialize them globally. Marcel Trading Company promises to promote
-      our island to increase trade in return for allowing them to gather resources
-      from our island. This endeavor might finally put our island on the map."
+      Trading Company decides to stay in A\u2019ea decides for a while. They plan
+      to open up outpost across the island to extract the resources and commercialize
+      them globally. Marcel Trading Company promises to promote our island to increase
+      trade in return for allowing them to gather resources from our island. This
+      endeavor might finally put our island on the map."
     headlineImage: {fileID: 0}
     requirementsToBeShown:
       requirements:
@@ -1590,7 +1590,7 @@ MonoBehaviour:
   - requestText: 'Local Request: Farm Boy Kenneth'
     requestDescription: "Due to his brothers being currently out of town to buy supplies
       for the farm, Kenneth doesn\u2019t have enough time to complete his daily chores
-      on the farm. Help him by creating a @Swift potion."
+      on the farm. Help him by creating a Swift Potion."
     requestImage: {fileID: 21300000, guid: 4638114a12e868c46af3e9f51d3ce539, type: 3}
     questData: {fileID: 11400000, guid: 2cc601d7eb1a0d34482f68c1aee0b8ad, type: 2}
     followUpNewsId: local_kenneth_swiftpotion
@@ -1601,7 +1601,7 @@ MonoBehaviour:
   - requestText: 'Local Request: Farm Boy Kenneth'
     requestDescription: "Due to his brothers being currently out of town to buy supplies
       for the farm, Kenneth doesn\u2019t have enough time to complete his daily chores
-      on the farm. Help him by creating a @Swift potion."
+      on the farm. Help him by creating a Swift Potion."
     requestImage: {fileID: 21300000, guid: 4638114a12e868c46af3e9f51d3ce539, type: 3}
     questData: {fileID: 11400000, guid: 638aabf14be794a479192b96eb7f6ac2, type: 2}
     followUpNewsId: local_kenneth_swiftpotion_2
@@ -1613,7 +1613,7 @@ MonoBehaviour:
       - rid: 1115517637186027535
   - requestText: 'Local Request: Mr. Tidus'
     requestDescription: Due to strong winds near the port, his hat is stuck suspended
-      in the air. help him by making a @jump potion to retrieve the hat.
+      in the air. help him by making a Jump Potion to retrieve the hat.
     requestImage: {fileID: 21300000, guid: cd167975a92cd984486c99af8afa0c28, type: 3}
     questData: {fileID: 11400000, guid: f5bdccf78fbf44e42a3b9e297cd5f6e0, type: 2}
     followUpNewsId: local_tidus_jumppotion
@@ -1623,7 +1623,7 @@ MonoBehaviour:
       - rid: 1115517454946664450
   - requestText: 'Local Request: Mr. Tidus'
     requestDescription: Due to strong winds near the port, his hat is stuck suspended
-      in the air. help him by making a @jump potion to retrieve the hat.
+      in the air. help him by making a Jump Potion to retrieve the hat.
     requestImage: {fileID: 21300000, guid: cd167975a92cd984486c99af8afa0c28, type: 3}
     questData: {fileID: 11400000, guid: 7fe30404e643a0e4a9b3a0dce101d3f2, type: 2}
     followUpNewsId: local_tidus_jumppotion_2
@@ -1649,7 +1649,7 @@ MonoBehaviour:
   - requestText: 'Local Request: Mr. Ramonts'
     requestDescription: "His sister is coming to visit him and she usually cooks
       a lot. Mr. Ramonts is usually unable to finish all the food she makes,which
-      always leaves him feeling guilty. Make him a Hunger potion to help him digest
+      always leaves him feeling guilty. Make him a Hunger Potion to help him digest
       all of his sister\u2019s food."
     requestImage: {fileID: 21300000, guid: 9ee4eeedc1601d746833a666b166a55f, type: 3}
     questData: {fileID: 11400000, guid: 557211d6325c0574eb82f6b0b68ae079, type: 2}
@@ -1747,7 +1747,7 @@ MonoBehaviour:
       on the floor of the inn this morning. Witness accounts that Mr. Ramonts was
       groaning on the floor while mumbling \u201C No more\u2026 It cant fit\u2026\u201D.
       After providing him proper treatment and care, Mr. Ramonts said \u201CEven
-      with the hunger potion, my sister\u2019s food was still too much.\u201D"
+      with the Hunger Potion, my sister\u2019s food was still too much.\u201D"
     newsImage: {fileID: 0}
     willBeShown: 0
     hasBeenShown: 0
@@ -1758,7 +1758,7 @@ MonoBehaviour:
       on the floor of the inn this morning. Witness accounts that Mr. Ramonts was
       groaning on the floor while mumbling \u201C No more\u2026 It cant fit\u2026\u201D.
       After providing him proper treatment and care, Mr. Ramonts said \u201CEven
-      with the hunger potion, my sister\u2019s food was still too much.\u201D"
+      with the Hunger Potion, my sister\u2019s food was still too much.\u201D"
     newsImage: {fileID: 0}
     willBeShown: 0
     hasBeenShown: 0

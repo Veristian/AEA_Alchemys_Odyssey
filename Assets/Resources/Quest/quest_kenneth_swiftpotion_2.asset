@@ -18,8 +18,8 @@ MonoBehaviour:
   questDescription: 'Deliver a Swift Potion to Kenneth
 
 
-    View Full Description
-    in Journal'
+    Open Journal for More
+    Details'
   questFullDescription: "Brew a Swift Potion for Kenneth\n\u2193\nDeliver the potion
     to Kenneth's Farm House"
   submissionCharacter: 0

@@ -12,6 +12,7 @@ public class IngredientData : ResourceData
     public string ingredientName;
     public GameObject ingredient2DObjectPrefab;
     public Sprite ingredientSprite;
+    [TextArea(20,20)]
     public string description;
     
     [Header("Ingredient Properties")]

@@ -18,8 +18,8 @@ MonoBehaviour:
   questDescription: 'Deliver a Hunger Potion to Mr. Ramonts
 
 
-    View Full Description
-    in Journal'
+    Open Journal for
+    More Details'
   questFullDescription: "Brew a Hunger Potion for Mr. Ramonts\n\u2193\nDeliver the
     potion to Mr. Ramonts' Inn"
   submissionCharacter: 0

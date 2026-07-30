@@ -18,7 +18,7 @@ MonoBehaviour:
   questDescription: 'Make a Nausea Relief Potion
 
 
-    View Full Description in Journal'
+    Open Journal for More Details'
   questFullDescription: "Go to Breezewood Forest\n\u2193\nPickup some herbs\n\u2193\nGo
     to your new home\n\u2193\nBrew a Nausea Relief Potion at the Cauldron"
   submissionCharacter: 0

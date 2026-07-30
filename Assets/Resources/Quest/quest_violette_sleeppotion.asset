@@ -18,8 +18,8 @@ MonoBehaviour:
   questDescription: 'Deliver a Sleep Potion to Violette
 
 
-    View Full Description
-    in Journal'
+    Open Journal for More
+    Details'
   questFullDescription: "Brew a Sleep Potion for Violette\n\u2193\nDeliver the potion
     to Violette's Library"
   submissionCharacter: 0

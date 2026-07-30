@@ -90,6 +90,8 @@ public class Herb : MonoBehaviour, IInteractable
 
             AudioController.Instance.PlaySFX("PickUp");
         }
+
+        FirstTimeTrigger.TryActivate("t3");
     }
 
     private void RefreshHerb()

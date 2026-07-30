@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadState: 0
   questId: 
-  tutorialId: 
+  tutorialId: t2
+  tutorialName: 
   tutorialSlides:
   - tutorialTitle: Breezewood Forest
     tutorialVideo: {fileID: 32900000, guid: f5544bd37973cda409d101b8b497c9f9, type: 3}

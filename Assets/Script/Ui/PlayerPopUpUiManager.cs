@@ -201,6 +201,7 @@ public class PlayerPopUpUiManager : MonoBehaviour
         OpenPopup(dailyTidalsPanel);
         //AudioController.Instance.PlaySFX("Paper");
         AudioController.Instance.PlaySFX("PaperClose");
+        FirstTimeTrigger.TryActivate("t6");
     }
 
     public void OpenGameStore()
@@ -265,11 +266,23 @@ public class PlayerPopUpUiManager : MonoBehaviour
 
     public void OpenTutorialPanel()
     {
+        InputManager.Instance.canUiPopup = false;
+        InputManager.Instance.canTakeInputs = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         UITransitionManager.Instance.FadeIn(tutorialPanel);
     }
 
     public void CloseTutorialPanel()
     {
+        if (currentPopup == null && !isInPCrafting)
+        {
+            InputManager.Instance.canUiPopup = true;
+            InputManager.Instance.canTakeInputs = true;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
         UITransitionManager.Instance.FadeOut(tutorialPanel);
     }
 

@@ -298,6 +298,9 @@ public class DialogueManager : Singleton<DialogueManager>
             case "playsfx":
                 AudioController.Instance.PlaySFX(parameter);
                 break;
+            case "firsttimetrigger":
+                FirstTimeTrigger.TryActivate(parameter);
+                break;
 
         }
     }

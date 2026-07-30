@@ -184,7 +184,10 @@ public class RequirementList
 public class QuestData : ResourceData
 {
     public string questName;
+    [TextArea]
     public string questDescription;
+    [TextArea(20, 20)]
+    public string questFullDescription;
 
     public SubmissionCharacter submissionCharacter;
     public RequirementList requirementsToUnlock;

@@ -343,6 +343,9 @@ public class PotionManager : Singleton<PotionManager>
         {
             PlayerPopUpUiManager.Instance.isInPCrafting = false;
         }
+
+        if (InventoryManager.Instance.CheckPotionExists(DataManager.Instance.potionDatas.Find(p => p.potionId == "Swift_Potion" || p.potionId == "Jump_Potion"), null).exist)
+            FirstTimeTrigger.TryActivate("t7");
     }
 
     public void ActivatePotionInterface()
@@ -372,6 +375,8 @@ public class PotionManager : Singleton<PotionManager>
         {
             PlayerPopUpUiManager.Instance.isInPCrafting = true;
         }
+
+        FirstTimeTrigger.TryActivate("t5");
 
     }
     public void AssignPotionTarget(PotionData potionData)

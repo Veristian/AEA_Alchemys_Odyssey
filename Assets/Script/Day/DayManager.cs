@@ -189,6 +189,10 @@ public class DayManager : Singleton<DayManager>
         foreach (var request in currentLocalRequest)
         {
             QuestRuntimeManager.Instance.MarkQuestAsOnGoing(request.questData);
+            if (request.questData.questId == "quest_sven_luckpotion")
+            {
+                FirstTimeTrigger.TryActivate("t9");
+            }
         }
     }
 

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadState: 0
   questId: 
-  tutorialId: 
+  tutorialId: t8
+  tutorialName: 
   tutorialSlides:
   - tutorialTitle: Quest Rewards
     tutorialVideo: {fileID: 32900000, guid: bf18aa30c4cbba3448a3f143cd134eec, type: 3}

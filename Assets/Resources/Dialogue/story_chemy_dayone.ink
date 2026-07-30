@@ -82,5 +82,5 @@ Mayor Tidus mentioned Breezewood Forest was nearby. It should be a good place to
 
 # speaker: Chemy
 Time to head into the forest.
-
+# func: firsttimetrigger@t1
 -> END

@@ -685,5 +685,13 @@ public class UiLoader : Singleton<UiLoader>
         }
 
     }
+
+    public void LoadPopUpTutorial(string id)
+    {
+        PlayerPopUpUiManager.Instance.OpenTutorialPanel();
+        OpenPopUpTutorial(id);
+    }
+
+
 #endregion
 }

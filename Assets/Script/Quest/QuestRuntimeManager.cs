@@ -287,6 +287,8 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
         {
             PlayerPopUpUiManager.Instance.QuestResultSetup(playerQuestData.questData.questName, playerQuestData.questData.questActions.goldReward);
         }
+
+        FirstTimeTrigger.TryActivate("t8");
     }
     public void SubmitQuest(string questId)
     {

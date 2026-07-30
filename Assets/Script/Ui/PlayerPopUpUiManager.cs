@@ -193,13 +193,14 @@ public class PlayerPopUpUiManager : MonoBehaviour
     {
         CloseAllPopups();
         OpenPopup(dailyTidalsPanel);
-        AudioController.Instance.PlaySFX("Paper");
+        AudioController.Instance.PlaySFX("PaperOpen");
     }
 
     public void OpenDailyTidals()
     {
         OpenPopup(dailyTidalsPanel);
         //AudioController.Instance.PlaySFX("Paper");
+        AudioController.Instance.PlaySFX("PaperClose");
     }
 
     public void OpenGameStore()

@@ -77,7 +77,7 @@ MonoBehaviour:
   - sname: Paper
     clip: {fileID: 8300000, guid: a77ef2aaa8c249948919dbcd106f6ee1, type: 3}
   - sname: MissionComplete
-    clip: {fileID: 8300000, guid: e637f4e68789c404d96955018b347ab3, type: 3}
+    clip: {fileID: 8300000, guid: 3230026663743f14397cfdeb26f5326b, type: 3}
   - sname: Sleep
     clip: {fileID: 8300000, guid: 3230026663743f14397cfdeb26f5326b, type: 3}
   - sname: PaperOpen
@@ -334,6 +334,7 @@ Transform:
   - {fileID: 58116865638530519}
   - {fileID: 7948947596812693405}
   - {fileID: 4278634430766269889}
+  - {fileID: 3204113159621128047}
   m_Father: {fileID: 6982703046419081174}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1789954941151435890
@@ -1113,6 +1114,50 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ccea752f81ce16f41859eed8adf2fe78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &5575038756935949657
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3204113159621128047}
+  - component: {fileID: 2551266880445004810}
+  m_Layer: 0
+  m_Name: TutorialManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3204113159621128047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5575038756935949657}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4924256350384680740}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2551266880445004810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5575038756935949657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7facc5cd7a74ed94dada8ba1dfe4cd3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6373641287142106150
@@ -3327,11 +3372,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7859539414823977297, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7859539414823977297, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7859539414823977297, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
       propertyPath: m_SizeDelta.y

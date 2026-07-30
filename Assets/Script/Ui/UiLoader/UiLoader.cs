@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Video;
 public class UiLoader : Singleton<UiLoader>
 {
     public event Action OnInventoryOpen;
@@ -82,7 +83,27 @@ public class UiLoader : Singleton<UiLoader>
     [Header("News/Load")]
     [SerializeField] private Transform newsRequestContainer;
     [SerializeField] private GameObject newsRequestPrefab;
+    [Header("Tutorial")]
+    [Header("Tutorial/Load")]
+    [SerializeField] private Transform tutorialListContainer;
+    [SerializeField] private Transform tutorialPageIndicatorContainer;
+    [SerializeField] private Transform popUpTutorialPageIndicatorContainer;
+    [SerializeField] private GameObject tutorialPrefab;
+    [SerializeField] private GameObject tutorialIndexIndicatorPrefab;
+    [SerializeField] private Sprite tutorialCurrentIndicatorSprite;
+    [SerializeField] private Sprite tutorialOtherIndicatorSprite;
 
+    [Header("Tutorial/Display")]
+    [SerializeField] private TextMeshProUGUI tutorialTitle;
+    [SerializeField] private VideoPlayer tutorialVideoPlayer;
+    [SerializeField] private TextMeshProUGUI tutorialDescription;
+    [Header("Tutorial/Pop Up")]
+    [SerializeField] private TextMeshProUGUI popUpTutorialTitle;
+    [SerializeField] private VideoPlayer popUpTutorialVideoPlayer;
+    [SerializeField] private TextMeshProUGUI popUpTutorialDescription;
+
+    private List<Image> tutorialIndicators;
+    private List<Image> popUpTutorialIndicators;
 
 #region Subscription
 
@@ -510,9 +531,159 @@ public class UiLoader : Singleton<UiLoader>
 #endregion
 
 #region Tutorial
+    private void DisplayTutorialSlide(int index, TutorialSlide slide)
+    {
+        if (slide == null)
+            return;
+
+        tutorialTitle.text = slide.tutorialTitle;
+        tutorialDescription.text = slide.tutorialDescription;
+
+        tutorialVideoPlayer.Stop();
+        tutorialVideoPlayer.clip = slide.tutorialVideo;
+        tutorialVideoPlayer.Play();
+        tutorialVideoPlayer.isLooping = true;
+
+
+        for (int i = 0; i < tutorialIndicators.Count; i++)
+        {
+            tutorialIndicators[i].sprite = i == index ? tutorialCurrentIndicatorSprite : tutorialOtherIndicatorSprite;
+        }
+    }
+    private void CreateTutorialIndicators(int amount)
+    {
+        foreach (Transform child in tutorialPageIndicatorContainer)
+            Destroy(child.gameObject);
+        if (tutorialIndicators == null) tutorialIndicators = new List<Image>();
+
+        tutorialIndicators.Clear();
+
+        for (int i = 0; i < amount; i++)
+        {
+            GameObject indicator = Instantiate(
+                tutorialIndexIndicatorPrefab,
+                tutorialPageIndicatorContainer);
+
+            tutorialIndicators.Add(indicator.GetComponent<Image>());
+        }
+    }
+    private void DisplayPopUpTutorialSlide(int index, TutorialSlide slide)
+    {
+        if (slide == null)
+            return;
+
+        popUpTutorialTitle.text = slide.tutorialTitle;
+        popUpTutorialDescription.text = slide.tutorialDescription;
+
+        popUpTutorialVideoPlayer.Stop();
+        popUpTutorialVideoPlayer.clip = slide.tutorialVideo;
+        popUpTutorialVideoPlayer.Play();
+        popUpTutorialVideoPlayer.isLooping = true;
+
+        for (int i = 0; i < popUpTutorialIndicators.Count; i++)
+        {
+            popUpTutorialIndicators[i].sprite = i == index ? tutorialCurrentIndicatorSprite : tutorialOtherIndicatorSprite;
+        }
+    }
+    private void CreatePopUpTutorialIndicators(int amount)
+    {
+        foreach (Transform child in popUpTutorialPageIndicatorContainer)
+            Destroy(child.gameObject);
+        if (popUpTutorialIndicators == null) popUpTutorialIndicators = new List<Image>();
+        popUpTutorialIndicators.Clear();
+
+        for (int i = 0; i < amount; i++)
+        {
+            GameObject indicator = Instantiate(
+                tutorialIndexIndicatorPrefab,
+                popUpTutorialPageIndicatorContainer);
+
+            popUpTutorialIndicators.Add(indicator.GetComponent<Image>());
+        }
+    }
     //OnButtonNext
+    public void OnTutorialButtonNext()
+    {
+        var result = TutorialManager.Instance.Next();
+        DisplayTutorialSlide(result.Item1, result.Item2);
+
+    }
+    public void OnPopUpTutorialButtonNext()
+    {
+        var result = TutorialManager.Instance.Next();
+        DisplayPopUpTutorialSlide(result.Item1, result.Item2);
+    }
+    
     //OnButtonPrev
+    public void OnTutorialButtonPrevious()
+    {
+        var result = TutorialManager.Instance.Previous();
+        DisplayTutorialSlide(result.Item1, result.Item2);
+    }
+    public void OnPopUpTutorialButtonPrevious()
+    {
+        var result = TutorialManager.Instance.Previous();
+        DisplayPopUpTutorialSlide(result.Item1, result.Item2);
+    }
     //OnClose
+    public void CloseTutorial()
+    {
+        tutorialVideoPlayer.Stop();
+
+        tutorialTitle.text = "";
+        tutorialDescription.text = "";
+
+        foreach (Image child in tutorialIndicators)
+            Destroy(child.gameObject);
+
+        tutorialIndicators.Clear();
+    }
+    public void ClosePopUpTutorial()
+    {
+        tutorialVideoPlayer.Stop();
+
+        tutorialTitle.text = "";
+        tutorialDescription.text = "";
+
+        foreach (Image child in popUpTutorialIndicators)
+            Destroy(child.gameObject);
+
+        popUpTutorialIndicators.Clear();
+    }
     //OnOpen
+    public void OpenTutorial(string tutorialId)
+    {
+        var result = TutorialManager.Instance.SetTutorial(tutorialId);
+
+        if (result.Item2 == null)
+            return;
+        CreateTutorialIndicators(TutorialManager.Instance.tutorialData.GetSlideAmount());
+        DisplayTutorialSlide(result.Item1, result.Item2);
+    }
+    public void OpenPopUpTutorial(string tutorialId)
+    {
+        var result = TutorialManager.Instance.SetTutorial(tutorialId);
+
+        if (result.Item2 == null)
+            return;
+        CreatePopUpTutorialIndicators(TutorialManager.Instance.tutorialData.GetSlideAmount());
+        DisplayPopUpTutorialSlide(result.Item1, result.Item2);
+    }
+
+    public void LoadAllTutorials()
+    {
+        foreach (Transform child in tutorialListContainer)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (TutorialData tutorialDataItem in DataManager.Instance.tutorialDatas)
+        {
+            GameObject tutorialItem = Instantiate(tutorialPrefab, tutorialListContainer);
+            TutorialDisplay tutorialDisplay = tutorialItem.GetComponent<TutorialDisplay>();
+            tutorialDisplay.Initialize(tutorialDataItem);
+        }
+
+    }
 #endregion
 }

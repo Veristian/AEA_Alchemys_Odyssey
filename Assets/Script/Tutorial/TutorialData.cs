@@ -17,6 +17,7 @@ public class TutorialData : ResourceData
 {
     [Header("Tutorial")]
     public string tutorialId;
+    public string tutorialName;
     public List<TutorialSlide> tutorialSlides;
 
     public int GetSlideAmount()

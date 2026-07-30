@@ -156,6 +156,7 @@ public class JournalUiManager : MonoBehaviour
     {
         UiLoader.Instance.CallOpenIndexEvent();
         UiLoader.Instance.CallOpenQuestEvent();
+        UiLoader.Instance.LoadAllTutorials();
     }
 
     

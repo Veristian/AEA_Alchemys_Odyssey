@@ -290,15 +290,18 @@ public class DialogueManager : Singleton<DialogueManager>
                 GameObject.FindAnyObjectByType<CinemachineFreeLook>(FindObjectsInactive.Exclude).m_XAxis.Value = float.Parse(parameter);
                 break;
             case "viewnews":
+                isSkipping = false;
                 DayManager.Instance.ViewNewsAndAcceptNews();
                 break;
             case "viewshop":
+                isSkipping = false;
                 PlayerPopUpUiManager.Instance.OpenGameStore();
                 break;
             case "playsfx":
                 AudioController.Instance.PlaySFX(parameter);
                 break;
             case "firsttimetrigger":
+                isSkipping = false;
                 FirstTimeTrigger.TryActivate(parameter);
                 break;
 

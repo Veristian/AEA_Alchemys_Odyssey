@@ -15,7 +15,7 @@ MonoBehaviour:
   loadState: 0
   questId: 
   tutorialId: t9
-  tutorialName: 
+  tutorialName: 8-Leaf Clover
   tutorialSlides:
   - tutorialTitle: 8-Leaf Clover
     tutorialVideo: {fileID: 0}

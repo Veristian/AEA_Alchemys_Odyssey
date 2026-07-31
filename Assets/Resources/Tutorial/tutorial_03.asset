@@ -15,7 +15,7 @@ MonoBehaviour:
   loadState: 0
   questId: 
   tutorialId: t3
-  tutorialName: 
+  tutorialName: Inventory
   tutorialSlides:
   - tutorialTitle: Inventory
     tutorialVideo: {fileID: 32900000, guid: 18938f1aa5f4bf64fa9b2e45322be899, type: 3}

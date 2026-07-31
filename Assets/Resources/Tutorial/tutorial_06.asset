@@ -15,7 +15,7 @@ MonoBehaviour:
   loadState: 0
   questId: 
   tutorialId: t6
-  tutorialName: 
+  tutorialName: Daily Tidals
   tutorialSlides:
   - tutorialTitle: Daily Tidals
     tutorialVideo: {fileID: 32900000, guid: b96e8ab96cd998f4783cd22a6a59e94d, type: 3}

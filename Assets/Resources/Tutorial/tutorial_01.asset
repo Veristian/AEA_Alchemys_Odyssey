@@ -15,7 +15,7 @@ MonoBehaviour:
   loadState: 0
   questId: 
   tutorialId: t1
-  tutorialName: 
+  tutorialName: "Welcome to A\u2019ea"
   tutorialSlides:
   - tutorialTitle: "Welcome to A\u2019ea"
     tutorialVideo: {fileID: 32900000, guid: 4d26d591a39287f429b1b812bb30c2a8, type: 3}

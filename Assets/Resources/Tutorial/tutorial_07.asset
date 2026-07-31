@@ -15,7 +15,7 @@ MonoBehaviour:
   loadState: 0
   questId: 
   tutorialId: t7
-  tutorialName: 
+  tutorialName: Delivering Potions
   tutorialSlides:
   - tutorialTitle: Delivering Potions
     tutorialVideo: {fileID: 32900000, guid: 99f5872dfb4a7a140a8b7d2a60d08958, type: 3}

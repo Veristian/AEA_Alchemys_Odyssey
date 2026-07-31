@@ -15,7 +15,7 @@ MonoBehaviour:
   loadState: 0
   questId: 
   tutorialId: t5
-  tutorialName: 
+  tutorialName: Potion Brewing
   tutorialSlides:
   - tutorialTitle: Potion Brewing
     tutorialVideo: {fileID: 32900000, guid: 1c013c3d6c44a634fa5fbb168191522b, type: 3}

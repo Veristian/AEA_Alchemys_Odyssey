@@ -15,7 +15,7 @@ MonoBehaviour:
   loadState: 0
   questId: 
   tutorialId: t4
-  tutorialName: 
+  tutorialName: "Chemy\u2019s House"
   tutorialSlides:
   - tutorialTitle: "Chemy\u2019s House"
     tutorialVideo: {fileID: 32900000, guid: c9e33171f3b7f1141ad589f069566219, type: 3}

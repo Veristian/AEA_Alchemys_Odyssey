@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxPitch = 1.3f;
     [SerializeField] private float volumeLerpSpeed = 10f;
     [SerializeField] private float pitchLerpSpeed = 10f;
+    [SerializeField] private float footstepVolumeMultiplier = 1;
 
     [Header("Slope Movement")]
     [SerializeField] private float maxSlopeAngle = 45f;
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour
         float speed = flatVel.magnitude;
 
         // Speed normalized from 0 to moveSpeed
-        float normalizedSpeed = Mathf.Clamp01(speed / (isSprinting ? sprintSpeed : moveSpeed));
+        float normalizedSpeed = Mathf.Clamp01((speed * footstepVolumeMultiplier) / (isSprinting ? sprintSpeed : moveSpeed));
 
         if (runClip != null && walkClip != null)
         {

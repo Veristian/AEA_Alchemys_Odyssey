@@ -26183,6 +26183,10 @@ PrefabInstance:
       propertyPath: airMultiplier
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5815973415517038315, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
+      propertyPath: footstepVolumeMultiplier
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5850282016990907920, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.009973636

@@ -378,6 +378,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chemy Animated -Y Foward
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9f90c33e417ae4b42b0a9f268ffec53a, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 9f90c33e417ae4b42b0a9f268ffec53a, type: 3}
       propertyPath: m_Controller
       value: 
@@ -1047,7 +1051,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228057288}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.43406573, y: -0, z: -0, w: 0.90088123}
+  m_LocalRotation: {x: 0.27710718, y: -0.000000016532557, z: 0.0000000047680113, w: 0.96083903}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1295,7 +1299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 267655310}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3576326, y: -0.00000001606839, z: 0.000000006153561, w: 0.9338624}
+  m_LocalRotation: {x: 0.06917987, y: 0.00000001822936, z: -0.0000000012641336, w: 0.99760425}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2866,7 +2870,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804455730}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38159427, y: 3e-45, z: -1e-45, w: 0.92432994}
+  m_LocalRotation: {x: 0.22145048, y: 0.000000009152668, z: -0.0000000020784676, w: 0.9751716}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3473,7 +3477,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh552030
+  m_Name: pb_Mesh51254
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -3763,7 +3767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 5.02, z: -4}
+  m_FollowOffset: {x: 0, y: 3.02, z: -2.3}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -3963,6 +3967,7 @@ GameObject:
   - component: {fileID: 1080452100}
   - component: {fileID: 1080452099}
   - component: {fileID: 1080452101}
+  - component: {fileID: 1080452102}
   m_Layer: 0
   m_Name: FreeLook Camera
   m_TagString: Untagged
@@ -3988,7 +3993,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 12
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 70063355}
+  m_LookAt: {fileID: 1397805315}
   m_Follow: {fileID: 1035741769}
   m_CommonLens: 1
   m_Lens:
@@ -4064,12 +4069,12 @@ MonoBehaviour:
   m_BindingMode: 4
   m_SplineCurvature: 0.2
   m_Orbits:
-  - m_Height: 5.02
+  - m_Height: 3.02
+    m_Radius: 2.3
+  - m_Height: 1.41
+    m_Radius: 5.25
+  - m_Height: 0.1
     m_Radius: 4
-  - m_Height: 3.41
-    m_Radius: 6
-  - m_Height: 2.11
-    m_Radius: 5
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 228057289}
@@ -4084,7 +4089,7 @@ Transform:
   m_GameObject: {fileID: 1080452098}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 70.32484, y: -340.78214, z: 235.8563}
+  m_LocalPosition: {x: 70.32484, y: -342.78214, z: 237.55629}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4109,6 +4114,36 @@ MonoBehaviour:
   AutoEnableInputs: 1
   XYAxis: {fileID: -5630151704836100654, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   ZAxis: {fileID: 0}
+--- !u!114 &1080452102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080452098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IgnoreTag: Player
+  m_TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_MinimumDistanceFromTarget: 0.01
+  m_AvoidObstacles: 1
+  m_DistanceLimit: 0
+  m_MinimumOcclusionTime: 0
+  m_CameraRadius: 0.1
+  m_Strategy: 0
+  m_MaximumEffort: 4
+  m_SmoothingTime: 0
+  m_Damping: 0.2
+  m_DampingWhenOccluded: 0
+  m_OptimalTargetDistance: 0
 --- !u!1001 &1105779744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5424,7 +5459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 5.02, z: -4}
+  m_FollowOffset: {x: 0, y: 3.02, z: -2.3}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -5542,6 +5577,10 @@ PrefabInstance:
     - target: {fileID: 6783435317237245845, guid: 62125e9f1f041a94098544cfe80e3242, type: 3}
       propertyPath: m_Name
       value: 'Forest Marker '
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783435317237245845, guid: 62125e9f1f041a94098544cfe80e3242, type: 3}
+      propertyPath: m_TagString
+      value: Others
       objectReference: {fileID: 0}
     - target: {fileID: 8350297169983239612, guid: 62125e9f1f041a94098544cfe80e3242, type: 3}
       propertyPath: m_LocalScale.x
@@ -6821,8 +6860,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1944136358}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.43406573, y: -0, z: -0, w: 0.90088123}
-  m_LocalPosition: {x: 70.32484, y: -340.78214, z: 235.8563}
+  m_LocalRotation: {x: 0.2771072, y: -0.00000001653256, z: 0.0000000047680113, w: 0.96083903}
+  m_LocalPosition: {x: 70.32484, y: -342.78214, z: 237.55629}
   m_LocalScale: {x: 1.0019664, y: 1.0019665, z: 1.0019665}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6981,7 +7020,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1066994
+  m_Name: pb_Mesh-21464
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -8676,7 +8715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 5.02, z: -4}
+  m_FollowOffset: {x: 0, y: 3.02, z: -2.3}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -9129,6 +9168,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6750697374387994665, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.573
+      objectReference: {fileID: 0}
     - target: {fileID: 7797496618730112479, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -9215,6 +9258,10 @@ PrefabInstance:
     - target: {fileID: 5673330118020006328, guid: eeaf525a8c68ebe4d85038a3ffec1cad, type: 3}
       propertyPath: m_Name
       value: Forest Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673330118020006328, guid: eeaf525a8c68ebe4d85038a3ffec1cad, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

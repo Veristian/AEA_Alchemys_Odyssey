@@ -44,6 +44,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Footsteps")]
     [SerializeField] private AudioSource footstepSource;
+    [SerializeField] private AudioClip walkClip;
+    [SerializeField] private AudioClip runClip;
+
     [SerializeField] private float minPitch = 0.8f;
     [SerializeField] private float maxPitch = 1.3f;
     [SerializeField] private float volumeLerpSpeed = 10f;
@@ -66,6 +69,19 @@ public class PlayerController : MonoBehaviour
         // Speed normalized from 0 to moveSpeed
         float normalizedSpeed = Mathf.Clamp01(speed / (isSprinting ? sprintSpeed : moveSpeed));
 
+        if (runClip != null && walkClip != null)
+        {
+            if (isSprinting)
+            {
+                if (footstepSource.clip != runClip)
+                    footstepSource.clip = runClip;
+            }
+            else
+            {
+                if (footstepSource.clip != walkClip)
+                    footstepSource.clip = walkClip;
+            }
+        }
         // Play only when moving
         if (normalizedSpeed > 0.05f)
         {

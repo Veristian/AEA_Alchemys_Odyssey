@@ -43,7 +43,7 @@ MonoBehaviour:
   - tutorialTitle: Potion Brewing
     tutorialVideo: {fileID: 32900000, guid: 03539e0eb11bb4542a65d57a5a0b3845, type: 3}
     tutorialDescription: Dropping the herbs into the cauldron will change the water
-      surface, where you drop the herbs effect the shape as well so keep it in mind.
+      surface. Where you drop the herbs affects the shape as well so keep it in mind.
   - tutorialTitle: Potion Brewing
     tutorialVideo: {fileID: 32900000, guid: db5d7b48823337f40834699be1d5dc20, type: 3}
     tutorialDescription: Each potion recipe have their main herb, these herb will
@@ -64,6 +64,6 @@ MonoBehaviour:
       a minimum of 2 herbs.'
   - tutorialTitle: Potion Brewing
     tutorialVideo: {fileID: 32900000, guid: b9dfe6b2e17189546adc23485c392c72, type: 3}
-    tutorialDescription: If you ever get confuse you can press the Question Mark
+    tutorialDescription: If you ever get confused you can press the Question Mark
       label in the journal to re-read this tutorial. Good luck brewing alchemist
       !

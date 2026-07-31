@@ -37,7 +37,7 @@ MonoBehaviour:
     tutorialVideo: {fileID: 32900000, guid: b9dfe6b2e17189546adc23485c392c72, type: 3}
     tutorialDescription: Pressing the Question Mark label on the side of the journal
       will open up the tutorial page. Here, you can review all of the tutorial you
-      have seen if you ever get confuse.
+      have seen if you ever get confused.
   - tutorialTitle: "Welcome to A\u2019ea"
     tutorialVideo: {fileID: 32900000, guid: 5495bdb2854ac664cac0dcaab9913b86, type: 3}
     tutorialDescription: Pressing the Magnifying Glass label on the side of the journal

@@ -19,8 +19,8 @@ MonoBehaviour:
   tutorialSlides:
   - tutorialTitle: 8-Leaf Clover
     tutorialVideo: {fileID: 0}
-    tutorialDescription: The 8-Leaf Clover is a special herbs that does not grow
-      in the forest. Check the quest log or the journal for more information on where
+    tutorialDescription: The 8-Leaf Clover is a special herb that does not grow in
+      the forest. Check the quest log or the journal for more information on where
       they grow.
   - tutorialTitle: 8-Leaf Clover
     tutorialVideo: {fileID: 0}

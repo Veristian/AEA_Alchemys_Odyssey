@@ -25,4 +25,4 @@ MonoBehaviour:
   - tutorialTitle: "Chemy\u2019s House"
     tutorialVideo: {fileID: 32900000, guid: 22ed3fe0a7b333b4a9ae27b0403fadc5, type: 3}
     tutorialDescription: Interacting with the bed will foward the day. You can only
-      do this when all of the main tasks are completed.
+      do this when all of the main quest tasks are completed.

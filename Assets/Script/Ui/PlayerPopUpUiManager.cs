@@ -269,10 +269,19 @@ public class PlayerPopUpUiManager : MonoBehaviour
         InputManager.Instance.canUiPopup = false;
         InputManager.Instance.canTakeInputs = false;
         InputManager.Instance.canPause = false;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
+        StartCoroutine(UnlockCursorNextFrame());
 
         UITransitionManager.Instance.FadeIn(tutorialPanel);
+    }
+
+    private IEnumerator UnlockCursorNextFrame()
+    {
+        yield return null; // Wait one frame
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void CloseTutorialPanel()

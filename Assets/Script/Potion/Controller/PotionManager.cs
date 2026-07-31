@@ -350,7 +350,7 @@ public class PotionManager : Singleton<PotionManager>
         PlayerQuestData questToSubmit = QuestRuntimeManager.Instance
             .GetOngoingQuests()
             .Find(q =>
-                q.questData.submissionCharacter == SubmissionCharacter.None &&
+                q.questData.submissionCharacter == SubmissionCharacter.Chemy &&
                 q.questData.requirementsToComplete.AreAllMet()
             );
         
@@ -403,7 +403,7 @@ public class PotionManager : Singleton<PotionManager>
     public void BrewPotion()
     {
         AudioController.Instance.PlaySFX("IntenseBoiling");
-        if (CheckPotionBetweenGuides())
+        if (CheckPotionBetweenGuides() && activePotionTarget != null)
         {
             Debug.Log("Potion brewed successfully!");
             if (activePotionTarget != null)

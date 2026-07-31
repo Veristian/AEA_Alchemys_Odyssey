@@ -566,6 +566,8 @@ public class UiLoader : Singleton<UiLoader>
 
             tutorialIndicators.Add(indicator.GetComponent<Image>());
         }
+        RectTransform rect = tutorialPageIndicatorContainer.GetComponent<RectTransform>();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(rect);
     }
     private void DisplayPopUpTutorialSlide(int index, TutorialSlide slide)
     {
@@ -600,6 +602,8 @@ public class UiLoader : Singleton<UiLoader>
 
             popUpTutorialIndicators.Add(indicator.GetComponent<Image>());
         }
+        RectTransform rect = popUpTutorialPageIndicatorContainer.GetComponent<RectTransform>();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(rect);
     }
     //OnButtonNext
     public void OnTutorialButtonNext()
@@ -682,6 +686,11 @@ public class UiLoader : Singleton<UiLoader>
             GameObject tutorialItem = Instantiate(tutorialPrefab, tutorialListContainer);
             TutorialDisplay tutorialDisplay = tutorialItem.GetComponent<TutorialDisplay>();
             tutorialDisplay.Initialize(tutorialDataItem);
+            
+        }
+        if (DataManager.Instance.tutorialDatas.Count > 0)
+        {
+            OpenTutorial(DataManager.Instance.tutorialDatas[0].tutorialId);
         }
 
     }

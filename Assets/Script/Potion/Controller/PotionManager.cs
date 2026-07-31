@@ -335,6 +335,7 @@ public class PotionManager : Singleton<PotionManager>
         InputManager.Instance.canMove = true;
         InputManager.Instance.canLook = true;
         InputManager.Instance.canUiPopup = true;
+        InputManager.Instance.canTakeInputs = true;
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

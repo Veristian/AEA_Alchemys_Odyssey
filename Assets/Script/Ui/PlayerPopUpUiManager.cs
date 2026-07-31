@@ -268,6 +268,7 @@ public class PlayerPopUpUiManager : MonoBehaviour
     {
         InputManager.Instance.canUiPopup = false;
         InputManager.Instance.canTakeInputs = false;
+        InputManager.Instance.canPause = false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
@@ -280,9 +281,11 @@ public class PlayerPopUpUiManager : MonoBehaviour
         {
             InputManager.Instance.canUiPopup = true;
             InputManager.Instance.canTakeInputs = true;
+            
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+        InputManager.Instance.canPause = true;
         UITransitionManager.Instance.FadeOut(tutorialPanel);
     }
 

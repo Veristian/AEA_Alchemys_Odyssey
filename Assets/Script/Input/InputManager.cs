@@ -70,6 +70,7 @@ public class InputManager : Singleton<InputManager>
     [ReadOnly] public bool MouseLeftWasReleased;
     [ReadOnly] public bool InventoryWasPressed;
     [ReadOnly] public bool JournalWasPressed;
+    [ReadOnly] public bool ResetGameWasPressed;
 
 
     //actions
@@ -87,6 +88,7 @@ public class InputManager : Singleton<InputManager>
     private InputAction _mouseDeltaAction;
 
     private InputAction _mouseLeftAction;
+    private InputAction _resetGameAction;
     [Header("Grab")]
     public LayerMask grabLayer;
     [ReadOnly] public bool hoveringGrabbable; //updates every frame based on raycast
@@ -122,6 +124,9 @@ public class InputManager : Singleton<InputManager>
 
         _inventoryAction = playerInput.actions["Inventory"];
         _journalAction = playerInput.actions["Journal"];
+
+        _resetGameAction = playerInput.actions["Reset"];
+
         mainCamera = Camera.main ?? FindFirstObjectByType<Camera>();
         
         UpdateCameraLookState();
@@ -129,6 +134,7 @@ public class InputManager : Singleton<InputManager>
 
     private void Update()
     {
+        ResetGameWasPressed = _resetGameAction.WasPressedThisFrame();
         if (canTakeMouseInputs)
         {
             MouseDelta = _mouseDeltaAction.ReadValue<Vector2>();

@@ -4,8 +4,10 @@ using UnityEngine;
 using System.Reflection;
 using System.Linq;
 using UnityEngine.Events;
-
-
+using System.IO;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class DataManager : Singleton<DataManager>
 {
@@ -33,6 +35,14 @@ public class DataManager : Singleton<DataManager>
         if (!IsGameLoaded && Instance == this)
             LoadGameData();
 
+    }
+
+    private void Update()
+    {
+        if (InputManager.Instance.ResetGameWasPressed)
+        {
+            DeleteAllSaveDataAndQuit();
+        }
     }
 
     [ContextMenu("Load Game Data")]
@@ -90,5 +100,39 @@ public class DataManager : Singleton<DataManager>
     
         return defaultFactory();
     }
+
+    public static void DeleteAllSaveDataAndQuit()
+    {
+        // Delete all files and folders inside persistentDataPath
+        if (Directory.Exists(Application.persistentDataPath))
+        {
+            DirectoryInfo directory = new DirectoryInfo(Application.persistentDataPath);
+
+            foreach (FileInfo file in directory.GetFiles())
+            {
+                file.Delete();
+            }
+
+            foreach (DirectoryInfo dir in directory.GetDirectories())
+            {
+                dir.Delete(true);
+            }
+        }
+
+        // Delete all PlayerPrefs
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+
+        Debug.Log("All save data and PlayerPrefs have been deleted.");
+
+
+        Application.Quit();
+#if UNITY_EDITOR
+        EditorApplication.isPlaying = false;
+#endif
+
+
+    }
+
 
 }

@@ -22069,6 +22069,10 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5815973415517038315, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
+      propertyPath: sprintSpeed
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815973415517038315, guid: 85712adf6b4097f4396f4ed0c41485ab, type: 3}
       propertyPath: playerHeight
       value: 0
       objectReference: {fileID: 0}

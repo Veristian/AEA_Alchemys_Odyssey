@@ -24,6 +24,7 @@ public class InputManager : Singleton<InputManager>
     }
     public bool canPause = true;
     public bool canMove = true;
+    public bool canTakeMouseInputs = true;
     public bool canInteract = true;
     public bool canUiPopup = true;
     [SerializeField]
@@ -50,8 +51,9 @@ public class InputManager : Singleton<InputManager>
     //inputs
     [ReadOnly] public Vector2 Movement;
     [ReadOnly] public Vector2 Look;
-    [ReadOnly] public Vector2 Scroll;
+    [ReadOnly] public float Scroll;
     [ReadOnly] public Vector2 MousePosition;
+    [ReadOnly] public Vector2 MouseDelta;
     [ReadOnly] public bool SprintWasPressed;
     [ReadOnly] public bool SprintIsHeld;
     [ReadOnly] public bool SprintWasReleased;
@@ -64,6 +66,7 @@ public class InputManager : Singleton<InputManager>
     [ReadOnly] public bool InteractWasReleased;
     [ReadOnly] public bool MouseLeftWasPressed;
     [ReadOnly] public bool MouseLeftIsHeld;
+    [ReadOnly] public bool DocumentDragIsHeld;
     [ReadOnly] public bool MouseLeftWasReleased;
     [ReadOnly] public bool InventoryWasPressed;
     [ReadOnly] public bool JournalWasPressed;
@@ -74,12 +77,14 @@ public class InputManager : Singleton<InputManager>
     private InputAction _jumpAction;
     private InputAction _sprintAction;
     private InputAction _lookAction;
+    private InputAction _scrollAction;
     private InputAction _pauseAction;
     private InputAction _interactAction;
     private InputAction _inventoryAction;
     private InputAction _journalAction;
 
     private InputAction _mousePositionAction;
+    private InputAction _mouseDeltaAction;
 
     private InputAction _mouseLeftAction;
     [Header("Grab")]
@@ -101,6 +106,7 @@ public class InputManager : Singleton<InputManager>
 
         _moveAction = playerInput.actions["Move"];
         _lookAction = playerInput.actions["Look"];
+        _scrollAction = playerInput.actions["Scroll"];
 
         _jumpAction = playerInput.actions["Jump"];
         _sprintAction = playerInput.actions["Sprint"];
@@ -110,6 +116,7 @@ public class InputManager : Singleton<InputManager>
         _interactAction = playerInput.actions["Interact"];
 
         _mousePositionAction = playerInput.actions["MousePos"];
+        _mouseDeltaAction = playerInput.actions["MouseDelta"];
 
         _mouseLeftAction = playerInput.actions["MouseLeft"];
 
@@ -122,6 +129,18 @@ public class InputManager : Singleton<InputManager>
 
     private void Update()
     {
+        if (canTakeMouseInputs)
+        {
+            MouseDelta = _mouseDeltaAction.ReadValue<Vector2>();
+            Scroll = _scrollAction.ReadValue<float>();
+            DocumentDragIsHeld = _mouseLeftAction.IsPressed();
+        }
+        else
+        {
+            MouseDelta = Vector2.zero;
+            Scroll = 0;
+            DocumentDragIsHeld = false;
+        }
         if (canTakeInputs)
         {
             if (canMove)
@@ -180,7 +199,6 @@ public class InputManager : Singleton<InputManager>
         {
             Movement = Vector2.zero;
             Look = Vector2.zero;
-            Scroll = Vector2.zero;
             MousePosition = Vector2.zero;
 
             JumpWasPressed = false;

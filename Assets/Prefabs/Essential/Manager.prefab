@@ -2252,6 +2252,7 @@ MonoBehaviour:
   _canTakeInputs: 1
   canPause: 1
   canMove: 1
+  canTakeMouseInputs: 1
   canInteract: 1
   canUiPopup: 1
   _canLook: 1
@@ -2259,8 +2260,12 @@ MonoBehaviour:
   cameraInputProvider: {fileID: 0}
   Movement: {x: 0, y: 0}
   Look: {x: 0, y: 0}
-  Scroll: {x: 0, y: 0}
+  Scroll: 0
   MousePosition: {x: 0, y: 0}
+  MouseDelta: {x: 0, y: 0}
+  SprintWasPressed: 0
+  SprintIsHeld: 0
+  SprintWasReleased: 0
   JumpWasPressed: 0
   JumpIsHeld: 0
   JumpWasReleased: 0
@@ -2270,6 +2275,7 @@ MonoBehaviour:
   InteractWasReleased: 0
   MouseLeftWasPressed: 0
   MouseLeftIsHeld: 0
+  DocumentDragIsHeld: 0
   MouseLeftWasReleased: 0
   InventoryWasPressed: 0
   JournalWasPressed: 0
@@ -3304,11 +3310,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7859539414823977297, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7859539414823977297, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7859539414823977297, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
       propertyPath: m_SizeDelta.y

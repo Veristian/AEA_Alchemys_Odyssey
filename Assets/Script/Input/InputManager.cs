@@ -52,6 +52,9 @@ public class InputManager : Singleton<InputManager>
     [ReadOnly] public Vector2 Look;
     [ReadOnly] public Vector2 Scroll;
     [ReadOnly] public Vector2 MousePosition;
+    [ReadOnly] public bool SprintWasPressed;
+    [ReadOnly] public bool SprintIsHeld;
+    [ReadOnly] public bool SprintWasReleased;
     [ReadOnly] public bool JumpWasPressed;
     [ReadOnly] public bool JumpIsHeld;
     [ReadOnly] public bool JumpWasReleased;
@@ -69,6 +72,7 @@ public class InputManager : Singleton<InputManager>
     //actions
     private InputAction _moveAction;
     private InputAction _jumpAction;
+    private InputAction _sprintAction;
     private InputAction _lookAction;
     private InputAction _pauseAction;
     private InputAction _interactAction;
@@ -99,6 +103,7 @@ public class InputManager : Singleton<InputManager>
         _lookAction = playerInput.actions["Look"];
 
         _jumpAction = playerInput.actions["Jump"];
+        _sprintAction = playerInput.actions["Sprint"];
 
         _pauseAction = playerInput.actions["Pause"];
 
@@ -125,6 +130,12 @@ public class InputManager : Singleton<InputManager>
                 JumpWasPressed = _jumpAction.WasPressedThisFrame();
                 JumpIsHeld = _jumpAction.IsPressed();
                 JumpWasReleased = _jumpAction.WasReleasedThisFrame();
+
+                SprintWasPressed = _sprintAction.WasPressedThisFrame();
+                SprintIsHeld = _sprintAction.IsPressed();
+                SprintWasReleased = _sprintAction.WasReleasedThisFrame();
+
+
             }
             else
             {
@@ -132,6 +143,10 @@ public class InputManager : Singleton<InputManager>
                 JumpWasPressed = false;
                 JumpIsHeld = false;
                 JumpWasReleased = false;
+
+                SprintWasPressed = false;
+                SprintIsHeld = false;
+                SprintWasReleased = false;
             }
             if (canLook)
             {
@@ -171,6 +186,11 @@ public class InputManager : Singleton<InputManager>
             JumpWasPressed = false;
             JumpIsHeld = false;
             JumpWasReleased = false;
+
+            SprintWasPressed = false;
+            SprintIsHeld = false;
+            SprintWasReleased = false;
+
 
             InteractWasPressed = false;
             InteractIsHeld = false;

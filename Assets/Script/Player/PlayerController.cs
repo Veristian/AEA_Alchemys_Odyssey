@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed = 7f;
+    public float sprintSpeed = 8f;
     public float groundDrag = 6f;
     public float airMultiplier = 0.5f;
     public float gravityMultiplier = 2.5f;
@@ -25,8 +26,8 @@ public class PlayerController : MonoBehaviour
     public Transform chemyAnimatedObj;
 
 
-    [HideInInspector] public float walkSpeed;
-    [HideInInspector] public float sprintSpeed;
+    // [HideInInspector] public float walkSpeed;
+    // [HideInInspector] public float sprintSpeed;
 
     [Header("Animation")]
     [SerializeField] private Animator animator;
@@ -48,8 +49,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float volumeLerpSpeed = 10f;
     [SerializeField] private float pitchLerpSpeed = 10f;
 
-    // Your existing variables
+    [Header("Slope Movement")]
+    [SerializeField] private float maxSlopeAngle = 45f;
+    [SerializeField] private float slopeRayDistance = 1.5f;
 
+    private RaycastHit slopeHit;
+    private bool onSlope;
+    private bool isSprinting => InputManager.Instance.SprintIsHeld && grounded;
+    private CapsuleCollider capsuleCollider;
 
     private void UpdateFootsteps()
     {
@@ -57,7 +64,7 @@ public class PlayerController : MonoBehaviour
         float speed = flatVel.magnitude;
 
         // Speed normalized from 0 to moveSpeed
-        float normalizedSpeed = Mathf.Clamp01(speed / moveSpeed);
+        float normalizedSpeed = Mathf.Clamp01(speed / (isSprinting ? sprintSpeed : moveSpeed));
 
         // Play only when moving
         if (normalizedSpeed > 0.05f)
@@ -88,12 +95,10 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
         rb.freezeRotation = true;
-
+        capsuleCollider = GetComponent<CapsuleCollider>();
         if (inputManager == null)
             inputManager = InputManager.Instance;
 
-        walkSpeed = moveSpeed;
-        sprintSpeed = moveSpeed * 1.5f;
     }
 
     private void Start()
@@ -106,8 +111,15 @@ public class PlayerController : MonoBehaviour
         if (!inputManager.canTakeInputs) return;
 
         // Ground Check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
+        Vector3 capsuleCenter = capsuleCollider.bounds.center;
+        float rayDistance = capsuleCollider.bounds.extents.y + 0.3f;
 
+        grounded = Physics.Raycast(
+            capsuleCenter,
+            Vector3.down,
+            rayDistance,
+            whatIsGround
+        );
         MyInput();
         SpeedControl();
 
@@ -127,7 +139,7 @@ public class PlayerController : MonoBehaviour
 
         float CurrentSpeed = rb.velocity.magnitude;
         animator.SetFloat("Speed", CurrentSpeed);  
-        
+
         if (chemyAnimatedObj.localPosition.x > 0.07f || chemyAnimatedObj.localPosition.x < -0.07f)
         {
             chemyAnimatedObj.localPosition = Vector3.Lerp(chemyAnimatedObj.localPosition, new Vector3(0, chemyAnimatedObj.localPosition.y, chemyAnimatedObj.localPosition.z), Time.fixedDeltaTime);
@@ -159,30 +171,52 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 moveInput = inputManager.Movement;
 
-        // Calculate movement direction relative to orientation (camera forward)
-        moveDirection = orientation.forward * moveInput.y + orientation.right * moveInput.x;
+        // Calculate movement direction relative to camera
+        moveDirection =
+            orientation.forward * moveInput.y +
+            orientation.right * moveInput.x;
 
         if (moveInput.magnitude < 0.1f)
         {
-            // Strong deceleration when no input
             Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-            rb.AddForce(-flatVel * 15f, ForceMode.Acceleration); // higher number = faster stop
+            rb.AddForce(-flatVel * 15f, ForceMode.Acceleration);
             return;
         }
-        if (grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-        else
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
-    }
 
+        moveDirection.Normalize();
+
+        // Adjust movement to follow terrain slope
+        Vector3 finalDirection;
+
+        if (GetSlopeMoveDirection(moveDirection, out Vector3 slopeDirection))
+        {
+            finalDirection = slopeDirection;
+        }
+        else
+        {
+            finalDirection = moveDirection;
+        }
+
+        float forceMultiplier = grounded ? 10f : 10f * airMultiplier;
+
+        rb.AddForce(
+            finalDirection * (isSprinting ? sprintSpeed : moveSpeed) * forceMultiplier,
+            ForceMode.Force
+        );
+    }
     private void SpeedControl()
     {
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        if (flatVel.magnitude > moveSpeed)
+        if (flatVel.magnitude > (isSprinting ? sprintSpeed : moveSpeed))
         {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
-            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+            Vector3 limitedVel = flatVel.normalized * (isSprinting ? sprintSpeed : moveSpeed);
+
+            rb.velocity = new Vector3(
+                limitedVel.x,
+                rb.velocity.y,
+                limitedVel.z
+            );
         }
     }
 
@@ -243,8 +277,34 @@ public class PlayerController : MonoBehaviour
     {
         if (!grounded)
         {
-            // Extra downward force so the player falls faster than Unity’s default gravity
+            // Extra downward force so the player falls faster than Unityï¿½s default gravity
             rb.AddForce(Physics.gravity * (gravityMultiplier - 1f), ForceMode.Acceleration);
         }
+    }
+    private bool GetSlopeMoveDirection(Vector3 direction, out Vector3 slopeDirection)
+    {
+        slopeDirection = direction;
+
+        if (Physics.Raycast(
+            transform.position,
+            Vector3.down,
+            out slopeHit,
+            playerHeight * 0.5f + slopeRayDistance,
+            whatIsGround))
+        {
+            float slopeAngle = Vector3.Angle(slopeHit.normal, Vector3.up);
+
+            if (slopeAngle <= maxSlopeAngle && slopeAngle > 0.1f)
+            {
+                onSlope = true;
+
+                // Project movement direction onto the terrain surface
+                slopeDirection = Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
+                return true;
+            }
+        }
+
+        onSlope = false;
+        return false;
     }
 }

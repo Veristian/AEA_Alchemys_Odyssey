@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 6
+  sprintSpeed: 9
   groundDrag: 6
   airMultiplier: 0.5
   gravityMultiplier: 2.5
@@ -152,8 +153,6 @@ MonoBehaviour:
   orientation: {fileID: 6750697374387994665}
   cameraTarget: {fileID: 7227200068545654908}
   chemyAnimatedObj: {fileID: 7227200068545654908}
-  walkSpeed: 0
-  sprintSpeed: 0
   animator: {fileID: 3651294494234143238}
   IdleWait: 10
   speedThrehold: 2
@@ -162,6 +161,8 @@ MonoBehaviour:
   maxPitch: 1
   volumeLerpSpeed: 10
   pitchLerpSpeed: 10
+  maxSlopeAngle: 45
+  slopeRayDistance: 1.5
 --- !u!114 &9080607892106187441
 MonoBehaviour:
   m_ObjectHideFlags: 0

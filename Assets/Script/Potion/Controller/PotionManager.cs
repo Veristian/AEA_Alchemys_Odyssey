@@ -353,12 +353,12 @@ public class PotionManager : Singleton<PotionManager>
                 q.questData.submissionCharacter == SubmissionCharacter.None &&
                 q.questData.requirementsToComplete.AreAllMet()
             );
-
+        
         if (questToSubmit != null)
         {
             QuestRuntimeManager.Instance.SubmitQuest(questToSubmit);
         }
-
+        PlayerPopUpUiManager.Instance.QuestResultChecker();
         ClearPotion();
     }
 

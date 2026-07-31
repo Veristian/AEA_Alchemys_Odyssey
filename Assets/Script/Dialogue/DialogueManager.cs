@@ -301,8 +301,7 @@ public class DialogueManager : Singleton<DialogueManager>
                 AudioController.Instance.PlaySFX(parameter);
                 break;
             case "firsttimetrigger":
-                isSkipping = false;
-                FirstTimeTrigger.TryActivate(parameter);
+                if (FirstTimeTrigger.TryActivate(parameter)) isSkipping = false;
                 break;
 
         }

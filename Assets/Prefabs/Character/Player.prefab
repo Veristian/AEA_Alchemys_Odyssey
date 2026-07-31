@@ -157,6 +157,8 @@ MonoBehaviour:
   IdleWait: 10
   speedThrehold: 2
   footstepSource: {fileID: 8753944730400673989}
+  walkClip: {fileID: 8300000, guid: 95ff73a3ce9e5ad4dbfe590a38891853, type: 3}
+  runClip: {fileID: 8300000, guid: b4212c2c3e6f7e64398c93e25d960df5, type: 3}
   minPitch: 1
   maxPitch: 1
   volumeLerpSpeed: 10

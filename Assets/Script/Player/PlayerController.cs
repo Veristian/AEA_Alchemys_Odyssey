@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
         ApplyExtraGravity();
 
         float CurrentSpeed = rb.velocity.magnitude;
-        animator.SetFloat("Speed", CurrentSpeed);  
+        animator.SetFloat("Speed",CurrentSpeed > 3 ? isSprinting ? 15 : 6 : 0);  
 
         if (chemyAnimatedObj.localPosition.x > 0.07f || chemyAnimatedObj.localPosition.x < -0.07f)
         {

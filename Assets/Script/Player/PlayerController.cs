@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
 
         // Ground Check
         Vector3 capsuleCenter = capsuleCollider.bounds.center;
-        float rayDistance = capsuleCollider.bounds.extents.y + 0.3f;
+        float rayDistance = capsuleCollider.bounds.extents.y + 0.5f;
 
         grounded = Physics.Raycast(
             capsuleCenter,

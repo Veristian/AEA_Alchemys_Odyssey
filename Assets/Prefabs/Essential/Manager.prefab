@@ -64,12 +64,12 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 956f415523cc0bf4384c4a27b186a14b, type: 3}
   - sname: PotionFail
     clip: {fileID: 8300000, guid: 14bd7eafa815cdb4fae0812cace41dfe, type: 3}
-  - sname: WoodFootstep
-    clip: {fileID: 8300000, guid: d4f23defa999e4a48a75485772d90d9f, type: 3}
-  - sname: DirtFootstep
-    clip: {fileID: 8300000, guid: 70b6c6d28fd362f4fa777ac5ac60c893, type: 3}
-  - sname: GrassFootstep
-    clip: {fileID: 8300000, guid: 3b402bbb5c0ba3747ba18883c55fbe0d, type: 3}
+  - sname: WoodWalk
+    clip: {fileID: 8300000, guid: 426e042931ed8904391ce8e54977a347, type: 3}
+  - sname: DirtWalk
+    clip: {fileID: 8300000, guid: 95ff73a3ce9e5ad4dbfe590a38891853, type: 3}
+  - sname: GrassWalk
+    clip: {fileID: 8300000, guid: 300c579a024924048bc7397af2e7a87c, type: 3}
   - sname: Coin
     clip: {fileID: 8300000, guid: 9ad849c4e7ae37e4b8c01140153bed2d, type: 3}
   - sname: Splash
@@ -84,6 +84,12 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 83e2ec7475fb15b47bc6c52b4f98700d, type: 3}
   - sname: PaperClose
     clip: {fileID: 8300000, guid: a77ef2aaa8c249948919dbcd106f6ee1, type: 3}
+  - sname: DirtSprint
+    clip: {fileID: 8300000, guid: b4212c2c3e6f7e64398c93e25d960df5, type: 3}
+  - sname: GrassSprint
+    clip: {fileID: 8300000, guid: 05c4bc70eed2e764792928c0d59a81c9, type: 3}
+  - sname: WoodSprint
+    clip: {fileID: 8300000, guid: 40a12b3e95423e34e8814d258fd021eb, type: 3}
   mixer: {fileID: 24100000, guid: c9ef8e8ae3caadf4b9e649663e9367c2, type: 2}
   bgmSourceA: {fileID: 4357190896315327549}
   bgmSourceB: {fileID: 7072061399187101781}
@@ -2279,6 +2285,7 @@ MonoBehaviour:
   MouseLeftWasReleased: 0
   InventoryWasPressed: 0
   JournalWasPressed: 0
+  ResetGameWasPressed: 0
   grabLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -3310,11 +3317,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7859539414823977297, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7859539414823977297, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7859539414823977297, guid: 609e19549d044a442a39a6434b2dcd23, type: 3}
       propertyPath: m_SizeDelta.y

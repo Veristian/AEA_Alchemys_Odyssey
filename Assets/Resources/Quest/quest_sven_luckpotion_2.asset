@@ -21,7 +21,7 @@ MonoBehaviour:
     Open Journal for More Details'
   questFullDescription: "Brew a Luck Potion for Old Man Sven\n\u2193\nDeliver the
     potion to Old Man Sven's Lighthouse"
-  submissionCharacter: 0
+  submissionCharacter: 4
   requirementsToUnlock:
     requirements:
     - rid: 1115517637186027526

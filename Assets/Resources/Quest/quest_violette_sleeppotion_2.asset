@@ -22,7 +22,7 @@ MonoBehaviour:
     Details'
   questFullDescription: "Brew a Sleep Potion for Violette\n\u2193\nDeliver the potion
     to Violette's Library"
-  submissionCharacter: 0
+  submissionCharacter: 8
   requirementsToUnlock:
     requirements:
     - rid: 1115517637186027528

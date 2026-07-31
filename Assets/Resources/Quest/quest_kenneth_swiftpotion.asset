@@ -22,7 +22,7 @@ MonoBehaviour:
     Details'
   questFullDescription: "Brew a Swift Potion for Kenneth\n\u2193\nDeliver the potion
     to Kenneth's Farm House"
-  submissionCharacter: 0
+  submissionCharacter: 3
   requirementsToUnlock:
     requirements:
     - rid: 5999243469903888397

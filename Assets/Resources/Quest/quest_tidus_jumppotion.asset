@@ -22,7 +22,7 @@ MonoBehaviour:
     for More Details'
   questFullDescription: "Brew a Jump Potion for Tidus\n\u2193\nDeliver the potion
     to the Mayor House"
-  submissionCharacter: 0
+  submissionCharacter: 7
   requirementsToUnlock:
     requirements:
     - rid: 5999243469903888398

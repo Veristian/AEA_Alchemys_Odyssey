@@ -271,7 +271,7 @@ public class PotionMakingUi : MonoBehaviour
         }
     }
 
-    private void ResetRecipeTargetItem()
+    public void ResetRecipeTargetItem()
     {
         CloseRecipeTarget();
         PotionManager.Instance.AssignPotionTarget(null);

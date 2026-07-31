@@ -286,11 +286,12 @@ public class PlayerPopUpUiManager : MonoBehaviour
 
     public void CloseTutorialPanel()
     {
+        if (isInPCrafting)
+            InputManager.Instance.canTakeInputs = true;
         if (currentPopup == null && !isInPCrafting)
         {
-            InputManager.Instance.canUiPopup = true;
             InputManager.Instance.canTakeInputs = true;
-            
+            InputManager.Instance.canUiPopup = true;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }

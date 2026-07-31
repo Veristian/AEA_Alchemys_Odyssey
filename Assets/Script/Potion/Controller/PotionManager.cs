@@ -360,6 +360,7 @@ public class PotionManager : Singleton<PotionManager>
         }
         PlayerPopUpUiManager.Instance.QuestResultChecker();
         ClearPotion();
+        PotionMakingUi.Instance.ResetRecipeTargetItem();
     }
 
     public void ActivatePotionInterface()

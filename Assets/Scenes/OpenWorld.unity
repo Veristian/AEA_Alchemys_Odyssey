@@ -6429,6 +6429,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1282213089695471338, guid: d07c1bae147b59c49a124bc7d8a319b6, type: 3}
+      propertyPath: Hideabledestinations.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1282213089695471338, guid: d07c1bae147b59c49a124bc7d8a319b6, type: 3}
       propertyPath: destinations.Array.data[0].name
       value: Violette
       objectReference: {fileID: 0}
@@ -6459,6 +6463,26 @@ PrefabInstance:
     - target: {fileID: 1282213089695471338, guid: d07c1bae147b59c49a124bc7d8a319b6, type: 3}
       propertyPath: destinations.Array.data[7].name
       value: Forest
+      objectReference: {fileID: 0}
+    - target: {fileID: 1282213089695471338, guid: d07c1bae147b59c49a124bc7d8a319b6, type: 3}
+      propertyPath: Hideabledestinations.Array.data[0].name
+      value: Violette
+      objectReference: {fileID: 0}
+    - target: {fileID: 1282213089695471338, guid: d07c1bae147b59c49a124bc7d8a319b6, type: 3}
+      propertyPath: Hideabledestinations.Array.data[1].name
+      value: Kenneth
+      objectReference: {fileID: 0}
+    - target: {fileID: 1282213089695471338, guid: d07c1bae147b59c49a124bc7d8a319b6, type: 3}
+      propertyPath: Hideabledestinations.Array.data[2].name
+      value: Ramonts
+      objectReference: {fileID: 0}
+    - target: {fileID: 1282213089695471338, guid: d07c1bae147b59c49a124bc7d8a319b6, type: 3}
+      propertyPath: Hideabledestinations.Array.data[3].name
+      value: Poshe
+      objectReference: {fileID: 0}
+    - target: {fileID: 1282213089695471338, guid: d07c1bae147b59c49a124bc7d8a319b6, type: 3}
+      propertyPath: Hideabledestinations.Array.data[4].name
+      value: Kenneth
       objectReference: {fileID: 0}
     - target: {fileID: 1282213089695471338, guid: d07c1bae147b59c49a124bc7d8a319b6, type: 3}
       propertyPath: destinations.Array.data[0].destinationObject
@@ -6492,6 +6516,26 @@ PrefabInstance:
       propertyPath: destinations.Array.data[7].destinationObject
       value: 
       objectReference: {fileID: 548490435}
+    - target: {fileID: 1282213089695471338, guid: d07c1bae147b59c49a124bc7d8a319b6, type: 3}
+      propertyPath: Hideabledestinations.Array.data[0].destinationObject
+      value: 
+      objectReference: {fileID: 2011784674}
+    - target: {fileID: 1282213089695471338, guid: d07c1bae147b59c49a124bc7d8a319b6, type: 3}
+      propertyPath: Hideabledestinations.Array.data[1].destinationObject
+      value: 
+      objectReference: {fileID: 6783435318800321767}
+    - target: {fileID: 1282213089695471338, guid: d07c1bae147b59c49a124bc7d8a319b6, type: 3}
+      propertyPath: Hideabledestinations.Array.data[2].destinationObject
+      value: 
+      objectReference: {fileID: 1721809252}
+    - target: {fileID: 1282213089695471338, guid: d07c1bae147b59c49a124bc7d8a319b6, type: 3}
+      propertyPath: Hideabledestinations.Array.data[3].destinationObject
+      value: 
+      objectReference: {fileID: 6783435318130672992}
+    - target: {fileID: 1282213089695471338, guid: d07c1bae147b59c49a124bc7d8a319b6, type: 3}
+      propertyPath: Hideabledestinations.Array.data[4].destinationObject
+      value: 
+      objectReference: {fileID: 6783435318800321767}
     - target: {fileID: 2152871484479045271, guid: d07c1bae147b59c49a124bc7d8a319b6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -94.88
@@ -12733,7 +12777,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh465432
+  m_Name: pb_Mesh216716
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -48823,7 +48867,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f992819eced10f44698ede1225f17de2, type: 2}
     - target: {fileID: 6783435317237245845, guid: 62125e9f1f041a94098544cfe80e3242, type: 3}
       propertyPath: m_Name
-      value: 'Post Office Marker '
+      value: 'Inn Marker '
       objectReference: {fileID: 0}
     - target: {fileID: 8350297169983239612, guid: 62125e9f1f041a94098544cfe80e3242, type: 3}
       propertyPath: m_LocalScale.x
@@ -50837,7 +50881,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1841457771}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.30403668, y: -0.000000016391839, z: 0.000000005231371, w: 0.9526604}
+  m_LocalRotation: {x: 0.30403668, y: 0.000000016391834, z: -0.00000000523137, w: 0.9526604}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

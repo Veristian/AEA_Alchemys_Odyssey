@@ -10,11 +10,18 @@ public class ParticleGuide : Singleton<ParticleGuide>
         public string name;
         public GameObject destinationObject;
     }
+    [System.Serializable]
+    public class HideableDestination
+    {
+        public string name;
+        public GameObject destinationObject;
+    }
 
     [Header("References")]
     [SerializeField] private Transform player;
     [SerializeField] private ParticleSystem particlePrefab;
     [SerializeField] private Destination[] destinations;
+    [SerializeField] private HideableDestination[] Hideabledestinations;
     private Coroutine particlePathCoroutine;
 
     [Header("Particle Settings")]
@@ -419,7 +426,7 @@ public class ParticleGuide : Singleton<ParticleGuide>
 
     private void HideAllDestinations()
     {
-        foreach (Destination destination in destinations)
+        foreach (HideableDestination destination in Hideabledestinations)
         {
             if (destination.destinationObject != null)
             {

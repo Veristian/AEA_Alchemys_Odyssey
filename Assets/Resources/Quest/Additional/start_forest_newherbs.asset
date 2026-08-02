@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadState: 0
   questId: start_forest_newherbs
-  questName: 
-  questDescription: 
-  questFullDescription: 
-  submissionCharacter: 0
+  questName: New Herbs
+  questDescription: Go to Breezewood Forest
+  questFullDescription: You should checkout Breezewood Forest for any new herbs
+  submissionCharacter: 9
   requirementsToUnlock:
     requirements: []
   requirementsToComplete:
@@ -25,7 +25,8 @@ MonoBehaviour:
   questActions:
     goldReward: 0
   isMainQuest: 0
-  isRepeatable: 0
+  isRepeatable: 1
+  hideInNews: 1
   storyText: {fileID: 0}
   references:
     version: 2

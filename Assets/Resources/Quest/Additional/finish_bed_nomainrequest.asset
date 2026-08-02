@@ -27,6 +27,7 @@ MonoBehaviour:
     goldReward: 0
   isMainQuest: 0
   isRepeatable: 1
+  hideInNews: 1
   storyText: {fileID: 0}
   references:
     version: 2

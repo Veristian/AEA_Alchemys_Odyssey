@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadState: 0
   questId: finish_bed_thatsall
-  questName: 
-  questDescription: 
-  questFullDescription: 
-  submissionCharacter: 0
+  questName: That's All For Today
+  questDescription: You have completed all main request for today. You can go to
+    your bed and sleep
+  questFullDescription: You have completed all main request for today. You can go
+    to your bed and sleep
+  submissionCharacter: 10
   requirementsToUnlock:
     requirements: []
   requirementsToComplete:
@@ -25,7 +27,8 @@ MonoBehaviour:
   questActions:
     goldReward: 0
   isMainQuest: 0
-  isRepeatable: 0
+  isRepeatable: 1
+  hideInNews: 1
   storyText: {fileID: 0}
   references:
     version: 2

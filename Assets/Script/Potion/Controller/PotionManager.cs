@@ -59,6 +59,7 @@ public class PotionManager : Singleton<PotionManager>
     [SerializeField] private List<StoredData> currentActivePotionIngredients = new List<StoredData>();
 
     [Header("Settings")]
+    [SerializeField] private float additionalLeeway = 0.1f;
     [SerializeField] private float distanceBetweenGuides = 0.95f;
     [Tooltip("Distance inside the potion until it confirms to add the potion ingredient. Starts at 0 to negative values")]
     [SerializeField] private float potionConfirmDistance = -5f;
@@ -305,7 +306,7 @@ public class PotionManager : Singleton<PotionManager>
 
         for (int i = 0; i < potionGraphPoints.Length; i++)
         {
-            if (potionGraphPoints[i].y + potionGraph.restOffset > guideGraphTopPoints[i].y + guideGraphTop.restOffset || potionGraphPoints[i].y + potionGraph.restOffset < guideGraphBottomPoints[i].y + guideGraphBottom.restOffset)
+            if (potionGraphPoints[i].y + potionGraph.restOffset > guideGraphTopPoints[i].y + guideGraphTop.restOffset + additionalLeeway || potionGraphPoints[i].y + potionGraph.restOffset < guideGraphBottomPoints[i].y + guideGraphBottom.restOffset - additionalLeeway)
             {
                 Debug.Log($"Potion point {i} is out of bounds. Potion Y: {potionGraphPoints[i].y + potionGraph.restOffset*graphDefaultRest}, Top Guide Y: {guideGraphTopPoints[i].y + guideGraphTop.restOffset}, Bottom Guide Y: {guideGraphBottomPoints[i].y + guideGraphBottom.restOffset}");
                 return false;

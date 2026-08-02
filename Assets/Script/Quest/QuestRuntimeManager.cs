@@ -311,7 +311,7 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
         }
 
         //show thats all when finished quest and have nothing left to do
-        if (GetOngoingQuests().Count == 0)
+        if (GetOngoingQuests().Count == 0 && questId != "finish_bed_nomainrequest")
         {
             GiveQuest("finish_bed_thatsall");
         }

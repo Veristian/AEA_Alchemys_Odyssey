@@ -14,6 +14,8 @@ public class DayInteract : MonoBehaviour
     IEnumerator SleepRoutine()
     {
         if (isSaving) yield break;
+        QuestRuntimeManager.Instance.SubmitQuest("finish_bed_nomainrequest");
+        QuestRuntimeManager.Instance.SubmitQuest("finish_bed_thatsall");
         isSaving = true;
         AudioController.Instance.PlaySFX("Sleep");
         InputManager.Instance.DisableInputs();
@@ -28,5 +30,6 @@ public class DayInteract : MonoBehaviour
     public void News()
     {
         DayManager.Instance.ViewNewsAndAcceptNews();
+        QuestRuntimeManager.Instance.SubmitQuest("finish_bed_nomainrequest");
     }
 }

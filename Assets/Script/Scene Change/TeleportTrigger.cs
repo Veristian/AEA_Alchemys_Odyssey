@@ -106,7 +106,7 @@ public class TeleportTrigger : MonoBehaviour, IInteractable
             Debug.LogWarning("Target scene name is not set.");
             return;
         }
-
+        if (targetSceneName == "Forest") QuestRuntimeManager.Instance.SubmitQuest("start_forest_newherbs");
         PlayerSpawnManager.Instance.SetSpawnInfo(spawnPointName);
         SceneLoadingManager.Instance.LoadScene(targetSceneName);
         isInteractable = false;

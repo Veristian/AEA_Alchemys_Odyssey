@@ -124,12 +124,12 @@ public class DayManager : Singleton<DayManager>
 
         currentHeadline = ActiveHeadlines.Count > 0 ? ActiveHeadlines[UnityEngine.Random.Range(0, ActiveHeadlines.Count)] : null;
         var mainQuests = ActiveLocalRequests
-            .Where(x => x.questData.isMainQuest)
+            .Where(x => x.questData.isMainQuest && !x.questData.hideInNews)
             .OrderBy(x => UnityEngine.Random.value)
             .ToList();
 
         var sideQuests = ActiveLocalRequests
-            .Where(x => !x.questData.isMainQuest)
+            .Where(x => !x.questData.isMainQuest && !x.questData.hideInNews)
             .OrderBy(x => UnityEngine.Random.value)
             .ToList();
 
@@ -155,6 +155,22 @@ public class DayManager : Singleton<DayManager>
             currentLocalNews = ActiveLocalNews.Count > 0
                 ? ActiveLocalNews[UnityEngine.Random.Range(0, ActiveLocalNews.Count)]
                 : null;
+        }
+
+        //note to self: additionally give player no main quest quest if there is no main quest available and give new herbs on day 2 and 3
+        //submit in bed and forest or news
+        if (mainQuests.Count == 0 && sideQuests.Count > 0)
+        {
+            QuestRuntimeManager.Instance.GiveQuest("finish_bed_nomainrequest");
+        }
+
+        if (Day == 2)
+        {
+            QuestRuntimeManager.Instance.GiveQuest("start_forest_newherbs");
+        }
+        else if (Day == 3)
+        {
+            QuestRuntimeManager.Instance.GiveQuest("start_forest_newherbs");
         }
     }
 

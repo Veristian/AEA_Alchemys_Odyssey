@@ -131,7 +131,9 @@ public enum SubmissionCharacter
     Poshe,
     Circe,
     Tidus,
-    Chemy
+    Chemy,
+    Forest,
+    Bed
 
 }
 [Serializable]
@@ -195,6 +197,7 @@ public class QuestData : ResourceData
     public QuestAction questActions;
     public bool isMainQuest;
     public bool isRepeatable;
+    public bool hideInNews;
     [ReadOnly] public TextAsset storyText;
     public Story story { get; private set; }
     private void OnEnable()

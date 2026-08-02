@@ -289,6 +289,8 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
         }
         if (playerQuestData.questData.submissionCharacter != SubmissionCharacter.None)
             FirstTimeTrigger.TryActivate("t8");
+
+        //note to self: show thats all when finished quest and have nothing left to do
     }
     public void SubmitQuest(string questId)
     {
@@ -303,10 +305,17 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
         PlayerDataManager.Instance.AddGold(playerQuestData.questData.questActions.goldReward);
         if (UiLoader.Instance.displayedQuestData == playerQuestData) UiLoader.Instance.UnTrackQuest();
 
-        if (PlayerPopUpUiManager.Instance != null)
+        if (PlayerPopUpUiManager.Instance != null && playerQuestData.questData.hideInNews == false)
         {
             PlayerPopUpUiManager.Instance.QuestResultSetup(playerQuestData.questData.questName, playerQuestData.questData.questActions.goldReward);
         }
+
+        //show thats all when finished quest and have nothing left to do
+        if (GetOngoingQuests().Count == 0)
+        {
+            GiveQuest("finish_bed_thatsall");
+        }
+        //submit in bed
     }
 #endregion
 

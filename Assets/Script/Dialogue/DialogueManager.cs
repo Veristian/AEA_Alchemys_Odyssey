@@ -148,7 +148,8 @@ public class DialogueManager : Singleton<DialogueManager>
     IEnumerator TypeLine(string line)
     {
         isTyping = true;
-        dialogueText.text = "";
+        if (line != "")
+            dialogueText.text = "";
 
         foreach (char c in line)
         {
@@ -302,6 +303,9 @@ public class DialogueManager : Singleton<DialogueManager>
                 break;
             case "firsttimetrigger":
                 if (FirstTimeTrigger.TryActivate(parameter)) isSkipping = false;
+                break;
+            case "finddestination":
+                ParticleGuide.Instance.FindDestinationWithName(parameter);
                 break;
 
         }

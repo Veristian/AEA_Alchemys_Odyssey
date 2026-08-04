@@ -326,6 +326,7 @@ public class UiLoader : Singleton<UiLoader>
             TrackQuest();
         }
 
+
     }
 
     public void DisplayQuestData(PlayerQuestData questData)

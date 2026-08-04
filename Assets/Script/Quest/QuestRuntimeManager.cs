@@ -124,6 +124,17 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
 
         playerQuestsList.playerQuests.AddRange(newEntries);
         OnQuestListUpdated?.Invoke();
+
+        TrackedQuest = playerQuestsList.playerQuests.FirstOrDefault(q => q.questData.questId == "finish_bed_nomainrequest" || q.questData.questId == "start_forest_newherbs");
+        if (TrackedQuest == null || TrackedQuest.questData == null || TrackedQuest.questData.questId == "")
+        {
+            TrackedQuest = playerQuestsList.playerQuests.FirstOrDefault(q => q.isOnGoing);
+        }
+        if (TrackedQuest == null || TrackedQuest.questData == null || TrackedQuest.questData.questId == "")
+        {
+            return;
+        }
+
     }
     
 

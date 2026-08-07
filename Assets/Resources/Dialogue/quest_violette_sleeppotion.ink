@@ -1,4 +1,4 @@
-﻿# speaker: Violette
+# speaker: Violette
 # speaker: Chemy
 Hi, Violette! I'm Chemy, I saw your request on the town board, so I brought you a Sleep Potion.
 

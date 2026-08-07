@@ -1,4 +1,4 @@
-﻿# speaker: Violette
+# speaker: Violette
 # speaker: Chemy
 Hi, Violette! I brought you a Sleep Potion.
 

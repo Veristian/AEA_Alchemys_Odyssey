@@ -1,4 +1,4 @@
-﻿# speaker: Kenneth
+# speaker: Kenneth
 # speaker: Chemy
 lorem ipsum
 # speaker: Kenneth

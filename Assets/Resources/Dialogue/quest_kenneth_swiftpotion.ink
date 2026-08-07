@@ -1,4 +1,4 @@
-﻿# speaker: Kenneth
+# speaker: Kenneth
 # speaker: Chemy
 G'morning! Kenneth, right? I'm Chemy, here's the Potion of Swiftness you requested.
 

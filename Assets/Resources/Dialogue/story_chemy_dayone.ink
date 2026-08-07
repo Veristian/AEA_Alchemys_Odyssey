@@ -1,4 +1,4 @@
-﻿# speaker: Chemy
+# speaker: Chemy
 # speaker: Tidus
 Welcome to Wavecrest! You must be Chemy from the Alchemist Association, yes?
 # speaker: Chemy

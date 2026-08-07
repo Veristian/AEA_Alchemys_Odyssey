@@ -1,4 +1,4 @@
-﻿# speaker: Ramonts
+# speaker: Ramonts
 # speaker: Chemy
 Mr. Ramonts! My name's Chemy, I saw your request on the town board, so I brought the Hunger Potion you asked for.
 

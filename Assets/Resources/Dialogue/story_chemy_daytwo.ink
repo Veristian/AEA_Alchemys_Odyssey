@@ -1,4 +1,4 @@
-﻿# speaker: Chemy
+# speaker: Chemy
 # speaker: Poshe
 Helloooo there's mail for Chemy!
 

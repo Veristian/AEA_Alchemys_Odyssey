@@ -1,4 +1,4 @@
-﻿=== intro ===
+=== intro ===
 # speaker: NPC
 Hello traveler.
 -> END

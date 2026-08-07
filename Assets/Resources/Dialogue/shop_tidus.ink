@@ -1,4 +1,4 @@
-﻿# speaker: Tidus
+# speaker: Tidus
 # speaker: Chemy
 Excuse me, Mayor Tidus. I'd like to buy some furniture.
 # speaker: Tidus

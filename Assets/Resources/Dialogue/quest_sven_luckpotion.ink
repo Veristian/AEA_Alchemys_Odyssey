@@ -1,4 +1,4 @@
-﻿# speaker: Sven
+# speaker: Sven
 # speaker: Chemy
 Hellooo! Old Man Sven, yes? Are ya home? I got your luck potion here.
 

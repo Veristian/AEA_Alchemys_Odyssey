@@ -1,4 +1,4 @@
-﻿# speaker: Sven
+# speaker: Sven
 # speaker: Chemy
 Hellooo! Old Man Sven are ya home? I got your luck potion here.
 # func: submitquest@quest_sven_luckpotion_2

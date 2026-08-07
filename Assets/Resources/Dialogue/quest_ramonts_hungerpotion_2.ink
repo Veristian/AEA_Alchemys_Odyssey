@@ -1,4 +1,4 @@
-﻿# speaker: Ramonts
+# speaker: Ramonts
 # speaker: Chemy
 Mr. Ramonts! I brought the Hunger Potion you asked for.
 

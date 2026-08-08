@@ -50,6 +50,8 @@ public class PotionManager : Singleton<PotionManager>
     [SerializeField] private TextMeshProUGUI potionNameText;
     [SerializeField] private TextMeshProUGUI potionDetailText;
     [SerializeField] private Image potionImage;
+
+    [SerializeField] private TextMeshProUGUI offsetText;
   
     [Header("Active Data")]
     [Tooltip("The currently active potion. This is the potion that will be brewed when the player clicks the brew button.")]
@@ -575,11 +577,27 @@ public class PotionManager : Singleton<PotionManager>
         if (colliders.Length == 0)
         {
             potionIngredientObjects = null;
+            offsetText.gameObject.SetActive(false);
             return;
         }
         potionIngredientObjects = colliders.Select(c => c.GetComponent<PotionIngredientObject>()).ToList();
+        offsetText.gameObject.SetActive(true);
+        offsetText.text = $"{((potionIngredientObjects[0].position.x-graphOrigin.x)*2f/graphSize.x - 1f).ToString("F2")}";
+        FollowMouse();
 
     }
+    private void FollowMouse()
+    {
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            offsetText.canvas.transform as RectTransform,
+            InputManager.Instance.MousePosition,
+            offsetText.canvas.worldCamera,
+            out Vector2 localPoint
+        );
+
+        offsetText.rectTransform.localPosition = localPoint;
+    }
+
 
     private void ConvertPotionObjectsToCurve(List<AnimationCurve> potionCurves, List<PotionIngredientObject> potionIngredientObjects)
     {

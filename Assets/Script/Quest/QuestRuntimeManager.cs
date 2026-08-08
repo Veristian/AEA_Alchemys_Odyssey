@@ -298,7 +298,7 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
         {
             PlayerPopUpUiManager.Instance.QuestResultSetup(playerQuestData.questData.questName, playerQuestData.questData.questActions.goldReward);
         }
-        if (playerQuestData.questData.submissionCharacter != SubmissionCharacter.None)
+        if (playerQuestData.questData.submissionCharacter != SubmissionCharacter.Chemy)
             FirstTimeTrigger.TryActivate("t8");
 
         //note to self: show thats all when finished quest and have nothing left to do

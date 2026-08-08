@@ -583,7 +583,7 @@ MonoBehaviour:
     - rid: 1115517542344163368
       type: {class: DaysRequirement, ns: , asm: Assembly-CSharp}
       data:
-        minimumDaysPassed: 3
+        minimumDaysPassed: 5
     - rid: 1115517542344163376
       type: {class: DaysRequirement, ns: , asm: Assembly-CSharp}
       data:
@@ -1301,6 +1301,7 @@ MonoBehaviour:
   activePotionTarget: {fileID: 0}
   activePotionIngredientsTarget: []
   currentActivePotionIngredients: []
+  additionalLeeway: 0.1
   distanceBetweenGuides: 2
   potionConfirmDistance: -5
   ingredientObjectLayer:

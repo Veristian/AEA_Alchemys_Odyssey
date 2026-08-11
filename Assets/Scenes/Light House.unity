@@ -14537,7 +14537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: gameObjectUnlockables.Array.data[0].unlockableObjectsId
-      value: DayThreeHerbs
+      value: DayFiveHerbs
       objectReference: {fileID: 0}
     - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: gameObjectUnlockables.Array.data[0].unlockableObjects.Array.size

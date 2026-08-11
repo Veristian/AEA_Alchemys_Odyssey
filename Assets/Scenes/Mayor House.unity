@@ -3322,10 +3322,13 @@ MonoBehaviour:
   IdleWait: 10
   speedThrehold: 2
   footstepSource: {fileID: 0}
+  walkClip: {fileID: 0}
+  runClip: {fileID: 0}
   minPitch: 0.8
   maxPitch: 1.3
   volumeLerpSpeed: 10
   pitchLerpSpeed: 10
+  footstepVolumeMultiplier: 1
   maxSlopeAngle: 45
   slopeRayDistance: 1.5
 --- !u!54 &280518532
@@ -15389,7 +15392,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: gameObjectUnlockables.Array.data[0].unlockableObjectsId
-      value: DayTheeHerbs
+      value: DayFiveHerbs
       objectReference: {fileID: 0}
     - target: {fileID: 749479527744163733, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: gameObjectUnlockables.Array.data[0].unlockableObjects.Array.size

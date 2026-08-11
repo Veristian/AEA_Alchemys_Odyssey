@@ -113,6 +113,7 @@ public class PotionManager : Singleton<PotionManager>
 
     private void FixedUpdate()
     {
+        if (playArea == null || heatSlider == null) return;
         DetectAndStorePotionIngredientObjects();
         UpdateFuturePotionGraph();
         UpdateHeat();

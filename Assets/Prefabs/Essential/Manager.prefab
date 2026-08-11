@@ -557,6 +557,11 @@ MonoBehaviour:
       - rid: 1115517699548250143
     unlockId: newspaper
     trackQuestChanges: 1
+  - requirementList:
+      requirements:
+      - rid: 3539220431607431176
+    unlockId: DayFiveHerbs
+    trackQuestChanges: 1
   references:
     version: 2
     RefIds:
@@ -583,7 +588,7 @@ MonoBehaviour:
     - rid: 1115517542344163368
       type: {class: DaysRequirement, ns: , asm: Assembly-CSharp}
       data:
-        minimumDaysPassed: 5
+        minimumDaysPassed: 3
     - rid: 1115517542344163376
       type: {class: DaysRequirement, ns: , asm: Assembly-CSharp}
       data:
@@ -592,6 +597,10 @@ MonoBehaviour:
       type: {class: DaysRequirement, ns: , asm: Assembly-CSharp}
       data:
         minimumDaysPassed: 2
+    - rid: 3539220431607431176
+      type: {class: DaysRequirement, ns: , asm: Assembly-CSharp}
+      data:
+        minimumDaysPassed: 5
 --- !u!1 &2056234286102749589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1298,6 +1307,7 @@ MonoBehaviour:
   potionNameText: {fileID: 0}
   potionDetailText: {fileID: 0}
   potionImage: {fileID: 0}
+  offsetText: {fileID: 0}
   activePotionTarget: {fileID: 0}
   activePotionIngredientsTarget: []
   currentActivePotionIngredients: []

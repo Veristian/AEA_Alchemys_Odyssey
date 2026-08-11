@@ -301,6 +301,11 @@ public class QuestRuntimeManager : Singleton<QuestRuntimeManager>
         if (playerQuestData.questData.submissionCharacter != SubmissionCharacter.Chemy)
             FirstTimeTrigger.TryActivate("t8");
 
+        //show thats all when finished quest and have nothing left to do
+        if (GetOngoingQuests().Count == 0 && playerQuestData.questData.questId != "finish_bed_nomainrequest")
+        {
+            GiveQuest("finish_bed_thatsall");
+        }
         //note to self: show thats all when finished quest and have nothing left to do
     }
     public void SubmitQuest(string questId)

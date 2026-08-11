@@ -1051,7 +1051,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228057288}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27710718, y: 0.000000016532567, z: -0.000000004768013, w: 0.96083903}
+  m_LocalRotation: {x: 0.27710718, y: -0.000000016532557, z: 0.0000000047680113, w: 0.96083903}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1299,7 +1299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 267655310}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06917988, y: -0.000000016645238, z: 0.0000000011542812, w: 0.99760425}
+  m_LocalRotation: {x: 0.06917987, y: 0.00000001822936, z: -0.0000000012641336, w: 0.99760425}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3477,7 +3477,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh51254
+  m_Name: pb_Mesh48514
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
@@ -6051,6 +6051,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 6697333064115204842, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
+      propertyPath: managedReferences[1115517542344163368].minimumDaysPassed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6982703046419081174, guid: 9faa0fd3eb842694e9335c33eccb5c21, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6860,7 +6864,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1944136358}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2771072, y: 0.000000016532569, z: -0.000000004768014, w: 0.96083903}
+  m_LocalRotation: {x: 0.2771072, y: -0.00000001653256, z: 0.0000000047680113, w: 0.96083903}
   m_LocalPosition: {x: 70.32484, y: -342.78214, z: 237.55629}
   m_LocalScale: {x: 1.0019664, y: 1.0019665, z: 1.0019665}
   m_ConstrainProportionsScale: 0
@@ -7020,7 +7024,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-21464
+  m_Name: pb_Mesh-15874
   serializedVersion: 11
   m_SubMeshes:
   - serializedVersion: 2
